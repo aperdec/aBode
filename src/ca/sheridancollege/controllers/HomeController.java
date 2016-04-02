@@ -38,7 +38,7 @@ public class HomeController {
 		String username = getUserName();
 		System.out.println(username);
 
-		return "displaySubjects";
+		return "displaySubjects"; 
 	}
 
 	@RequestMapping("saveSubject")
