@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="myUserDetailsService">
+			
+		<security:password-encoder ref="encoder"></security:password-encoder>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="/addSubject" access="isAuthenticated()" />
+		<security:intercept-url pattern="/saveSubject" access="isAuthenticated()" />
+		<security:intercept-url pattern="/editSubject/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/deleteSubject/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/css/**" access="permitAll" />
+		<security:intercept-url pattern="/scripts/**" access="permitAll" />
+		<security:intercept-url pattern="/images/**" access="permitAll" />
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/viewSubject" access="permitAll" />
+		<security:intercept-url pattern="/displaySubjects" access="permitAll" />
+		<security:intercept-url pattern="/viewSubject/**" access="permitAll" />
+		<security:intercept-url pattern="/login" access="permitAll" />
+		<security:intercept-url pattern="/register" access="permitAll" />
+		<security:intercept-url pattern="/createAccount" access="permitAll" />
+		<security:intercept-url pattern="/**" access="denyAll" />
+		<security:form-login login-page="/login" />
+	</security:http>
+	<bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	</bean>
+	<bean id="myUserDetailsService"
+		class="ca.sheridancollege.beans.MyUserDetailsService">
+	</bean>
+</beans>

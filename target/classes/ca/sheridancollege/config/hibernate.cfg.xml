@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	
+		<!--Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/hibernatedb</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">1234</property>
+		
+		<!--Set the database dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!--Echo all executed SQL to stdout-->
+		<property name="show_sql">true</property>
+		
+		<!--Drop and re-create the database schema on startup-->
+		<property name="hbm2ddl.auto">update</property>
+		
+		<!--Name the annotated Entity classes -->
+		<mapping class="ca.sheridancollege.beans.Subject" />
+		<mapping class="ca.sheridancollege.beans.User" />
+		<mapping class="ca.sheridancollege.beans.UserRole" />
+		
+	</session-factory>
+</hibernate-configuration>
