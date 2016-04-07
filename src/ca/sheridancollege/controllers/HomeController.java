@@ -24,13 +24,17 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String home(Model model) {
-
-		// dao.saveSubject(new Subject("Test", "This is a test subject.",
-		// "aperdec"));
 		
-		String username = getUserName();
-		System.out.println(username);
-
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		    String currentUserName = authentication.getName();
+		    
+		    model.addAttribute("user", currentUserName);
+		    
+		    return "home";
+		}
+		
 		return "displaySubjects"; 
 	}
 	
