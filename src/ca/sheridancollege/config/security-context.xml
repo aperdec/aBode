@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 
-	<security:authentication-manager>
+	<security:authentication-manager> 
 		<security:authentication-provider
 			user-service-ref="myUserDetailsService">
 			
