@@ -19,7 +19,6 @@
 		<property name="hbm2ddl.auto">update</property>
 		
 		<!--Name the annotated Entity classes -->
-		<mapping class="ca.sheridancollege.beans.Subject" />
 		<mapping class="ca.sheridancollege.beans.User" />
 		<mapping class="ca.sheridancollege.beans.UserRole" />
 		
