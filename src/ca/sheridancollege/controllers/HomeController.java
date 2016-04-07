@@ -1,7 +1,5 @@
 package ca.sheridancollege.controllers;
 
-import java.util.List;
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -10,14 +8,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.sheridancollege.beans.MyUserDetailsService;
-import ca.sheridancollege.beans.Subject;
 import ca.sheridancollege.beans.User;
 import ca.sheridancollege.beans.UserRole;
 import ca.sheridancollege.dao.DAO;
@@ -32,61 +27,11 @@ public class HomeController {
 
 		// dao.saveSubject(new Subject("Test", "This is a test subject.",
 		// "aperdec"));
-
-		model.addAttribute("subjectList", dao.getSubjectList());
 		
 		String username = getUserName();
 		System.out.println(username);
 
 		return "displaySubjects"; 
-	}
-
-	@RequestMapping("saveSubject")
-	public String saveStudent(Model model, @ModelAttribute Subject subject) {
-
-		dao.saveSubject(subject);
-
-		model.addAttribute("subjectList", dao.getSubjectList());
-
-		return "displaySubjects";
-	}
-
-	@RequestMapping("editSubject/{title}")
-	public String editSubject(Model model, @PathVariable String title) {
-
-		List<Subject> subjectList = dao.getSubject(title);
-
-		model.addAttribute("subject", subjectList.get(0));
-
-		return "addSubject";
-	}
-
-	@RequestMapping("addSubject")
-	public String addSubject(Model model) {
-
-		model.addAttribute("subject", new Subject());
-
-		return "addSubject";
-	}
-
-	@RequestMapping("viewSubject/{title}")
-	public String viewSubject(Model model, @PathVariable String title) {
-
-		List<Subject> subjectList = dao.getSubject(title);
-
-		model.addAttribute("subject", subjectList.get(0));
-
-		return "viewSubject";
-	}
-	
-	@RequestMapping("deleteSubject/{title}")
-	public String deleteSubject(Model model, @PathVariable String title) {
-		
-		dao.removeSubject(title);
-
-		model.addAttribute("subjectList", dao.getSubjectList());
-
-		return "displaySubjects";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -119,8 +64,6 @@ public class HomeController {
 
 		model.addAttribute("accountCreated", true);
 		
-		model.addAttribute("subjectList", dao.getSubjectList());
-
 		return "displaySubjects";
 		
 	}
