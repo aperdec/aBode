@@ -30,7 +30,7 @@
 </head>
 <body>
 	
-	<h1>Welcome to aBode Software</h1>
+	<h3>Welcome to aBode Software</h3>
 
 </body>
 </html>

@@ -30,28 +30,17 @@
 </head>
 <body>
 	
-	<!-- This is checking for account creation
-	
-	<c:if test="${accountCreated}"><script>
-		function myFunction() {
-    		alert("Account Successfully Created");
-			}
-		</script>
-	</c:if>
-	
-	-->
-	
 	<div style="margin: 2%">
 		<h1>aBode</h1>
 		<div class="list-group">
-			<c:forEach var="subject" items="${subjectList}">
-				<c:url value="/viewSubject/${subject.title}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${subject.title} </a>
+			<c:forEach var="unit" items="${unitList}">
+				<c:url value="/viewunit/${unit.homeEnrollmentNumber}" var="viewUrl" />
+				<a href="${viewUrl}" class="list-group-item"> ${unit.lotNumber} + ${unit.address} </a>
 			</c:forEach>
 		</div>
 
-		<c:url value="/addSubject" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add A New Subject</a>
+		<c:url value="/addunit" var="addUrl" />
+		<a href="${addUrl}" class="btn btn-primary">Add A New Unit</a>
 	</div>
 
 </body>
