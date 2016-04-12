@@ -3,7 +3,7 @@ package ca.sheridancollege.beans;
 import java.io.Serializable;
 
 public class Builder implements Serializable {
-
+//test
 	private String vendorName;
 	private String vendorAddress;
 	private long vendorRefNum;
