@@ -44,12 +44,6 @@ public class HomeController {
 		return "loginForm";
 	}
 	
-	@RequestMapping("/unitInformation")
-	public String unitInformation(Model model) {
-
-		return "unitInformation"; 
-	}
-	
 	@RequestMapping("/createAccount")
 	public String createAccount(Model model) {
 		return "createAccount";

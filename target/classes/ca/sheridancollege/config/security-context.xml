@@ -15,17 +15,17 @@
 	</security:authentication-manager>
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/home" access="isAuthenticated()" />
-		<security:intercept-url pattern="/addSubject" access="isAuthenticated()" />
-		<security:intercept-url pattern="/saveSubject" access="isAuthenticated()" />
-		<security:intercept-url pattern="/editSubject/**" access="isAuthenticated()" />
-		<security:intercept-url pattern="/deleteSubject/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/addDeficiency" access="isAuthenticated()" />
+		<security:intercept-url pattern="/saveDeficiency" access="isAuthenticated()" />
+		<security:intercept-url pattern="/editDeficiency/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/deleteDeficiency/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/css/**" access="permitAll" />
 		<security:intercept-url pattern="/scripts/**" access="permitAll" />
 		<security:intercept-url pattern="/images/**" access="permitAll" />
 		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/viewSubject" access="permitAll" />
-		<security:intercept-url pattern="/displaySubjects" access="permitAll" />
-		<security:intercept-url pattern="/viewSubject/**" access="permitAll" />
+		<security:intercept-url pattern="/viewDeficiency" access="permitAll" />
+		<security:intercept-url pattern="/displayDeficiencies" access="permitAll" />
+		<security:intercept-url pattern="/viewDeficiency/**" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/register" access="permitAll" />
 		<security:intercept-url pattern="/unitInformation"
