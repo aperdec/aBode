@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,30 +25,33 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-<title>${subject.title}</title>
+	
+<title>aBode</title>
 </head>
 <body>
+	
+	<!-- This is checking for account creation
+	
+	<c:if test="${accountCreated}"><script>
+		function myFunction() {
+    		alert("Account Successfully Created");
+			}
+		</script>
+	</c:if>
+	
+	-->
+	
+	<div style="margin: 2%">
+		<h1>aBode</h1>
+		<div class="list-group">
+			<c:forEach var="subject" items="${subjectList}">
+				<c:url value="/viewSubject/${subject.title}" var="viewUrl" />
+				<a href="${viewUrl}" class="list-group-item"> ${subject.title} </a>
+			</c:forEach>
+		</div>
 
-	<div class="jumbotron" style="padding: 2%">
-		<h1>${subject.title}</h1>
-		<p>
-			${subject.text}<br /> <br />
-
-		</p>
-	</div>
-
-	<div style="padding: 0% 2%">
-		<c:url value="/" var="browseUrl" />
-		<a href="${browseUrl}" class="btn btn-primary">Browse Subjects</a>
-		<c:url value="/editSubject/${subject.title}" var="editUrl" />
-		<a href="${editUrl}" class="btn btn-primary">Edit</a> 
-		<c:url value="/deleteSubject/${subject.title}" var="deleteUrl" />
-		<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
-		<br /> <br />
-		<p>
-			Last Modified By: <strong>${subject.username}</strong><br /> At:
-			${subject.dateLastModified}
-		</p>
+		<c:url value="/addSubject" var="addUrl" />
+		<a href="${addUrl}" class="btn btn-primary">Add A New Subject</a>
 	</div>
 
 </body>
