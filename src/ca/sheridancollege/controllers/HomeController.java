@@ -68,7 +68,7 @@ public class HomeController {
 
 		model.addAttribute("accountCreated", true);
 		
-		return "displayUnits";
+		return "home";
 		
 	}
 	

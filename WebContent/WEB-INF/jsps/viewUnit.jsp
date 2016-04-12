@@ -38,12 +38,16 @@
 	</div>
 
 	<div style="padding: 0% 2%">
+	
 		<c:url value="/" var="browseUrl" />
 		<a href="${browseUrl}" class="btn btn-primary">Browse Units</a>
+		
 		<c:url value="/editSubject/${subject.title}" var="editUrl" />
 		<a href="${editUrl}" class="btn btn-primary">Edit</a> 
+		
 		<c:url value="/deleteSubject/${subject.title}" var="deleteUrl" />
 		<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
+		
 	</div>
 
 </body>
