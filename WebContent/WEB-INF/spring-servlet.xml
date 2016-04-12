@@ -15,9 +15,13 @@
 	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
 	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/scripts/" mapping="/scripts/**"></mvc:resources>
-	<bean id="jspViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<property name="prefix" value="/WEB-INF/jsps/"></property>
-	<property name="suffix" value=".jsp"></property>
+	<bean id="tilesViewResolver"
+		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+	</bean>
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	<property name="definitions">
+		<value>classpath:ca/sheridancollege/config/tiles-layout.xml</value>
+	</property>
 	</bean>
 </beans>

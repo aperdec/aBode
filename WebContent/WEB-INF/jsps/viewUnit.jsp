@@ -25,30 +25,29 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-<title>${subject.title}</title>
+<title>${unit.title}</title>
 </head>
 <body>
 
 	<div class="jumbotron" style="padding: 2%">
-		<h1>${subject.title}</h1>
+		<h1>${unit.title}</h1>
 		<p>
-			${subject.text}<br /> <br />
+			${unit.text}<br /> <br />
 
 		</p>
 	</div>
 
 	<div style="padding: 0% 2%">
+	
 		<c:url value="/" var="browseUrl" />
-		<a href="${browseUrl}" class="btn btn-primary">Browse Subjects</a>
+		<a href="${browseUrl}" class="btn btn-primary">Browse Units</a>
+		
 		<c:url value="/editSubject/${subject.title}" var="editUrl" />
 		<a href="${editUrl}" class="btn btn-primary">Edit</a> 
+		
 		<c:url value="/deleteSubject/${subject.title}" var="deleteUrl" />
 		<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
-		<br /> <br />
-		<p>
-			Last Modified By: <strong>${subject.username}</strong><br /> At:
-			${subject.dateLastModified}
-		</p>
+		
 	</div>
 
 </body>

@@ -26,9 +26,11 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 	
-<title>Perds' Wiki</title>
+<title>aBode</title>
 </head>
 <body>
+	
+	<!-- This is checking for account creation
 	
 	<c:if test="${accountCreated}"><script>
 		function myFunction() {
@@ -37,19 +39,10 @@
 		</script>
 	</c:if>
 	
-	<div style="float: right; margin-right: 2%;">
-		<c:url value="/login" var="loginUrl" />
-		<h5> 
-			<security:authorize access="isAuthenticated()">
-   				Hello <security:authentication property="principal.username" /> :  
-			</security:authorize>
-			<a href="${loginUrl}">Login</a>
-		</h5>
-		
-	</div>
-
+	-->
+	
 	<div style="margin: 2%">
-		<h1>Perds' Wiki</h1>
+		<h1>aBode</h1>
 		<div class="list-group">
 			<c:forEach var="subject" items="${subjectList}">
 				<c:url value="/viewSubject/${subject.title}" var="viewUrl" />
