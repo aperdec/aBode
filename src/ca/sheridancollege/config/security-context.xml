@@ -28,9 +28,14 @@
 		<security:intercept-url pattern="/viewSubject/**" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/register" access="permitAll" />
+		<security:intercept-url pattern="/unitInformation"
+			access="permitAll" />
 		<security:intercept-url pattern="/createAccount" access="permitAll" />
+		
 		<security:intercept-url pattern="/**" access="denyAll" />
+		
 		<security:form-login login-page="/login" />
+		
 	</security:http>
 	<bean id="encoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
