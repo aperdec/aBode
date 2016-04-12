@@ -29,25 +29,21 @@
 </head>
 <body>
 
-	<div class="jumbotron" style="padding: 2%">
-		<h1>${unit.title}</h1>
-		<p>
-			${unit.text}<br /> <br />
-
-		</p>
+	<div style="margin: 2%">
+		<div class="list-group">
+			<c:forEach var="unitDeficiency" items="${unitDeficiencies}">
+				<div class="list-group-item"> ${unitDeficiency.id} + ${unitDeficiency.description} </div>
+				<c:url value="/deleteDeficiency/${unitDeficiency.id}" var="deleteUrl" />
+				<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
+			</c:forEach>
+		</div>
 	</div>
 
 	<div style="padding: 0% 2%">
-	
-		<c:url value="/" var="browseUrl" />
-		<a href="${browseUrl}" class="btn btn-primary">Browse Units</a>
 		
-		<c:url value="/editSubject/${subject.title}" var="editUrl" />
-		<a href="${editUrl}" class="btn btn-primary">Edit</a> 
-		
-		<c:url value="/deleteSubject/${subject.title}" var="deleteUrl" />
-		<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
-		
+		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
+		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
+				
 	</div>
 
 </body>

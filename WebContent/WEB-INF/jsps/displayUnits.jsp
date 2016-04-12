@@ -31,15 +31,14 @@
 <body>
 	
 	<div style="margin: 2%">
-		<h1>aBode</h1>
 		<div class="list-group">
 			<c:forEach var="unit" items="${unitList}">
-				<c:url value="/viewunit/${unit.homeEnrollmentNumber}" var="viewUrl" />
+				<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
 				<a href="${viewUrl}" class="list-group-item"> ${unit.lotNumber} + ${unit.address} </a>
 			</c:forEach>
 		</div>
 
-		<c:url value="/addunit" var="addUrl" />
+		<c:url value="/addUnit" var="addUrl" />
 		<a href="${addUrl}" class="btn btn-primary">Add A New Unit</a>
 	</div>
 
