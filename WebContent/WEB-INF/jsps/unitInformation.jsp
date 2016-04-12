@@ -55,7 +55,6 @@
 					<div class="col-lg-10">
 						<input path="dateOfPosession" name="dateOfPosession" class="form-control" id="dateOfPosession"
 							placeholder="DD/MM/YYYY" required="required" type="text" />
-	
 					</div>
 				</div>
 								
