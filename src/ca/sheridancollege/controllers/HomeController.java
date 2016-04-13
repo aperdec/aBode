@@ -10,11 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ca.sheridancollege.beans.Deficiency;
 import ca.sheridancollege.beans.MyUserDetailsService;
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
@@ -42,6 +44,43 @@ public class HomeController {
 		return "loginForm"; 
 	}
 	
+	@RequestMapping("/saveOrUpdateDeficiency")
+	public String saveOrUpdateDeficiency(Model model, @ModelAttribute Deficiency deficiency, @ModelAttribute long homeEnrollmentNumber) {
+		
+		dao.saveOrUpdate(deficiency);
+		
+		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+		model.addAttribute("unit", unitList.get(0));
+		
+		return "displayDeficiencies";
+	}
+	
+	@RequestMapping("/addDeficiency/{homeEnrollmentNumber}")
+	public String addDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
+		
+		Deficiency deficiency = new Deficiency();
+		
+		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+		model.addAttribute("unit", unitList.get(0));
+		model.addAttribute("deficiency", deficiency);
+		
+		return "addDeficiency";
+	}
+	
+	@RequestMapping("/deleteDeficiency/{id}/{homeEnrollmentNumber}")
+	public String deleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+		
+		dao.deleteDeficiency(id);
+
+		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+		model.addAttribute("unit", unitList.get(0));
+
+		return "displayUnitDeficiencies";
+	}
+	
 	@RequestMapping("/displayUnits")
 	public String displayUnits(Model model) {
 		
@@ -53,7 +92,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/displayUnitDeficiencies/{homeEnrollmentNumber}")
-	public String viewSubject(Model model, @PathVariable long homeEnrollmentNumber) {
+	public String viewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
 
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 

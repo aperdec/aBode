@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import ca.sheridancollege.beans.Deficiency;
 import ca.sheridancollege.beans.HomeOwner;
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
@@ -80,5 +81,33 @@ public class DAO {
 	}
 	
 	
+
+	public void deleteDeficiency(int id) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		Query query = session.getNamedQuery("Deficiency.byId");
+
+		query.setLong("id", id);
+
+		List<Deficiency> deficiencyList = (List<Deficiency>) query.list();
+
+		session.delete(deficiencyList.get(0));
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	public void saveOrUpdate(Deficiency deficiency) {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.saveOrUpdate(deficiency);
+
+		session.getTransaction().commit();
+		session.close();
+		
+	}
 
 }

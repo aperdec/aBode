@@ -36,51 +36,42 @@
 </head>
 <body>
 
-	<!-- <p style="font-size:160%;">aBode</p> -->
-
-
-
 	<div style="margin: 2%">
-	
+
 		<c:url value="/register" var="url" />
 		<form name="form" method="post" action="${url}"
 			class="form-horizontal" onsubmit="return verify()">
-			
+
 			<div class="form-group">
 
-					<label for="homeCivicAddress" class="col-lg-8 control-label">Vendor/Builder and Home Address Information</label>
+				<label for="homeCivicAddress" class="col-lg-8 control-label">Vendor/Builder
+					and Home Address Information</label>
 
-					<div class="col-lg-4">
-						<input path="homeCivicAddress" name="txtHomeCivicAddress"
-							class="form-control" id="homeCivicAddress" placeholder="Enter Home Enrollment Number"
-							required="required" type="text" />
-					</div>
-
-
-				</div>
-				
-				<div class="form-group">
-
-					
-
-					
-						
-						<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> <input type="submit" value="Go!"
-						class="pull-right btn btn-default" onclick="verify()"/>
-						
-					
-
-
+				<div class="col-lg-4">
+					<input path="homeCivicAddress" name="txtHomeCivicAddress"
+						class="form-control" id="homeCivicAddress"
+						placeholder="Enter Home Enrollment Number" required="required"
+						type="text" />
 				</div>
 
-	<div id="error"></div>
-			<fieldset>
+			</div>
 
-	
+			<div class="form-group">
+
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" /> <input type="submit" value="Go!"
+					class="pull-right btn btn-default" onclick="verify()" />
+
+			</div>
+
+			<div id="error"></div>
+		</form>
+		<fieldset>
+
+			<form name="form" method="post" action="${url}"
+				class="form-horizontal" onsubmit="return verify()">
 
 				<legend>Unit Information</legend>
-
 
 				<div class="form-group">
 
@@ -98,9 +89,8 @@
 
 					<div class="col-lg-2">
 						<input path="venBuildRefNo" name="txtVenBuildRefNo"
-							class="form-control" id="venBuildRefNo"
-							placeholder="" required="required"
-							type="text" />
+							class="form-control" id="venBuildRefNo" placeholder=""
+							required="required" type="text" />
 
 					</div>
 
@@ -113,8 +103,7 @@
 
 					<div class="col-lg-1">
 						<input path="lotNum" name="txtlotNum" class="form-control"
-							id="lotNum" placeholder=""
-							required="required" type="text" />
+							id="lotNum" placeholder="" required="required" type="text" />
 
 					</div>
 
@@ -130,12 +119,10 @@
 
 					<div class="col-lg-2">
 						<input path="municipality" name="txtMunicipality"
-							class="form-control" id="municipality"
-							placeholder="" required="required" type="text" />
+							class="form-control" id="municipality" placeholder=""
+							required="required" type="text" />
 
 					</div>
-
-
 
 				</div>
 
@@ -196,8 +183,6 @@
 
 				</div>
 
-
-
 				<!-- end of row 6 start of row 7 -->
 
 				<div class="form-group">
@@ -226,51 +211,20 @@
 				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
 
-
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <input type="submit" value="Next"
-						class="pull-right btn btn-default" onclick="verify()"
-						 />
-
-
+						class="pull-right btn btn-default" onclick="verify()" />
 
 				</div>
-
-
-
-
-				<!-- bottom side -->
-
-
-
-				<!-- 		<div class="form-group col-xs-6">
-					<label for="inputPassword" class="col-lg-1 control-label">Password</label>
-					<div class="col-lg-10">
-						<input path="password" class="form-control" id="inputPassword"
-							placeholder="Password" required="required" name="password"
-							type="password" />
-					</div>
-
-					<label for="inputRePassword" class="col-lg-1 control-label">Re-enter
-						Password</label>
-					<div class="col-lg-10">
-						<input path="verifyPassword" class="form-control"
-							id="inputRePassword" placeholder="Re-enter Password"
-							required="required" name="verifyPassword" type="password" />
-					</div> -->
+			</form>
+			</fieldset>
+				
 	</div>
-	</fieldset>
-	</form>
-
-	</div>
-
+	
+	<!-- </fieldset>
+	</form> -->
 
 	<!-- footer area -->
-
-
-
-
-
 
 </body>
 </html>

@@ -2,8 +2,11 @@ package ca.sheridancollege.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Embedded;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -23,7 +26,8 @@ public class Unit implements Serializable {
 	@Embedded
 	private HomeOwner homeOwner;
 	private String projectName;
-	private ArrayList<Deficiency> deficiencies;
+	@ElementCollection
+	private List<Deficiency> deficiencies;
 	
 	public Unit(){
 		
@@ -38,7 +42,7 @@ public class Unit implements Serializable {
 	}
 
 	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName,
-			ArrayList<Deficiency> deficiencies) {
+			List<Deficiency> deficiencies) {
 		this.homeEnrollmentNumber = homeEnrollmentNumber;
 		this.lotNumber = lotNumber;
 		this.address = address;
@@ -87,11 +91,11 @@ public class Unit implements Serializable {
 		this.projectName = projectName;
 	}
 
-	public ArrayList<Deficiency> getDeficiencies() {
+	public List<Deficiency> getDeficiencies() {
 		return deficiencies;
 	}
 
-	public void setDeficiencies(ArrayList<Deficiency> deficiencies) {
+	public void setDeficiencies(List<Deficiency> deficiencies) {
 		this.deficiencies = deficiencies;
 	}
 	
