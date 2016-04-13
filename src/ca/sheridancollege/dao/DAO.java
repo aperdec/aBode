@@ -80,4 +80,16 @@ public class DAO {
 		session.close();
 	}
 
+	public void saveOrUpdate(Deficiency deficiency) {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.saveOrUpdate(deficiency);
+
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+
 }
