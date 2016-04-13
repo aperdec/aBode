@@ -53,12 +53,39 @@ Extra Large Button CSS
 
 
 
-	<div class="row container-fluid">
-		<!-- 		<div class="row row-centered"> -->
+	<div class="container">
+		<div class="row row-centered">
+
+
+				<div class="row group">
+					<input type="submit" value="Fill out PDI"
+						class="col-sm-4 btn btn-default"
+						onclick="verify()" /> <input type="submit"
+						value="Build Inspection"
+						class="col-sm-4 btn btn-default"
+						onclick="verify()" />
+				</div>
 
 		<h1 class="text-center">Welcome to aBode Software</h1>
 
+
+				<div class="row group ">
+					<input type="submit" value="View Work Orders"
+						class="col-sm-4 btn btn-default" onclick="verify()" /> <input
+						type="submit" value="Generate Report"
+						class="col-sm-4 btn btn-default" onclick="verify()" />
+				</div>
+
 <c:url value="/displayUnitInfo" var="displayUnitInmformation" />
+
+				<div class="row group ">
+					<input type="submit" value="Form Status"
+						class="col-sm-4 btn btn-default" onclick="verify()" /> <input
+						type="submit" value="Confirm Repairs"
+						class="col-sm-4 btn btn-default" onclick="verify()" />
+				</div>
+
+			</div>
 
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
@@ -69,7 +96,6 @@ Extra Large Button CSS
 			
 				
 		
-				
 		</div>
 
 		<div class="row">

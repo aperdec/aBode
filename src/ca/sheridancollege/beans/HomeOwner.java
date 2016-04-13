@@ -2,24 +2,26 @@ package ca.sheridancollege.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
+@Embeddable
 public class HomeOwner implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private float id;
 	private String name;
-	private float phoneNumber;
+	private String phoneNumber;
 
 	public HomeOwner() {
 	}
 
 	//test push
-	public HomeOwner(String name, float phoneNumber) {
+	public HomeOwner(String name, String phoneNumber) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 	}
@@ -32,11 +34,11 @@ public class HomeOwner implements Serializable {
 		this.name = name;
 	}
 
-	public float getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(float phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

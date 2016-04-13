@@ -1,5 +1,6 @@
 package ca.sheridancollege.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -8,6 +9,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import ca.sheridancollege.beans.Deficiency;
+<<<<<<< HEAD
+import ca.sheridancollege.beans.HomeOwner;
+=======
+>>>>>>> refs/remotes/origin/master
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
 
@@ -62,6 +67,50 @@ public class DAO {
 		session.close();
 
 		return unitList;
+	}
+	
+	public void addTestData() {
+		// adding testing data
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		HomeOwner ho = new HomeOwner("Laura Croft", "19054412233");
+		Unit u = new Unit(1234, 1, "12 Forest Lane", ho, "Blue Skys Project");
+		Date fillerDate = new Date();
+		//session.saveOrUpdate(ho);
+		session.saveOrUpdate(u);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	
+
+	public void deleteDeficiency(int id) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		Query query = session.getNamedQuery("Deficiency.byId");
+
+		query.setLong("id", id);
+
+		List<Deficiency> deficiencyList = (List<Deficiency>) query.list();
+
+		session.delete(deficiencyList.get(0));
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	public void saveOrUpdate(Deficiency deficiency) {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.saveOrUpdate(deficiency);
+
+		session.getTransaction().commit();
+		session.close();
+		
 	}
 
 	public void deleteDeficiency(int id) {

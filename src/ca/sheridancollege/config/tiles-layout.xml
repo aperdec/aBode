@@ -26,4 +26,9 @@
 	<put-attribute name="content" value="/WEB-INF/jsps/addSignOff.jsp" />
 	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
 </definition>
+<definition name="createAccount" template="/WEB-INF/jsps/default.jsp">
+	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
+	<put-attribute name="content" value="/WEB-INF/jsps/createAccount.jsp" />
+	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
+</definition>
 </tiles-definitions>

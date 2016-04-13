@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
+
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.NamedQuery;
 
@@ -18,6 +21,9 @@ public class Unit implements Serializable {
 	private long homeEnrollmentNumber;
 	private int lotNumber;
 	private String address;
+	//@OneToOne(mappedBy="homeOwner")
+	//need to pass pk and fk relationship not the whole object for this annotation to work.
+	@Embedded
 	private HomeOwner homeOwner;
 	private String projectName;
 	@ElementCollection
@@ -25,6 +31,14 @@ public class Unit implements Serializable {
 	
 	public Unit(){
 		
+	}
+	
+	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName) {
+		this.homeEnrollmentNumber = homeEnrollmentNumber;
+		this.lotNumber = lotNumber;
+		this.address = address;
+		this.homeOwner = homeOwner;
+		this.projectName = projectName;
 	}
 
 	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName,

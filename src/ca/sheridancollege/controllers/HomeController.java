@@ -103,6 +103,7 @@ public class HomeController {
 	
 	@RequestMapping("/displayUnitInfo")
 	public String displayUnitInfo(Model model) {
+		//dao.addTestData();
 		return "displayUnitInfo";
 	}
 	
