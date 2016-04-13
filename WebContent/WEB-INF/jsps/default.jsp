@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>Tiles working.</div><br><br>
 	<!-- view layer code -->
 	<tiles:insertAttribute name="header"></tiles:insertAttribute>
 	<br>
