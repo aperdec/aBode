@@ -31,32 +31,39 @@
 </head>
 <body>
 
-	<h1>Welcome to aBode Software</h1>
 
 
+	<div class="container">
+		<div class="row row-centered">
 
-	<div style="margin: 2%">
-		<div class="group">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" /> <input type="submit" value="Fill out PDI"
-				class="col-xs-2 btn btn-default" onclick="verify()" /> <input
-				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="Menu btn 1"
-				class="col-xs-2 btn btn-default" onclick="verify()" />
+			<h1 class="">Welcome to aBode Software</h1>
+
+				<div class="row group">
+					<input type="submit" value="Fill out PDI"
+						class="col-sm-4 btn btn-default"
+						onclick="verify()" /> <input type="submit"
+						value="Build Inspection"
+						class="col-sm-4 btn btn-default"
+						onclick="verify()" />
+				</div>
+
+				<div class="row group ">
+					<input type="submit" value="View Work Orders"
+						class="col-sm-4 btn btn-default" onclick="verify()" /> <input
+						type="submit" value="Generate Report"
+						class="col-sm-4 btn btn-default" onclick="verify()" />
+				</div>
+
+				<div class="row group ">
+					<input type="submit" value="Form Status"
+						class="col-sm-4 btn btn-default" onclick="verify()" /> <input
+						type="submit" value="Confirm Repairs"
+						class="col-sm-4 btn btn-default" onclick="verify()" />
+				</div>
+
+			</div>
 		</div>
-		
-		<div class="group">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" /> <input type="submit" value="Menu Button 2"
-				class="col-xs-2 btn btn-default" onclick="verify()" /> <input
-				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="Menu btn 3"
-				class="col-xs-2 btn btn-default" onclick="verify()" />
-		</div>
-
-	</div>
-
-
+	
 	<br />
 
 </body>
