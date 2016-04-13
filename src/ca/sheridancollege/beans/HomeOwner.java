@@ -11,9 +11,9 @@ import javax.persistence.Id;
 @Embeddable
 public class HomeOwner implements Serializable {
 
-	@Id
-	@GeneratedValue
-	private float id;
+	//@Id
+	//@GeneratedValue
+	//private float id;
 	private String name;
 	private String phoneNumber;
 
@@ -41,9 +41,9 @@ public class HomeOwner implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
+/*
 	public float getId() {
 		return id;
-	}
+	} */
 
 }
