@@ -47,4 +47,20 @@ public class DAO {
 		return unitList;
 	}
 
+	public List<Unit> getUnit(long homeEnrollmentNumber) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
+
+		query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+
+		List<Unit> unitList = (List<Unit>) query.list();
+
+		session.getTransaction().commit();
+		session.close();
+
+		return unitList;
+	}
+
 }

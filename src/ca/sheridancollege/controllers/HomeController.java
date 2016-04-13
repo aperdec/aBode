@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,6 +50,16 @@ public class HomeController {
 		model.addAttribute("unitList", unitList);
 		
 		return "displayUnits";
+	}
+	
+	@RequestMapping("/displayUnitDeficiencies/{homeEnrollmentNumber}")
+	public String viewSubject(Model model, @PathVariable long homeEnrollmentNumber) {
+
+		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+		model.addAttribute("unit", unitList.get(0));
+
+		return "displayUnitDeficiencies";
 	}
 	
 	@RequestMapping("/displayUnitInfo")

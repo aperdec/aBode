@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.NamedQuery;
+
 @Entity
+@NamedQuery(name="Unit.byHomeEnrollmentNumber", query="from Subject where homeEnrollmentNumber = :homeEnrollmentNumber")
 public class Unit implements Serializable {
 
 	@Id
