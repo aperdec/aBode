@@ -1,5 +1,6 @@
 package ca.sheridancollege.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -7,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import ca.sheridancollege.beans.HomeOwner;
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
 
@@ -62,5 +64,21 @@ public class DAO {
 
 		return unitList;
 	}
+	
+	public void addTestData() {
+		// adding testing data
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		HomeOwner ho = new HomeOwner("Laura Croft", "19054412233");
+		Unit u = new Unit(1234, 1, "12 Forest Lane", ho, "Blue Skys Project");
+		Date fillerDate = new Date();
+		//session.saveOrUpdate(ho);
+		session.saveOrUpdate(u);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	
 
 }

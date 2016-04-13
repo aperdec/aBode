@@ -3,8 +3,10 @@ package ca.sheridancollege.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.NamedQuery;
 
@@ -16,6 +18,9 @@ public class Unit implements Serializable {
 	private long homeEnrollmentNumber;
 	private int lotNumber;
 	private String address;
+	//@OneToOne(mappedBy="homeOwner")
+	//need to pass pk and fk relationship not the whole object for this annotation to work.
+	@Embedded
 	private HomeOwner homeOwner;
 	private String projectName;
 	private ArrayList<Deficiency> deficiencies;
