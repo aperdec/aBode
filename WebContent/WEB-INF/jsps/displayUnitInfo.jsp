@@ -40,14 +40,44 @@
 
 
 
-	<div id="error"></div>
-
 	<div style="margin: 2%">
+	
 		<c:url value="/register" var="url" />
 		<form name="form" method="post" action="${url}"
 			class="form-horizontal" onsubmit="return verify()">
+			
+			<div class="form-group">
+
+					<label for="homeCivicAddress" class="col-lg-8 control-label">Vendor/Builder and Home Address Information</label>
+
+					<div class="col-lg-4">
+						<input path="homeCivicAddress" name="txtHomeCivicAddress"
+							class="form-control" id="homeCivicAddress" placeholder="Enter Home Enrollment Number"
+							required="required" type="text" />
+					</div>
+
+
+				</div>
+				
+				<div class="form-group">
+
+					
+
+					
+						
+						<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <input type="submit" value="Go!"
+						class="pull-right btn btn-default" onclick="verify()"/>
+						
+					
+
+
+				</div>
+
+	<div id="error"></div>
 			<fieldset>
 
+	
 
 				<legend>Unit Information</legend>
 
@@ -63,13 +93,13 @@
 							placeholder="DD/MM/YYYY" required="required" type="text" />
 					</div>
 
-					<label for="venBuildInfo" class="col-lg-6 control-label">Vendor/Builder
+					<label for="venBuildRefNo" class="col-lg-7 control-label">Vendor/Builder
 						and Reference Number</label>
 
 					<div class="col-lg-2">
-						<input path="venBuildInfo" name="txtVenBuildInfo"
-							class="form-control" id="venBuildInfo"
-							placeholder="Enter Home Enrollment Number" required="required"
+						<input path="venBuildRefNo" name="txtVenBuildRefNo"
+							class="form-control" id="venBuildRefNo"
+							placeholder="" required="required"
 							type="text" />
 
 					</div>
@@ -83,7 +113,7 @@
 
 					<div class="col-lg-1">
 						<input path="lotNum" name="txtlotNum" class="form-control"
-							id="lotNum" placeholder="Enter Lot Number Here"
+							id="lotNum" placeholder=""
 							required="required" type="text" />
 
 					</div>
@@ -96,12 +126,12 @@
 							placeholder="" required="required" type="text" />
 					</div>
 
-					<label for="municipality" class="col-lg-2 control-label">Municipality</label>
+					<label for="municipality" class="col-lg-3 control-label">Municipality</label>
 
 					<div class="col-lg-2">
 						<input path="municipality" name="txtMunicipality"
 							class="form-control" id="municipality"
-							placeholder="Enter Municipality" required="required" type="text" />
+							placeholder="" required="required" type="text" />
 
 					</div>
 
@@ -112,8 +142,8 @@
 				<!-- end of row 2 start of row 3 -->
 
 				<div class="form-group">
-				
-				<label for="condoProjName" class="col-lg-3 control-label">Condominium
+
+					<label for="condoProjName" class="col-lg-3 control-label">Condominium
 						Project Name</label>
 
 					<div class="col-lg-4">
@@ -121,44 +151,44 @@
 							class="form-control" id="condoProjName" placeholder=""
 							required="required" type="text" />
 					</div>
-					
-						<label for="level" class="col-lg-2 control-label">Level</label>
+
+					<label for="level" class="col-lg-3 control-label">Level</label>
 
 					<div class="col-lg-2">
 						<input path="level" name="txtLevel" class="form-control"
 							id="level" placeholder="" required="required" type="text" />
 					</div>
-					
-				
+
+
 				</div>
 
-<!-- end of row 3 start of row 4 -->
+				<!-- end of row 3 start of row 4 -->
 
-<div class="form-group">
+				<div class="form-group">
 
-<label for="homeCivicAddress" class="col-lg-3 control-label">Home
+					<label for="homeCivicAddress" class="col-lg-3 control-label">Home
 						Civic Address</label>
 
-					<div class="col-lg-8">
+					<div class="col-lg-9">
 						<input path="homeCivicAddress" name="txtHomeCivicAddress"
 							class="form-control" id="homeCivicAddress" placeholder=""
 							required="required" type="text" />
 					</div>
 
 
-</div>
+				</div>
 
 
-<!-- end of row 5 start of row 6 -->
+				<!-- end of row 5 start of row 6 -->
 
 
-<div class="form-group">
+				<div class="form-group">
 
-					
-<label for="venBuildName" class="col-lg-3 control-label">Vendor
+
+					<label for="venBuildName" class="col-lg-3 control-label">Vendor
 						/ Builder Name</label>
 
-					<div class="col-lg-8">
+					<div class="col-lg-9">
 						<input path="venBuildName" name="txtVenBuildName"
 							class="form-control" id="venBuildName" placeholder=""
 							required="required" type="text" />
@@ -168,19 +198,19 @@
 
 
 
-<!-- end of row 6 start of row 7 -->
+				<!-- end of row 6 start of row 7 -->
 
-<div class="form-group">
+				<div class="form-group">
 
 
-<label for="repName" class="col-lg-3 control-label">Representatives
+					<label for="repName" class="col-lg-3 control-label">Representative
 						Name</label>
 
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<input path="repName" name="txtRepName" class="form-control"
 							id="repName" placeholder="" required="required" type="text" />
 					</div>
-			
+
 
 					<label for="repSignature" class="col-lg-2 control-label">Representatives
 						Signature</label>
@@ -190,18 +220,18 @@
 							id="repSignature" placeholder="" required="required" type="text" />
 					</div>
 
-		
-</div>
 
-<!-- end of row 6 start of row 7 -->
+				</div>
+
+				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
 
-				<div class="col-lg-4">
+
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <input type="submit" value="Next"
-						class="col-lg-3 btn btn-default" onclick="verify()"
-						style="margin-left: 8.33333333333%" />
-					</div>
+						class="pull-right btn btn-default" onclick="verify()"
+						 />
+
 
 
 				</div>
@@ -213,7 +243,7 @@
 
 
 
-		<!-- 		<div class="form-group col-xs-6">
+				<!-- 		<div class="form-group col-xs-6">
 					<label for="inputPassword" class="col-lg-1 control-label">Password</label>
 					<div class="col-lg-10">
 						<input path="password" class="form-control" id="inputPassword"
@@ -228,12 +258,9 @@
 							id="inputRePassword" placeholder="Re-enter Password"
 							required="required" name="verifyPassword" type="password" />
 					</div> -->
-
-					
-
-				</div>
-			</fieldset>
-		</form>
+	</div>
+	</fieldset>
+	</form>
 
 	</div>
 
