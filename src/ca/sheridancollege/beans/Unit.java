@@ -23,6 +23,14 @@ public class Unit implements Serializable {
 	public Unit(){
 		
 	}
+	
+	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName) {
+		this.homeEnrollmentNumber = homeEnrollmentNumber;
+		this.lotNumber = lotNumber;
+		this.address = address;
+		this.homeOwner = homeOwner;
+		this.projectName = projectName;
+	}
 
 	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName,
 			ArrayList<Deficiency> deficiencies) {

@@ -13,13 +13,13 @@ public class HomeOwner implements Serializable {
 	@GeneratedValue
 	private float id;
 	private String name;
-	private float phoneNumber;
+	private String phoneNumber;
 
 	public HomeOwner() {
 	}
 
 	//test push
-	public HomeOwner(String name, float phoneNumber) {
+	public HomeOwner(String name, String phoneNumber) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 	}
@@ -32,11 +32,11 @@ public class HomeOwner implements Serializable {
 		this.name = name;
 	}
 
-	public float getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(float phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
