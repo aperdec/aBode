@@ -52,17 +52,11 @@ Extra Large Button CSS
 <body>
 
 
-<<<<<<< HEAD
 
 	<div class="container">
 		<div class="row row-centered">
-=======
->>>>>>> branch 'master' of https://github.com/aperdec/aBode.git
 
-	<div class="row container-fluid">
-		<!-- 		<div class="row row-centered"> -->
 
-<<<<<<< HEAD
 				<div class="row group">
 					<input type="submit" value="Fill out PDI"
 						class="col-sm-4 btn btn-default"
@@ -71,22 +65,19 @@ Extra Large Button CSS
 						class="col-sm-4 btn btn-default"
 						onclick="verify()" />
 				</div>
-=======
-		<h1 class="text-center">Welcome to aBode Software</h1>
->>>>>>> branch 'master' of https://github.com/aperdec/aBode.git
 
-<<<<<<< HEAD
+		<h1 class="text-center">Welcome to aBode Software</h1>
+
+
 				<div class="row group ">
 					<input type="submit" value="View Work Orders"
 						class="col-sm-4 btn btn-default" onclick="verify()" /> <input
 						type="submit" value="Generate Report"
 						class="col-sm-4 btn btn-default" onclick="verify()" />
 				</div>
-=======
-<c:url value="/displayUnitInfo" var="displayUnitInmformation" />
->>>>>>> branch 'master' of https://github.com/aperdec/aBode.git
 
-<<<<<<< HEAD
+<c:url value="/displayUnitInfo" var="displayUnitInmformation" />
+
 				<div class="row group ">
 					<input type="submit" value="Form Status"
 						class="col-sm-4 btn btn-default" onclick="verify()" /> <input
@@ -95,7 +86,7 @@ Extra Large Button CSS
 				</div>
 
 			</div>
-=======
+
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
 			
@@ -124,7 +115,6 @@ Extra Large Button CSS
 
 	</div>
 
->>>>>>> branch 'master' of https://github.com/aperdec/aBode.git
 	<br />
 
 </body>
