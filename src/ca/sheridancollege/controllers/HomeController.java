@@ -54,6 +54,11 @@ public class HomeController {
 		return "displayUnitInfo";
 	}
 	
+	@RequestMapping("/addSignOff")
+	public String addSignOff(Model model) {
+		return "addSignOff";
+	}
+	
 	@RequestMapping("/register")
 	public String register(Model model, @RequestParam String username, @RequestParam String password) {
 
