@@ -27,14 +27,14 @@ public class Deficiency implements Serializable {
 	private Boolean status;
 
 	public Deficiency() {
-		categories = new String[] { "" };
+		categories = new String[] {"Add Categories"};
 	}
 
 	public Deficiency(String location, String description, String category, Date deadline) {
 		this.location = location;
 		this.description = description;
 		this.category = category;
-		categories = new String[] { "" };
+		categories = new String[] {"Add Categories"};
 		this.deadline = deadline;
 	}
 
