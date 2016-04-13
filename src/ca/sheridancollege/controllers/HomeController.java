@@ -1,5 +1,7 @@
 package ca.sheridancollege.controllers;
 
+import java.util.List;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.sheridancollege.beans.MyUserDetailsService;
+import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
 import ca.sheridancollege.beans.UserRole;
 import ca.sheridancollege.dao.DAO;
@@ -38,15 +41,14 @@ public class HomeController {
 		return "loginForm"; 
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
-
-		return "loginForm";
-	}
-	
-	@RequestMapping("/createAccount")
-	public String createAccount(Model model) {
-		return "createAccount";
+	@RequestMapping("/displayUnits")
+	public String displayUnits(Model model) {
+		
+		List<Unit> unitList = dao.getAllUnits();
+		
+		model.addAttribute("unitList", unitList);
+		
+		return "displayUnits";
 	}
 	
 	@RequestMapping("/displayUnitInfo")
@@ -58,7 +60,18 @@ public class HomeController {
 	public String addSignOff(Model model) {
 		return "addSignOff";
 	}
-	//
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model) {
+
+		return "loginForm";
+	}
+	
+	@RequestMapping("/createAccount")
+	public String createAccount(Model model) {
+		return "createAccount";
+	}
+	
 	@RequestMapping("/register")
 	public String register(Model model, @RequestParam String username, @RequestParam String password) {
 

@@ -2,10 +2,12 @@ package ca.sheridancollege.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
 
 public class DAO {
@@ -30,6 +32,19 @@ public class DAO {
 
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	public List<Unit> getAllUnits() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.createQuery("from Unit");
+		List<Unit> unitList = (List<Unit>) query.list();
+
+		session.getTransaction().commit();
+		session.close();
+		
+		return unitList;
 	}
 
 }
