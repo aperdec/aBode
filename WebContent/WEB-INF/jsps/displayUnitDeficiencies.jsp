@@ -31,9 +31,9 @@
 
 	<div style="margin: 2%">
 		<div class="list-group">
-			<c:forEach var="unitDeficiency" items="${unitDeficiencies}">
+			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
 				<div class="list-group-item"> ${unitDeficiency.id} + ${unitDeficiency.description} </div>
-				<c:url value="/deleteDeficiency/${unitDeficiency.id}" var="deleteUrl" />
+				<c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
 				<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
 			</c:forEach>
 		</div>
