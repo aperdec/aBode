@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +26,38 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
+
 <title>aBode</title>
 </head>
 <body>
-	
-	<h3>Welcome to aBode Software</h3>
+
+	<h1>Welcome to aBode Software</h1>
+
+
+
+	<div style="margin: 2%">
+		<div class="group">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" /> <input type="submit" value="Fill out PDI"
+				class="col-xs-2 btn btn-default" onclick="verify()" /> <input
+				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="Menu btn 1"
+				class="col-xs-2 btn btn-default" onclick="verify()" />
+		</div>
+		
+		<div class="group">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" /> <input type="submit" value="Menu Button 2"
+				class="col-xs-2 btn btn-default" onclick="verify()" /> <input
+				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="Menu btn 3"
+				class="col-xs-2 btn btn-default" onclick="verify()" />
+		</div>
+
+	</div>
+
+
+	<br />
 
 </body>
 </html>
