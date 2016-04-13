@@ -42,6 +42,18 @@ public class HomeController {
 		return "loginForm"; 
 	}
 	
+	@RequestMapping("/deleteDeficiency/{id}/{homeEnrollmentNumber}")
+	public String deleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+		
+		dao.deleteDeficiency(id);
+
+		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+		model.addAttribute("unit", unitList.get(0));
+
+		return "displayUnitDeficiencies";
+	}
+	
 	@RequestMapping("/displayUnits")
 	public String displayUnits(Model model) {
 		
@@ -53,7 +65,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/displayUnitDeficiencies/{homeEnrollmentNumber}")
-	public String viewSubject(Model model, @PathVariable long homeEnrollmentNumber) {
+	public String viewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
 
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 

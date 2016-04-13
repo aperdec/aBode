@@ -4,9 +4,19 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 
+import org.hibernate.annotations.NamedQuery;
+
+@Embeddable
+@NamedQuery(name="Deficiency.byId", query="from Deficiency where id = :id")
 public class Deficiency implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7277687991400754226L;
 	private int id;
 	private String location;
 	@Column(name = "description", nullable = false, length = 1000)
@@ -14,20 +24,18 @@ public class Deficiency implements Serializable {
 	private String category;
 	private String[] categories;
 	private Date deadline;
-	private Unit unit;
 	private Boolean status;
 
 	public Deficiency() {
 		categories = new String[] { "" };
 	}
 
-	public Deficiency(String location, String description, String category, Date deadline, Unit unit) {
+	public Deficiency(String location, String description, String category, Date deadline) {
 		this.location = location;
 		this.description = description;
 		this.category = category;
 		categories = new String[] { "" };
 		this.deadline = deadline;
-		this.unit = unit;
 	}
 
 	public String getLocation() {
@@ -60,14 +68,6 @@ public class Deficiency implements Serializable {
 
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
-	}
-
-	public Unit getUnit() {
-		return unit;
-	}
-
-	public void setUnit(Unit unit) {
-		this.unit = unit;
 	}
 
 	public Boolean getStatus() {
