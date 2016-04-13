@@ -49,6 +49,11 @@ public class HomeController {
 		return "createAccount";
 	}
 	
+	@RequestMapping("/displayUnitInfo")
+	public String displayUnitInfo(Model model) {
+		return "displayUnitInfo";
+	}
+	
 	@RequestMapping("/register")
 	public String register(Model model, @RequestParam String username, @RequestParam String password) {
 

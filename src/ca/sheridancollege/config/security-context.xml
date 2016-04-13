@@ -28,7 +28,7 @@
 		<security:intercept-url pattern="/viewDeficiency/**" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/register" access="permitAll" />
-		<security:intercept-url pattern="/unitInformation"
+		<security:intercept-url pattern="/displayUnitInfo"
 			access="permitAll" />
 		<security:intercept-url pattern="/createAccount" access="permitAll" />
 		
