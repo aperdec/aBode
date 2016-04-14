@@ -62,12 +62,12 @@ Extra Large Button CSS
 
 			<div class="form-group">
 
-				<label for="homeCivicAddress" class="col-lg-8 control-label">Vendor/Builder
+				<label for="enrollNum" class="col-lg-8 control-label">Vendor/Builder
 					and Home Address Information</label>
 
 				<div class="col-lg-4">
-					<input path="homeCivicAddress" name="txtHomeCivicAddress"
-						class="form-control" id="homeCivicAddress"
+					<input path="enrollNum" name="enrollNum"
+						class="form-control" id="enrollNum"
 						placeholder="Enter Home Enrollment Number" required="required"
 						type="text" />
 				</div>
