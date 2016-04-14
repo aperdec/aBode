@@ -41,8 +41,9 @@ Extra Large Button CSS
 	text-align: center;
 	margin: 20px;
 	border: 2px solid black;
+	color:inherit;
+	
 }
-
 
 
 </style>
@@ -62,25 +63,25 @@ Extra Large Button CSS
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
 			<a href="${displayUnitInmformation}"
-				class="col-sm-4 btn-xl btn-default">Fill out PDI</a> <a
-				href="${Placeholder}" class="col-sm-4 btn-xl btn-default">Build
+				class="col-sm-4 btn-xl btn-inverse">Fill out PDI</a> <a
+				href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse">Build
 				Inspection</a>
 
 		</div>
 
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
-			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-default btn-xl">View
+			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">View
 				Work Orders</a> <a href="${Placeholder}"
-				class="col-sm-4 btn-xl btn-default btn-xl">Generate Report</a>
+				class="col-sm-4 btn-xl btn-inverse btn-xl">Generate Report</a>
 
 		</div>
 
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
-			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-default btn-xl">Form
+			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Form
 				Status</a> <a href="${Placeholder}"
-				class="col-sm-4 btn-xl btn-default btn-xl">Confirm Repairs</a>
+				class="col-sm-4 btn-xl btn-inverse btn-xl">Confirm Repairs</a>
 
 		</div>
 
