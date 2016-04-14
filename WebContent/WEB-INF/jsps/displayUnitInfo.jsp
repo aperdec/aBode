@@ -31,12 +31,30 @@
 	display: flex;
 	align-items: center;
 }
+
+/*
+Extra Large Button CSS
+*/
+.btn-lilG {
+	padding: 8px 18px;
+	font-size: 10px;
+	border-radius: 30px;
+	text-align: center;
+	margin: 5px;
+	border: 2px solid black;
+	color:inherit;
+	
+}
+
 </style>
 <title>Unit Information</title>
 </head>
 <body>
 
 	<div style="margin: 2%">
+
+
+			
 
 		<c:url value="/register" var="url" />
 		<form name="form" method="post" action="${url}"
@@ -57,7 +75,7 @@
 			</div>
 
 			<div class="form-group">
-
+				
 				<a href="${Placeholder}" class="pull-right btn btn-default">Go!</a>
 
 			</div>
@@ -208,8 +226,8 @@
 
 				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
-
-					<a href="${Placeholder}" class="pull-right btn btn-default">Next</a>
+				<c:url value="/displayUnitDeficiencies" var="displayUnitDeficiencies" />
+					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
 			</form>
