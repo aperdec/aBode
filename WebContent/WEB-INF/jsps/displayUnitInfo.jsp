@@ -57,7 +57,8 @@ Extra Large Button CSS
 			
 
 		<c:url value="/register" var="url" />
-		<form name="form" class="form-horizontal" onsubmit="return verify()">
+		<form name="form" method="post" action="${url}"
+			class="form-horizontal" onsubmit="return verify()">
 
 			<div class="form-group">
 
