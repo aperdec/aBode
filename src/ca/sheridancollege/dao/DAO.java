@@ -72,7 +72,7 @@ public class DAO {
 		session.beginTransaction();
 		
 		HomeOwner ho = new HomeOwner("Laura Croft", "19054412233");
-		Unit u = new Unit(1234, 1, "12 Forest Lane", ho, "Blue Skys Project");
+		Unit u = new Unit(1234, 1, "12 Forest Lane", ho, "Blue Skys Project", 7);
 		Date fillerDate = new Date();
 		//session.saveOrUpdate(ho);
 		session.saveOrUpdate(u);
@@ -95,7 +95,7 @@ public class DAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-	
+
 	public void saveOrUpdate(Deficiency deficiency) {
 		
 		Session session = sessionFactory.openSession();

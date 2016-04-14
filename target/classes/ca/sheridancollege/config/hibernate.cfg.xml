@@ -27,7 +27,7 @@
 		<mapping class="ca.sheridancollege.beans.Unit" />
 		<mapping class="ca.sheridancollege.beans.User" />
 		<mapping class="ca.sheridancollege.beans.UserRole" />
-		<mapping class="ca.sheridancollege.beans.WorkOrder" />
+ 		<mapping class="ca.sheridancollege.beans.WorkOrder" />
 		
 	</session-factory>
 </hibernate-configuration>
