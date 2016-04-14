@@ -19,15 +19,15 @@
 		<property name="hbm2ddl.auto">update</property>
 		
 		<!--Name the annotated Entity classes -->
-		<!-- <mapping class="ca.sheridancollege.beans.Builder" />
+		<mapping class="ca.sheridancollege.beans.Builder" />
 		<mapping class="ca.sheridancollege.beans.ConstructionPersonnel" />
 		<mapping class="ca.sheridancollege.beans.Deficiency" />
 		<mapping class="ca.sheridancollege.beans.Form" />
 		<mapping class="ca.sheridancollege.beans.HomeOwner" />
-		<mapping class="ca.sheridancollege.beans.Unit" /> -->
+		<mapping class="ca.sheridancollege.beans.Unit" />
 		<mapping class="ca.sheridancollege.beans.User" />
 		<mapping class="ca.sheridancollege.beans.UserRole" />
-<!-- 		<mapping class="ca.sheridancollege.beans.WorkOrder" /> -->
+ 		<mapping class="ca.sheridancollege.beans.WorkOrder" />
 		
 	</session-factory>
 </hibernate-configuration>
