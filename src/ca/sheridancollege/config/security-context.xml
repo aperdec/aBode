@@ -20,6 +20,7 @@
 		<security:intercept-url pattern="/editDeficiency/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/deleteDeficiency/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/displayUnitInfo" access="isAuthenticated()" />
+		<security:intercept-url pattern="/displayUnitData" access="isAuthenticated()" />
 		<security:intercept-url pattern="/addSignOff" access="isAuthenticated()" />
 		<security:intercept-url pattern="/viewDeficiency" access="isAuthenticated()" />
 		<security:intercept-url pattern="/displayDeficiencies" access="isAuthenticated()" />
