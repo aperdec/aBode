@@ -95,7 +95,7 @@ public class DAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-
+	
 	public void saveOrUpdate(Deficiency deficiency) {
 		
 		Session session = sessionFactory.openSession();

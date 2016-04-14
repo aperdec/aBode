@@ -226,7 +226,7 @@ Extra Large Button CSS
 
 				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
-				<c:url value="/displayUnitDeficiencies" var="displayUnitDeficiencies" />
+<%-- 				<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" /> --%>
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
