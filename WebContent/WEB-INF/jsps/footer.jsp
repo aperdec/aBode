@@ -27,6 +27,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style="align:center;">This is the footer</div>
+<div style="text-align:center;">Copyright 2016 Jack Software</div>
 </body>
 </html>

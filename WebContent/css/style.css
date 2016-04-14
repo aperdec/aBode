@@ -10,3 +10,9 @@ Extra Large Button CSS
     font-size: 22px;
     border-radius: 8px;
 }
+
+.no-link {
+    color:inherit;
+    text-decoration:none;
+    pointer-events:none;
+}

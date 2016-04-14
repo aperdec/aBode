@@ -25,12 +25,26 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 <title>Title</title>
+<style>
+
+.no-link {
+    color:inherit;
+    text-decoration:none;
+    pointer-events:none;
+    text-decoration:none;
+}
+
+
+
+</style>
+
+
 </head>
 <body>
 
 	<c:url value="/" var="home" />
-	<a href="${home}"><div>
-			<h1>aBode</h1>
+	<a href="${home}" class="no-link"><div>
+			<h1 style="padding:3%;">aBode</h1>
 		</div></a>
 
 </body>

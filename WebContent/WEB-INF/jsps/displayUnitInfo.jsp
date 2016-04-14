@@ -58,9 +58,7 @@
 
 			<div class="form-group">
 
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" /> <input type="submit" value="Go!"
-					class="pull-right btn btn-default" onclick="verify()" />
+				<a href="${Placeholder}" class="pull-right btn btn-default">Go!</a>
 
 			</div>
 
@@ -211,16 +209,14 @@
 				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
 
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> <input type="submit" value="Next"
-						class="pull-right btn btn-default" onclick="verify()" />
+					<a href="${Placeholder}" class="pull-right btn btn-default">Next</a>
 
 				</div>
 			</form>
-			</fieldset>
-				
+		</fieldset>
+
 	</div>
-	
+
 	<!-- </fieldset>
 	</form> -->
 
