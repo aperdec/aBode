@@ -2,8 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +55,7 @@ Extra Large Button CSS
 
 
 
-			
+
 
 		<c:url value="/displayUnitData" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
@@ -66,8 +65,8 @@ Extra Large Button CSS
 
 				<label class="col-lg-8 control-label">Vendor/Builder
 					and Home Address Information</label>
-				
-				
+
+
 					<form:input path="homeEnrollmentNumber" class="form-control" required="required"/>
 
 			</div>
@@ -80,7 +79,7 @@ Extra Large Button CSS
 </form:form>
 <!--</form>-->
 			<div id="error"></div>
-		
+
 		<fieldset>
 
 			<form name="form" method="post" action="${url2}"
@@ -225,7 +224,7 @@ Extra Large Button CSS
 
 				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
-<%-- 				<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" /> --%>
+					<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
