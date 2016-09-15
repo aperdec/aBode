@@ -31,14 +31,20 @@ public class Unit implements Serializable {
 	private Date posessionDate;
 	private String municipality;
 	private int level;
+	private int unitNum;
+	private String plan;
 	@ElementCollection
 	private List<Deficiency> deficiencies;
-	
+
 	public Unit(){
 		
 	}
 	
-	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName, int level) {
+	public Unit(long homeEnrollmentNumber){
+		
+	}
+	
+	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName, int level, String plan, int unitNum) {
 		this.homeEnrollmentNumber = homeEnrollmentNumber;
 		this.lotNumber = lotNumber;
 		this.address = address;
@@ -47,9 +53,11 @@ public class Unit implements Serializable {
 		this.posessionDate = DateUtils.addMonths(new Date(), 1);
 		this.municipality = "Markham";
 		this.level = level;
+		this.unitNum = unitNum;
+		this.plan = plan;
 	}
 
-	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName,
+	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName, int level, String plan, int unitNum,
 			List<Deficiency> deficiencies) {
 		this.homeEnrollmentNumber = homeEnrollmentNumber;
 		this.lotNumber = lotNumber;
@@ -134,6 +142,22 @@ public class Unit implements Serializable {
 	
 	public void addDeficiency(int deficiencyId){
 		//needs logic
+	}
+	
+	public int getUnitNum() {
+		return unitNum;
+	}
+
+	public void setUnitNum(int unitNum) {
+		this.unitNum = unitNum;
+	}
+
+	public String getPlan() {
+		return plan;
+	}
+
+	public void setPlan(String plan) {
+		this.plan = plan;
 	}
 
 }
