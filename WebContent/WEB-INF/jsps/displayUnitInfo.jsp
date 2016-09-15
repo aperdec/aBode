@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
@@ -54,37 +55,35 @@ Extra Large Button CSS
 	<div style="margin: 2%">
 
 
+
 			
 
-		<c:url value="/register" var="url" />
-		<form name="form" method="post" action="${url}"
-			class="form-horizontal" onsubmit="return verify()">
+		<c:url value="/displayUnitData" var="url" />
+		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
+		<form:form commandName="unit" method="post" action="${url}" class="form-horizontal">
 
 			<div class="form-group">
 
-				<label for="enrollNum" class="col-lg-8 control-label">Vendor/Builder
+				<label class="col-lg-8 control-label">Vendor/Builder
 					and Home Address Information</label>
-
-				<div class="col-lg-4">
-					<input path="enrollNum" name="enrollNum"
-						class="form-control" id="enrollNum"
-						placeholder="Enter Home Enrollment Number" required="required"
-						type="text" />
-				</div>
+				
+				
+					<form:input path="homeEnrollmentNumber" class="form-control" required="required"/>
 
 			</div>
 
 			<div class="form-group">
 				
-				<a href="${Placeholder}" class="pull-right btn btn-default">Go!</a>
+				<input type="submit" value="Go!" class="pull-right btn btn-default" />
 
 			</div>
-
+</form:form>
+<!--</form>-->
 			<div id="error"></div>
-		</form>
+		
 		<fieldset>
 
-			<form name="form" method="post" action="${url}"
+			<form name="form" method="post" action="${url2}"
 				class="form-horizontal" onsubmit="return verify()">
 
 				<legend>Unit Information</legend>
