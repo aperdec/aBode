@@ -60,12 +60,13 @@ Extra Large Button CSS
 
 		<c:url value="/displayUnitData" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
+		
+		
 		<form:form commandName="unit" method="post" action="${url}" class="form-horizontal">
 
 			<div class="form-group">
 
-				<label class="col-lg-8 control-label">Vendor/Builder
-					and Home Address Information</label>
+				<label class="col-lg-8 control-label">Unit Enrollment Number</label>
 				
 				
 					<form:input path="homeEnrollmentNumber" class="form-control" required="required"/>
@@ -96,7 +97,7 @@ Extra Large Button CSS
 					<div class="col-lg-2">
 						<input path="dateOfPosession" name="txDateOfPosession"
 							class="form-control" id="dateOfPosession"
-							placeholder="DD/MM/YYYY" required="required" type="text" />
+							value="${unit.posessionDate}" required="required" type="text" />
 					</div>
 
 					<label for="venBuildRefNo" class="col-lg-7 control-label">Vendor/Builder
@@ -118,7 +119,7 @@ Extra Large Button CSS
 
 					<div class="col-lg-1">
 						<input path="lotNum" name="txtlotNum" class="form-control"
-							id="lotNum" placeholder="" required="required" type="text" />
+							id="lotNum" value="${unit.lotNumber}" required="required" type="text" />
 
 					</div>
 
@@ -134,7 +135,7 @@ Extra Large Button CSS
 
 					<div class="col-lg-2">
 						<input path="municipality" name="txtMunicipality"
-							class="form-control" id="municipality" placeholder=""
+							class="form-control" id="municipality" value="${unit.municipality}"
 							required="required" type="text" />
 
 					</div>
@@ -150,7 +151,7 @@ Extra Large Button CSS
 
 					<div class="col-lg-4">
 						<input path="condoProjName" name="txtCondoProjName"
-							class="form-control" id="condoProjName" placeholder=""
+							class="form-control" id="condoProjName" value="${unit.projectName}"
 							required="required" type="text" />
 					</div>
 
@@ -158,7 +159,7 @@ Extra Large Button CSS
 
 					<div class="col-lg-2">
 						<input path="level" name="txtLevel" class="form-control"
-							id="level" placeholder="" required="required" type="text" />
+							id="level" placeholder="" required="required" type="text" value="${unit.level}" />
 					</div>
 
 
@@ -171,12 +172,18 @@ Extra Large Button CSS
 					<label for="homeCivicAddress" class="col-lg-3 control-label">Home
 						Civic Address</label>
 
-					<div class="col-lg-9">
+					<div class="col-lg-4">
 						<input path="homeCivicAddress" name="txtHomeCivicAddress"
 							class="form-control" id="homeCivicAddress" placeholder=""
-							required="required" type="text" />
+							required="required" type="text" value="${unit.address}" />
 					</div>
 
+					<label for="level" class="col-lg-3 control-label">Unit Number</label>
+
+					<div class="col-lg-2">
+						<input path="unitNum" name="txtUnitNum" class="form-control"
+							id="unitNum" placeholder="" required="required" type="text" value="" />
+					</div>
 
 				</div>
 
@@ -225,7 +232,7 @@ Extra Large Button CSS
 
 				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
-<%-- 				<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" /> --%>
+			<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" /> 
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>

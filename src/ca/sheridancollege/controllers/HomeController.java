@@ -104,18 +104,19 @@ public class HomeController {
 	
 	@RequestMapping("/displayUnitInfo")
 	public String displayUnitInfo(Model model) {
-		dao.addTestData();
+		//dao.addTestData();
 		model.addAttribute("unit", new Unit());
 		//dao.getUnit(homeEnrollmentNumber);
 		return "displayUnitInfo";
 	}
 	
-	@RequestMapping("/displayUnitData")
-	public String displayUnitData(Model model, @ModelAttribute long homeEnrollmentNumber) {
+	//@RequestMapping("/displayUnitData")
+	@RequestMapping(value="/displayUnitData", method=RequestMethod.POST)
+	public String displayUnitData(Model model, @RequestParam long homeEnrollmentNumber) {
 		
 		List<Unit>returns = dao.getUnit(homeEnrollmentNumber);
 		Unit match = returns.get(0);
-		System.out.println(match);
+		System.out.println("testing " + match.getAddress());
 		model.addAttribute("unit", match);
 		
 		return "displayUnitInfo";
