@@ -56,14 +56,14 @@ Extra Large Button CSS
 
 			<h1 class="text-center">Welcome to aBode Software</h1>
 
-			<c:url value="/displayUnitInfo" var="displayUnitInmformation" />
+			<c:url value="/displayUnitInfo" var="displayUnitInformation" />
 			<c:url value="/displayUnits" var="displayUnits" />
 			
 		</div>
 
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
-			<a href="${displayUnitInmformation}"
+			<a href="${displayUnitInformation}"
 				class="col-sm-4 btn-xl btn-inverse">Fill out PDI</a> <a
 				href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse">Build
 				Inspection</a>
