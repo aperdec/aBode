@@ -128,7 +128,7 @@ Extra Large Button CSS
 
 					<div class="col-lg-4">
 						<input path="plan" name="txtPlan" class="form-control" id="plan"
-							placeholder="" required="required" type="text" />
+							placeholder="" required="required" type="text" value="${unit.plan}"/>
 					</div>
 
 					<label for="municipality" class="col-lg-3 control-label">Municipality</label>
@@ -182,7 +182,7 @@ Extra Large Button CSS
 
 					<div class="col-lg-2">
 						<input path="unitNum" name="txtUnitNum" class="form-control"
-							id="unitNum" placeholder="" required="required" type="text" value="" />
+							id="unitNum" placeholder="" required="required" type="text" value="${unit.unitNum}" />
 					</div>
 
 				</div>

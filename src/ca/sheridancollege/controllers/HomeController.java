@@ -104,7 +104,7 @@ public class HomeController {
 	
 	@RequestMapping("/displayUnitInfo")
 	public String displayUnitInfo(Model model) {
-		//dao.addTestData();
+		dao.addTestData();
 		model.addAttribute("unit", new Unit());
 		//dao.getUnit(homeEnrollmentNumber);
 		return "displayUnitInfo";
