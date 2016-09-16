@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import ca.sheridancollege.beans.Builder;
 import ca.sheridancollege.beans.Deficiency;
 import ca.sheridancollege.beans.MyUserDetailsService;
 import ca.sheridancollege.beans.Unit;
@@ -106,6 +106,7 @@ public class HomeController {
 	public String displayUnitInfo(Model model) {
 		dao.addTestData();
 		model.addAttribute("unit", new Unit());
+		model.addAttribute("builder", new Builder());
 		//dao.getUnit(homeEnrollmentNumber);
 		return "displayUnitInfo";
 	}
