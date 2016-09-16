@@ -7,6 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script src="scripts/modernizr.custom.34982.js"></script>
+
+<script src="scripts/signing.js"></script>
+<script src="scripts/signatureCapture.js"></script>
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!-- Latest compiled and minified CSS -->
@@ -44,6 +51,11 @@ Extra Large Button CSS
 	border: 2px solid black;
 	color:inherit;
 	
+}
+
+#canvasContainer {
+    border: 1px solid grey;
+    border-radius: 5px;
 }
 
 </style>
@@ -218,15 +230,20 @@ Extra Large Button CSS
 							id="repName" placeholder="" required="required" type="text" />
 					</div>
 
+				</div>
+				
+				<!-- end of row 6 start of row 7 -->
+				
+				<div class="form-group">
 
-					<label for="repSignature" class="col-lg-2 control-label">Representatives
+					<label for="repSignature" class="col-lg-3 control-label">Representative's
 						Signature</label>
 
-					<div class="col-lg-3">
-						<input path="repName" name="txtRepSignature" class="form-control"
-							id="repSignature" placeholder="" required="required" type="text" />
+					<div class="col-lg-4">
+						<div id="canvasContainer" width="300px" >
+    						<canvas id="signature" height="200px" />
+    					</div>
 					</div>
-
 
 				</div>
 
