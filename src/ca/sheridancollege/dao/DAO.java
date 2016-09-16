@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import ca.sheridancollege.beans.Builder;
 import ca.sheridancollege.beans.Deficiency;
 import ca.sheridancollege.beans.HomeOwner;
 import ca.sheridancollege.beans.Unit;
@@ -73,6 +74,7 @@ public class DAO {
 		
 		HomeOwner ho = new HomeOwner("Laura Croft", "19054412233");
 		Unit u = new Unit(1234, 1, "12 Forest Lane", ho, "Blue Skys Project", 7, "2 bedroom", 721);
+		Builder b = new Builder("Lyn Green", 223344, "Times Group Inc", "12895550909");
 		Date fillerDate = new Date();
 		//session.saveOrUpdate(ho);
 		session.saveOrUpdate(u);
