@@ -10,17 +10,32 @@ public class Builder implements Serializable {
 	private String builderName;
 	private long builderRefNum;
 	private String builderAddress;
-	private int builderPhoneNumber;
+	private String builderPhoneNumber;
 
 	public Builder() {
 
 	}
 
 	public Builder(String vendorName, String vendorAddress, long vendorRefNum, String builderName, long builderRefNum,
-			String builderAddress, int builderPhoneNumber) {
+			String builderAddress, String builderPhoneNumber) {
 		this.vendorName = vendorName;
 		this.vendorAddress = vendorAddress;
 		this.vendorRefNum = vendorRefNum;
+		this.builderName = builderName;
+		this.builderRefNum = builderRefNum;
+		this.builderAddress = builderAddress;
+		this.builderPhoneNumber = builderPhoneNumber;
+	}
+	
+	public Builder(String vendorName, String vendorAddress, long vendorRefNum, String builderPhoneNumber) {
+		this.vendorName = vendorName;
+		this.vendorAddress = vendorAddress;
+		this.vendorRefNum = vendorRefNum;
+		this.builderPhoneNumber = builderPhoneNumber;
+	}
+	
+	public Builder(String builderName, long builderRefNum,
+			String builderAddress, String builderPhoneNumber) {
 		this.builderName = builderName;
 		this.builderRefNum = builderRefNum;
 		this.builderAddress = builderAddress;
@@ -75,12 +90,14 @@ public class Builder implements Serializable {
 		this.builderAddress = builderAddress;
 	}
 
-	public int getBuilderPhoneNumber() {
+	public String getBuilderPhoneNumber() {
 		return builderPhoneNumber;
 	}
 
-	public void setBuilderPhoneNumber(int builderPhoneNumber) {
+	public void setBuilderPhoneNumber(String builderPhoneNumber) {
 		this.builderPhoneNumber = builderPhoneNumber;
 	}
+
+	
 
 }
