@@ -81,7 +81,7 @@ Extra Large Button CSS
 					and Home Address Information</label>
 
 
-					<form:input path="homeEnrollmentNumber" class="form-control" required="required"/>
+					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
 
 			</div>
 

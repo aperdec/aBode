@@ -17,6 +17,8 @@ public class Form implements Serializable {
 	private HomeOwner homeOwner;
 	private String formType;
 	private User user;
+	private String repName;
+	//private Blob repSig;
 
 	public Form() {
 
