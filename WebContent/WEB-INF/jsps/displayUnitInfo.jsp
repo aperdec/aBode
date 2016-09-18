@@ -65,13 +65,8 @@ Extra Large Button CSS
 
 	<div style="margin: 2%">
 
-
-
-
-
 		<c:url value="/displayUnitData" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
-
 
 		<form:form commandName="unit" method="post" action="${url}" class="form-horizontal">
 
@@ -80,9 +75,7 @@ Extra Large Button CSS
 				<label class="col-lg-8 control-label">Vendor/Builder
 					and Home Address Information</label>
 
-
 					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
-
 			</div>
 
 			<div class="form-group">
@@ -95,7 +88,7 @@ Extra Large Button CSS
 			<div id="error"></div>
 
 		<fieldset>
-
+			<c:url value="/saveUnit" var="url2" />
 			<form name="form" method="post" action="${url2}"
 				class="form-horizontal" onsubmit="return verify()">
 
@@ -248,6 +241,13 @@ Extra Large Button CSS
 				</div>
 
 				<!-- end of row 6 start of row 7 -->
+				<div class="form-group">
+
+					<a href="${url2}" class="pull-right btn btn-default">Save</a>
+
+				</div>
+				
+				
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
