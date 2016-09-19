@@ -113,6 +113,7 @@ public void saveOrUpdateUnit(Unit unit) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.saveOrUpdate(unit);
+		unit.getAddress();
 		session.getTransaction().commit();
 		session.close();	
 	}

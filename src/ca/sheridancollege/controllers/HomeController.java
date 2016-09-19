@@ -1,6 +1,9 @@
 package ca.sheridancollege.controllers;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Embedded;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.sheridancollege.beans.Deficiency;
+import ca.sheridancollege.beans.HomeOwner;
 import ca.sheridancollege.beans.MyUserDetailsService;
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
@@ -28,7 +32,7 @@ import ca.sheridancollege.dao.DAO;
 public class HomeController {
 
 	private DAO dao = new DAO();
-
+	private long num = 0;
 	@RequestMapping("/")
 	public String home(Model model) {
 		
@@ -119,15 +123,24 @@ public class HomeController {
 		Unit match = returns.get(0);
 		System.out.println("testing " + match.getAddress());
 		model.addAttribute("unit", match);
+		num = match.getHomeEnrollmentNumber();
 		
 		return "displayUnitInfo";
 	}
 	
 	@RequestMapping("/saveUnit")
-	public String saveUnit(Model model, @ModelAttribute Unit unit) {
-
-		dao.saveOrUpdateUnit(unit);
-		System.out.println("testing SAVE" + unit.getAddress());
+	public String saveUnit(Model model, @ModelAttribute Unit u) {
+		List<Unit>returns = dao.getUnit(num);
+		Unit match = returns.get(0);
+		//match.setLotNumber(lotNumber);
+		match.setAddress(u.getAddress());
+		//match.setProjectName(projectName);
+		//match.setMunicipality(municipality);
+		//match.setLevel(level);
+		//match.setPlan(plan);
+		//match.setUnitNum(unitNum);
+		dao.saveOrUpdateUnit(match);
+		System.out.println("testing SAVE" + u.getAddress());
 		return "displayUnitInfo";
 	}
 	

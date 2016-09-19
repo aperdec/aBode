@@ -123,8 +123,8 @@ Extra Large Button CSS
 					<label for="lotNum" class="col-lg-1 control-label">Lot # </label>
 
 					<div class="col-lg-1">
-						<input path="lotNum" name="txtlotNum" class="form-control"
-							id="lotNum" value="${unit.lotNumber}" required="required" type="text" />
+						<input path="unit.lotNumber" name="txtlotNum" class="form-control"
+							id="lotNumber" value="${unit.lotNumber}" required="required" type="text" />
 
 					</div>
 
@@ -243,19 +243,18 @@ Extra Large Button CSS
 				<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
 
-					<a href="${url2}" class="pull-right btn btn-default">Save</a>
-
+					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
+					<input type="submit" value="Save" class="pull-right btn btn-default" />
 				</div>
+	
 				
-				
+			</form>
+		</fieldset>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
-			</form>
-		</fieldset>
-
 	</div>
 
 	<!-- </fieldset>
