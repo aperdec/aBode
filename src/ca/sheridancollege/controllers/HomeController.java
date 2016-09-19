@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -92,12 +93,13 @@ public class HomeController {
 		return "displayUnits";
 	}
 	
+
 	@RequestMapping("/displayUnitDeficiencies/{homeEnrollmentNumber}")
 	public String viewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
 
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-
 		model.addAttribute("unit", unitList.get(0));
+		model.addAttribute("def", new Deficiency());
 
 		return "displayUnitDeficiencies";
 	}
@@ -120,6 +122,14 @@ public class HomeController {
 		System.out.println("testing " + match.getAddress());
 		model.addAttribute("unit", match);
 		
+		return "displayUnitInfo";
+	}
+
+	@RequestMapping("/saveUnit")
+	public String saveUnit(Model model, @ModelAttribute Unit unit) {
+
+		dao.saveOrUpdateUnit(unit);
+		System.out.println("testing SAVE" + unit.getAddress());
 		return "displayUnitInfo";
 	}
 	

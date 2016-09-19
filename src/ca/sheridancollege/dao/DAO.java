@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 
 import ca.sheridancollege.beans.Builder;
 import ca.sheridancollege.beans.Deficiency;
+import ca.sheridancollege.beans.Form;
 import ca.sheridancollege.beans.HomeOwner;
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.beans.User;
@@ -103,12 +104,28 @@ public class DAO {
 		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-
 		session.saveOrUpdate(deficiency);
-
 		session.getTransaction().commit();
-		session.close();
-		
+		session.close();	
 	}
+	
+public void saveOrUpdateUnit(Unit unit) {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(unit);
+		session.getTransaction().commit();
+		session.close();	
+	}
+
+public void saveOrUpdateForm(Form form) {
+	
+	Session session = sessionFactory.openSession();
+	session.beginTransaction();
+	session.saveOrUpdate(form);
+	session.getTransaction().commit();
+	session.close();	
+}
+	
 
 }
