@@ -2,68 +2,30 @@ package ca.sheridancollege.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Builder implements Serializable {
 //test
-	private String vendorName;
-	private String vendorAddress;
-	private long vendorRefNum;
+	private String builderEmail;
 	private String builderName;
+	@Id
 	private long builderRefNum;
-	private String builderAddress;
+	private String builderCompany;
 	private String builderPhoneNumber;
 
 	public Builder() {
 
 	}
 
-	public Builder(String vendorName, String vendorAddress, long vendorRefNum, String builderName, long builderRefNum,
-			String builderAddress, String builderPhoneNumber) {
-		this.vendorName = vendorName;
-		this.vendorAddress = vendorAddress;
-		this.vendorRefNum = vendorRefNum;
-		this.builderName = builderName;
-		this.builderRefNum = builderRefNum;
-		this.builderAddress = builderAddress;
-		this.builderPhoneNumber = builderPhoneNumber;
-	}
-	
-	public Builder(String vendorName, String vendorAddress, long vendorRefNum, String builderPhoneNumber) {
-		this.vendorName = vendorName;
-		this.vendorAddress = vendorAddress;
-		this.vendorRefNum = vendorRefNum;
-		this.builderPhoneNumber = builderPhoneNumber;
-	}
-	
 	public Builder(String builderName, long builderRefNum,
-			String builderAddress, String builderPhoneNumber) {
+			String builderCompany, String builderPhoneNumber, String builderEmail) {
 		this.builderName = builderName;
 		this.builderRefNum = builderRefNum;
-		this.builderAddress = builderAddress;
+		this.builderCompany = builderCompany;
 		this.builderPhoneNumber = builderPhoneNumber;
-	}
-
-	public String getVendorName() {
-		return vendorName;
-	}
-
-	public void setVendorName(String vendorName) {
-		this.vendorName = vendorName;
-	}
-
-	public String getVendorAddress() {
-		return vendorAddress;
-	}
-
-	public void setVendorAddress(String vendorAddress) {
-		this.vendorAddress = vendorAddress;
-	}
-
-	public long getVendorRefNum() {
-		return vendorRefNum;
-	}
-
-	public void setVendorRefNum(long vendorRefNum) {
-		this.vendorRefNum = vendorRefNum;
+		this.builderEmail = builderEmail;
 	}
 
 	public String getBuilderName() {
@@ -82,12 +44,12 @@ public class Builder implements Serializable {
 		this.builderRefNum = builderRefNum;
 	}
 
-	public String getBuilderAddress() {
-		return builderAddress;
+	public String getBuilderCompany() {
+		return builderCompany;
 	}
 
-	public void setBuilderAddress(String builderAddress) {
-		this.builderAddress = builderAddress;
+	public void setBuilderCompany(String builderCompany) {
+		this.builderCompany = builderCompany;
 	}
 
 	public String getBuilderPhoneNumber() {
@@ -96,6 +58,14 @@ public class Builder implements Serializable {
 
 	public void setBuilderPhoneNumber(String builderPhoneNumber) {
 		this.builderPhoneNumber = builderPhoneNumber;
+	}
+
+	public String getBuilderEmail() {
+		return builderEmail;
+	}
+
+	public void setBuilderEmail(String builderEmail) {
+		this.builderEmail = builderEmail;
 	}
 
 	
