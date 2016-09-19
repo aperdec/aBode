@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ca.sheridancollege.beans.Builder;
 import ca.sheridancollege.beans.Deficiency;
 import ca.sheridancollege.beans.HomeOwner;
 import ca.sheridancollege.beans.MyUserDetailsService;
@@ -96,14 +97,14 @@ public class HomeController {
 		return "displayUnits";
 	}
 	
-	
+
 	@RequestMapping("/displayUnitDeficiencies/{homeEnrollmentNumber}")
 	public String viewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
-		
+
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 		model.addAttribute("unit", unitList.get(0));
 		model.addAttribute("def", new Deficiency());
-		
+
 		return "displayUnitDeficiencies";
 	}
 	
@@ -111,6 +112,7 @@ public class HomeController {
 	public String displayUnitInfo(Model model) {
 		dao.addTestData();
 		model.addAttribute("unit", new Unit());
+		model.addAttribute("builder", new Builder());
 		//dao.getUnit(homeEnrollmentNumber);
 		return "displayUnitInfo";
 	}
@@ -127,7 +129,7 @@ public class HomeController {
 		
 		return "displayUnitInfo";
 	}
-	
+
 	@RequestMapping("/saveUnit")
 	public String saveUnit(Model model, @ModelAttribute Unit u) {
 		List<Unit>returns = dao.getUnit(num);

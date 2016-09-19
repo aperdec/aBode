@@ -75,10 +75,11 @@ public class DAO {
 		
 		HomeOwner ho = new HomeOwner("Laura Croft", "19054412233");
 		Unit u = new Unit(1234, 1, "12 Forest Lane", ho, "Blue Skys Project", 7, "2 bedroom", 721);
-		Builder b = new Builder("Lyn Green", 223344, "Times Group Inc", "12895550909");
+		Builder b = new Builder("Lyn Green", 223344, "Times Group Inc", "12895550909", "Lyn@TimesGroup.com");
 		Date fillerDate = new Date();
 		//session.saveOrUpdate(ho);
 		session.saveOrUpdate(u);
+		session.saveOrUpdate(b);
 		session.getTransaction().commit();
 		session.close();
 	}
