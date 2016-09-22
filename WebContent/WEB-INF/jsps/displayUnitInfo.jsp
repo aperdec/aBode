@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <script src="scripts/modernizr.custom.34982.js"></script>
+<!-- <script src="scripts/sig.js"></script>-->
 
 <script src="scripts/signing.js"></script>
 <script src="scripts/signatureCapture.js"></script>
@@ -226,7 +227,15 @@ Extra Large Button CSS
 				</div>
 
 				<!-- end of row 6 start of row 7 -->
+								<!-- end of row 6 start of row 7 -->
+				<div class="form-group">
 
+					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
+					<input type="submit" value="Save" class="pull-right btn btn-default" />
+				</div>
+
+
+			</form>
 				<div class="form-group">
 
 					<label for="repSignature" class="col-lg-3 control-label">Representative's
@@ -237,24 +246,21 @@ Extra Large Button CSS
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-
-				</div>
-
-				<!-- end of row 6 start of row 7 -->
-				<div class="form-group">
-
-					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
-					<input type="submit" value="Save" class="pull-right btn btn-default" />
+					<div><button onclick="to_image()">Accept</button></div>
+					<!--<a id="btn-download">Download</a>
+					<a id="dl" download="Canvas.png" href="#">Download Canvas</a>-->
+					<a href="#" id="btn-download" download="my-file-name.png">Download</a>
+					<div><button onclick="clearSig()">Redo</button></div>
 				</div>
 
 
-			</form>
 		</fieldset>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
+				<div><image id="theimage"></image></div>
 	</div>
 
 	<!-- </fieldset>
