@@ -43,7 +43,7 @@ public class Deficiency implements Serializable {
 		this.category = category;
 		this.deadline = deadline;
 		this.status = status;
-		categories = new String[] {"Add Categories"};
+		setCategories();
 	}
 
 	public String getLocation() {
@@ -94,4 +94,19 @@ public class Deficiency implements Serializable {
 		return categories;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getConstructionPersonnel() {
+		return constructionPersonnel;
+	}
+
+	public void setConstructionPersonnel(String constructionPersonnel) {
+		this.constructionPersonnel = constructionPersonnel;
+	}
+
+	public void setCategories() {
+		categories = new String[] {"Add Categories"};
+	}
 }
