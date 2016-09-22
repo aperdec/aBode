@@ -41,14 +41,14 @@
 				<div class="form-group">
 					<label for="id" class="col-lg-1 control-label">Deficiency Number</label>
 					<div class="col-lg-10">
-						<input path="id" class="form-control" id="id" placeholder="Id" required="required" />
+						<input path="id" name="id" class="form-control" id="id" placeholder="Id" required="required" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="location" class="col-lg-2 control-label">Location</label>
 					<div class="col-lg-10">
-						<select class="form-control" id="location">
+						<select name="location" class="form-control" id="location">
 							<option>Kitchen</option>
 							<option>Bedroom</option>
 							<option>Living Room</option>
@@ -62,7 +62,7 @@
 				<div class="form-group">
 					<label for="description" class="col-lg-1 control-label">Description</label>
 					<div class="col-lg-10">
-						<textarea path="description" class="form-control" rows="3"
+						<textarea name="description" path="description" class="form-control" rows="3"
 							id="description" required="required"> </textarea>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 
-				<input path="homeEnrollmentNumber" type="hidden" value="${unit.homeEnrollmentNumber}"/>
+				<input name="homeEnrollmentNumber" path="homeEnrollmentNumber" type="hidden" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
 				<input type="submit" value="Save Deficiency" class="btn btn-primary "
