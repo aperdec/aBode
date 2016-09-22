@@ -7,6 +7,7 @@ import javax.persistence.Embedded;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.dao.SystemWideSaltSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -105,7 +106,21 @@ public class HomeController {
 
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 		model.addAttribute("unit", unitList.get(0));
-		model.addAttribute("def", new Deficiency());
+
+		return "displayUnitDeficiencies";
+	}
+
+	@RequestMapping("/saveDeficiency")
+	public String saveDeficiency(Model model, @ModelAttribute Deficiency deficiency) {
+
+		List<Unit> unit = dao.getUnit(deficiency.getHomeEnrollmentNumber());
+		System.out.println("Unit Size:" + unit.size() + deficiency.getHomeEnrollmentNumber());
+		unit.get(0).addDeficiency(deficiency);
+
+		dao.saveOrUpdateUnit(unit.get(0));
+
+		List<Unit> unitList = dao.getUnit(deficiency.getHomeEnrollmentNumber());
+		model.addAttribute("unit", unitList.get(0));
 
 		return "displayUnitDeficiencies";
 	}
