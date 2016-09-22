@@ -21,21 +21,29 @@ public class Deficiency implements Serializable {
 	private String location;
 	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
+	private String constructionPersonnel;
 	private String category;
 	private String[] categories;
 	private Date deadline;
 	private Boolean status;
 
 	public Deficiency() {
-		categories = new String[] {"Add Categories"};
+		this(0, null, null, null);
 	}
 
-	public Deficiency(String location, String description, String category, Date deadline) {
+	public Deficiency(int id, String location, String description, String constructionPersonnel) {
+		this(id, location, description, constructionPersonnel, null, null, false);
+	}
+
+	public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status) {
+		this.id = id;
 		this.location = location;
 		this.description = description;
+		this.constructionPersonnel = constructionPersonnel;
 		this.category = category;
-		categories = new String[] {"Add Categories"};
 		this.deadline = deadline;
+		this.status = status;
+		categories = new String[] {"Add Categories"};
 	}
 
 	public String getLocation() {
