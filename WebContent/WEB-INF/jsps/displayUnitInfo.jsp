@@ -226,7 +226,15 @@ Extra Large Button CSS
 				</div>
 				
 				<!-- end of row 6 start of row 7 -->
+								<!-- end of row 6 start of row 7 -->
+				<div class="form-group">
+
+					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
+					<input type="submit" value="Save" class="pull-right btn btn-default" />
+				</div>
+	
 				
+			</form>
 				<div class="form-group">
 
 					<label for="repSignature" class="col-lg-3 control-label">Representative's
@@ -237,18 +245,11 @@ Extra Large Button CSS
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-
+					<div><button onclick="to_image()">Accept</button></div>
+					<div><button onclick="clearSig()">Redo</button></div>
 				</div>
 
-				<!-- end of row 6 start of row 7 -->
-				<div class="form-group">
 
-					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
-					<input type="submit" value="Save" class="pull-right btn btn-default" />
-				</div>
-	
-				
-			</form>
 		</fieldset>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
