@@ -10,10 +10,12 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.NamedQuery;
 
 @Entity
-@NamedQuery(name="Builder.byUserName", query="from Builder where user_username = :user_username")
+@NamedQuery(name="Builder.byUserName", query="from Builder where users_username = :users_username")
 public class Builder implements Serializable {
 //test
 	
+	
+
 	private String builderEmail;
 	private String builderName;
 	@Id
@@ -77,7 +79,13 @@ public class Builder implements Serializable {
 	public void setBuilderEmail(String builderEmail) {
 		this.builderEmail = builderEmail;
 	}
+	public User getUser() {
+		return user;
+	}
 
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 
 }
