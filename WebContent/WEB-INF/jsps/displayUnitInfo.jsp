@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <script src="scripts/modernizr.custom.34982.js"></script>
+<!-- <script src="scripts/sig.js"></script>-->
 
 <script src="scripts/signing.js"></script>
 <script src="scripts/signatureCapture.js"></script>
@@ -246,6 +247,9 @@ Extra Large Button CSS
     					</div>
 					</div>
 					<div><button onclick="to_image()">Accept</button></div>
+					<!--<a id="btn-download">Download</a>
+					<a id="dl" download="Canvas.png" href="#">Download Canvas</a>-->
+					<a href="#" id="btn-download" download="my-file-name.png">Download</a>
 					<div><button onclick="clearSig()">Redo</button></div>
 				</div>
 
@@ -256,6 +260,7 @@ Extra Large Button CSS
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
+				<div><image id="theimage"></image></div>
 	</div>
 
 	<!-- </fieldset>
