@@ -6,15 +6,19 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Embedded;
-
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.hibernate.annotations.NamedQuery;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Entity
 @NamedQuery(name="Unit.byHomeEnrollmentNumber", query="from Unit where homeEnrollmentNumber = :homeEnrollmentNumber")
 public class Unit implements Serializable {
@@ -33,7 +37,8 @@ public class Unit implements Serializable {
 	private int level;
 	private int unitNum;
 	private String plan;
-	@ElementCollection
+	//@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	@ElementCollection(fetch = FetchType.EAGER)
 	private List<Deficiency> deficiencies;
 
 	public Unit(){
@@ -55,6 +60,7 @@ public class Unit implements Serializable {
 		this.level = level;
 		this.unitNum = unitNum;
 		this.plan = plan;
+		this.deficiencies = new ArrayList<Deficiency>(4);
 	}
 
 	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName, int level, String plan, int unitNum,

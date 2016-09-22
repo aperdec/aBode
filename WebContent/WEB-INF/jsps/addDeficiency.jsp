@@ -33,17 +33,15 @@
 
 	<div style="margin: 2%">
 		<c:url value="/saveDeficiency" var="url" />
-		<form:form commandName="subject" class="form-horizontal" method="post"
-			action="${url}">
+		<form name="form" class="form-horizontal" method="post" action="${url}">
 
 			<fieldset>
 				<legend>Enter or Edit Information</legend>
 
 				<div class="form-group">
-					<label for="deficiencyId" class="col-lg-1 control-label">Deficiency Number</label>
+					<label for="id" class="col-lg-1 control-label">Deficiency Number</label>
 					<div class="col-lg-10">
-						<form:input path="deficiencyId" class="form-control" id="deficiencyId"
-							placeholder="Title" />
+						<input path="id" class="form-control" id="id" placeholder="Id" required="required" />
 					</div>
 				</div>
 
@@ -62,15 +60,15 @@
 				</div>
 
 				<div class="form-group">
-					<label for="textArea" class="col-lg-1 control-label">Description</label>
+					<label for="description" class="col-lg-1 control-label">Description</label>
 					<div class="col-lg-10">
-						<form:textarea path="text" class="form-control" rows="3"
-							id="textArea" required="required" />
+						<textarea path="description" class="form-control" rows="3"
+							id="description" required="required"> </textarea>
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label for="ocnstructionPersonnel" class="col-lg-2 control-label">Assign To</label>
+					<label for="constructionPersonnel" class="col-lg-2 control-label">Assign To</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="constructionPersonnel">
 							<option>Jane Smith</option>
@@ -82,18 +80,14 @@
 						</select>
 					</div>
 				</div>
-				
-				<security:authorize access="isAuthenticated()">
-   					<security:authentication property="principal.username" var="username" /> 
-				</security:authorize>
-				
-				<form:input path="username" type="hidden" value="${username}"/>
+
+				<form:input path="homeEnrollmentNumber" type="hidden" value="${unit.homeEnrollmentNumber}"/>
 				
 				<input type="submit" value="Save Deficiency" class="btn btn-primary "
 					style="margin-left: 8.33333333333%" />
 
 			</fieldset>
-		</form:form>
+		</form>
 
 	</div>
 </body>
