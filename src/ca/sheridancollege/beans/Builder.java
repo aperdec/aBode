@@ -4,10 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.NamedQuery;
 
 @Entity
+@NamedQuery(name="Builder.byUserName", query="from Builder where user_username = :user_username")
 public class Builder implements Serializable {
 //test
+	
 	private String builderEmail;
 	private String builderName;
 	@Id
@@ -15,6 +21,10 @@ public class Builder implements Serializable {
 	private String builderCompany;
 	private String builderPhoneNumber;
 
+	@OneToOne
+	@JoinColumn(name="users_username")
+	private User user;
+	
 	public Builder() {
 
 	}
