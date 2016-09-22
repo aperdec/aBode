@@ -68,6 +68,23 @@ public class DAO {
 		return unitList;
 	}
 	
+	public List<Builder> getBuilder(String builderUserName) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.getNamedQuery("Builder.byUserName");
+
+		query.setString("user_username", builderUserName);
+
+		List<Builder> builderList = (List<Builder>) query.list();
+
+		session.getTransaction().commit();
+		session.close();
+
+		return builderList;
+	}
+
+
 	public void addTestData() {
 		// adding testing data
 		Session session = sessionFactory.openSession();
@@ -106,27 +123,29 @@ public class DAO {
 		session.beginTransaction();
 		session.saveOrUpdate(deficiency);
 		session.getTransaction().commit();
-		session.close();	
+		session.close();
 	}
-	
+
 public void saveOrUpdateUnit(Unit unit) {
-		
+
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.saveOrUpdate(unit);
 		unit.getAddress();
 		session.getTransaction().commit();
-		session.close();	
+		session.close();
 	}
 
 public void saveOrUpdateForm(Form form) {
-	
+
 	Session session = sessionFactory.openSession();
 	session.beginTransaction();
 	session.saveOrUpdate(form);
 	session.getTransaction().commit();
-	session.close();	
+	session.close();
 }
-	
+
+
+
 
 }
