@@ -103,7 +103,22 @@ public class HomeController {
 
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 		model.addAttribute("unit", unitList.get(0));
-		model.addAttribute("def", new Deficiency());
+//		model.addAttribute("def", new Deficiency());
+
+		return "displayUnitDeficiencies";
+	}
+
+	@RequestMapping("/saveDeficiency")
+	public String saveDeficiency(Model model, @ModelAttribute Deficiency deficiency) {
+
+		List<Unit> unit = dao.getUnit(deficiency.getHomeEnrollmentNumber());
+		unit.get(0).addDeficiency(deficiency);
+
+//		dao.saveOrUpdateUnit(unit.get(0));
+
+		List<Unit> unitList = dao.getUnit(deficiency.getHomeEnrollmentNumber());
+		model.addAttribute("unit", unitList.get(0));
+//		model.addAttribute("def", new Deficiency());
 
 		return "displayUnitDeficiencies";
 	}

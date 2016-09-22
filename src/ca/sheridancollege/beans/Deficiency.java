@@ -18,6 +18,7 @@ public class Deficiency implements Serializable {
 	 */
 	private static final long serialVersionUID = 7277687991400754226L;
 	private int id;
+	private long homeEnrollmentNumber;
 	private String location;
 	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
@@ -28,15 +29,16 @@ public class Deficiency implements Serializable {
 	private Boolean status;
 
 	public Deficiency() {
-		this(0, null, null, null);
+		this(0, 0, null, null, null);
 	}
 
-	public Deficiency(int id, String location, String description, String constructionPersonnel) {
-		this(id, location, description, constructionPersonnel, null, null, false);
+	public Deficiency(int id, long homeEnrollmentNumber, String location, String description, String constructionPersonnel) {
+		this(id, homeEnrollmentNumber, location, description, constructionPersonnel, null, null, false);
 	}
 
-	public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status) {
+	public Deficiency(int id, long homeEnrollmentNumber, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status) {
 		this.id = id;
+		this.homeEnrollmentNumber = homeEnrollmentNumber;
 		this.location = location;
 		this.description = description;
 		this.constructionPersonnel = constructionPersonnel;
@@ -108,5 +110,13 @@ public class Deficiency implements Serializable {
 
 	public void setCategories() {
 		categories = new String[] {"Add Categories"};
+	}
+
+	public long getHomeEnrollmentNumber() {
+		return homeEnrollmentNumber;
+	}
+
+	public void setHomeEnrollmentNumber(long homeEnrollmentNumber) {
+		this.homeEnrollmentNumber = homeEnrollmentNumber;
 	}
 }

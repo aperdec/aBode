@@ -81,7 +81,8 @@
 					</div>
 				</div>
 
-				<form:input path="homeEnrollmentNumber" type="hidden" value="${unit.homeEnrollmentNumber}"/>
+				<input path="homeEnrollmentNumber" type="hidden" value="${unit.homeEnrollmentNumber}"/>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
 				<input type="submit" value="Save Deficiency" class="btn btn-primary "
 					style="margin-left: 8.33333333333%" />

@@ -60,7 +60,7 @@ public class Unit implements Serializable {
 		this.level = level;
 		this.unitNum = unitNum;
 		this.plan = plan;
-		this.deficiencies = new ArrayList<Deficiency>(4);
+		this.deficiencies = new ArrayList<Deficiency>();
 	}
 
 	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName, int level, String plan, int unitNum,
@@ -146,8 +146,8 @@ public class Unit implements Serializable {
 		this.deficiencies = deficiencies;
 	}
 	
-	public void addDeficiency(int deficiencyId){
-		//needs logic
+	public void addDeficiency(Deficiency deficiency){
+		deficiencies.add(deficiency);
 	}
 	
 	public int getUnitNum() {
