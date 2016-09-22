@@ -7,6 +7,7 @@ import javax.persistence.Embedded;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.dao.SystemWideSaltSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,6 +33,8 @@ import ca.sheridancollege.dao.DAO;
 @Controller
 public class HomeController {
 
+	//public static String builderUserName = "Testnow";
+	
 	private DAO dao = new DAO();
 	private long num = 0;
 	@RequestMapping("/")
@@ -103,7 +106,21 @@ public class HomeController {
 
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 		model.addAttribute("unit", unitList.get(0));
-		model.addAttribute("def", new Deficiency());
+
+		return "displayUnitDeficiencies";
+	}
+
+	@RequestMapping("/saveDeficiency")
+	public String saveDeficiency(Model model, @ModelAttribute Deficiency deficiency) {
+
+		List<Unit> unit = dao.getUnit(deficiency.getHomeEnrollmentNumber());
+		System.out.println("Unit Size:" + unit.size() + deficiency.getHomeEnrollmentNumber());
+		unit.get(0).addDeficiency(deficiency);
+
+		dao.saveOrUpdateUnit(unit.get(0));
+
+		List<Unit> unitList = dao.getUnit(deficiency.getHomeEnrollmentNumber());
+		model.addAttribute("unit", unitList.get(0));
 
 		return "displayUnitDeficiencies";
 	}
@@ -121,11 +138,17 @@ public class HomeController {
 	@RequestMapping(value="/displayUnitData", method=RequestMethod.POST)
 	public String displayUnitData(Model model, @RequestParam long homeEnrollmentNumber) {
 		
+		String builderUserName = this.getUserName();
+		
 		List<Unit>returns = dao.getUnit(homeEnrollmentNumber);
 		Unit match = returns.get(0);
-		System.out.println("testing " + match.getAddress());
+		//System.out.println("testing " + match.getAddress());
 		model.addAttribute("unit", match);
 		num = match.getHomeEnrollmentNumber();
+		
+		List<Builder>returnsBuilder = dao.getBuilder(builderUserName);
+		Builder matchBuilder = returnsBuilder.get(0);
+		model.addAttribute("builder",matchBuilder);
 		
 		return "displayUnitInfo";
 	}

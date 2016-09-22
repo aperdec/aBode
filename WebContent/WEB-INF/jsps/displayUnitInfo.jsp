@@ -112,7 +112,7 @@ Extra Large Button CSS
 					<div class="col-lg-2">
 						<input path="venBuildRefNo" name="txtVenBuildRefNo"
 							class="form-control" id="venBuildRefNo" placeholder=""
-							required="required" type="text" />
+							required="required" type="text" value="${builder.builderRefNum}"/>
 
 					</div>
 
@@ -206,7 +206,7 @@ Extra Large Button CSS
 					<div class="col-lg-9">
 						<input path="venBuildName" name="txtVenBuildName"
 							class="form-control" id="venBuildName" placeholder=""
-							required="required" type="text" />
+							required="required" type="text" value="${builder.builderName}" />
 					</div>
 
 				</div>
@@ -225,7 +225,7 @@ Extra Large Button CSS
 					</div>
 
 				</div>
-				
+
 				<!-- end of row 6 start of row 7 -->
 								<!-- end of row 6 start of row 7 -->
 				<div class="form-group">
@@ -233,8 +233,8 @@ Extra Large Button CSS
 					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
 					<input type="submit" value="Save" class="pull-right btn btn-default" />
 				</div>
-	
-				
+
+
 			</form>
 				<div class="form-group">
 

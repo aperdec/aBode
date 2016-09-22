@@ -28,6 +28,7 @@
 		<security:intercept-url pattern="/displayUnitDeficiencies/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/displayUnits"	access="isAuthenticated()" />
 		<security:intercept-url pattern="/viewDeficiency/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/css/**" access="permitAll" />		
 		<security:intercept-url pattern="/scripts/**" access="permitAll" />		
 		<security:intercept-url pattern="/images/**" access="permitAll" />		
