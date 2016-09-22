@@ -68,7 +68,6 @@ Extra Large Button CSS
 				<label class="col-lg-8 control-label">Vendor/Builder
 					and Home Address Information</label>
 
-
 					<form:input path="homeEnrollmentNumber" class="form-control" required="required"/>
 
 			</div>
@@ -106,7 +105,7 @@ Extra Large Button CSS
 					<div class="col-lg-2">
 						<input path="venBuildRefNo" name="txtVenBuildRefNo"
 							class="form-control" id="venBuildRefNo" placeholder=""
-							required="required" type="text" />
+							required="required" type="text" value="${builder.builderRefNum}"/>
 
 					</div>
 
@@ -200,7 +199,7 @@ Extra Large Button CSS
 					<div class="col-lg-9">
 						<input path="venBuildName" name="txtVenBuildName"
 							class="form-control" id="venBuildName" placeholder=""
-							required="required" type="text" />
+							required="required" type="text" value="${builder.builderName}" />
 					</div>
 
 				</div>

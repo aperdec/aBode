@@ -27,6 +27,8 @@ import ca.sheridancollege.dao.DAO;
 @Controller
 public class HomeController {
 
+	//public static String builderUserName = "Testnow";
+	
 	private DAO dao = new DAO();
 
 	@RequestMapping("/")
@@ -115,10 +117,16 @@ public class HomeController {
 	@RequestMapping(value="/displayUnitData", method=RequestMethod.POST)
 	public String displayUnitData(Model model, @RequestParam long homeEnrollmentNumber) {
 		
+		String builderUserName = this.getUserName();
+		
 		List<Unit>returns = dao.getUnit(homeEnrollmentNumber);
 		Unit match = returns.get(0);
-		System.out.println("testing " + match.getAddress());
+		//System.out.println("testing " + match.getAddress());
 		model.addAttribute("unit", match);
+		
+		List<Builder>returnsBuilder = dao.getBuilder(builderUserName);
+		Builder matchBuilder = returnsBuilder.get(0);
+		model.addAttribute("builder",matchBuilder);
 		
 		return "displayUnitInfo";
 	}

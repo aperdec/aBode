@@ -67,6 +67,23 @@ public class DAO {
 		return unitList;
 	}
 	
+	public List<Builder> getBuilder(String builderUserName) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.getNamedQuery("Builder.byUserName");
+
+		query.setString("user_username", builderUserName);
+
+		List<Builder> builderList = (List<Builder>) query.list();
+
+		session.getTransaction().commit();
+		session.close();
+
+		return builderList;
+	}
+	
+	
 	public void addTestData() {
 		// adding testing data
 		Session session = sessionFactory.openSession();
@@ -110,5 +127,7 @@ public class DAO {
 		session.close();
 		
 	}
+
+	
 
 }
