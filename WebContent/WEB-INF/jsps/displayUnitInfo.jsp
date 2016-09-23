@@ -249,10 +249,10 @@ Extra Large Button CSS
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					<div><button onclick="to_image()">Accept</button></div>
-					<!--<a id="btn-download">Download</a>
-					<a id="dl" download="Canvas.png" href="#">Download Canvas</a>-->
-					<a href="#" id="btn-download" download="my-file-name.png">Download</a>
+					<!--<div><button onclick="to_image()">Accept</button></div>-->
+					<div><button id="acc2" onclick="accept()">Accept</button></div>
+					<div id="acc1"></div>
+					<br><br>
 					<div><button onclick="clearSig()">Redo</button></div>
 				</div>
 
