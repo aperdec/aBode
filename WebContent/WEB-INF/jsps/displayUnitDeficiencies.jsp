@@ -45,9 +45,6 @@
 		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
 				
 	</div>
-	<c:forEach items="unit.deficicnies" var="item">
-
-		</c:forEach>
 
 </body>
 </html>

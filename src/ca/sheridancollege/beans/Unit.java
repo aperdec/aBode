@@ -1,6 +1,7 @@
 package ca.sheridancollege.beans;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 import org.springframework.transaction.annotation.Transactional;
 
