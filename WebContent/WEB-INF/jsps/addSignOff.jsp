@@ -139,9 +139,17 @@
 						<input path="dateAgree" name="txtDateAgree" class="form-control"
 							id="level" placeholder="" required="required" type="text" />
 					</div>
+					
+				
 				</div>
 
 				<!-- end of row 6 start of row 7 -->
+				
+					<div class="form-group">
+			        <c:url value="/" var="home" />
+					<a href="${home}" class="pull-right btn btn-default">Finish</a>
+
+					</div>
 
 				<div class="form-group">
 
@@ -152,7 +160,9 @@
 						 />
 
 				</div>
-
+				
+				
+			
 				<!-- end -->
 
 	
