@@ -220,8 +220,8 @@ Extra Large Button CSS
 						Name</label>
 
 					<div class="col-lg-4">
-						<input path="repName" name="txtRepName" class="form-control"
-							id="repName" placeholder="" type="text" required="required"/>
+						<input path="repName" name="repName" class="form-control"
+							id="repName" placeholder="" type="text" required="required" value="${form.repName}"/>
 					</div>
 
 				</div>

@@ -102,10 +102,13 @@ public class DAO {
         Date fillerDate = new Date();
         //session.saveOrUpdate(ho);
 
+        HomeOwner homeOwner = new HomeOwner("Billy Mayes", "9058881212", 1234);
+
         //session.saveOrUpdate(t);
         //this.createUser(t);
         session.saveOrUpdate(u);
         session.saveOrUpdate(b);
+        session.saveOrUpdate(homeOwner);
 
         session.getTransaction().commit();
         session.close();
@@ -159,7 +162,7 @@ public class DAO {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Query query = session.getNamedQuery("HomeOwner.byHomeEnrollmentId");
+        Query query = session.getNamedQuery("HomeOwner.byHomeEnrollmentNumber");
 
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
 
@@ -179,5 +182,21 @@ public class DAO {
 
         session.getTransaction().commit();
         session.close();
+    }
+
+    public List<Form> getForm(long homeEnrollmentNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Form.byHomeEnrollmentNumber");
+
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+
+        List<Form> formList = (List<Form>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return formList;
     }
 }

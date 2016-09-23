@@ -125,6 +125,7 @@ public class HomeController {
 		dao.addTestData();
 		model.addAttribute("unit", new Unit());
 		model.addAttribute("builder", new Builder());
+		model.addAttribute("form", new Form());
 		//dao.getUnit(homeEnrollmentNumber);
 		return "displayUnitInfo";
 	}
@@ -144,6 +145,13 @@ public class HomeController {
 		List<Builder>returnsBuilder = dao.getBuilder(builderUserName);
 		Builder matchBuilder = returnsBuilder.get(0);
 		model.addAttribute("builder",matchBuilder);
+
+		List<Form> form = dao.getForm(homeEnrollmentNumber);
+		if (form.size() > 0) {
+			model.addAttribute("form", form.get(0));
+		} else {
+			model.addAttribute("form", new Form());
+		}
 		
 		return "displayUnitInfo";
 	}
@@ -174,9 +182,10 @@ public class HomeController {
 		List<Builder>returnsBuilder = dao.getBuilder(builderUserName);
 		model.addAttribute("builder", returnsBuilder.get(0));
 
-		List<HomeOwner> homeOwner = dao.getHomeOwner(homeEnrollmentNumber);
+		Form form = new Form(homeEnrollmentNumber, "PDI", repName);
 
-		dao.createForm(new Form(unit, homeOwner.get(0), "PDI", returnsBuilder.get(0), repName));
+		dao.createForm(form);
+		model.addAttribute("form", form);
 
 		return "displayUnitInfo";
 	}
