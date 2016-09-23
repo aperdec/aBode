@@ -87,11 +87,11 @@
 				<input type="submit" value="Save Deficiency" class="btn btn-primary "
 					style="margin-left: 8.33333333333%" />
 					
-					<div class="form-group"> 
-					<c:url value="/addSignOff" var="addSignOff" />
-					<a href="${addSignOff}" class="pull-right btn btn-default">Next</a>
 					
-					</div>
+			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
+					
+				
 
 			</fieldset>
 		</form>

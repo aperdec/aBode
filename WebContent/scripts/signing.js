@@ -14,28 +14,22 @@ function to_image(){
 
     document.getElementById("theimage").src = canvas.toDataURL();
     Canvas2Image.saveAsPNG(canvas);
-    /*
-    var link = document.getElementById('btn-download').createElement('a');
-    link.innerHTML = 'download image';
-    link.addEventListener('click', function(ev) {
-    	link.href = canvas.toDataURL();
-    	link.download = "mypainting.png";
-    }, false);
-    document.body.appendChild(link);
-    */
 
-
-    //this.href = canvas.toDataURL();
-
-    /*var image = canvas.toDataURL();
-
-    var aLink = document.createElement('a');
-    var evt = document.createEvent("HTMLEvents");
-    evt.initEvent("click");
-    aLink.download = 'image.png';
-    aLink.href = image;
-    aLink.dispatchEvent(evt); */
 }
+
+function clearSig() {
+	sigCapture.clear();
+}
+
+function accept(){
+
+	var link = document.getElementById("signature").toDataURL();
+	document.getElementById("acc2").innerHTML='<a id="dl" download="Canvas.png" href="'+link+'">SAVE</a>';
+
+}
+
+
+/*
 
 function download() {
     var dt = canvas.toDataURL('image/jpeg');
@@ -58,10 +52,10 @@ $(function() {
 //link on displayunit jsp commented out because not working
 function dlCanvas() {
 	  var dt = canvas.toDataURL();
-	  /* Change MIME type to trick the browser to downlaod the file instead of displaying it */
-	  //dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+	  //Change MIME type to trick the browser to downlaod the file instead of displaying it 
+	  //dt = dt.replace(/^data:image\/[^;], 'data:application/octet-stream');
 
-	  /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
+	  //In addition to <a>'s "download" attribute, you can define HTTP-style headers 
 	  //dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
 
 	  this.href = dt;
@@ -69,18 +63,6 @@ function dlCanvas() {
 	};
 	document.getElementById("dl").addEventListener('click', dlCanvas, false);
 
-
-
-/**
- * The event handler for the link's onclick event. We give THIS as a
- * parameter (=the link element), ID of the canvas and a filename.
-*/
-	//nope
-function accept(){
-    //downloadCanvas(this, 'signature', 'test.png');
-    this.href = document.getElementById("signature").toDataURL();
-    this.download = 'test.png';
-}
 
 //these 2 func together do not work
 document.getElementById('download').addEventListener('click', function() {
@@ -92,7 +74,4 @@ function downloadCanvas(link, canvasId, filename) {
     link.download = filename;
 }
 
-
-function clearSig() {
-	sigCapture.clear();
-}
+*/
