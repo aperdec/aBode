@@ -18,146 +18,185 @@ import ca.sheridancollege.beans.User;
 
 public class DAO {
 
-	SessionFactory sessionFactory = new Configuration().configure("ca/sheridancollege/config/hibernate.cfg.xml")
-			.buildSessionFactory();
+    SessionFactory sessionFactory = new Configuration().configure("ca/sheridancollege/config/hibernate.cfg.xml")
+            .buildSessionFactory();
 
-	public User findByUserName(String username) {
-		List<User> users = sessionFactory.openSession().createQuery("from User where username=:user")
-				.setParameter("user", username).list();
-		if (users.size() > 0)
-			return users.get(0);
-		else
-			return null;
-	}
+    public User findByUserName(String username) {
+        List<User> users = sessionFactory.openSession().createQuery("from User where username=:user")
+                .setParameter("user", username).list();
+        if (users.size() > 0)
+            return users.get(0);
+        else
+            return null;
+    }
 
-	public void createUser(User user) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+    public void createUser(User user) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		session.save(user);
+        session.save(user);
 
-		session.getTransaction().commit();
-		session.close();
-	}
+        session.getTransaction().commit();
+        session.close();
+    }
 
-	public List<Unit> getAllUnits() {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+    public List<Unit> getAllUnits() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		Query query = session.createQuery("from Unit");
-		List<Unit> unitList = (List<Unit>) query.list();
+        Query query = session.createQuery("from Unit");
+        List<Unit> unitList = (List<Unit>) query.list();
 
-		session.getTransaction().commit();
-		session.close();
-		
-		return unitList;
-	}
+        session.getTransaction().commit();
+        session.close();
 
-	public List<Unit> getUnit(long homeEnrollmentNumber) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+        return unitList;
+    }
 
-		Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
+    public List<Unit> getUnit(long homeEnrollmentNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+        Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
 
-		List<Unit> unitList = (List<Unit>) query.list();
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
 
-		session.getTransaction().commit();
-		session.close();
+        List<Unit> unitList = (List<Unit>) query.list();
 
-		return unitList;
-	}
-	
-	public List<Builder> getBuilder(String builderUserName) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+        session.getTransaction().commit();
+        session.close();
 
-		Query query = session.getNamedQuery("Builder.byUserName");
+        return unitList;
+    }
 
-		query.setString("users_username", builderUserName);
+    public List<Builder> getBuilder(String builderUserName) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		List<Builder> builderList = (List<Builder>) query.list();
+        Query query = session.getNamedQuery("Builder.byUserName");
 
-		session.getTransaction().commit();
-		session.close();
+        query.setString("users_username", builderUserName);
 
-		return builderList;
-	}
+        List<Builder> builderList = (List<Builder>) query.list();
 
+        session.getTransaction().commit();
+        session.close();
 
-	public void addTestData() {
-		// adding testing data
-		String password = "1234";
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		
-		HomeOwner ho = new HomeOwner("Laura Croft", "19054412233");
-		Unit u = new Unit(1234, 1, "12 Forest Lane", ho, "Blue Skys Project", 7, "2 bedroom", 721);
-		//Fix this security, needs to hash the password and submit the user to the database
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode(password);
-		
-		User t = new User ("batman",hashedPassword,true);
-		Builder b = new Builder("Lyn Green", 223344, "Times Group Inc", "12895550909", "Lyn@TimesGroup.com");
-		b.setUser(t);
-		Date fillerDate = new Date();
-		//session.saveOrUpdate(ho);
-
-		//session.saveOrUpdate(t);
-		//this.createUser(t);
-		session.saveOrUpdate(u);
-		session.saveOrUpdate(b);
-		
-		session.getTransaction().commit();
-		session.close();
-	}
-
-	public void deleteDeficiency(int id) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		
-		Query query = session.getNamedQuery("Deficiency.byId");
-
-		query.setLong("id", id);
-
-		List<Deficiency> deficiencyList = (List<Deficiency>) query.list();
-
-		session.delete(deficiencyList.get(0));
-
-		session.getTransaction().commit();
-		session.close();
-	}
-
-	public void saveOrUpdate(Deficiency deficiency) {
-		
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.saveOrUpdate(deficiency);
-		session.getTransaction().commit();
-		session.close();
-	}
-
-public void saveOrUpdateUnit(Unit unit) {
-
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.saveOrUpdate(unit);
-		unit.getAddress();
-		session.getTransaction().commit();
-		session.close();
-	}
-
-public void saveOrUpdateForm(Form form) {
-
-	Session session = sessionFactory.openSession();
-	session.beginTransaction();
-	session.saveOrUpdate(form);
-	session.getTransaction().commit();
-	session.close();
-}
+        return builderList;
+    }
 
 
+    public void addTestData() {
+        // adding testing data
+        String password = "1234";
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Unit u = new Unit(1234, 1, "12 Forest Lane", "Blue Skys Project", 7, "2 bedroom", 721);
+        //Fix this security, needs to hash the password and submit the user to the database
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(password);
 
+        User t = new User("batman", hashedPassword, true);
+        Builder b = new Builder("Lyn Green", 223344, "Times Group Inc", "12895550909", "Lyn@TimesGroup.com");
+        b.setUser(t);
+        Date fillerDate = new Date();
+        //session.saveOrUpdate(ho);
 
+        HomeOwner homeOwner = new HomeOwner("Billy Mayes", "9058881212", 1234);
+
+        //session.saveOrUpdate(t);
+        //this.createUser(t);
+        session.saveOrUpdate(u);
+        session.saveOrUpdate(b);
+        session.saveOrUpdate(homeOwner);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void deleteDeficiency(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Deficiency.byId");
+
+        query.setLong("id", id);
+
+        List<Deficiency> deficiencyList = (List<Deficiency>) query.list();
+
+        session.delete(deficiencyList.get(0));
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void saveOrUpdate(Deficiency deficiency) {
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(deficiency);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void saveOrUpdateUnit(Unit unit) {
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(unit);
+        unit.getAddress();
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void saveOrUpdateForm(Form form) {
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(form);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public List<HomeOwner> getHomeOwner(long homeEnrollmentNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("HomeOwner.byHomeEnrollmentNumber");
+
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+
+        List<HomeOwner> homeOwnerList = (List<HomeOwner>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return homeOwnerList;
+    }
+
+    public void createForm(Form form) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.save(form);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public List<Form> getForm(long homeEnrollmentNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Form.byHomeEnrollmentNumber");
+
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+
+        List<Form> formList = (List<Form>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return formList;
+    }
 }

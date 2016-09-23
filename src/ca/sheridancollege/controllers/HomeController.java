@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 
+import ca.sheridancollege.beans.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.SystemWideSaltSource;
@@ -21,13 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ca.sheridancollege.beans.Builder;
-import ca.sheridancollege.beans.Deficiency;
-import ca.sheridancollege.beans.HomeOwner;
-import ca.sheridancollege.beans.MyUserDetailsService;
-import ca.sheridancollege.beans.Unit;
-import ca.sheridancollege.beans.User;
-import ca.sheridancollege.beans.UserRole;
 import ca.sheridancollege.dao.DAO;
 
 @Controller
@@ -130,6 +125,7 @@ public class HomeController {
 		dao.addTestData();
 		model.addAttribute("unit", new Unit());
 		model.addAttribute("builder", new Builder());
+		model.addAttribute("form", new Form());
 		//dao.getUnit(homeEnrollmentNumber);
 		return "displayUnitInfo";
 	}
@@ -149,23 +145,48 @@ public class HomeController {
 		List<Builder>returnsBuilder = dao.getBuilder(builderUserName);
 		Builder matchBuilder = returnsBuilder.get(0);
 		model.addAttribute("builder",matchBuilder);
+
+		List<Form> form = dao.getForm(homeEnrollmentNumber);
+		if (form.size() > 0) {
+			model.addAttribute("form", form.get(0));
+		} else {
+			model.addAttribute("form", new Form());
+		}
 		
 		return "displayUnitInfo";
 	}
 
-	@RequestMapping("/saveUnit")
-	public String saveUnit(Model model, @ModelAttribute Unit u) {
-		List<Unit>returns = dao.getUnit(num);
-		Unit match = returns.get(0);
-		//match.setLotNumber(lotNumber);
-		match.setAddress(u.getAddress());
-		//match.setProjectName(projectName);
-		//match.setMunicipality(municipality);
-		//match.setLevel(level);
-		//match.setPlan(plan);
-		//match.setUnitNum(unitNum);
-		dao.saveOrUpdateUnit(match);
-		System.out.println("testing SAVE" + u.getAddress());
+	@RequestMapping(value = "/saveUnit", method = RequestMethod.POST)
+	public String saveUnit(
+			Model model,
+			@RequestParam long homeEnrollmentNumber,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
+			@RequestParam int lotNumber,
+			@RequestParam String address,
+			@RequestParam String projectName,
+			@RequestParam String municipality,
+			@RequestParam int level,
+			@RequestParam int unitNum,
+			@RequestParam String plan,
+			@RequestParam String repName
+	) {
+
+		Unit unit = new Unit(homeEnrollmentNumber, lotNumber, address, projectName, posessionDate, municipality, level, unitNum, plan);
+
+		dao.saveOrUpdateUnit(unit);
+		String builderUserName = this.getUserName();
+
+		List<Unit>returns = dao.getUnit(homeEnrollmentNumber);
+		model.addAttribute("unit", returns.get(0));
+
+		List<Builder>returnsBuilder = dao.getBuilder(builderUserName);
+		model.addAttribute("builder", returnsBuilder.get(0));
+
+		Form form = new Form(homeEnrollmentNumber, "PDI", repName);
+
+		dao.createForm(form);
+		model.addAttribute("form", form);
+
 		return "displayUnitInfo";
 	}
 	
