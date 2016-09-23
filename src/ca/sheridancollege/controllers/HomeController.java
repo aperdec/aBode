@@ -106,7 +106,18 @@ public class HomeController {
 	}
 
 	@RequestMapping("/saveDeficiency")
-	public String saveDeficiency(Model model, @ModelAttribute Deficiency deficiency, @RequestParam long homeEnrollmentNumber) {
+	public String saveDeficiency(
+	        Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+//            @RequestParam String category,
+//            @RequestParam Date deadline,
+//            @RequestParam Boolean status,
+            @RequestParam long homeEnrollmentNumber
+    ) {
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel);
 
 		List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
 		System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
