@@ -70,7 +70,7 @@
 				<div class="form-group">
 					<label for="constructionPersonnel" class="col-lg-2 control-label">Assign To</label>
 					<div class="col-lg-10">
-						<select class="form-control" id="constructionPersonnel">
+						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel">
 							<option>Jane Smith</option>
 							<option>Joey Batts</option>
 							<option>Jackson Trig</option>
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 
-				<input name="homeEnrollmentNumber" path="homeEnrollmentNumber" type="hidden" value="${unit.homeEnrollmentNumber}"/>
+				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
 				<input type="submit" value="Save Deficiency" class="btn btn-primary "

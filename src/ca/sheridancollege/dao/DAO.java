@@ -114,17 +114,29 @@ public class DAO {
         session.close();
     }
 
-    public void deleteDeficiency(int id) {
+    public void deleteDeficiency(int id, long homeEnrollmentNumber) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Query query = session.getNamedQuery("Deficiency.byId");
+        Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
 
-        query.setLong("id", id);
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
 
-        List<Deficiency> deficiencyList = (List<Deficiency>) query.list();
+        List<Unit> unitList = (List<Unit>) query.list();
 
-        session.delete(deficiencyList.get(0));
+        Unit unit = unitList.get(0);
+
+        List<Deficiency> deficiencies = unit.getDeficiencies();
+
+        for (Deficiency deficiency : unit.getDeficiencies()) {
+            if (deficiency.getId() == id) {
+                deficiencies.remove(deficiency);
+            }
+        }
+
+        unit.setDeficiencies(deficiencies);
+
+        session.saveOrUpdate(unit);
 
         session.getTransaction().commit();
         session.close();

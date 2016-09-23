@@ -76,7 +76,7 @@ public class HomeController {
 	@RequestMapping("/deleteDeficiency/{id}/{homeEnrollmentNumber}")
 	public String deleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 		
-		dao.deleteDeficiency(id);
+		dao.deleteDeficiency(id, homeEnrollmentNumber);
 
 		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 
@@ -106,15 +106,26 @@ public class HomeController {
 	}
 
 	@RequestMapping("/saveDeficiency")
-	public String saveDeficiency(Model model, @ModelAttribute Deficiency deficiency) {
+	public String saveDeficiency(
+	        Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+//            @RequestParam String category,
+//            @RequestParam Date deadline,
+//            @RequestParam Boolean status,
+            @RequestParam long homeEnrollmentNumber
+    ) {
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel);
 
-		List<Unit> unit = dao.getUnit(deficiency.getHomeEnrollmentNumber());
-		System.out.println("Unit Size:" + unit.size() + deficiency.getHomeEnrollmentNumber());
+		List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+		System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
 		unit.get(0).addDeficiency(deficiency);
 
 		dao.saveOrUpdateUnit(unit.get(0));
 
-		List<Unit> unitList = dao.getUnit(deficiency.getHomeEnrollmentNumber());
+		List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 		model.addAttribute("unit", unitList.get(0));
 
 		return "displayUnitDeficiencies";
