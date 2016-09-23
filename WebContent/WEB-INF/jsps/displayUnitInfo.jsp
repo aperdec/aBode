@@ -101,7 +101,7 @@ Extra Large Button CSS
 						of Posession</label>
 
 					<div class="col-lg-2">
-						<input path="dateOfPosession" name="txDateOfPosession"
+						<input path="dateOfPosession" name="posessionDate"
 							class="form-control" id="dateOfPosession"
 							value="${unit.posessionDate}" required="required" type="text" />
 					</div>
@@ -110,7 +110,7 @@ Extra Large Button CSS
 						and Reference Number</label>
 
 					<div class="col-lg-2">
-						<input path="venBuildRefNo" name="txtVenBuildRefNo"
+						<input path="venBuildRefNo" name="builderRefNum"
 							class="form-control" id="venBuildRefNo" placeholder=""
 							required="required" type="text" value="${builder.builderRefNum}"/>
 
@@ -124,7 +124,7 @@ Extra Large Button CSS
 					<label for="lotNum" class="col-lg-1 control-label">Lot # </label>
 
 					<div class="col-lg-1">
-						<input path="unit.lotNumber" name="txtlotNum" class="form-control"
+						<input path="unit.lotNumber" name="lotNumber" class="form-control"
 							id="lotNumber" value="${unit.lotNumber}" required="required" type="text" />
 
 					</div>
@@ -133,14 +133,14 @@ Extra Large Button CSS
 					<label for="plan" class="col-lg-1 control-label">Plan</label>
 
 					<div class="col-lg-4">
-						<input path="plan" name="txtPlan" class="form-control" id="plan"
+						<input path="plan" name="plan" class="form-control" id="plan"
 							placeholder="" required="required" type="text" value="${unit.plan}"/>
 					</div>
 
 					<label for="municipality" class="col-lg-3 control-label">Municipality</label>
 
 					<div class="col-lg-2">
-						<input path="municipality" name="txtMunicipality"
+						<input path="municipality" name="municipality"
 							class="form-control" id="municipality" value="${unit.municipality}"
 							required="required" type="text" />
 
@@ -156,7 +156,7 @@ Extra Large Button CSS
 						Project Name</label>
 
 					<div class="col-lg-4">
-						<input path="condoProjName" name="txtCondoProjName"
+						<input path="condoProjName" name="projectName"
 							class="form-control" id="condoProjName" value="${unit.projectName}"
 							required="required" type="text" />
 					</div>
@@ -164,7 +164,7 @@ Extra Large Button CSS
 					<label for="level" class="col-lg-3 control-label">Level</label>
 
 					<div class="col-lg-2">
-						<input path="level" name="txtLevel" class="form-control"
+						<input path="level" name="level" class="form-control"
 							id="level" placeholder="" required="required" type="text" value="${unit.level}" />
 					</div>
 
@@ -179,7 +179,7 @@ Extra Large Button CSS
 						Civic Address</label>
 
 					<div class="col-lg-4">
-						<input path="homeCivicAddress" name="txtHomeCivicAddress"
+						<input path="homeCivicAddress" name="address"
 							class="form-control" id="homeCivicAddress" placeholder=""
 							required="required" type="text" value="${unit.address}" />
 					</div>
@@ -187,7 +187,7 @@ Extra Large Button CSS
 					<label for="level" class="col-lg-3 control-label">Unit Number</label>
 
 					<div class="col-lg-2">
-						<input path="unitNum" name="txtUnitNum" class="form-control"
+						<input path="unitNum" name="unitNum" class="form-control"
 							id="unitNum" placeholder="" required="required" type="text" value="${unit.unitNum}" />
 					</div>
 
@@ -204,7 +204,7 @@ Extra Large Button CSS
 						/ Builder Name</label>
 
 					<div class="col-lg-9">
-						<input path="venBuildName" name="txtVenBuildName"
+						<input path="venBuildName" name="builderName"
 							class="form-control" id="venBuildName" placeholder=""
 							required="required" type="text" value="${builder.builderName}" />
 					</div>
@@ -221,10 +221,13 @@ Extra Large Button CSS
 
 					<div class="col-lg-4">
 						<input path="repName" name="txtRepName" class="form-control"
-							id="repName" placeholder="" required="required" type="text" />
+							id="repName" placeholder="" type="text" required="required"/>
 					</div>
 
 				</div>
+
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 
 				<!-- end of row 6 start of row 7 -->
 								<!-- end of row 6 start of row 7 -->

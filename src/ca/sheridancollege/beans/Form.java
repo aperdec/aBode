@@ -13,10 +13,10 @@ public class Form implements Serializable {
 	@GeneratedValue
 	private long id;
 	private Unit unit;
-	private WorkOrder workOrder;
+//	private WorkOrder workOrder;
 	private HomeOwner homeOwner;
 	private String formType;
-	private User user;
+	private Builder builder;
 	private String repName;
 	//private Blob repSig;
 
@@ -24,13 +24,12 @@ public class Form implements Serializable {
 
 	}
 
-	public Form(long id, Unit unit, WorkOrder workOrder, HomeOwner homeOwner, String formType, User user) {
-		this.id = id;
+	public Form(Unit unit, HomeOwner homeOwner, String formType, Builder builder, String repName) {
 		this.unit = unit;
-		this.workOrder = workOrder;
 		this.homeOwner = homeOwner;
 		this.formType = formType;
-		this.user = user;
+		this.builder = builder;
+		this.repName = repName;
 	}
 
 	public long getId() {
@@ -49,13 +48,13 @@ public class Form implements Serializable {
 		this.unit = unit;
 	}
 
-	public WorkOrder getWorkOrder() {
-		return workOrder;
-	}
-
-	public void setWorkOrder(WorkOrder workOrder) {
-		this.workOrder = workOrder;
-	}
+//	public WorkOrder getWorkOrder() {
+//		return workOrder;
+//	}
+//
+//	public void setWorkOrder(WorkOrder workOrder) {
+//		this.workOrder = workOrder;
+//	}
 
 	public HomeOwner getHomeOwner() {
 		return homeOwner;
@@ -73,12 +72,12 @@ public class Form implements Serializable {
 		this.formType = formType;
 	}
 
-	public User getUser() {
-		return user;
+	public Builder getBuilder() {
+		return builder;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setBuilder(Builder builder) {
+		this.builder = builder;
 	}
 
 }
