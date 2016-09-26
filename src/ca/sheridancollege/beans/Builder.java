@@ -2,53 +2,42 @@ package ca.sheridancollege.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.NamedQuery;
+
+@Entity
+@NamedQuery(name="Builder.byUserName", query="from Builder where users_username = :users_username")
 public class Builder implements Serializable {
 //test
-	private String vendorName;
-	private String vendorAddress;
-	private long vendorRefNum;
-	private String builderName;
-	private long builderRefNum;
-	private String builderAddress;
-	private int builderPhoneNumber;
+	
+	
 
+	private String builderEmail;
+	private String builderName;
+	@Id
+	private long builderRefNum;
+	private String builderCompany;
+	private String builderPhoneNumber;
+
+	@OneToOne
+	@JoinColumn(name="users_username")
+	private User user;
+	
 	public Builder() {
 
 	}
 
-	public Builder(String vendorName, String vendorAddress, long vendorRefNum, String builderName, long builderRefNum,
-			String builderAddress, int builderPhoneNumber) {
-		this.vendorName = vendorName;
-		this.vendorAddress = vendorAddress;
-		this.vendorRefNum = vendorRefNum;
+	public Builder(String builderName, long builderRefNum,
+			String builderCompany, String builderPhoneNumber, String builderEmail) {
 		this.builderName = builderName;
 		this.builderRefNum = builderRefNum;
-		this.builderAddress = builderAddress;
+		this.builderCompany = builderCompany;
 		this.builderPhoneNumber = builderPhoneNumber;
-	}
-
-	public String getVendorName() {
-		return vendorName;
-	}
-
-	public void setVendorName(String vendorName) {
-		this.vendorName = vendorName;
-	}
-
-	public String getVendorAddress() {
-		return vendorAddress;
-	}
-
-	public void setVendorAddress(String vendorAddress) {
-		this.vendorAddress = vendorAddress;
-	}
-
-	public long getVendorRefNum() {
-		return vendorRefNum;
-	}
-
-	public void setVendorRefNum(long vendorRefNum) {
-		this.vendorRefNum = vendorRefNum;
+		this.builderEmail = builderEmail;
 	}
 
 	public String getBuilderName() {
@@ -67,20 +56,36 @@ public class Builder implements Serializable {
 		this.builderRefNum = builderRefNum;
 	}
 
-	public String getBuilderAddress() {
-		return builderAddress;
+	public String getBuilderCompany() {
+		return builderCompany;
 	}
 
-	public void setBuilderAddress(String builderAddress) {
-		this.builderAddress = builderAddress;
+	public void setBuilderCompany(String builderCompany) {
+		this.builderCompany = builderCompany;
 	}
 
-	public int getBuilderPhoneNumber() {
+	public String getBuilderPhoneNumber() {
 		return builderPhoneNumber;
 	}
 
-	public void setBuilderPhoneNumber(int builderPhoneNumber) {
+	public void setBuilderPhoneNumber(String builderPhoneNumber) {
 		this.builderPhoneNumber = builderPhoneNumber;
 	}
+
+	public String getBuilderEmail() {
+		return builderEmail;
+	}
+
+	public void setBuilderEmail(String builderEmail) {
+		this.builderEmail = builderEmail;
+	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 
 }

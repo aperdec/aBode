@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script src="scripts/modernizr.custom.34982.js"></script>
+
+<script src="scripts/signing.js"></script>
+<script src="scripts/signatureCapture.js"></script>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!-- Latest compiled and minified CSS -->
@@ -31,6 +37,10 @@
 	display: flex;
 	align-items: center;
 }
+#canvasContainer {
+    border: 1px solid grey;
+    border-radius: 5px;
+}
 </style>
 <title>SignOff Form</title>
 </head>
@@ -45,7 +55,7 @@
 		<c:url value="/register" var="url" />
 		<form name="form" method="post" action="${url}"
 			class="form-horizontal" onsubmit="return verify()">
-			
+			<!-- May not need!!
 			<div class="form-group">
 
 					<label for="homeCivicAddress" class="col-lg-8 control-label">Vendor/Builder and Home Address Information</label>
@@ -60,7 +70,7 @@
 				</div>
 				
 				<div class="form-group">
-				</div>
+				</div> -->
 
 
 			<fieldset>
@@ -73,7 +83,15 @@
 				</div>
                                 
 				<!-- -->
+				
+				<div class="form-group">
+					<label for="date" class="col-lg-3 control-label">Date</label>
 
+					<div class="col-lg-2">
+						<input path="date" name="txtDate" class="form-control"
+							id="level" placeholder="" required="required" type="text" />
+					</div>
+					</div>
 				<div class="form-group">
 
 					<label for="purchasersName" class="col-lg-3 control-label">Purchaser's Name</label>
@@ -97,20 +115,26 @@
 
 				<div class="form-group">
 
-					<label for="purchasersSig" class="col-lg-3 control-label">Purchasers Signature</label>
-
+					<label for="purchasersSig" class="col-lg-3 control-label">Designator / Purchaser's Signature</label>
+					<div class="col-lg-4">
+						<div id="canvasContainer" width="300px" >
+    						<canvas id="signature" height="200px" />
+    					</div>
+					</div>
+					<!--<div><button onclick="to_image()">Accept</button></div>-->
+					<div><button id="acc2" onclick="accept()">Accept</button></div>
+					<div id="acc1"></div>
+					<br><br>
+					<div><button onclick="clearSig()">Redo</button></div>
+					
+					<!--  
 					<div class="col-lg-4">
 						<input path="purchasersSig" name="txtPurchasersSig"
 							class="form-control" id="purchasersSig" placeholder=""
 							required="required" type="text" />
-					</div>
+					</div> -->
 
-					<label for="date" class="col-lg-3 control-label">Date</label>
-
-					<div class="col-lg-2">
-						<input path="date" name="txtDate" class="form-control"
-							id="level" placeholder="" required="required" type="text" />
-					</div>
+					
 				</div>
 
 				<!-- end of row 3 start of row 4 -->
@@ -118,11 +142,11 @@
                                     <p>* Purchasers or owners who intend to designate someone to conduct the PDI in their place should ensure they 
                                         provide written authority to the vendor/builder authorizing the designate to sign this form on their behalf</p>
                                     <br>
-                                    <p>I the homeowner, confirm that all repair work listed has been completed.</p>
+                                    <!-- <p>I the homeowner, confirm that all repair work listed has been completed.</p> -->
                                 </div>
 
 				<!-- end of row 5 start of row 6 -->
-
+				<!-- MAY NOT NEED
 				<div class="form-group">
 
 					<label for="purchasersSigAgree" class="col-lg-3 control-label">Purchasers Signature</label>
@@ -139,9 +163,17 @@
 						<input path="dateAgree" name="txtDateAgree" class="form-control"
 							id="level" placeholder="" required="required" type="text" />
 					</div>
-				</div>
+					
+				
+				</div> -->
 
 				<!-- end of row 6 start of row 7 -->
+				
+					<div class="form-group">
+			        <c:url value="/" var="home" />
+					<a href="${home}" class="pull-right btn btn-default">Finish</a>
+
+					</div>
 
 				<div class="form-group">
 
@@ -152,7 +184,9 @@
 						 />
 
 				</div>
-
+				
+				
+			
 				<!-- end -->
 
 	

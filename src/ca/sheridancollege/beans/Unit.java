@@ -1,139 +1,164 @@
 package ca.sheridancollege.beans;
 
+import org.apache.commons.lang.time.DateUtils;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Embedded;
-
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-import org.apache.commons.lang.time.DateUtils;
-import org.hibernate.annotations.NamedQuery;
-
+@Transactional
 @Entity
-@NamedQuery(name="Unit.byHomeEnrollmentNumber", query="from Unit where homeEnrollmentNumber = :homeEnrollmentNumber")
+@NamedQuery(name = "Unit.byHomeEnrollmentNumber", query = "from Unit where homeEnrollmentNumber = :homeEnrollmentNumber")
 public class Unit implements Serializable {
 
-	@Id
-	private long homeEnrollmentNumber;
-	private int lotNumber;
-	private String address;
-	//@OneToOne(mappedBy="homeOwner")
-	//need to pass pk and fk relationship not the whole object for this annotation to work.
-	@Embedded
-	private HomeOwner homeOwner;
-	private String projectName;
-	private Date posessionDate;
-	private String municipality;
-	private int level;
-	@ElementCollection
-	private List<Deficiency> deficiencies;
-	
-	public Unit(){
-		
-	}
-	
-	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName, int level) {
-		this.homeEnrollmentNumber = homeEnrollmentNumber;
-		this.lotNumber = lotNumber;
-		this.address = address;
-		this.homeOwner = homeOwner;
-		this.projectName = projectName;
-		this.posessionDate = DateUtils.addMonths(new Date(), 1);
-		this.municipality = "Markham";
-		this.level = level;
-	}
+    @Id
+    private long homeEnrollmentNumber;
+    private int lotNumber;
+    private String address;
+    //@OneToOne(mappedBy="homeOwner")
+    //need to pass pk and fk relationship not the whole object for this annotation to work.
 
-	public Unit(long homeEnrollmentNumber, int lotNumber, String address, HomeOwner homeOwner, String projectName,
-			List<Deficiency> deficiencies) {
-		this.homeEnrollmentNumber = homeEnrollmentNumber;
-		this.lotNumber = lotNumber;
-		this.address = address;
-		this.homeOwner = homeOwner;
-		this.projectName = projectName;
-		this.deficiencies = deficiencies;
-	}
-	
+    private String projectName;
+    private Date posessionDate;
+    private String municipality;
+    private int level;
+    private int unitNum;
+    private String plan;
+    //@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Deficiency> deficiencies;
 
-	public int getLevel() {
-		return level;
-	}
+    public Unit() {
 
-	public void setLevel(int level) {
-		this.level = level;
-	}
+    }
 
-	public String getMunicipality() {
-		return municipality;
-	}
+    public Unit(long homeEnrollmentNumber) {
 
-	public void setMunicipality(String municipality) {
-		this.municipality = municipality;
-	}
+    }
 
-	public Date getPosessionDate() {
-		return posessionDate;
-	}
+    public Unit(long homeEnrollmentNumber, int lotNumber, String address, String projectName, int level, String plan, int unitNum) {
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
+        this.lotNumber = lotNumber;
+        this.address = address;
+        this.projectName = projectName;
+        this.posessionDate = DateUtils.addMonths(new Date(), 1);
+        this.municipality = "Markham";
+        this.level = level;
+        this.unitNum = unitNum;
+        this.plan = plan;
+        this.deficiencies = new ArrayList<Deficiency>();
+    }
 
-	public void setPosessionDate(Date posessionDate) {
-		this.posessionDate = posessionDate;
-	}
+    public Unit(long homeEnrollmentNumber, int lotNumber, String address, String projectName, int level, String plan, int unitNum, List<Deficiency> deficiencies) {
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
+        this.lotNumber = lotNumber;
+        this.address = address;
+        this.projectName = projectName;
+        this.deficiencies = deficiencies;
+    }
 
-	public long getHomeEnrollmentNumber() {
-		return homeEnrollmentNumber;
-	}
+    public Unit(long homeEnrollmentNumber, int lotNumber, String address, String projectName, Date posessionDate, String municipality, int level, int unitNum, String plan) {
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
+        this.lotNumber = lotNumber;
+        this.address = address;
+        this.projectName = projectName;
+        this.posessionDate = posessionDate;
+        this.municipality = municipality;
+        this.level = level;
+        this.unitNum = unitNum;
+        this.plan = plan;
+    }
 
-	public void setHomeEnrollmentNumber(long homeEnrollmentNumber) {
-		this.homeEnrollmentNumber = homeEnrollmentNumber;
-	}
+    public int getLevel() {
+        return level;
+    }
 
-	public int getLotNumber() {
-		return lotNumber;
-	}
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
-	public void setLotNumber(int lotNumber) {
-		this.lotNumber = lotNumber;
-	}
+    public String getMunicipality() {
+        return municipality;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public Date getPosessionDate() {
+        return posessionDate;
+    }
 
-	public HomeOwner getHomeOwner() {
-		return homeOwner;
-	}
+    public void setPosessionDate(Date posessionDate) {
+        this.posessionDate = posessionDate;
+    }
 
-	public void setHomeOwner(HomeOwner homeOwner) {
-		this.homeOwner = homeOwner;
-	}
+    public long getHomeEnrollmentNumber() {
+        return homeEnrollmentNumber;
+    }
 
-	public String getProjectName() {
-		return projectName;
-	}
+    public void setHomeEnrollmentNumber(long homeEnrollmentNumber) {
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
+    }
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
+    public int getLotNumber() {
+        return lotNumber;
+    }
 
-	public List<Deficiency> getDeficiencies() {
-		return deficiencies;
-	}
+    public void setLotNumber(int lotNumber) {
+        this.lotNumber = lotNumber;
+    }
 
-	public void setDeficiencies(List<Deficiency> deficiencies) {
-		this.deficiencies = deficiencies;
-	}
-	
-	public void addDeficiency(int deficiencyId){
-		//needs logic
-	}
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public List<Deficiency> getDeficiencies() {
+        return deficiencies;
+    }
+
+    public void setDeficiencies(List<Deficiency> deficiencies) {
+        this.deficiencies = deficiencies;
+    }
+
+    public void addDeficiency(Deficiency deficiency) {
+        deficiencies.add(deficiency);
+    }
+
+    public int getUnitNum() {
+        return unitNum;
+    }
+
+    public void setUnitNum(int unitNum) {
+        this.unitNum = unitNum;
+    }
+
+    public String getPlan() {
+        return plan;
+    }
+
+    public void setPlan(String plan) {
+        this.plan = plan;
+    }
 
 }

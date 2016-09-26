@@ -3,39 +3,46 @@ package ca.sheridancollege.beans;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
+import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.NamedQuery;
 
 @Embeddable
-@NamedQuery(name="Deficiency.byId", query="from Deficiency where id = :id")
 public class Deficiency implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7277687991400754226L;
+//	@GeneratedValue
 	private int id;
 	private String location;
 	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
+	private String constructionPersonnel;
 	private String category;
 	private String[] categories;
 	private Date deadline;
 	private Boolean status;
 
 	public Deficiency() {
-		categories = new String[] {"Add Categories"};
+		this(0, null, null, null);
 	}
 
-	public Deficiency(String location, String description, String category, Date deadline) {
+	public Deficiency(int id, String location, String description, String constructionPersonnel) {
+		this(id, location, description, constructionPersonnel, null, null, false);
+	}
+
+	public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status) {
+		this.id = id;
 		this.location = location;
 		this.description = description;
+		this.constructionPersonnel = constructionPersonnel;
 		this.category = category;
-		categories = new String[] {"Add Categories"};
 		this.deadline = deadline;
+		this.status = status;
+		setCategories();
 	}
 
 	public String getLocation() {
@@ -84,6 +91,22 @@ public class Deficiency implements Serializable {
 
 	public String[] getCategories() {
 		return categories;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getConstructionPersonnel() {
+		return constructionPersonnel;
+	}
+
+	public void setConstructionPersonnel(String constructionPersonnel) {
+		this.constructionPersonnel = constructionPersonnel;
+	}
+
+	public void setCategories() {
+		categories = new String[] {"Add Categories"};
 	}
 
 }

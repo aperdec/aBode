@@ -25,7 +25,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-<title>${unit.title}</title>
+<title></title>
 </head>
 <body>
 
@@ -44,6 +44,9 @@
 		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
 		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
 				
+
+					<c:url value="/addSignOff" var="addSignOff" />
+					<a href="${addSignOff}" class="pull-right btn btn-default">Next</a>
 	</div>
 
 </body>
