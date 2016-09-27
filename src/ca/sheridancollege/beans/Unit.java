@@ -1,7 +1,6 @@
 package ca.sheridancollege.beans;
 
 import org.apache.commons.lang.time.DateUtils;
-import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,16 +22,12 @@ public class Unit implements Serializable {
     private long homeEnrollmentNumber;
     private int lotNumber;
     private String address;
-    //@OneToOne(mappedBy="homeOwner")
-    //need to pass pk and fk relationship not the whole object for this annotation to work.
-
     private String projectName;
     private Date posessionDate;
     private String municipality;
     private int level;
     private int unitNum;
     private String plan;
-    //@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @ElementCollection(fetch = FetchType.EAGER)
     private List<Deficiency> deficiencies;
 
@@ -41,7 +36,7 @@ public class Unit implements Serializable {
     }
 
     public Unit(long homeEnrollmentNumber) {
-
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
     }
 
     public Unit(long homeEnrollmentNumber, int lotNumber, String address, String projectName, int level, String plan, int unitNum) {

@@ -1,29 +1,21 @@
 package ca.sheridancollege.dao;
 
-import java.util.Date;
-import java.util.List;
-
+import ca.sheridancollege.beans.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import ca.sheridancollege.beans.Builder;
-import ca.sheridancollege.beans.Deficiency;
-import ca.sheridancollege.beans.Form;
-import ca.sheridancollege.beans.HomeOwner;
-import ca.sheridancollege.beans.Unit;
-import ca.sheridancollege.beans.User;
+import java.util.Date;
+import java.util.List;
 
 public class DAO {
 
-    SessionFactory sessionFactory = new Configuration().configure("ca/sheridancollege/config/hibernate.cfg.xml")
-            .buildSessionFactory();
+    SessionFactory sessionFactory = new Configuration().configure("ca/sheridancollege/config/hibernate.cfg.xml").buildSessionFactory();
 
     public User findByUserName(String username) {
-        List<User> users = sessionFactory.openSession().createQuery("from User where username=:user")
-                .setParameter("user", username).list();
+        List<User> users = sessionFactory.openSession().createQuery("from User where username=:user").setParameter("user", username).list();
         if (users.size() > 0)
             return users.get(0);
         else
@@ -58,9 +50,7 @@ public class DAO {
         session.beginTransaction();
 
         Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
-
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
-
         List<Unit> unitList = (List<Unit>) query.list();
 
         session.getTransaction().commit();
@@ -74,9 +64,7 @@ public class DAO {
         session.beginTransaction();
 
         Query query = session.getNamedQuery("Builder.byUserName");
-
         query.setString("users_username", builderUserName);
-
         List<Builder> builderList = (List<Builder>) query.list();
 
         session.getTransaction().commit();
@@ -119,13 +107,9 @@ public class DAO {
         session.beginTransaction();
 
         Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
-
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
-
         List<Unit> unitList = (List<Unit>) query.list();
-
         Unit unit = unitList.get(0);
-
         List<Deficiency> deficiencies = unit.getDeficiencies();
 
         for (Deficiency deficiency : unit.getDeficiencies()) {
@@ -133,11 +117,9 @@ public class DAO {
                 deficiencies.remove(deficiency);
             }
         }
-
         unit.setDeficiencies(deficiencies);
 
         session.saveOrUpdate(unit);
-
         session.getTransaction().commit();
         session.close();
     }
@@ -175,9 +157,7 @@ public class DAO {
         session.beginTransaction();
 
         Query query = session.getNamedQuery("HomeOwner.byHomeEnrollmentNumber");
-
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
-
         List<HomeOwner> homeOwnerList = (List<HomeOwner>) query.list();
 
         session.getTransaction().commit();
@@ -201,9 +181,7 @@ public class DAO {
         session.beginTransaction();
 
         Query query = session.getNamedQuery("Form.byHomeEnrollmentNumber");
-
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
-
         List<Form> formList = (List<Form>) query.list();
 
         session.getTransaction().commit();
