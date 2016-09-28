@@ -46,7 +46,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="location" class="col-lg-2 control-label">Location</label>
+					<label for="location" class="col-lg-1 control-label">Location</label>
 					<div class="col-lg-10">
 						<select name="location" class="form-control" id="location">
 							<option>Kitchen</option>
@@ -68,7 +68,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="constructionPersonnel" class="col-lg-2 control-label">Assign To</label>
+					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel">
 							<option>Jane Smith</option>
@@ -82,7 +82,7 @@
 				</div>
 
                 <div class="form-group">
-					<label for="category" class="col-lg-2 control-label">Category</label>
+					<label for="category" class="col-lg-1 control-label">Category</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="category" name="category">
 				        <c:forEach var="category" items="${deficiency.categories}">
