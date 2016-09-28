@@ -169,9 +169,7 @@ public class DAO {
     public void createForm(Form form) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
         session.save(form);
-
         session.getTransaction().commit();
         session.close();
     }
