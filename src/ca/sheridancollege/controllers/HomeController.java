@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -61,6 +62,19 @@ public class HomeController {
         return "addDeficiency";
     }
 
+    @RequestMapping("/workOrderAddDeficiency/{homeEnrollmentNumber}")
+    public String workOrderAddDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        Deficiency deficiency = new Deficiency();
+
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+        model.addAttribute("unit", unitList.get(0));
+        model.addAttribute("deficiency", deficiency);
+
+        return "workOrderAddDeficiency";
+    }
+
     @RequestMapping("/deleteDeficiency/{id}/{homeEnrollmentNumber}")
     public String deleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
@@ -93,8 +107,43 @@ public class HomeController {
         return "displayUnitDeficiencies";
     }
 
+    @RequestMapping("/workOrderDisplayUnitDeficiencies/{homeEnrollmentNumber}")
+    public String workOrderViewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        model.addAttribute("unit", unitList.get(0));
+
+        return "workOrderDisplayUnitDeficiencies";
+    }
+
     @RequestMapping("/saveDeficiency")
     public String saveDeficiency(
+            Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+            @RequestParam String category,
+//            @RequestParam Date deadline,
+            @RequestParam long homeEnrollmentNumber
+    ) {
+        boolean status = false;
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, status);
+
+        List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+        System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
+        unit.get(0).addDeficiency(deficiency);
+
+        dao.saveOrUpdateUnit(unit.get(0));
+
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        model.addAttribute("unit", unitList.get(0));
+
+        return "displayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderSaveDeficiency")
+    public String workOrderSaveDeficiency(
             Model model,
             @RequestParam int id,
             @RequestParam String location,
@@ -227,6 +276,28 @@ public class HomeController {
 
         return "home";
 
+    }
+
+    @RequestMapping("/displayBuildingProjects")
+    public String displayBuildingProjects(Model model) {
+
+        List<String> projectList = new ArrayList<>();
+
+        projectList.add("Blue Skys Project");
+
+        model.addAttribute("projectList", projectList);
+
+        return "displayBuildingProjects";
+    }
+
+    @RequestMapping("/displayUnits/{project}")
+    public String displayUnits(Model model, @PathVariable String project) {
+
+        List<Unit> unitList = dao.getUnitsByProject(project);
+
+        model.addAttribute("unitList", unitList);
+
+        return "displayUnits";
     }
 
     public String getUserName() {

@@ -187,4 +187,18 @@ public class DAO {
 
         return formList;
     }
+
+    public List<Unit> getUnitsByProject(String project) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Unit.byProjectName");
+        query.setString("projectName", project);
+        List<Unit> unitList = (List<Unit>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return unitList;
+    }
 }
