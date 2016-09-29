@@ -124,11 +124,10 @@ public class HomeController {
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
             @RequestParam String category,
-//            @RequestParam Date deadline,
+            @RequestParam Date deadline,
             @RequestParam long homeEnrollmentNumber
     ) {
-        boolean status = false;
-        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, status);
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false);
 
         List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
         System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
@@ -150,11 +149,10 @@ public class HomeController {
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
             @RequestParam String category,
-//            @RequestParam Date deadline,
+            @RequestParam Date deadline,
             @RequestParam long homeEnrollmentNumber
     ) {
-        boolean status = false;
-        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, status);
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false);
 
         List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
         System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
