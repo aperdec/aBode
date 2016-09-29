@@ -97,6 +97,18 @@ public class HomeController {
         return "displayUnitDeficiencies";
     }
 
+    @RequestMapping("/workOrderDeleteDeficiency/{id}/{homeEnrollmentNumber}")
+    public String workOrderDeleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+
+        dao.deleteDeficiency(id, homeEnrollmentNumber);
+
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+        model.addAttribute("unit", unitList.get(0));
+
+        return "workOrderDisplayUnitDeficiencies";
+    }
+
     @RequestMapping("/displayUnits")
     public String displayUnits(Model model) {
 
