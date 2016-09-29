@@ -32,7 +32,7 @@
 <body>
 
 	<div style="margin: 2%">
-		<c:url value="/saveDeficiency" var="url" />
+		<c:url value="/workOrderSaveDeficiency" var="url" />
 		<form name="form" class="form-horizontal" method="post" action="${url}">
 
 			<fieldset>
@@ -41,9 +41,16 @@
 				<div class="form-group">
 					<label for="id" class="col-lg-1 control-label">Deficiency Number</label>
 					<div class="col-lg-10">
-						<input path="id" name="id" class="form-control" id="id" placeholder="Id" required="required"/>
+						<input path="id" name="id" class="form-control" id="id" value="${deficiency.id}" readonly/>
 					</div>
 				</div>
+
+				<div class="form-group">
+                	<label for="deadline" class="col-lg-1 control-label">Deadline</label>
+                	<div class="col-lg-10">
+                		<input path="deadline" name="deadline" class="form-control" id="deadline" value="${unit.posessionDate}" readonly/>
+                	</div>
+                </div>
 
 				<div class="form-group">
 					<label for="location" class="col-lg-1 control-label">Location</label>
@@ -98,7 +105,7 @@
 				<input type="submit" value="Save Deficiency" class="btn btn-primary" style="margin-left: 8.33333333333%" />
 
 
-			    <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+			    <c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
 
 

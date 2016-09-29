@@ -41,9 +41,16 @@
 				<div class="form-group">
 					<label for="id" class="col-lg-1 control-label">Deficiency Number</label>
 					<div class="col-lg-10">
-						<input path="id" name="id" class="form-control" id="id" placeholder="Id" required="required"/>
+						<input path="id" name="id" class="form-control" id="id" value="${deficiency.id}" readonly/>
 					</div>
 				</div>
+
+				<div class="form-group">
+                	<label for="deadline" class="col-lg-1 control-label">Deadline</label>
+                	<div class="col-lg-10">
+                		<input path="deadline" name="deadline" class="form-control" id="deadline" value="${unit.posessionDate}" readonly/>
+                	</div>
+                </div>
 
 				<div class="form-group">
 					<label for="location" class="col-lg-1 control-label">Location</label>

@@ -52,11 +52,16 @@ public class HomeController {
     @RequestMapping("/addDeficiency/{homeEnrollmentNumber}")
     public String addDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
 
-        Deficiency deficiency = new Deficiency();
-
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        Deficiency deficiency = new Deficiency();
+        if(unit.getDeficiencies().size() > 0) {
+            deficiency.setId(unit.getDeficiencies().get(unit.getDeficiencies().size() - 1).getId() + 1);
+        } else {
+            deficiency.setId(1);
+        }
 
-        model.addAttribute("unit", unitList.get(0));
+        model.addAttribute("unit", unit);
         model.addAttribute("deficiency", deficiency);
 
         return "addDeficiency";
@@ -65,9 +70,14 @@ public class HomeController {
     @RequestMapping("/workOrderAddDeficiency/{homeEnrollmentNumber}")
     public String workOrderAddDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
 
-        Deficiency deficiency = new Deficiency();
-
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        Deficiency deficiency = new Deficiency();
+        if(unit.getDeficiencies().size() > 0) {
+            deficiency.setId(unit.getDeficiencies().get(unit.getDeficiencies().size() - 1).getId() + 1);
+        } else {
+            deficiency.setId(1);
+        }
 
         model.addAttribute("unit", unitList.get(0));
         model.addAttribute("deficiency", deficiency);
@@ -124,11 +134,10 @@ public class HomeController {
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
             @RequestParam String category,
-//            @RequestParam Date deadline,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
             @RequestParam long homeEnrollmentNumber
     ) {
-        boolean status = false;
-        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, status);
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false);
 
         List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
         System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
@@ -150,11 +159,10 @@ public class HomeController {
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
             @RequestParam String category,
-//            @RequestParam Date deadline,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
             @RequestParam long homeEnrollmentNumber
     ) {
-        boolean status = false;
-        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, status);
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false);
 
         List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
         System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
@@ -165,7 +173,7 @@ public class HomeController {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         model.addAttribute("unit", unitList.get(0));
 
-        return "displayUnitDeficiencies";
+        return "workOrderDisplayUnitDeficiencies";
     }
 
     @RequestMapping("/displayUnitInfo")

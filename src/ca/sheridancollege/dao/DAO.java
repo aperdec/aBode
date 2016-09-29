@@ -110,14 +110,17 @@ public class DAO {
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
         List<Unit> unitList = (List<Unit>) query.list();
         Unit unit = unitList.get(0);
-        List<Deficiency> deficiencies = unit.getDeficiencies();
+        List<Deficiency> modDeficiencies = unit.getDeficiencies();
+        List<Deficiency> origDeficiencies = unit.getDeficiencies();
 
-        for (Deficiency deficiency : unit.getDeficiencies()) {
+        for (Deficiency deficiency : origDeficiencies) {
             if (deficiency.getId() == id) {
-                deficiencies.remove(deficiency);
+                modDeficiencies.remove(deficiency);
+                break;
             }
         }
-        unit.setDeficiencies(deficiencies);
+
+        unit.setDeficiencies(modDeficiencies);
 
         session.saveOrUpdate(unit);
         session.getTransaction().commit();
