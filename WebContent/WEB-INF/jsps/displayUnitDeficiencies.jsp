@@ -34,7 +34,7 @@
 			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
 				<div class="list-group-item"> ${unitDeficiency.id} + ${unitDeficiency.description} </div>
 				<c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
-				<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
+				<a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
 			</c:forEach>
 		</div>
 	</div>
@@ -43,7 +43,6 @@
 		
 		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
 		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
-				
 
 		<c:url value="/addSignOff" var="addSignOff" />
 		<a href="${addSignOff}" class="pull-right btn btn-default">Next</a>
