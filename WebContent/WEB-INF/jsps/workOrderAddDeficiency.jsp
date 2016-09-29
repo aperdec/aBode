@@ -41,7 +41,7 @@
 				<div class="form-group">
 					<label for="id" class="col-lg-1 control-label">Deficiency Number</label>
 					<div class="col-lg-10">
-						<input path="id" name="id" class="form-control" id="id" placeholder="Id" required="required"/>
+						<input path="id" name="id" class="form-control" id="id" value="${deficiency.id}" readonly/>
 					</div>
 				</div>
 

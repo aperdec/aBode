@@ -52,11 +52,16 @@ public class HomeController {
     @RequestMapping("/addDeficiency/{homeEnrollmentNumber}")
     public String addDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
 
-        Deficiency deficiency = new Deficiency();
-
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        Deficiency deficiency = new Deficiency();
+        if(unit.getDeficiencies().size() > 0) {
+            deficiency.setId(unit.getDeficiencies().get(unit.getDeficiencies().size() - 1).getId() + 1);
+        } else {
+            deficiency.setId(1);
+        }
 
-        model.addAttribute("unit", unitList.get(0));
+        model.addAttribute("unit", unit);
         model.addAttribute("deficiency", deficiency);
 
         return "addDeficiency";
@@ -65,9 +70,14 @@ public class HomeController {
     @RequestMapping("/workOrderAddDeficiency/{homeEnrollmentNumber}")
     public String workOrderAddDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
 
-        Deficiency deficiency = new Deficiency();
-
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        Deficiency deficiency = new Deficiency();
+        if(unit.getDeficiencies().size() > 0) {
+            deficiency.setId(unit.getDeficiencies().get(unit.getDeficiencies().size() - 1).getId() + 1);
+        } else {
+            deficiency.setId(1);
+        }
 
         model.addAttribute("unit", unitList.get(0));
         model.addAttribute("deficiency", deficiency);
