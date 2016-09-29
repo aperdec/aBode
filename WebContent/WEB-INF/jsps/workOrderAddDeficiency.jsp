@@ -32,7 +32,7 @@
 <body>
 
 	<div style="margin: 2%">
-		<c:url value="/saveDeficiency" var="url" />
+		<c:url value="/workOrderSaveDeficiency" var="url" />
 		<form name="form" class="form-horizontal" method="post" action="${url}">
 
 			<fieldset>
@@ -98,7 +98,7 @@
 				<input type="submit" value="Save Deficiency" class="btn btn-primary" style="margin-left: 8.33333333333%" />
 
 
-			    <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+			    <c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
 
 
