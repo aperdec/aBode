@@ -40,13 +40,12 @@
 	</div>
 
 	<div style="padding: 0% 2%">
-		
-		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
-				
 
-		<c:url value="/addSignOff" var="addSignOff" />
-		<a href="${addSignOff}" class="pull-right btn btn-default">Next</a>
+		<c:url value="/workOrderAddDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
+		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a>
+
+		<c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="backUrl" />
+		<a href="${backUrl}" class="btn btn-primary">Back</a>
 	</div>
 
 </body>

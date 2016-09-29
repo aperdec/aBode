@@ -1,6 +1,7 @@
 package ca.sheridancollege.beans;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +16,10 @@ import java.util.List;
 
 @Transactional
 @Entity
-@NamedQuery(name = "Unit.byHomeEnrollmentNumber", query = "from Unit where homeEnrollmentNumber = :homeEnrollmentNumber")
+@NamedQueries({
+        @NamedQuery(name = "Unit.byHomeEnrollmentNumber", query = "from Unit where homeEnrollmentNumber = :homeEnrollmentNumber"),
+        @NamedQuery(name = "Unit.byProjectName", query = "from Unit where projectName = :projectName")
+})
 public class Unit implements Serializable {
 
     @Id

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,28 +25,18 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-<title></title>
+	
+<title>aBode</title>
 </head>
 <body>
-
+	
 	<div style="margin: 2%">
 		<div class="list-group">
-			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
-				<div class="list-group-item"> ${unitDeficiency.id} + ${unitDeficiency.description} </div>
-				<c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
-				<a href="${deleteUrl}" class="btn btn-danger">Delete</a>
+			<c:forEach var="project" items="${projectList}">
+				<c:url value="/displayUnits/${project}" var="viewUrl" />
+				<a href="${viewUrl}" class="list-group-item"> ${project} </a>
 			</c:forEach>
 		</div>
-	</div>
-
-	<div style="padding: 0% 2%">
-		
-		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
-				
-
-		<c:url value="/addSignOff" var="addSignOff" />
-		<a href="${addSignOff}" class="pull-right btn btn-default">Next</a>
 	</div>
 
 </body>
