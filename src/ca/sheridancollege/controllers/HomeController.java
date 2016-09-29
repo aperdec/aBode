@@ -303,8 +303,17 @@ public class HomeController {
 
         List<String> projectList = new ArrayList<>();
 
-        projectList.add("Blue Skys Project");
-
+        
+        projectList.add("Blue Skys Project"); // Fake project
+        
+        //Condominiums by Times Group Inc
+        projectList.add("Eden Park II");
+        projectList.add("River Park");
+        projectList.add("River Walk East");
+        //coming soon
+        projectList.add("Luxr Towns");
+        projectList.add("Village Park Phase II");
+        projectList.add("River Side");
         model.addAttribute("projectList", projectList);
 
         return "displayBuildingProjects";
