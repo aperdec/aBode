@@ -124,7 +124,7 @@ public class HomeController {
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
             @RequestParam String category,
-            @RequestParam Date deadline,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
             @RequestParam long homeEnrollmentNumber
     ) {
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false);
@@ -149,7 +149,7 @@ public class HomeController {
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
             @RequestParam String category,
-            @RequestParam Date deadline,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
             @RequestParam long homeEnrollmentNumber
     ) {
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false);
