@@ -15,6 +15,7 @@
     <security:http use-expressions="true">
 
         <security:intercept-url pattern="/home" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/imageDisplay/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveUnit/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveDeficiency" access="isAuthenticated()"/>

@@ -13,8 +13,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class HomeController {
@@ -147,9 +155,20 @@ public class HomeController {
         List<Form> form = dao.getForm(homeEnrollmentNumber);
         if (form.size() > 0) {
             model.addAttribute("form", form.get(0));
+            
+            //this downloads it to your computer -- getting it out the the database
+            try{
+            	FileOutputStream input = new FileOutputStream("C:\\Users\\Cat\\Downloads\\refSigTWO.png");
+            	input.write(form.get(0).getRepSig());
+            	input.close();
+            } catch(Exception e){
+            	e.printStackTrace();
+            }
         } else {
             model.addAttribute("form", new Form());
         }
+        
+        //String img = form.get(0).getRepSig().toString();
 
         return "displayUnitInfo";
     }
@@ -237,5 +256,25 @@ public class HomeController {
         }
         return null;
     }
+    
+    //need this to work to display image from database
+    @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}", method = RequestMethod.GET)
+    public void showImage(Model model, @PathVariable long homeEnrollmentNumber, HttpServletResponse response,
+    		HttpServletRequest request) 
+            throws ServletException, IOException{
 
+
+      //Form form = DAO.getForm(1234).get(0);  
+    	List<Form> form = dao.getForm(homeEnrollmentNumber);
+    	Form f = form.get(0);
+    	
+    	
+      response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+      response.getOutputStream().write(f.getRepSig());
+      //response.getOutputStream().write(item.getItemImage());
+
+
+      response.getOutputStream().close();
+
+    }
 }

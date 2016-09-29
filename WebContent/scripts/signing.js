@@ -24,7 +24,7 @@ function clearSig() {
 function accept(){
 
 	var link = document.getElementById("signature").toDataURL();
-	document.getElementById("acc2").innerHTML='<a id="dl" download="Canvas.png" href="'+link+'">SAVE</a>';
+	document.getElementById("acc2").innerHTML='<a id="dl" download="refSig.png" href="'+link+'">SAVE</a>';
 
 }
 

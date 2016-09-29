@@ -263,7 +263,7 @@ Extra Large Button CSS
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
-				<div><image id="theimage"></image></div>
+				<div><img src="/imageDisplay/${form.homeEnrollmentNumber}"/><image id="theimage"></image></div>
 	</div>
 
 	<!-- </fieldset>
