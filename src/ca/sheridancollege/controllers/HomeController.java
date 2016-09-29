@@ -149,12 +149,12 @@ public class HomeController {
             @RequestParam String location,
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
-//            @RequestParam String category,
+            @RequestParam String category,
 //            @RequestParam Date deadline,
-//            @RequestParam Boolean status,
             @RequestParam long homeEnrollmentNumber
     ) {
-        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel);
+        boolean status = false;
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, status);
 
         List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
         System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
@@ -165,7 +165,7 @@ public class HomeController {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         model.addAttribute("unit", unitList.get(0));
 
-        return "workOrderDisplayUnitDeficiencies";
+        return "displayUnitDeficiencies";
     }
 
     @RequestMapping("/displayUnitInfo")

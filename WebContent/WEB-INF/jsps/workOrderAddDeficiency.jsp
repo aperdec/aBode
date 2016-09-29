@@ -27,12 +27,12 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-<title>Perds' Wiki</title>
+<title>Add Deficiency: ${unit.homeEnrollmentNumber}</title>
 </head>
 <body>
 
 	<div style="margin: 2%">
-		<c:url value="/workOrderSaveDeficiency" var="url" />
+		<c:url value="/saveDeficiency" var="url" />
 		<form name="form" class="form-horizontal" method="post" action="${url}">
 
 			<fieldset>
@@ -41,12 +41,12 @@
 				<div class="form-group">
 					<label for="id" class="col-lg-1 control-label">Deficiency Number</label>
 					<div class="col-lg-10">
-						<input path="id" name="id" class="form-control" id="id" placeholder="Id" required="required" />
+						<input path="id" name="id" class="form-control" id="id" placeholder="Id" required="required"/>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="location" class="col-lg-2 control-label">Location</label>
+					<label for="location" class="col-lg-1 control-label">Location</label>
 					<div class="col-lg-10">
 						<select name="location" class="form-control" id="location">
 							<option>Kitchen</option>
@@ -66,9 +66,9 @@
 							id="description" required="required"> </textarea>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
-					<label for="constructionPersonnel" class="col-lg-2 control-label">Assign To</label>
+					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel">
 							<option>Jane Smith</option>
@@ -81,15 +81,27 @@
 					</div>
 				</div>
 
+                <div class="form-group">
+					<label for="category" class="col-lg-1 control-label">Category</label>
+					<div class="col-lg-10">
+						<select class="form-control" id="category" name="category">
+				        <c:forEach var="category" items="${deficiency.categories}">
+                	        <option>${category}</option>
+                        </c:forEach>
+                        </select>
+					</div>
+				</div>
+
 				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				
+
 				<input type="submit" value="Save Deficiency" class="btn btn-primary" style="margin-left: 8.33333333333%" />
-					
-				<c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-				<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
-					
-				
+
+
+			    <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
+
+
 
 			</fieldset>
 		</form>
