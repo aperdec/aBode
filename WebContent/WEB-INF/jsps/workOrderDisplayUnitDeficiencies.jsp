@@ -44,7 +44,7 @@
 		<c:url value="/workOrderAddDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
 		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a>
 
-		<c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="backUrl" />
+		<c:url value="/displayUnits/${unit.projectName}" var="backUrl" />
 		<a href="${backUrl}" class="btn btn-primary">Back</a>
 	</div>
 

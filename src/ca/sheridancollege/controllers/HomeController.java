@@ -165,7 +165,7 @@ public class HomeController {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         model.addAttribute("unit", unitList.get(0));
 
-        return "displayUnitDeficiencies";
+        return "workOrderDisplayUnitDeficiencies";
     }
 
     @RequestMapping("/displayUnitInfo")
