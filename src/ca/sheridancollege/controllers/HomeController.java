@@ -1,14 +1,15 @@
 package ca.sheridancollege.controllers;
 
-import ca.sheridancollege.beans.*;
+import ca.sheridancollege.beans.Builder;
+import ca.sheridancollege.beans.Deficiency;
+import ca.sheridancollege.beans.Form;
+import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.dao.DAO;
+import ca.sheridancollege.services.ControllerServices;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class HomeController {
 
     private DAO dao = new DAO();
     private long num = 0;
+    private ControllerServices controllerServices = new ControllerServices();
 
     @RequestMapping("/")
     public String home(Model model) {
@@ -41,11 +42,7 @@ public class HomeController {
     @RequestMapping("/saveOrUpdateDeficiency")
     public String saveOrUpdateDeficiency(Model model, @ModelAttribute Deficiency deficiency, @ModelAttribute long homeEnrollmentNumber) {
 
-        dao.saveOrUpdate(deficiency);
-
-        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-
-        model.addAttribute("unit", unitList.get(0));
+        model = controllerServices.updateDeficiency(model, deficiency, homeEnrollmentNumber);
 
         return "displayDeficiencies";
     }
@@ -53,34 +50,39 @@ public class HomeController {
     @RequestMapping("/addDeficiency/{homeEnrollmentNumber}")
     public String addDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
 
-        Deficiency deficiency = new Deficiency();
-
-        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-
-        model.addAttribute("unit", unitList.get(0));
-        model.addAttribute("deficiency", deficiency);
+        model = controllerServices.addDeficiency(model, homeEnrollmentNumber);
 
         return "addDeficiency";
+    }
+
+    @RequestMapping("/workOrderAddDeficiency/{homeEnrollmentNumber}")
+    public String workOrderAddDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.addDeficiency(model, homeEnrollmentNumber);
+
+        return "workOrderAddDeficiency";
     }
 
     @RequestMapping("/deleteDeficiency/{id}/{homeEnrollmentNumber}")
     public String deleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
-        dao.deleteDeficiency(id, homeEnrollmentNumber);
-
-        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-
-        model.addAttribute("unit", unitList.get(0));
+        model = controllerServices.deleteDeficiency(model, id, homeEnrollmentNumber);
 
         return "displayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderDeleteDeficiency/{id}/{homeEnrollmentNumber}")
+    public String workOrderDeleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.deleteDeficiency(model, id, homeEnrollmentNumber);
+
+        return "workOrderDisplayUnitDeficiencies";
     }
 
     @RequestMapping("/displayUnits")
     public String displayUnits(Model model) {
 
-        List<Unit> unitList = dao.getAllUnits();
-
-        model.addAttribute("unitList", unitList);
+        model = controllerServices.displayUnits(model);
 
         return "displayUnits";
     }
@@ -89,10 +91,17 @@ public class HomeController {
     @RequestMapping("/displayUnitDeficiencies/{homeEnrollmentNumber}")
     public String viewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
 
-        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-        model.addAttribute("unit", unitList.get(0));
+        model = controllerServices.displayUnitDeficiencies(model, homeEnrollmentNumber);
 
         return "displayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderDisplayUnitDeficiencies/{homeEnrollmentNumber}")
+    public String workOrderViewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.displayUnitDeficiencies(model, homeEnrollmentNumber);
+
+        return "workOrderDisplayUnitDeficiencies";
     }
 
     @RequestMapping("/saveDeficiency")
@@ -102,23 +111,31 @@ public class HomeController {
             @RequestParam String location,
             @RequestParam String description,
             @RequestParam String constructionPersonnel,
-//            @RequestParam String category,
-//            @RequestParam Date deadline,
-//            @RequestParam Boolean status,
+            @RequestParam String category,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
             @RequestParam long homeEnrollmentNumber
     ) {
-        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel);
 
-        List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
-        System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
-        unit.get(0).addDeficiency(deficiency);
-
-        dao.saveOrUpdateUnit(unit.get(0));
-
-        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-        model.addAttribute("unit", unitList.get(0));
+        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category, deadline, homeEnrollmentNumber);
 
         return "displayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderSaveDeficiency")
+    public String workOrderSaveDeficiency(
+            Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+            @RequestParam String category,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
+            @RequestParam long homeEnrollmentNumber
+    ) {
+
+        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category, deadline, homeEnrollmentNumber);
+
+        return "workOrderDisplayUnitDeficiencies";
     }
 
     @RequestMapping("/displayUnitInfo")
@@ -149,7 +166,7 @@ public class HomeController {
         List<Form> form = dao.getForm(homeEnrollmentNumber);
         if (form.size() > 0) {
             model.addAttribute("form", form.get(0));
-            
+
             //this downloads it to your computer -- good for testing
             /*
             try{
@@ -164,8 +181,9 @@ public class HomeController {
         } else {
             model.addAttribute("form", new Form());
         }
-        
+
         //String img = form.get(0).getRepSig().toString();
+        model = controllerServices.displayUnitData(model, homeEnrollmentNumber, num);
 
         return "displayUnitInfo";
     }
@@ -185,21 +203,7 @@ public class HomeController {
             @RequestParam String repName
     ) {
 
-        Unit unit = new Unit(homeEnrollmentNumber, lotNumber, address, projectName, posessionDate, municipality, level, unitNum, plan);
-
-        dao.saveOrUpdateUnit(unit);
-        String builderUserName = this.getUserName();
-
-        List<Unit> returns = dao.getUnit(homeEnrollmentNumber);
-        model.addAttribute("unit", returns.get(0));
-
-        List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
-        model.addAttribute("builder", returnsBuilder.get(0));
-
-        Form form = new Form(homeEnrollmentNumber, "PDI", repName);
-
-        dao.createForm(form);
-        model.addAttribute("form", form);
+        model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
 
         return "displayUnitInfo";
     }
@@ -211,49 +215,39 @@ public class HomeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
-
         return "loginForm";
     }
 
     @RequestMapping("/createAccount")
     public String createAccount(Model model) {
-
-
         return "createAccount";
     }
 
     @RequestMapping("/register")
     public String register(Model model, @RequestParam String username, @RequestParam String password) {
 
-        String encryptedPassword = new BCryptPasswordEncoder().encode(password);
-        User user = new User(username, encryptedPassword, true);
-
-        UserRole userRole = new UserRole(user, "ROLE_USER");
-        user.getUserRole().add(userRole);
-
-        DAO dao = new DAO();
-        dao.createUser(user);
-
-        UserDetails userDetails = new MyUserDetailsService().loadUserByUsername(username);
-        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails,
-                encryptedPassword, userDetails.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(auth);
-
-        model.addAttribute("accountCreated", true);
+        model = controllerServices.register(model, username, password);
 
         return "home";
 
     }
 
-    public String getUserName() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String currentUserName = authentication.getName();
-            return currentUserName;
-        }
-        return null;
+    @RequestMapping("/displayBuildingProjects")
+    public String displayBuildingProjects(Model model) {
+
+        model = controllerServices.displayBuildingProjects(model);
+
+        return "displayBuildingProjects";
     }
-    
+
+    @RequestMapping("/displayUnits/{project}")
+    public String displayUnits(Model model, @PathVariable String project) {
+
+        model = controllerServices.displayUnitsByProject(model, project);
+
+        return "displayUnits";
+    }
+
     //this displays an image from the database
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}")
     public void getImage(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
@@ -264,39 +258,39 @@ public class HomeController {
         response.getOutputStream().write(imageBytes);
         response.getOutputStream().flush();
     }
-    
+
     //old image display code -- probably not needed
     /*
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}", method = RequestMethod.GET)
     public void showImage(Model model, @PathVariable long homeEnrollmentNumber, HttpServletResponse response,
-    		HttpServletRequest request) 
+    		HttpServletRequest request)
             throws ServletException, IOException{
 
 
-      //Form form = DAO.getForm(1234).get(0);  
+      //Form form = DAO.getForm(1234).get(0);
     	List<Form> form = dao.getForm(homeEnrollmentNumber);
     	Form f = form.get(0);
-    	
-    	
+
+
       response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
       response.getOutputStream().write(f.getRepSig());
       //response.getOutputStream().write(item.getItemImage());
 
 
       response.getOutputStream().close();
-    } 
-    
+    }
+
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}")
     public byte[] showImage2(@PathVariable long homeEnrollmentNumber) {
 
 
-      //Form form = DAO.getForm(1234).get(0);  
+      //Form form = DAO.getForm(1234).get(0);
     	List<Form> form = dao.getForm(homeEnrollmentNumber);
     	Form f = form.get(0);
 
 
       return f.getRepSig();
     } */
-    
-    
+
+
 }

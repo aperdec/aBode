@@ -20,11 +20,11 @@ public class Deficiency implements Serializable {
     private Boolean status;
 
     public Deficiency() {
-        this(0, null, null, null);
+        this(0, null, null, null, null, false);
     }
 
-    public Deficiency(int id, String location, String description, String constructionPersonnel) {
-        this(id, location, description, constructionPersonnel, null, null, false);
+    public Deficiency(int id, String location, String description, String constructionPersonnel, String category, boolean status) {
+        this(id, location, description, constructionPersonnel, category, null, status);
     }
 
     public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status) {
@@ -37,6 +37,7 @@ public class Deficiency implements Serializable {
         this.status = status;
         setCategories();
     }
+
 
     public String getLocation() {
         return location;

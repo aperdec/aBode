@@ -33,13 +33,13 @@
 	<div style="margin: 2%">
 		<div class="list-group">
 			<c:forEach var="unit" items="${unitList}">
-				<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
+				<c:url value="../workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
 				<a href="${viewUrl}" class="list-group-item"> ${unit.lotNumber} + ${unit.address} </a>
 			</c:forEach>
 		</div>
 
-		<c:url value="/addUnit" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add A New Unit</a>
+		<c:url value="/displayBuildingProjects" var="backUrl" />
+		<a href="${backUrl}" class="btn btn-primary">Back</a>
 	</div>
 
 </body>

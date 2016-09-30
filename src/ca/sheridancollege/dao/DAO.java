@@ -114,14 +114,17 @@ public class DAO {
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
         List<Unit> unitList = (List<Unit>) query.list();
         Unit unit = unitList.get(0);
-        List<Deficiency> deficiencies = unit.getDeficiencies();
+        List<Deficiency> modDeficiencies = unit.getDeficiencies();
+        List<Deficiency> origDeficiencies = unit.getDeficiencies();
 
-        for (Deficiency deficiency : unit.getDeficiencies()) {
+        for (Deficiency deficiency : origDeficiencies) {
             if (deficiency.getId() == id) {
-                deficiencies.remove(deficiency);
+                modDeficiencies.remove(deficiency);
+                break;
             }
         }
-        unit.setDeficiencies(deficiencies);
+
+        unit.setDeficiencies(modDeficiencies);
 
         session.saveOrUpdate(unit);
         session.getTransaction().commit();
@@ -173,11 +176,11 @@ public class DAO {
     public void createForm(Form form) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         //this code puts the sig img in db
         File sig = new File("C:\\abode\\refSig.png");
         byte[] sigImg = new byte[(int)sig.length()];
-                
+
         try{
         	FileInputStream input = new FileInputStream(sig);
           	input.read(sigImg);
@@ -185,12 +188,11 @@ public class DAO {
         } catch(Exception e){
         	e.printStackTrace();
         }
-                       
-        form.setRepSig(sigImg);
-        
-        
-        session.save(form);
 
+        form.setRepSig(sigImg);
+
+
+        session.save(form);
         session.getTransaction().commit();
         session.close();
     }
@@ -212,14 +214,14 @@ public class DAO {
     public void displaySig(long homeEnrollmentNumber) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         Query query = session.getNamedQuery("Form.byHomeEnrollmentNumber");
         query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
         List<Form> formList = (List<Form>) query.list();
-        
-        
+
+
         byte[] sigImg = formList.get(0).getRepSig();
-        
+
         try{
         	FileOutputStream input = new FileOutputStream("C:\\Users\\Cat\\Downloads\\refSigTWO.png");
         	input.write(sigImg);
@@ -231,6 +233,20 @@ public class DAO {
 
         session.getTransaction().commit();
         session.close();
-        
+
+    }
+
+    public List<Unit> getUnitsByProject(String project) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Unit.byProjectName");
+        query.setString("projectName", project);
+        List<Unit> unitList = (List<Unit>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return unitList;
     }
 }
