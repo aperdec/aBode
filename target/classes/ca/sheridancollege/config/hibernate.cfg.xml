@@ -6,7 +6,7 @@
         <!--Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://hibernatedb.casvessiigsc.us-east-1.rds.amazonaws.com:3306/abodedb</property>
-         <property name="connection.username">root</property>
+        <property name="connection.username">root</property>
         <property name="connection.password">12345678</property>
 
         <!--Set the database dialect -->
