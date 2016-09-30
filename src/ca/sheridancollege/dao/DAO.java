@@ -174,18 +174,21 @@ public class DAO {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         
-        File sig = new File("C:\\Users\\Cat\\Downloads\\refSig.png");
+        //this code puts the sig img in db
+        File sig = new File("C:\\abode\\refSig.png");
         byte[] sigImg = new byte[(int)sig.length()];
-        
+                
         try{
         	FileInputStream input = new FileInputStream(sig);
-        	input.read(sigImg);
+          	input.read(sigImg);
         	input.close();
         } catch(Exception e){
         	e.printStackTrace();
         }
                        
         form.setRepSig(sigImg);
+        
+        
         session.save(form);
 
         session.getTransaction().commit();

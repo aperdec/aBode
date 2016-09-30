@@ -156,14 +156,17 @@ public class HomeController {
         if (form.size() > 0) {
             model.addAttribute("form", form.get(0));
             
-            //this downloads it to your computer -- getting it out the the database
+            //this downloads it to your computer -- good for testing
+            /*
             try{
-            	FileOutputStream input = new FileOutputStream("C:\\Users\\Cat\\Downloads\\refSigTWO.png");
+            	FileOutputStream input = new FileOutputStream("C:\\abode\\refSigTWO.png");
+            	String st = input.toString();
+            	System.out.print(st);
             	input.write(form.get(0).getRepSig());
             	input.close();
             } catch(Exception e){
             	e.printStackTrace();
-            }
+            }*/
         } else {
             model.addAttribute("form", new Form());
         }
@@ -257,7 +260,19 @@ public class HomeController {
         return null;
     }
     
-    //need this to work to display image from database
+    //this displays an image from the database
+    @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}")
+    public void getImage(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
+        response.setContentType("image/png");
+        List<Form> form = dao.getForm(homeEnrollmentNumber);
+    	Form f = form.get(0);
+        byte[] imageBytes = f.getRepSig();
+        response.getOutputStream().write(imageBytes);
+        response.getOutputStream().flush();
+    }
+    
+    //old image display code -- probably not needed
+    /*
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}", method = RequestMethod.GET)
     public void showImage(Model model, @PathVariable long homeEnrollmentNumber, HttpServletResponse response,
     		HttpServletRequest request) 
@@ -275,6 +290,19 @@ public class HomeController {
 
 
       response.getOutputStream().close();
+    } 
+    
+    @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}")
+    public byte[] showImage2(@PathVariable long homeEnrollmentNumber) {
 
-    }
+
+      //Form form = DAO.getForm(1234).get(0);  
+    	List<Form> form = dao.getForm(homeEnrollmentNumber);
+    	Form f = form.get(0);
+
+
+      return f.getRepSig();
+    } */
+    
+    
 }

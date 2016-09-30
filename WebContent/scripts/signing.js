@@ -28,7 +28,6 @@ function accept(){
 
 }
 
-
 /*
 
 function download() {
