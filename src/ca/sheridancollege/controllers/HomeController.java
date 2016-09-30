@@ -1,18 +1,16 @@
 package ca.sheridancollege.controllers;
 
-import ca.sheridancollege.beans.*;
+import ca.sheridancollege.beans.Builder;
+import ca.sheridancollege.beans.Deficiency;
+import ca.sheridancollege.beans.Form;
+import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.dao.DAO;
 import ca.sheridancollege.services.ControllerServices;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +23,7 @@ public class HomeController {
 
     private DAO dao = new DAO();
     private long num = 0;
-
-    @Autowired
-    private ControllerServices controllerServices;
+    private ControllerServices controllerServices = new ControllerServices();
 
     @RequestMapping("/")
     public String home(Model model) {
