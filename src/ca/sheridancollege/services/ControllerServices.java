@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +46,7 @@ public class ControllerServices {
     }
 
     public Model displayUnitData(Model model, long homeEnrollmentNumber, long num) {
-        String builderUserName = getUserName();
+        String builderUserName = this.getUserName();
 
         List<Unit> returns = dao.getUnit(homeEnrollmentNumber);
         Unit match = returns.get(0);
@@ -59,9 +61,23 @@ public class ControllerServices {
         List<Form> form = dao.getForm(homeEnrollmentNumber);
         if (form.size() > 0) {
             model.addAttribute("form", form.get(0));
+
+            //this downloads it to your computer -- good for testing
+            /*
+            try{
+            	FileOutputStream input = new FileOutputStream("C:\\abode\\refSigTWO.png");
+            	String st = input.toString();
+            	System.out.print(st);
+            	input.write(form.get(0).getRepSig());
+            	input.close();
+            } catch(Exception e){
+            	e.printStackTrace();
+            }*/
         } else {
             model.addAttribute("form", new Form());
         }
+
+        //String img = form.get(0).getRepSig().toString();
 
         return model;
     }
@@ -177,5 +193,16 @@ public class ControllerServices {
         model.addAttribute("unitList", unitList);
 
         return model;
+    }
+
+    public HttpServletResponse getImage(HttpServletResponse response, long homeEnrollmentNumber) throws IOException {
+        response.setContentType("image/png");
+        List<Form> form = dao.getForm(homeEnrollmentNumber);
+        Form f = form.get(0);
+        byte[] imageBytes = f.getRepSig();
+        response.getOutputStream().write(imageBytes);
+        response.getOutputStream().flush();
+
+        return response;
     }
 }

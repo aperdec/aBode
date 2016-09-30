@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -151,38 +152,6 @@ public class HomeController {
     @RequestMapping(value = "/displayUnitData", method = RequestMethod.POST)
     public String displayUnitData(Model model, @RequestParam long homeEnrollmentNumber) {
 
-        String builderUserName = this.getUserName();
-
-        List<Unit> returns = dao.getUnit(homeEnrollmentNumber);
-        Unit match = returns.get(0);
-        //System.out.println("testing " + match.getAddress());
-        model.addAttribute("unit", match);
-        num = match.getHomeEnrollmentNumber();
-
-        List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
-        Builder matchBuilder = returnsBuilder.get(0);
-        model.addAttribute("builder", matchBuilder);
-
-        List<Form> form = dao.getForm(homeEnrollmentNumber);
-        if (form.size() > 0) {
-            model.addAttribute("form", form.get(0));
-
-            //this downloads it to your computer -- good for testing
-            /*
-            try{
-            	FileOutputStream input = new FileOutputStream("C:\\abode\\refSigTWO.png");
-            	String st = input.toString();
-            	System.out.print(st);
-            	input.write(form.get(0).getRepSig());
-            	input.close();
-            } catch(Exception e){
-            	e.printStackTrace();
-            }*/
-        } else {
-            model.addAttribute("form", new Form());
-        }
-
-        //String img = form.get(0).getRepSig().toString();
         model = controllerServices.displayUnitData(model, homeEnrollmentNumber, num);
 
         return "displayUnitInfo";
@@ -251,46 +220,8 @@ public class HomeController {
     //this displays an image from the database
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}")
     public void getImage(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
-        response.setContentType("image/png");
-        List<Form> form = dao.getForm(homeEnrollmentNumber);
-    	Form f = form.get(0);
-        byte[] imageBytes = f.getRepSig();
-        response.getOutputStream().write(imageBytes);
-        response.getOutputStream().flush();
+
+        response = controllerServices.getImage(response, homeEnrollmentNumber);
     }
-
-    //old image display code -- probably not needed
-    /*
-    @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}", method = RequestMethod.GET)
-    public void showImage(Model model, @PathVariable long homeEnrollmentNumber, HttpServletResponse response,
-    		HttpServletRequest request)
-            throws ServletException, IOException{
-
-
-      //Form form = DAO.getForm(1234).get(0);
-    	List<Form> form = dao.getForm(homeEnrollmentNumber);
-    	Form f = form.get(0);
-
-
-      response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-      response.getOutputStream().write(f.getRepSig());
-      //response.getOutputStream().write(item.getItemImage());
-
-
-      response.getOutputStream().close();
-    }
-
-    @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}")
-    public byte[] showImage2(@PathVariable long homeEnrollmentNumber) {
-
-
-      //Form form = DAO.getForm(1234).get(0);
-    	List<Form> form = dao.getForm(homeEnrollmentNumber);
-    	Form f = form.get(0);
-
-
-      return f.getRepSig();
-    } */
-
 
 }
