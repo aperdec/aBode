@@ -73,8 +73,7 @@ Extra Large Button CSS
 
 			<div class="form-group">
 
-				<label class="col-lg-8 control-label">Vendor/Builder
-					and Home Address Information</label>
+				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
 					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
 			</div>
@@ -263,12 +262,17 @@ Extra Large Button CSS
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
 
 				</div>
-				<div><image id="theimage"></image></div>
+				 
+				<div>
+				<!--image display test. Working! -->
+				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" />
+				 </div> 
 	</div>
 
 	<!-- </fieldset>
+	
 	</form> -->
-
+	
 	<!-- footer area -->
 
 </body>

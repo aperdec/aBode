@@ -92,12 +92,14 @@
 					<label for="category" class="col-lg-1 control-label">Category</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="category" name="category">
-				        <c:forEach var="category" items="${deficiency.categories}">
-                	        <option>${category}</option>
+				        <c:forEach var="category" items="${categories.categoryList}">
+                	        <option>${category.subCategoryName}</option>
                         </c:forEach>
                         </select>
 					</div>
 				</div>
+
+
 
 				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
