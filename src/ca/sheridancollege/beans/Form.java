@@ -2,6 +2,7 @@ package ca.sheridancollege.beans;
 
 import org.hibernate.annotations.NamedQuery;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,9 +18,10 @@ public class Form implements Serializable {
     private long homeEnrollmentNumber;
     private String formType;
     private String repName;
-    //private Blob repSig;
+    @Column(columnDefinition="mediumblob")
+    private byte[] repSig;
 
-    public Form() {
+	public Form() {
 
     }
 
@@ -27,6 +29,11 @@ public class Form implements Serializable {
         this.homeEnrollmentNumber = homeEnrollmentNumber;
         this.formType = formType;
         this.repName = repName;
+    }
+    
+    public String byteString(byte[] repSig){
+    	 String sigImgData = repSig.toString();
+    	return sigImgData;
     }
 
     public long getId() {
@@ -52,4 +59,20 @@ public class Form implements Serializable {
     public void setRepName(String repName) {
         this.repName = repName;
     }
+    
+    public long getHomeEnrollmentNumber() {
+		return homeEnrollmentNumber;
+	}
+
+	public void setHomeEnrollmentNumber(long homeEnrollmentNumber) {
+		this.homeEnrollmentNumber = homeEnrollmentNumber;
+	}
+
+	public byte[] getRepSig() {
+		return repSig;
+	}
+
+	public void setRepSig(byte[] repSig) {
+		this.repSig = repSig;
+	}
 }

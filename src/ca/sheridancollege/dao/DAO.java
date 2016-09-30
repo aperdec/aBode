@@ -7,6 +7,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 import java.util.Date;
 import java.util.List;
 
@@ -172,6 +176,22 @@ public class DAO {
     public void createForm(Form form) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
+
+        //this code puts the sig img in db
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int)sig.length()];
+
+        try{
+        	FileInputStream input = new FileInputStream(sig);
+          	input.read(sigImg);
+        	input.close();
+        } catch(Exception e){
+        	e.printStackTrace();
+        }
+
+        form.setRepSig(sigImg);
+
+
         session.save(form);
         session.getTransaction().commit();
         session.close();
@@ -189,6 +209,31 @@ public class DAO {
         session.close();
 
         return formList;
+    }
+    //not using this right now
+    public void displaySig(long homeEnrollmentNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Form.byHomeEnrollmentNumber");
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+        List<Form> formList = (List<Form>) query.list();
+
+
+        byte[] sigImg = formList.get(0).getRepSig();
+
+        try{
+        	FileOutputStream input = new FileOutputStream("C:\\Users\\Cat\\Downloads\\refSigTWO.png");
+        	input.write(sigImg);
+        	input.close();
+        } catch(Exception e){
+        	e.printStackTrace();
+        }
+        //File.createTempFile("name", ".csv");
+
+        session.getTransaction().commit();
+        session.close();
+
     }
 
     public List<Unit> getUnitsByProject(String project) {
