@@ -14,9 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -42,11 +40,7 @@ public class HomeController {
     @RequestMapping("/saveOrUpdateDeficiency")
     public String saveOrUpdateDeficiency(Model model, @ModelAttribute Deficiency deficiency, @ModelAttribute long homeEnrollmentNumber) {
 
-        dao.saveOrUpdate(deficiency);
-
-        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-
-        model.addAttribute("unit", unitList.get(0));
+        model = controllerServices.updateDeficiency(model, deficiency, homeEnrollmentNumber);
 
         return "displayDeficiencies";
     }
@@ -86,9 +80,7 @@ public class HomeController {
     @RequestMapping("/displayUnits")
     public String displayUnits(Model model) {
 
-        List<Unit> unitList = dao.getAllUnits();
-
-        model.addAttribute("unitList", unitList);
+        model = controllerServices.displayUnits(model);
 
         return "displayUnits";
     }
@@ -209,11 +201,7 @@ public class HomeController {
     @RequestMapping("/displayBuildingProjects")
     public String displayBuildingProjects(Model model) {
 
-        List<String> projectList = new ArrayList<>();
-
-        projectList.add("Blue Skys Project");
-
-        model.addAttribute("projectList", projectList);
+        model = controllerServices.displayBuildingProjects(model);
 
         return "displayBuildingProjects";
     }
@@ -221,9 +209,7 @@ public class HomeController {
     @RequestMapping("/displayUnits/{project}")
     public String displayUnits(Model model, @PathVariable String project) {
 
-        List<Unit> unitList = dao.getUnitsByProject(project);
-
-        model.addAttribute("unitList", unitList);
+        model = controllerServices.displayUnitsByProject(model, project);
 
         return "displayUnits";
     }

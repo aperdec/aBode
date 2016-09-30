@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -138,6 +139,42 @@ public class ControllerServices {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 
         model.addAttribute("unit", unitList.get(0));
+
+        return model;
+    }
+
+    public Model updateDeficiency(Model model, Deficiency deficiency, long homeEnrollmentNumber) {
+        dao.saveOrUpdate(deficiency);
+
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+        model.addAttribute("unit", unitList.get(0));
+
+        return model;
+    }
+
+    public Model displayUnits(Model model) {
+        List<Unit> unitList = dao.getAllUnits();
+
+        model.addAttribute("unitList", unitList);
+
+        return model;
+    }
+
+    public Model displayBuildingProjects(Model model) {
+        List<String> projectList = new ArrayList<>();
+
+        projectList.add("Blue Skys Project");
+
+        model.addAttribute("projectList", projectList);
+
+        return model;
+    }
+
+    public Model displayUnitsByProject(Model model, String project) {
+        List<Unit> unitList = dao.getUnitsByProject(project);
+
+        model.addAttribute("unitList", unitList);
 
         return model;
     }
