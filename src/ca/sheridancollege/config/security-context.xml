@@ -37,6 +37,7 @@
         <security:intercept-url pattern="/viewDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayBuildingProjects" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/workOrderHome" access="isAuthenticated()"/>
         <security:intercept-url pattern="/css/**" access="permitAll"/>
         <security:intercept-url pattern="/scripts/**" access="permitAll"/>
         <security:intercept-url pattern="/images/**" access="permitAll"/>

@@ -209,6 +209,12 @@ public class HomeController {
 
     }
 
+    @RequestMapping("/workOrderHome")
+    public String workOrderHome(Model model) {
+
+        return "workOrderHome";
+    }
+
     @RequestMapping("/displayBuildingProjects")
     public String displayBuildingProjects(Model model) {
 
