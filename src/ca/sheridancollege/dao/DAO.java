@@ -249,4 +249,36 @@ public class DAO {
 
         return unitList;
     }
+
+    public void completeDeficiency(int id, long homeEnrollmentNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+        List<Unit> unitList = (List<Unit>) query.list();
+        Unit unit = unitList.get(0);
+        List<Deficiency> modDeficiencies = unit.getDeficiencies();
+        List<Deficiency> origDeficiencies = unit.getDeficiencies();
+
+        for (Deficiency deficiency : origDeficiencies) {
+            if (deficiency.getId() == id) {
+                Deficiency newDeficiency = deficiency;
+                if (deficiency.getStatus()) {
+                    newDeficiency.setStatus(false);
+                } else {
+                    newDeficiency.setStatus(true);
+                }
+                modDeficiencies.remove(deficiency);
+                modDeficiencies.add(newDeficiency);
+                break;
+            }
+        }
+
+        unit.setDeficiencies(modDeficiencies);
+
+        session.saveOrUpdate(unit);
+        session.getTransaction().commit();
+        session.close();
+    }
 }
