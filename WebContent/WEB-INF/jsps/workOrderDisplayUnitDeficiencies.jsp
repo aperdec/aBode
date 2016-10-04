@@ -35,6 +35,8 @@
 				<div class="list-group-item"> ${unitDeficiency.id} + ${unitDeficiency.description}
 				    <c:url value="/workOrderDeleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
 				    <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
+				    <c:url value="/workOrderCompleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="completeUrl" />
+				    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${unitDeficiency.status}</a>
 				</div>
 			</c:forEach>
 		</div>

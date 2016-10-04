@@ -205,4 +205,14 @@ public class ControllerServices {
 
         return response;
     }
+
+    public Model completeDeficiency(Model model, int id, long homeEnrollmentNumber) {
+        dao.completeDeficiency(id, homeEnrollmentNumber);
+
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+
+        model.addAttribute("unit", unitList.get(0));
+
+        return model;
+    }
 }

@@ -80,6 +80,14 @@ public class HomeController {
         return "workOrderDisplayUnitDeficiencies";
     }
 
+    @RequestMapping("/workOrderCompleteDeficiency/{id}/{homeEnrollmentNumber}")
+    public String workOrderCompleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.completeDeficiency(model, id, homeEnrollmentNumber);
+
+        return "workOrderDisplayUnitDeficiencies";
+    }
+
     @RequestMapping("/displayUnits")
     public String displayUnits(Model model) {
 
