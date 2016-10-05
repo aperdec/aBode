@@ -223,6 +223,14 @@ public class HomeController {
         return "displayBuildingProjects";
     }
 
+    @RequestMapping("/displayBuildingBuilder")
+    public String displayBuildingBuilder(Model model) {
+
+        model = controllerServices.displayBuildingBuilder(model);
+
+        return "displayBuildingProjects";
+    }
+
     @RequestMapping("/displayUnits/{project}")
     public String displayUnits(Model model, @PathVariable String project) {
 

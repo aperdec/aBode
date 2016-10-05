@@ -215,4 +215,14 @@ public class ControllerServices {
 
         return model;
     }
+
+    public Model displayBuildingBuilder(Model model) {
+        List<String> projectList = new ArrayList<>();
+
+        projectList.add("Blue Skys Project");
+
+        model.addAttribute("projectList", projectList);
+
+        return model;
+    }
 }
