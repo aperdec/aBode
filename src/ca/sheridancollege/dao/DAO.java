@@ -281,4 +281,17 @@ public class DAO {
         session.getTransaction().commit();
         session.close();
     }
+
+    public List<ConstructionPersonnel> getAllConstructionPersonnel() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("from ConstructionPersonnel");
+        List<ConstructionPersonnel> constructionPersonnelList = (List<ConstructionPersonnel>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return constructionPersonnelList;
+    }
 }

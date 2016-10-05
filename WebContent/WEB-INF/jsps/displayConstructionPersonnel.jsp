@@ -32,9 +32,9 @@
 	
 	<div style="margin: 2%">
 		<div class="list-group">
-			<c:forEach var="project" items="${projectList}">
-				<c:url value="/displayUnits/${project}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${project} </a>
+			<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
+				<c:url value="/displayDeficiencies/${constructionPersonnel.id}" var="viewUrl" />
+				<a href="${viewUrl}" class="list-group-item"> ${constructionPersonnel.name} </a>
 			</c:forEach>
 		</div>
 	</div>

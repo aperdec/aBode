@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -223,12 +222,12 @@ public class HomeController {
         return "displayBuildingProjects";
     }
 
-    @RequestMapping("/displayBuildingBuilder")
-    public String displayBuildingBuilder(Model model) {
+    @RequestMapping("/displayConstructionPersonnel")
+    public String displayConstructionPersonnel(Model model) {
 
-        model = controllerServices.displayBuildingBuilder(model);
+        model = controllerServices.displayConstructionPersonnel(model);
 
-        return "displayBuildingProjects";
+        return "displayConstructionPersonnel";
     }
 
     @RequestMapping("/displayUnits/{project}")

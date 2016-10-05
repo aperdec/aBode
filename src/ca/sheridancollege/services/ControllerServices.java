@@ -226,12 +226,10 @@ public class ControllerServices {
         return model;
     }
 
-    public Model displayBuildingBuilder(Model model) {
-        List<String> projectList = new ArrayList<>();
+    public Model displayConstructionPersonnel(Model model) {
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
 
-        projectList.add("Blue Skys Project");
-
-        model.addAttribute("projectList", projectList);
+        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
 
         return model;
     }
