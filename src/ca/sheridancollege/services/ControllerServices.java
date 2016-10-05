@@ -135,7 +135,7 @@ public class ControllerServices {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         Unit unit = unitList.get(0);
         Deficiency deficiency = new Deficiency();
-        if(unit.getDeficiencies().size() > 0) {
+        if (unit.getDeficiencies().size() > 0) {
             deficiency.setId(unit.getDeficiencies().get(unit.getDeficiencies().size() - 1).getId() + 1);
         } else {
             deficiency.setId(1);
@@ -180,8 +180,18 @@ public class ControllerServices {
     public Model displayBuildingProjects(Model model) {
         List<String> projectList = new ArrayList<>();
 
+        // Fake project
         projectList.add("Blue Skys Project");
 
+        //Condominiums by Times Group Inc
+        projectList.add("Eden Park II");
+        projectList.add("River Park");
+        projectList.add("River Walk East");
+
+        //Coming soon
+        projectList.add("Luxr Towns");
+        projectList.add("Village Park Phase II");
+        projectList.add("River Side");
         model.addAttribute("projectList", projectList);
 
         return model;
