@@ -42,9 +42,13 @@ Extra Large Button CSS
 	margin: 20px;
 	border: 2px solid black;
 	color:inherit;
-	
+	background-color: #EDEEFF;
 }
-
+.btn-xl:hover {
+	background-color: #9394AA;
+	text-decoration: none;
+	color: black;
+}
 
 </style>
 <title>aBode</title>

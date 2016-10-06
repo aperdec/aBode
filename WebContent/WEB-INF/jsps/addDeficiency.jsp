@@ -57,10 +57,12 @@
 					<div class="col-lg-10">
 						<select name="location" class="form-control" id="location">
 							<option>Kitchen</option>
+							<option>Master Bedroom</option>
 							<option>Bedroom</option>
 							<option>Living Room</option>
+							<option>Dining Room</option>
 							<option>Hallway</option>
-							<option>Bedroom</option>
+							<option>Master Washroom</option>
 							<option>Washroom</option>
 						</select>
 					</div>
