@@ -294,4 +294,18 @@ public class DAO {
 
         return constructionPersonnelList;
     }
+
+    public List<ConstructionPersonnel> getConstructionPersonnel(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("ConstructionPersonnel.byId");
+        query.setInteger("id", id);
+        List<ConstructionPersonnel> constructionPersonnelList = (List<ConstructionPersonnel>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return constructionPersonnelList;
+    }
 }

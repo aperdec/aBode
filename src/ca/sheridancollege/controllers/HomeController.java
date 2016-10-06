@@ -245,4 +245,12 @@ public class HomeController {
         response = controllerServices.getImage(response, homeEnrollmentNumber);
     }
 
+    @RequestMapping("/displayDeficiencies/{id}")
+    public String displayDeficienciesByConstructionPersonnel(Model model, @PathVariable int id) {
+
+        model = controllerServices.displayDeficienciesByConstructionPersonnel(model, id);
+
+        return "displayConstructionPersonnelDeficiencies";
+    }
+
 }

@@ -1,11 +1,14 @@
 package ca.sheridancollege.beans;
 
+import org.hibernate.annotations.NamedQuery;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
+@NamedQuery(name = "ConstructionPersonnel.byId", query = "from ConstructionPersonnel where id = :id")
 public class ConstructionPersonnel implements Serializable {
 
     @Id
