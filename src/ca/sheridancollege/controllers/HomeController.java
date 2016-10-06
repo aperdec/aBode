@@ -113,14 +113,14 @@ public class HomeController {
 
     @RequestMapping("/saveDeficiency")
     public String saveDeficiency(
-        Model model,
-        @RequestParam int id,
-        @RequestParam String location,
-        @RequestParam String description,
-        @RequestParam String constructionPersonnel,
-        @RequestParam String category,
-        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
-        @RequestParam long homeEnrollmentNumber
+            Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+            @RequestParam String category,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
+            @RequestParam long homeEnrollmentNumber
     ) {
 
         model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category,
@@ -131,14 +131,14 @@ public class HomeController {
 
     @RequestMapping("/workOrderSaveDeficiency")
     public String workOrderSaveDeficiency(
-        Model model,
-        @RequestParam int id,
-        @RequestParam String location,
-        @RequestParam String description,
-        @RequestParam String constructionPersonnel,
-        @RequestParam String category,
-        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
-        @RequestParam long homeEnrollmentNumber
+            Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+            @RequestParam String category,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
+            @RequestParam long homeEnrollmentNumber
     ) {
 
         model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category,
@@ -167,17 +167,17 @@ public class HomeController {
 
     @RequestMapping(value = "/saveUnit", method = RequestMethod.POST)
     public String saveUnit(
-        Model model,
-        @RequestParam long homeEnrollmentNumber,
-        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
-        @RequestParam int lotNumber,
-        @RequestParam String address,
-        @RequestParam String projectName,
-        @RequestParam String municipality,
-        @RequestParam int level,
-        @RequestParam int unitNum,
-        @RequestParam String plan,
-        @RequestParam String repName
+            Model model,
+            @RequestParam long homeEnrollmentNumber,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
+            @RequestParam int lotNumber,
+            @RequestParam String address,
+            @RequestParam String projectName,
+            @RequestParam String municipality,
+            @RequestParam int level,
+            @RequestParam int unitNum,
+            @RequestParam String plan,
+            @RequestParam String repName
     ) {
 
         model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName,
