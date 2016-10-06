@@ -27,7 +27,7 @@
         <security:intercept-url pattern="/workOrderCompleteDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitInfo" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitData" access="isAuthenticated()"/>
-        <security:intercept-url pattern="/addSignOff" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/addSignOff/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/viewDeficiency" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayDeficiencies" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitDeficiencies/**" access="isAuthenticated()"/>
@@ -38,7 +38,9 @@
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayBuildingProjects" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderHome" access="isAuthenticated()"/>
+         <security:intercept-url pattern="/help" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayConstructionPersonnel" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/displayDeficiencies/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/css/**" access="permitAll"/>
         <security:intercept-url pattern="/scripts/**" access="permitAll"/>
         <security:intercept-url pattern="/images/**" access="permitAll"/>
