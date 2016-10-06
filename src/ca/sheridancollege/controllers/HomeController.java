@@ -40,8 +40,7 @@ public class HomeController {
     }
 
     @RequestMapping("/saveOrUpdateDeficiency")
-    public String saveOrUpdateDeficiency(Model model, @ModelAttribute Deficiency deficiency,
-                                         @ModelAttribute long homeEnrollmentNumber) {
+    public String saveOrUpdateDeficiency(Model model, @ModelAttribute Deficiency deficiency, @ModelAttribute long homeEnrollmentNumber) {
 
         model = controllerServices.updateDeficiency(model, deficiency, homeEnrollmentNumber);
 
@@ -73,8 +72,7 @@ public class HomeController {
     }
 
     @RequestMapping("/workOrderDeleteDeficiency/{id}/{homeEnrollmentNumber}")
-    public String workOrderDeleteDeficiency(Model model, @PathVariable int id,
-                                            @PathVariable long homeEnrollmentNumber) {
+    public String workOrderDeleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
         model = controllerServices.deleteDeficiency(model, id, homeEnrollmentNumber);
 
@@ -82,8 +80,7 @@ public class HomeController {
     }
 
     @RequestMapping("/workOrderCompleteDeficiency/{id}/{homeEnrollmentNumber}")
-    public String workOrderCompleteDeficiency(Model model, @PathVariable int id,
-                                              @PathVariable long homeEnrollmentNumber) {
+    public String workOrderCompleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
         model = controllerServices.completeDeficiency(model, id, homeEnrollmentNumber);
 
@@ -115,10 +112,16 @@ public class HomeController {
     }
 
     @RequestMapping("/saveDeficiency")
-    public String saveDeficiency(Model model, @RequestParam int id, @RequestParam String location,
-                                 @RequestParam String description, @RequestParam String constructionPersonnel, @RequestParam String category,
-                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
-                                 @RequestParam long homeEnrollmentNumber) {
+    public String saveDeficiency(
+        Model model,
+        @RequestParam int id,
+        @RequestParam String location,
+        @RequestParam String description,
+        @RequestParam String constructionPersonnel,
+        @RequestParam String category,
+        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
+        @RequestParam long homeEnrollmentNumber
+    ) {
 
         model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category,
                 deadline, homeEnrollmentNumber);
@@ -127,10 +130,16 @@ public class HomeController {
     }
 
     @RequestMapping("/workOrderSaveDeficiency")
-    public String workOrderSaveDeficiency(Model model, @RequestParam int id, @RequestParam String location,
-                                          @RequestParam String description, @RequestParam String constructionPersonnel, @RequestParam String category,
-                                          @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
-                                          @RequestParam long homeEnrollmentNumber) {
+    public String workOrderSaveDeficiency(
+        Model model,
+        @RequestParam int id,
+        @RequestParam String location,
+        @RequestParam String description,
+        @RequestParam String constructionPersonnel,
+        @RequestParam String category,
+        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
+        @RequestParam long homeEnrollmentNumber
+    ) {
 
         model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category,
                 deadline, homeEnrollmentNumber);
@@ -157,11 +166,19 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/saveUnit", method = RequestMethod.POST)
-    public String saveUnit(Model model, @RequestParam long homeEnrollmentNumber,
-                           @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate, @RequestParam int lotNumber,
-                           @RequestParam String address, @RequestParam String projectName, @RequestParam String municipality,
-                           @RequestParam int level, @RequestParam int unitNum, @RequestParam String plan,
-                           @RequestParam String repName) {
+    public String saveUnit(
+        Model model,
+        @RequestParam long homeEnrollmentNumber,
+        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
+        @RequestParam int lotNumber,
+        @RequestParam String address,
+        @RequestParam String projectName,
+        @RequestParam String municipality,
+        @RequestParam int level,
+        @RequestParam int unitNum,
+        @RequestParam String plan,
+        @RequestParam String repName
+    ) {
 
         model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName,
                 municipality, level, unitNum, plan, repName);
