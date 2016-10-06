@@ -141,8 +141,7 @@ public class HomeController {
             @RequestParam long homeEnrollmentNumber
     ) {
 
-        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category,
-                deadline, homeEnrollmentNumber);
+        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category, deadline, homeEnrollmentNumber);
 
         return "workOrderDisplayUnitDeficiencies";
     }
@@ -180,8 +179,7 @@ public class HomeController {
             @RequestParam String repName
     ) {
 
-        model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName,
-                municipality, level, unitNum, plan, repName);
+        model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
 
         return "displayUnitInfo";
     }
