@@ -41,7 +41,14 @@ public class Form implements Serializable {
         this.date = new SimpleDateFormat("yyyy-mm-dd").format(today);
     }
     
-    public String byteString(byte[] repSig){
+    public Form(long homeEnrollmentNumber, String formType, String repName, byte[] repSig) {
+		this.homeEnrollmentNumber = homeEnrollmentNumber;
+		this.formType = formType;
+		this.repName = repName;
+		this.repSig = repSig;
+	}
+
+	public String byteString(byte[] repSig){
     	 String sigImgData = repSig.toString();
     	return sigImgData;
     }

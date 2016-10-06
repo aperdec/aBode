@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -76,6 +75,14 @@ public class HomeController {
     public String workOrderDeleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
         model = controllerServices.deleteDeficiency(model, id, homeEnrollmentNumber);
+
+        return "workOrderDisplayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderCompleteDeficiency/{id}/{homeEnrollmentNumber}")
+    public String workOrderCompleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.completeDeficiency(model, id, homeEnrollmentNumber);
 
         return "workOrderDisplayUnitDeficiencies";
     }
@@ -211,12 +218,26 @@ public class HomeController {
 
     }
 
+    @RequestMapping("/workOrderHome")
+    public String workOrderHome(Model model) {
+
+        return "workOrderHome";
+    }
+
     @RequestMapping("/displayBuildingProjects")
     public String displayBuildingProjects(Model model) {
 
         model = controllerServices.displayBuildingProjects(model);
 
         return "displayBuildingProjects";
+    }
+
+    @RequestMapping("/displayConstructionPersonnel")
+    public String displayConstructionPersonnel(Model model) {
+
+        model = controllerServices.displayConstructionPersonnel(model);
+
+        return "displayConstructionPersonnel";
     }
 
     @RequestMapping("/displayUnits/{project}")
@@ -232,6 +253,14 @@ public class HomeController {
     public void getImage(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
 
         response = controllerServices.getImage(response, homeEnrollmentNumber);
+    }
+
+    @RequestMapping("/displayDeficiencies/{id}")
+    public String displayDeficienciesByConstructionPersonnel(Model model, @PathVariable int id) {
+
+        model = controllerServices.displayDeficienciesByConstructionPersonnel(model, id);
+
+        return "displayConstructionPersonnelDeficiencies";
     }
 
 }

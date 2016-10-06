@@ -188,7 +188,7 @@ public class DAO {
         } catch(Exception e){
         	e.printStackTrace();
         }
-        
+
         form.setRepSig(sigImg);
 
 
@@ -249,7 +249,7 @@ public class DAO {
 
         return unitList;
     }
-    
+
     public void addSig(Form form) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -265,12 +265,71 @@ public class DAO {
         } catch(Exception e){
         	e.printStackTrace();
         }
-        
+
         form.setFinalSig(sigImg);
 
 
         session.saveOrUpdate(form);
         session.getTransaction().commit();
         session.close();
+    }
+
+    public void completeDeficiency(int id, long homeEnrollmentNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Unit.byHomeEnrollmentNumber");
+        query.setLong("homeEnrollmentNumber", homeEnrollmentNumber);
+        List<Unit> unitList = (List<Unit>) query.list();
+        Unit unit = unitList.get(0);
+        List<Deficiency> modDeficiencies = unit.getDeficiencies();
+        List<Deficiency> origDeficiencies = unit.getDeficiencies();
+
+        for (Deficiency deficiency : origDeficiencies) {
+            if (deficiency.getId() == id) {
+                Deficiency newDeficiency = deficiency;
+                if (deficiency.getStatus()) {
+                    newDeficiency.setStatus(false);
+                } else {
+                    newDeficiency.setStatus(true);
+                }
+                modDeficiencies.remove(deficiency);
+                modDeficiencies.add(newDeficiency);
+                break;
+            }
+        }
+
+        unit.setDeficiencies(modDeficiencies);
+
+        session.saveOrUpdate(unit);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public List<ConstructionPersonnel> getAllConstructionPersonnel() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("from ConstructionPersonnel");
+        List<ConstructionPersonnel> constructionPersonnelList = (List<ConstructionPersonnel>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return constructionPersonnelList;
+    }
+
+    public List<ConstructionPersonnel> getConstructionPersonnel(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("ConstructionPersonnel.byId");
+        query.setInteger("id", id);
+        List<ConstructionPersonnel> constructionPersonnelList = (List<ConstructionPersonnel>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return constructionPersonnelList;
     }
 }

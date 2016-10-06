@@ -78,12 +78,9 @@
 					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel">
-							<option>Jane Smith</option>
-							<option>Joey Batts</option>
-							<option>Jackson Trig</option>
-							<option>Jeffeory Spindle</option>
-							<option>Jim Gerale</option>
-							<option>Joelle Done</option>
+							<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
+                                <option>${constructionPersonnel.name}</option>
+                            </c:forEach>
 						</select>
 					</div>
 				</div>
