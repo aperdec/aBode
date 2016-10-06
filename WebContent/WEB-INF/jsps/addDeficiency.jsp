@@ -57,10 +57,12 @@
 					<div class="col-lg-10">
 						<select name="location" class="form-control" id="location">
 							<option>Kitchen</option>
+							<option>Master Bedroom</option>
 							<option>Bedroom</option>
 							<option>Living Room</option>
+							<option>Dining Room</option>
 							<option>Hallway</option>
-							<option>Bedroom</option>
+							<option>Master Washroom</option>
 							<option>Washroom</option>
 						</select>
 					</div>
@@ -78,12 +80,9 @@
 					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel">
-							<option>Jane Smith</option>
-							<option>Joey Batts</option>
-							<option>Jackson Trig</option>
-							<option>Jeffeory Spindle</option>
-							<option>Jim Gerale</option>
-							<option>Joelle Done</option>
+							<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
+                                 <option>${constructionPersonnel.name}</option>
+                            </c:forEach>
 						</select>
 					</div>
 				</div>

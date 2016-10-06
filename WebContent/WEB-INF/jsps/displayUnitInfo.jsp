@@ -77,11 +77,8 @@ Extra Large Button CSS
 
 					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
 			</div>
-
-			<div class="form-group">
-				
+			<div class="form-group">				
 				<input type="submit" value="Go!" class="pull-right btn btn-default" />
-
 			</div>
 </form:form>
 <!--</form>-->
@@ -264,8 +261,8 @@ Extra Large Button CSS
 				</div>
 				 
 				<div>
-				<!--image display test. Working! -->
-				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" />
+				<!--image display test. 
+				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" /> Working! -->
 				 </div> 
 	</div>
 

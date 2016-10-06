@@ -32,18 +32,13 @@
 	
 	<div style="margin: 2%">
 		<div class="list-group">
-			<c:forEach var="project" items="${projectList}">
-				<c:url value="/displayUnits/${project}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${project} </a>
-			</c:forEach>
+		    Sort By:
+			<c:url value="/displayBuildingProjects" var="projectUrl" />
+			<a href="${projectUrl}" class="list-group-item"> Projects </a>
+			<c:url value="/displayConstructionPersonnel" var="builderUrl" />
+			<a href="${builderUrl}" class="list-group-item"> Contractors </a>
 		</div>
 	</div>
-
-	<div style="padding: 0% 2%">
-
-    	<c:url value="/workOrderHome" var="backUrl" />
-    	<a href="${backUrl}" class="btn btn-primary">Back</a>
-    </div>
 
 </body>
 </html>

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @NamedQuery(name = "Form.byHomeEnrollmentNumber", query = "from Form where homeEnrollmentNumber = :homeEnrollmentNumber")
@@ -20,15 +22,23 @@ public class Form implements Serializable {
     private String repName;
     @Column(columnDefinition="mediumblob")
     private byte[] repSig;
+    private String desName;
+    private String date;
+    private String purchName;
+    @Column(columnDefinition="mediumblob")
+    private byte[] finalSig;
 
 	public Form() {
-
+		Date today = new Date();
+        this.date = new SimpleDateFormat("yyyy-M-dd").format(today);
     }
 
     public Form(long homeEnrollmentNumber, String formType, String repName) {
         this.homeEnrollmentNumber = homeEnrollmentNumber;
         this.formType = formType;
         this.repName = repName;
+        Date today = new Date();
+        this.date = new SimpleDateFormat("yyyy-mm-dd").format(today);
     }
     
     public Form(long homeEnrollmentNumber, String formType, String repName, byte[] repSig) {
@@ -82,4 +92,37 @@ public class Form implements Serializable {
 	public void setRepSig(byte[] repSig) {
 		this.repSig = repSig;
 	}
+
+	public String getDesName() {
+		return desName;
+	}
+
+	public void setDesName(String desName) {
+		this.desName = desName;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getPurchName() {
+		return purchName;
+	}
+
+	public void setPurchName(String purchName) {
+		this.purchName = purchName;
+	}
+
+	public byte[] getFinalSig() {
+		return finalSig;
+	}
+
+	public void setFinalSig(byte[] finalSig) {
+		this.finalSig = finalSig;
+	}
+	
 }
