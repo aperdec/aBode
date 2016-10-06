@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -250,7 +251,31 @@ public class DAO {
         return unitList;
     }
 
-    public void completeDeficiency(int id, long homeEnrollmentNumber) {
+    public void addSig(Form form) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        //this code puts the sig img in db
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int)sig.length()];
+
+        try{
+        	FileInputStream input = new FileInputStream(sig);
+          	input.read(sigImg);
+        	input.close();
+        } catch(Exception e){
+        	e.printStackTrace();
+        }
+
+        form.setFinalSig(sigImg);
+
+
+        session.saveOrUpdate(form);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public Unit completeDeficiency(int id, long homeEnrollmentNumber) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -280,5 +305,34 @@ public class DAO {
         session.saveOrUpdate(unit);
         session.getTransaction().commit();
         session.close();
+
+        return unit;
+    }
+
+    public List<ConstructionPersonnel> getAllConstructionPersonnel() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("from ConstructionPersonnel");
+        List<ConstructionPersonnel> constructionPersonnelList = (List<ConstructionPersonnel>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return constructionPersonnelList;
+    }
+
+    public List<ConstructionPersonnel> getConstructionPersonnel(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("ConstructionPersonnel.byId");
+        query.setInteger("id", id);
+        List<ConstructionPersonnel> constructionPersonnelList = (List<ConstructionPersonnel>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return constructionPersonnelList;
     }
 }

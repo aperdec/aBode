@@ -3,10 +3,11 @@ package ca.sheridancollege.beans;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
 @Embeddable
-public class Deficiency implements Serializable {
+public class Deficiency implements Serializable, Comparable<Deficiency> {
 
     private static final long serialVersionUID = 7277687991400754226L;
     private int id;
@@ -15,19 +16,19 @@ public class Deficiency implements Serializable {
     private String description;
     private String constructionPersonnel;
     private String category;
-    private String[] categories;
     private Date deadline;
     private Boolean status;
+    private long homeEnrollmentNumber;
 
     public Deficiency() {
-        this(0, null, null, null, null, false);
+        this(0, null, null, null, null, false, 0);
     }
 
-    public Deficiency(int id, String location, String description, String constructionPersonnel, String category, boolean status) {
-        this(id, location, description, constructionPersonnel, category, null, status);
+    public Deficiency(int id, String location, String description, String constructionPersonnel, String category, boolean status, long homeEnrollmentNumber) {
+        this(id, location, description, constructionPersonnel, category, null, status, homeEnrollmentNumber);
     }
 
-    public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status) {
+    public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status, long homeEnrollmentNumber) {
         this.id = id;
         this.location = location;
         this.description = description;
@@ -35,7 +36,7 @@ public class Deficiency implements Serializable {
         this.category = category;
         this.deadline = deadline;
         this.status = status;
-        setCategories();
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
     }
 
 
@@ -83,10 +84,6 @@ public class Deficiency implements Serializable {
         return id;
     }
 
-    public String[] getCategories() {
-        return categories;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -99,8 +96,16 @@ public class Deficiency implements Serializable {
         this.constructionPersonnel = constructionPersonnel;
     }
 
-    public void setCategories() {
-        categories = new String[]{"Add Categories"};
+    public long getHomeEnrollmentNumber() {
+        return homeEnrollmentNumber;
     }
 
+    public void setHomeEnrollmentNumber(long homeEnrollmentNumber) {
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
+    }
+
+    @Override
+    public int compareTo(Deficiency o) {
+        return id<o.getId()?-1:id>o.getId()?1:0;
+    }
 }

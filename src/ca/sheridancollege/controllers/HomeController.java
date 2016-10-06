@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -185,8 +184,18 @@ public class HomeController {
         return "displayUnitInfo";
     }
 
-    @RequestMapping("/addSignOff")
-    public String addSignOff(Model model) {
+    @RequestMapping("/addSignOff/{homeEnrollmentNumber}")
+    public String addSignOff(Model model, @PathVariable long homeEnrollmentNumber) {
+    	model = controllerServices.loadSignOff(model, homeEnrollmentNumber);
+        return "addSignOff";
+    }
+    
+    @RequestMapping(value = "/addSignOff", method = RequestMethod.POST)
+    public String saveForm(Model model, @RequestParam long homeEnrollmentNumber,
+    		@RequestParam String desName) {
+
+        model = controllerServices.saveForm(model, homeEnrollmentNumber, desName);
+
         return "addSignOff";
     }
 
@@ -209,12 +218,26 @@ public class HomeController {
 
     }
 
+    @RequestMapping("/workOrderHome")
+    public String workOrderHome(Model model) {
+
+        return "workOrderHome";
+    }
+
     @RequestMapping("/displayBuildingProjects")
     public String displayBuildingProjects(Model model) {
 
         model = controllerServices.displayBuildingProjects(model);
 
         return "displayBuildingProjects";
+    }
+
+    @RequestMapping("/displayConstructionPersonnel")
+    public String displayConstructionPersonnel(Model model) {
+
+        model = controllerServices.displayConstructionPersonnel(model);
+
+        return "displayConstructionPersonnel";
     }
 
     @RequestMapping("/displayUnits/{project}")
@@ -230,6 +253,14 @@ public class HomeController {
     public void getImage(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
 
         response = controllerServices.getImage(response, homeEnrollmentNumber);
+    }
+
+    @RequestMapping("/displayDeficiencies/{id}")
+    public String displayDeficienciesByConstructionPersonnel(Model model, @PathVariable int id) {
+
+        model = controllerServices.displayDeficienciesByConstructionPersonnel(model, id);
+
+        return "displayConstructionPersonnelDeficiencies";
     }
 
 }

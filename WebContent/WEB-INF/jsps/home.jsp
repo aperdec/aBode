@@ -42,9 +42,13 @@ Extra Large Button CSS
 	margin: 20px;
 	border: 2px solid black;
 	color:inherit;
-	
+	background-color: #EDEEFF;
 }
-
+.btn-xl:hover {
+	background-color: #9394AA;
+	text-decoration: none;
+	color: black;
+}
 
 </style>
 <title>aBode</title>
@@ -57,7 +61,7 @@ Extra Large Button CSS
 			<h1 class="text-center">Welcome to aBode Software</h1>
 
 			<c:url value="/displayUnitInfo" var="displayUnitInformation" />
-			<c:url value="/displayBuildingProjects" var="displayBuildingProjects" />
+			<c:url value="/workOrderHome" var="workOrderHome" />
 			
 		</div>
 
@@ -70,7 +74,7 @@ Extra Large Button CSS
 
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
-			<a href="${displayBuildingProjects}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Work Orders</a>
+			<a href="${workOrderHome}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Work Orders</a>
 			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Generate Report</a>
 
 		</div>
