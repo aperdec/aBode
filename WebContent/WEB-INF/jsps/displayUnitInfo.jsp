@@ -7,6 +7,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	
+<script type="text/javascript">
+document.getElementById("nextBtn").hide();
+document.getElementById("saveBtn").hide();
+
+function showSave(){
+	document.getElementById("saveBtn").show();
+}
+function showNext(){
+	document.getElementById("nextBtn").show();
+}
+
+</script>
 
 <script src="scripts/modernizr.custom.34982.js"></script>
 <!-- <script src="scripts/sig.js"></script>-->
@@ -14,9 +29,6 @@
 <script src="scripts/signing.js"></script>
 <script src="scripts/signatureCapture.js"></script>
 
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -34,29 +46,24 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+
+
 <style>
 .flex-v-center {
 	display: flex;
 	align-items: center;
 }
 
-/*
-Extra Large Button CSS
-*/
-.btn-lilG {
-	padding: 8px 18px;
-	font-size: 10px;
-	border-radius: 30px;
-	text-align: center;
-	margin: 5px;
-	border: 2px solid black;
-	color:inherit;
-	
-}
-
 #canvasContainer {
     border: 1px solid grey;
     border-radius: 5px;
+    background-color:white;
+}
+
+#smallJum{
+	background-color:#EDEEFF;
+	padding: 2%;
+	border-radius: 15px;
 }
 
 </style>
@@ -78,12 +85,12 @@ Extra Large Button CSS
 					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
 			</div>
 			<div class="form-group">				
-				<input type="submit" value="Go!" class="pull-right btn btn-default" />
+				<input type="submit" value="Go!" class="pull-right btn btn-primary" />
 			</div>
 </form:form>
 <!--</form>-->
 			<div id="error"></div>
-
+<div id="smallJum">
 		<fieldset>
 			<c:url value="/saveUnit" var="url2" />
 			<form name="form" method="post" action="${url2}"
@@ -230,7 +237,7 @@ Extra Large Button CSS
 				<div class="form-group">
 
 					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
-					<input type="submit" value="Save" class="pull-right btn btn-default" />
+					<input type="submit" value="Save" class="pull-right btn btn-primary" id="saveBtn"/>
 				</div>
 
 
@@ -245,24 +252,26 @@ Extra Large Button CSS
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					<!--<div><button onclick="to_image()">Accept</button></div>-->
-					<div><button id="acc2" onclick="accept()">Accept</button></div>
+					
+					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()">Redo</button></div>
+					<div><button onclick="clearSig()" class="btn btn-default btn-sm">Redo</button></div>
 				</div>
 
 
-		</fieldset>
+		</fieldset><br><br>
+</div>		
+<br>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Next</a>
+					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-success" id="nextBtn">Next</a>
 
 				</div>
 				 
 				<div>
 				<!--image display test. 
-				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" /> Working! -->
+				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" /> Working! -->
 				 </div> 
 	</div>
 

@@ -40,6 +40,12 @@
 #canvasContainer {
     border: 1px solid grey;
     border-radius: 5px;
+    background-color:white;
+}
+#smallJum{
+	background-color:#EDEEFF;
+	padding: 2%;
+	border-radius: 15px;
 }
 </style>
 <title>SignOff Form</title>
@@ -51,8 +57,9 @@
 		<c:url value="/addSignOff" var="url" />
 		<form name="form" method="post" action="${url}"
 			class="form-horizontal" onsubmit="return verify()">
-			
+<div id="smallJum">	
 		<fieldset>
+	
 				<legend>SignOff Form</legend>
 
 				<div class="form-group">
@@ -95,7 +102,7 @@
 				<input type="hidden" name="homeEnrollmentNumber" value="${form.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<div class="form-group">
-					<input type="submit" value="Save" class="pull-right btn btn-default" />
+					<input type="submit" value="Save" class="pull-right btn btn-primary" />
 
 				</div>
 				</fieldset>
@@ -109,14 +116,14 @@
     					</div>
 					</div>
 					
-					<div><button id="acc2" onclick="accept()">Accept</button></div>
+					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()">Redo</button></div>				
+					<div><button onclick="clearSig()" class="btn btn-default btn-sm">Redo</button></div>				
 				</div>
-
+</div>
 				<!-- end text -->
-				<br><br><br><br><br><br>
+				<br>
                 <div>
 	                <p>* Purchasers or owners who intend to designate someone to conduct the PDI in their place should ensure they 
 	                   provide written authority to the vendor/builder authorizing the designate to sign this form on their behalf</p>
@@ -152,11 +159,15 @@
 				
 				<div class="form-group">
 			        <c:url value="/" var="home" />
-					<a href="${home}" class="pull-right btn btn-default">Finish</a>
+					<a href="${home}" class="pull-right btn btn-success" id="nextBtn">Finish</a>
 
 				</div>
 
-				
+				<div class="form-group">
+			        <c:url value="/displayUnitDeficiencies/${form.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+					<a href="${displayUnitDeficiencies}" class="pull-left btn btn-default" id="backBtn">Back</a>
+
+				</div>
 				
 				
 			

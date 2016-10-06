@@ -100,6 +100,7 @@ public class ControllerServices {
         model.addAttribute("unit", returns.get(0));
 
         List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
+        Builder b = returnsBuilder.get(0);
         model.addAttribute("builder", returnsBuilder.get(0));
 
         Form form = new Form(homeEnrollmentNumber, "PDI", repName);
@@ -108,7 +109,8 @@ public class ControllerServices {
         HomeOwner ho = returnPurch.get(0);
         
         form.setPurchName(ho.getName());
-
+        form.setBuilderRefNum(b.getBuilderRefNum());
+        
         dao.createForm(form);
         model.addAttribute("form", form);
 
@@ -240,12 +242,25 @@ public class ControllerServices {
 
         return model;
     }
-
+    
+    //gets first sig
     public HttpServletResponse getImage(HttpServletResponse response, long homeEnrollmentNumber) throws IOException {
         response.setContentType("image/png");
         List<Form> form = dao.getForm(homeEnrollmentNumber);
         Form f = form.get(0);
         byte[] imageBytes = f.getRepSig();
+        response.getOutputStream().write(imageBytes);
+        response.getOutputStream().flush();
+
+        return response;
+    }
+    
+    //get final sig
+    public HttpServletResponse getImage2(HttpServletResponse response, long homeEnrollmentNumber) throws IOException {
+        response.setContentType("image/png");
+        List<Form> form = dao.getForm(homeEnrollmentNumber);
+        Form f = form.get(0);
+        byte[] imageBytes = f.getFinalSig();
         response.getOutputStream().write(imageBytes);
         response.getOutputStream().flush();
 

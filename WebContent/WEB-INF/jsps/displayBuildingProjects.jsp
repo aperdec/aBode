@@ -42,7 +42,7 @@
 	<div style="padding: 0% 2%">
 
     	<c:url value="/workOrderHome" var="backUrl" />
-    	<a href="${backUrl}" class="btn btn-primary">Back</a>
+    	<a href="${backUrl}" class="btn btn-default">Back</a>
     </div>
 
 </body>

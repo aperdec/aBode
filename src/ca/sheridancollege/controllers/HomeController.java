@@ -254,6 +254,12 @@ public class HomeController {
 
         response = controllerServices.getImage(response, homeEnrollmentNumber);
     }
+    
+    @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}/2")
+    public void getImage2(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
+
+        response = controllerServices.getImage(response, homeEnrollmentNumber);
+    }
 
     @RequestMapping("/displayDeficiencies/{id}")
     public String displayDeficienciesByConstructionPersonnel(Model model, @PathVariable int id) {

@@ -27,6 +27,7 @@ public class Form implements Serializable {
     private String purchName;
     @Column(columnDefinition="mediumblob")
     private byte[] finalSig;
+    private long builderRefNum;
 
 	public Form() {
 		Date today = new Date();
@@ -124,5 +125,14 @@ public class Form implements Serializable {
 	public void setFinalSig(byte[] finalSig) {
 		this.finalSig = finalSig;
 	}
+
+	public long getBuilderRefNum() {
+		return builderRefNum;
+	}
+
+	public void setBuilderRefNum(long builderRefNum) {
+		this.builderRefNum = builderRefNum;
+	}
+
 	
 }

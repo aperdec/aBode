@@ -25,7 +25,11 @@ function accept(){
 
 	var link = document.getElementById("signature").toDataURL();
 	document.getElementById("acc2").innerHTML='<a id="dl" download="refSig.png" href="'+link+'">SAVE</a>';
+	showNext();
+}
 
+function showNext(){
+	document.getElementById("nextBtn").show();
 }
 
 /*
