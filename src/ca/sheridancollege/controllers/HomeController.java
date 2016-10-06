@@ -177,8 +177,18 @@ public class HomeController {
         return "displayUnitInfo";
     }
 
-    @RequestMapping("/addSignOff")
-    public String addSignOff(Model model) {
+    @RequestMapping("/addSignOff/{homeEnrollmentNumber}")
+    public String addSignOff(Model model, @PathVariable long homeEnrollmentNumber) {
+    	model = controllerServices.loadSignOff(model, homeEnrollmentNumber);
+        return "addSignOff";
+    }
+    
+    @RequestMapping(value = "/addSignOff", method = RequestMethod.POST)
+    public String saveForm(Model model, @RequestParam long homeEnrollmentNumber,
+    		@RequestParam String desName) {
+
+        model = controllerServices.saveForm(model, homeEnrollmentNumber, desName);
+
         return "addSignOff";
     }
 

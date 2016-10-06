@@ -188,7 +188,7 @@ public class DAO {
         } catch(Exception e){
         	e.printStackTrace();
         }
-
+        
         form.setRepSig(sigImg);
 
 
@@ -248,5 +248,29 @@ public class DAO {
         session.close();
 
         return unitList;
+    }
+    
+    public void addSig(Form form) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        //this code puts the sig img in db
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int)sig.length()];
+
+        try{
+        	FileInputStream input = new FileInputStream(sig);
+          	input.read(sigImg);
+        	input.close();
+        } catch(Exception e){
+        	e.printStackTrace();
+        }
+        
+        form.setFinalSig(sigImg);
+
+
+        session.saveOrUpdate(form);
+        session.getTransaction().commit();
+        session.close();
     }
 }

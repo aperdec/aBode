@@ -26,7 +26,7 @@
         <security:intercept-url pattern="/workOrderDeleteDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitInfo" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitData" access="isAuthenticated()"/>
-        <security:intercept-url pattern="/addSignOff" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/addSignOff/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/viewDeficiency" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayDeficiencies" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitDeficiencies/**" access="isAuthenticated()"/>
