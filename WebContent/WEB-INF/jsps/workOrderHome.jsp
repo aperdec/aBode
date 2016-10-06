@@ -35,8 +35,8 @@
 		    Sort By:
 			<c:url value="/displayBuildingProjects" var="projectUrl" />
 			<a href="${projectUrl}" class="list-group-item"> Projects </a>
-			<c:url value="/displayBuildingBuilders" var="builderUrl" />
-			<a href="${builderUrl}" class="list-group-item"> Builder </a>
+			<c:url value="/displayConstructionPersonnel" var="builderUrl" />
+			<a href="${builderUrl}" class="list-group-item"> Contractors </a>
 		</div>
 	</div>
 

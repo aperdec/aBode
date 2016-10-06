@@ -132,6 +132,7 @@ public class ControllerServices {
     }
 
     public Model addDeficiency(Model model, long homeEnrollmentNumber) {
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         Unit unit = unitList.get(0);
         Deficiency deficiency = new Deficiency();
@@ -145,6 +146,7 @@ public class ControllerServices {
         model.addAttribute("categories", categories);
         model.addAttribute("unit", unit);
         model.addAttribute("deficiency", deficiency);
+        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
 
         return model;
     }
