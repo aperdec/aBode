@@ -123,8 +123,7 @@ public class HomeController {
             @RequestParam long homeEnrollmentNumber
     ) {
 
-        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category,
-                deadline, homeEnrollmentNumber);
+        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category, deadline, homeEnrollmentNumber);
 
         return "displayUnitDeficiencies";
     }
