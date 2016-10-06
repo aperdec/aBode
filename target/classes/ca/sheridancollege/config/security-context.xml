@@ -15,6 +15,9 @@
     <security:http use-expressions="true">
 
         <security:intercept-url pattern="/home" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/pdiReport" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/pdiReportData" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/selectReport" access="isAuthenticated()"/>
         <security:intercept-url pattern="/imageDisplay/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderAddDeficiency/**" access="isAuthenticated()"/>

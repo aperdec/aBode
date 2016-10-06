@@ -109,10 +109,10 @@ public class ControllerServices {
         model.addAttribute("builder", returnsBuilder.get(0));
 
         Form form = new Form(homeEnrollmentNumber, "PDI", repName);
-        
+
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
         HomeOwner ho = returnPurch.get(0);
-        
+
         form.setPurchName(ho.getName());
 
         dao.createForm(form);
@@ -120,34 +120,34 @@ public class ControllerServices {
 
         return model;
     }
-    
+
     public Model saveForm(Model model, long homeEnrollmentNumber, String desName){
 
         List<Form> returns = dao.getForm(homeEnrollmentNumber);
         Form addSignOff = returns.get(0);
-        
+
         addSignOff.setDesName(desName);
         dao.addSig(addSignOff);
         model.addAttribute("form", addSignOff);
-        
+
         dao.saveOrUpdateForm(addSignOff);
-        
+
         return model;
     }
-    
+
     public Model loadSignOff(Model model, long homeEnrollmentNumber){
 
         List<Form> returns = dao.getForm(homeEnrollmentNumber);
         Form addSignOff = returns.get(0);
-        
+
         List<HomeOwner> home = dao.getHomeOwner(homeEnrollmentNumber);
         HomeOwner ho = home.get(0);
-        
+
         addSignOff.setPurchName(ho.getName());
         model.addAttribute("form", addSignOff);
-        
+
         dao.saveOrUpdateForm(addSignOff);
-        
+
         return model;
     }
 
@@ -271,6 +271,21 @@ public class ControllerServices {
 
         return model;
     }
+
+	public Model displayPdiReport(Model model, long homeEnrollmentNumber) {
+
+	       List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+	       List<Form> form = dao.getForm(homeEnrollmentNumber);
+	       List<Builder> builder = dao.getBuilderRefNum("batman");
+
+	       	model.addAttribute("form", form.get(0));
+	        model.addAttribute("unit", unit.get(0));
+	        model.addAttribute("builder", builder.get(0));
+
+
+
+		return model;
+	}
 
     public Model displayConstructionPersonnel(Model model) {
         List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();

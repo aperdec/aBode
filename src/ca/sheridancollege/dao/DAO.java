@@ -77,6 +77,22 @@ public class DAO {
 
         return builderList;
     }
+    
+    public List<Builder> getBuilderRefNum(String builderUserName) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.getNamedQuery("Builder.byUserName");
+        query.setString("users_username", "batman");
+        List<Builder> builderList = (List<Builder>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return builderList;
+    }
+  
+    
 
 
     public void addTestData() {

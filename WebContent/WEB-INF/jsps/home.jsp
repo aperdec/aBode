@@ -61,9 +61,10 @@ Extra Large Button CSS
 			<h1 class="text-center">Welcome to aBode Software</h1>
 
 			<c:url value="/displayUnitInfo" var="displayUnitInformation" />
+			<c:url value="/selectReport" var="selectReport" />
 			<c:url value="/workOrderHome" var="workOrderHome" />
 			<c:url value="/help" var="help" />
-			
+
 		</div>
 
 		<div class="row">
@@ -76,7 +77,7 @@ Extra Large Button CSS
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
 			<a href="${workOrderHome}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Work Orders</a>
-			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Generate Report</a>
+			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl">Generate Report</a>
 
 		</div>
 
