@@ -103,10 +103,45 @@ public class ControllerServices {
         model.addAttribute("builder", returnsBuilder.get(0));
 
         Form form = new Form(homeEnrollmentNumber, "PDI", repName);
+        
+        List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
+        HomeOwner ho = returnPurch.get(0);
+        
+        form.setPurchName(ho.getName());
 
         dao.createForm(form);
         model.addAttribute("form", form);
 
+        return model;
+    }
+    
+    public Model saveForm(Model model, long homeEnrollmentNumber, String desName){
+
+        List<Form> returns = dao.getForm(homeEnrollmentNumber);
+        Form addSignOff = returns.get(0);
+        
+        addSignOff.setDesName(desName);
+        dao.addSig(addSignOff);
+        model.addAttribute("form", addSignOff);
+        
+        dao.saveOrUpdateForm(addSignOff);
+        
+        return model;
+    }
+    
+    public Model loadSignOff(Model model, long homeEnrollmentNumber){
+
+        List<Form> returns = dao.getForm(homeEnrollmentNumber);
+        Form addSignOff = returns.get(0);
+        
+        List<HomeOwner> home = dao.getHomeOwner(homeEnrollmentNumber);
+        HomeOwner ho = home.get(0);
+        
+        addSignOff.setPurchName(ho.getName());
+        model.addAttribute("form", addSignOff);
+        
+        dao.saveOrUpdateForm(addSignOff);
+        
         return model;
     }
 

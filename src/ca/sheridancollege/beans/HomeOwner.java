@@ -3,6 +3,7 @@ package ca.sheridancollege.beans;
 import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -12,6 +13,8 @@ public class HomeOwner implements Serializable {
 
     private String name;
     @Id
+    @GeneratedValue
+    private long id;
     private String phoneNumber;
     private long homeEnrollmentNumber;
 

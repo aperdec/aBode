@@ -251,7 +251,31 @@ public class DAO {
         return unitList;
     }
 
-    public Unit completeDeficiency(int id, long homeEnrollmentNumber) {
+    public void addSig(Form form) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        //this code puts the sig img in db
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int)sig.length()];
+
+        try{
+        	FileInputStream input = new FileInputStream(sig);
+          	input.read(sigImg);
+        	input.close();
+        } catch(Exception e){
+        	e.printStackTrace();
+        }
+
+        form.setFinalSig(sigImg);
+
+
+        session.saveOrUpdate(form);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void completeDeficiency(int id, long homeEnrollmentNumber) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 

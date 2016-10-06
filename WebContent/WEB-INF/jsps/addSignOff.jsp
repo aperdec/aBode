@@ -46,104 +46,83 @@
 </head>
 <body>
 
-	<!-- <p style="font-size:160%;">aBode</p> -->
-
-
-
 	<div style="margin: 2%">
 	
-		<c:url value="/register" var="url" />
+		<c:url value="/addSignOff" var="url" />
 		<form name="form" method="post" action="${url}"
 			class="form-horizontal" onsubmit="return verify()">
-			<!-- May not need!!
-			<div class="form-group">
-
-					<label for="homeCivicAddress" class="col-lg-8 control-label">Vendor/Builder and Home Address Information</label>
-
-					<div class="col-lg-4">
-						<input path="homeCivicAddress" name="txtHomeCivicAddress"
-							class="form-control" id="homeCivicAddress" placeholder="Enter Home Enrollment Number"
-							required="required" type="text" />
-					</div>
-
-
-				</div>
-				
-				<div class="form-group">
-				</div> -->
-
-
-			<fieldset>
-
+			
+		<fieldset>
 				<legend>SignOff Form</legend>
 
-
 				<div class="form-group">
-                                    <p>I have inspected my new home and I agree that the descriptions of the items listed on this form are accurate.</p>	
+                	<p>I have inspected my new home and I agree that the descriptions of the items listed on
+                	 this form are accurate.</p>	
 				</div>
                                 
-				<!-- -->
+				<!--entry row 1 -->
 				
 				<div class="form-group">
 					<label for="date" class="col-lg-3 control-label">Date</label>
 
 					<div class="col-lg-2">
-						<input path="date" name="txtDate" class="form-control"
-							id="level" placeholder="" required="required" type="text" />
+						<input path="date" name="date" class="form-control" value="${form.date}"
+							id="date" placeholder="" required="required" type="text" />
 					</div>
-					</div>
+				</div>
+				<!--entry row 2 -->
 				<div class="form-group">
 
-					<label for="purchasersName" class="col-lg-3 control-label">Purchaser's Name</label>
+					<label for="purchName" class="col-lg-3 control-label">Purchaser's Name</label>
 
 					<div class="col-lg-4">
-						<input path="purchasersName" name="txtPurchasersName" class="form-control" id="purchasersName"
-							placeholder="" required="required" type="text" />
+						<input path="purchName" name="txtPurchasersName" class="form-control" id="purchName"
+							placeholder="" value="${form.purchName}" required="required" type="text" />
 					</div>
+				</div>
+				<!--entry row 3 -->
+				<div class="form-group">
+				<label for="desName" class="col-lg-3 control-label">Designator's Name</label>
 
-					<label for="designatorsName" class="col-lg-3 control-label">Designator's * Name</label>
-
-					<div class="col-lg-2">
-						<input path="designatorsName" name="txtDesignatorsName"
-							class="form-control" id="designatorsName"
-							placeholder="" required="required" type="text" />
+					<div class="col-lg-4">
+						<input path="desName" name="desName"
+							class="form-control" id="desName" value="${form.desName}"
+							placeholder="" type="text" />
 
 					</div>
 				</div>
+				<!-- row 4 -->
+				<input type="hidden" name="homeEnrollmentNumber" value="${form.homeEnrollmentNumber}"/>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<div class="form-group">
+					<input type="submit" value="Save" class="pull-right btn btn-default" />
 
-				<!-- end of row 2 start of row 3 -->
-
+				</div>
+				</fieldset>
+                </form>
 				<div class="form-group">
 
-					<label for="purchasersSig" class="col-lg-3 control-label">Designator / Purchaser's Signature</label>
+					<label for="finalSig" class="col-lg-3 control-label">Designator / Purchaser's Signature</label>
 					<div class="col-lg-4">
 						<div id="canvasContainer" width="300px" >
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					<!--<div><button onclick="to_image()">Accept</button></div>-->
+					
 					<div><button id="acc2" onclick="accept()">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()">Redo</button></div>
-					
-					<!--  
-					<div class="col-lg-4">
-						<input path="purchasersSig" name="txtPurchasersSig"
-							class="form-control" id="purchasersSig" placeholder=""
-							required="required" type="text" />
-					</div> -->
-
-					
+					<div><button onclick="clearSig()">Redo</button></div>				
 				</div>
 
-				<!-- end of row 3 start of row 4 -->
-                                <div class="form-group">
-                                    <p>* Purchasers or owners who intend to designate someone to conduct the PDI in their place should ensure they 
-                                        provide written authority to the vendor/builder authorizing the designate to sign this form on their behalf</p>
-                                    <br>
-                                    <!-- <p>I the homeowner, confirm that all repair work listed has been completed.</p> -->
-                                </div>
+				<!-- end text -->
+				<br><br><br><br><br><br>
+                <div>
+	                <p>* Purchasers or owners who intend to designate someone to conduct the PDI in their place should ensure they 
+	                   provide written authority to the vendor/builder authorizing the designate to sign this form on their behalf</p>
+	                 <br>
+                 <!-- <p>I the homeowner, confirm that all repair work listed has been completed.</p> -->
+                 </div>
 
 				<!-- end of row 5 start of row 6 -->
 				<!-- MAY NOT NEED
@@ -169,29 +148,22 @@
 
 				<!-- end of row 6 start of row 7 -->
 				
-					<div class="form-group">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				
+				<div class="form-group">
 			        <c:url value="/" var="home" />
 					<a href="${home}" class="pull-right btn btn-default">Finish</a>
 
-					</div>
-
-				<div class="form-group">
-
-
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> <input type="submit" value="Save"
-						class="pull-right btn btn-default" onclick="verify()"
-						 />
-
 				</div>
+
+				
 				
 				
 			
 				<!-- end -->
 
 	
-                        </fieldset>
-                </form>
+                
 
 	</div>
 
