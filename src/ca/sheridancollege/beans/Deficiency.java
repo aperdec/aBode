@@ -3,10 +3,11 @@ package ca.sheridancollege.beans;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
 @Embeddable
-public class Deficiency implements Serializable {
+public class Deficiency implements Serializable, Comparable<Deficiency> {
 
     private static final long serialVersionUID = 7277687991400754226L;
     private int id;
@@ -101,5 +102,10 @@ public class Deficiency implements Serializable {
 
     public void setHomeEnrollmentNumber(long homeEnrollmentNumber) {
         this.homeEnrollmentNumber = homeEnrollmentNumber;
+    }
+
+    @Override
+    public int compareTo(Deficiency o) {
+        return id<o.getId()?-1:id>o.getId()?1:0;
     }
 }

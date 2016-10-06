@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -250,7 +251,7 @@ public class DAO {
         return unitList;
     }
 
-    public void completeDeficiency(int id, long homeEnrollmentNumber) {
+    public Unit completeDeficiency(int id, long homeEnrollmentNumber) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -276,10 +277,13 @@ public class DAO {
         }
 
         unit.setDeficiencies(modDeficiencies);
+        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
         session.saveOrUpdate(unit);
         session.getTransaction().commit();
         session.close();
+
+        return unit;
     }
 
     public List<ConstructionPersonnel> getAllConstructionPersonnel() {
@@ -307,5 +311,12 @@ public class DAO {
         session.close();
 
         return constructionPersonnelList;
+    }
+
+    public List<Deficiency> sortDeficiencyList (List<Deficiency> deficiencyList) {
+
+        Collections.sort(deficiencyList);
+
+        return deficiencyList;
     }
 }
