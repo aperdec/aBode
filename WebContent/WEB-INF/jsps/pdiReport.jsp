@@ -31,7 +31,27 @@
 <title>Tarion PDI Form: ${unit.homeEnrollmentNumber}</title>
 </head>
 <body>
-	<div></div>
+	<div>
+	
+	<c:url value="/pdiReportData" var="url2" />
+	
+	<form method="post" action="${url2}" class="form-horizontal">
+			
+			<div class="form-group">
+
+				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
+
+					<input name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
+			</div>
+
+			<div class="form-group">
+				 <input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="submit" value="Go!" class="pull-right btn btn-default" />
+
+			</div>
+</form>
+	
+	</div>
 	<div style="margin: 2%">
 		<c:url value="/pdiReport" var="url" />
 		<form name="form" class="form-horizontal" method="post"
@@ -188,29 +208,16 @@
 
 		<div class="form-group">
 			<div class="col-lg-6">
-				<input path="id" name="id" class="form-control" id="id" value=""
+				<input path="id" name="id" class="form-control" id="id" value="${form.purchName}"
 					readonly />
 			</div>
 			<div class="col-lg-6">
-				<input path="deadline" name="deadline" class="form-control"
-					id="deadline" value="" readonly />
+				<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" />
 			</div>
 			<label for="deadline" class="col-lg-1 control-label">Purchaser's
 				Name</label> <label for="deadline" class="col-lg-1 control-label">Purchaser's
 				Signature</label>
-		
-			<div class="col-lg-6">
-				<input path="id" name="id" class="form-control" id="id" value=""
-					readonly />
-			</div>
-			<div class="col-lg-6">
-				<input path="deadline" name="deadline" class="form-control"
-					id="deadline" value="" readonly />
-			</div>
-			<label for="deadline" class="col-lg-1 control-label">Purchaser's
-				Name</label> <label for="deadline" class="col-lg-1 control-label">Purchaser's
-				Signature</label>
-			
+
 			<div class="col-lg-6">
 				<input path="id" name="id" class="form-control" id="id" value=""
 					readonly />
@@ -222,12 +229,30 @@
 			<label for="deadline" class="col-lg-1 control-label">Purchaser's
 				Name</label> <label for="deadline" class="col-lg-1 control-label">Purchaser's
 				Signature</label>
-				<div class="col-lg-6">
+				
+				
+
+			<div class="col-lg-6">
 				<input path="id" name="id" class="form-control" id="id" value=""
 					readonly />
-			<label for="deadline" class="col-lg-1 control-label">Date (YYYY/MM/DD)</label>
 			</div>
-			<label for="deadline" class="col-lg-1 control-label" >*Purchasers or owners who indend to designate someone to conduct the PDI in their place should ensure they provide written authority to the vendor/builder authorizng the designate to sign this form on their behalf</label>
+			<div class="col-lg-6">
+				<input path="deadline" name="deadline" class="form-control"
+					id="deadline" value="" readonly />
+			</div>
+			<label for="deadline" class="col-lg-1 control-label">Purchaser's
+				Name</label> <label for="deadline" class="col-lg-1 control-label">Purchaser's
+				Signature</label>
+			<div class="col-lg-6">
+				<input path="id" name="id" class="form-control" id="id" value=""
+					readonly /> <label for="deadline" class="col-lg-1 control-label">Date
+					(YYYY/MM/DD)</label>
+			</div>
+			<label for="deadline" class="col-lg-1 control-label">*Purchasers
+				or owners who indend to designate someone to conduct the PDI in
+				their place should ensure they provide written authority to the
+				vendor/builder authorizng the designate to sign this form on their
+				behalf</label>
 		</div>
 
 		</fieldset>
@@ -235,19 +260,18 @@
 
 	</div>
 	<div class="jumbotron">
-	
-			<input type="hidden" name="homeEnrollmentNumber" value="" /> <input
+
+		<input type="hidden" name="homeEnrollmentNumber" value="" /> <input
 			type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-		<input type="submit" value="Save" class="btn btn-primary"
+		<input type="submit" value="Finish" class="btn btn-primary"
 			style="margin-left: 8.33333333333%" />
 
 
 		<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}"
 			var="displayUnitDeficiencies" />
-		<a href="${pdiReport}"
-			class="pull-right btn btn-default">Back</a>
-	
+		<a href="${pdiReport}" class="pull-right btn btn-default">Back</a>
+
 	</div>
 </body>
 </html>

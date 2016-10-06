@@ -225,4 +225,21 @@ public class ControllerServices {
 
         return model;
     }
+
+	public Model displayPdiReport(Model model, long homeEnrollmentNumber) {
+		
+	       List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+	       List<Form> form = dao.getForm(homeEnrollmentNumber);   
+	       List<Builder> builder = dao.getBuilderRefNum("batman");
+
+	       	model.addAttribute("form", form.get(0));
+	        model.addAttribute("unit", unit.get(0));
+	        model.addAttribute("builder", builder.get(0));
+		
+	        
+	        
+		return model;
+	}
+
+	
 }

@@ -58,6 +58,7 @@ Extra Large Button CSS
 
 			<c:url value="/displayUnitInfo" var="displayUnitInformation" />
 			<c:url value="/displayBuildingProjects" var="displayBuildingProjects" />
+			<c:url value="/selectReport" var="selectReport" />
 			
 		</div>
 
@@ -71,7 +72,7 @@ Extra Large Button CSS
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
 			<a href="${displayBuildingProjects}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Work Orders</a>
-			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Generate Report</a>
+			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl">Generate Report</a>
 
 		</div>
 

@@ -69,7 +69,7 @@ Extra Large Button CSS
 		<c:url value="/displayUnitData" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
 
-		<form:form commandName="unit" method="post" action="${url}" class="form-horizontal">
+<form:form commandName="unit" method="post" action="${url}" class="form-horizontal">
 
 			<div class="form-group">
 

@@ -195,9 +195,26 @@ public class HomeController {
         return "loginForm";
     }
 
-    @RequestMapping("/createAccount")
-    public String createAccount(Model model) {
-        return "createAccount";
+    @RequestMapping("/pdiReport")
+    public String pdiReport(Model model) {
+    	
+    	//model = controllerServices.displayPdiReport(model);
+    	
+        return "pdiReport";
+    }
+    
+    @RequestMapping("/pdiReportData")
+    public String pdiReportData(Model model,@RequestParam long homeEnrollmentNumber) {
+    	
+    	model = controllerServices.displayPdiReport(model,homeEnrollmentNumber);
+    	
+        return "pdiReport";
+    }
+    
+    
+    @RequestMapping("/selectReport")
+    public String selectReport(Model model) {
+        return "selectReport";
     }
 
     @RequestMapping("/register")

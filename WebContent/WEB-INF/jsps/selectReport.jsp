@@ -45,17 +45,16 @@
 	<div class="jumbotron">
 
 		<div class="form-group">
+		
+		
 			<label for="constructionPersonnel" class="col-lg-1 control-label">Assign
 				To</label>
 			<div class="col-lg-10">
 				<select class="form-control" id="constructionPersonnel"
 					name="constructionPersonnel">
-					<option>Jane Smith</option>
-					<option>Joey Batts</option>
-					<option>Jackson Trig</option>
-					<option>Jeffeory Spindle</option>
-					<option>Jim Gerale</option>
-					<option>Joelle Done</option>
+					<option>PDI Report</option>
+					<option>Other...</option>
+					
 				</select>
 			</div>
 		</div>
@@ -63,11 +62,10 @@
 		<input type="hidden" name="homeEnrollmentNumber" value="" /> <input
 			type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-		<input type="submit" value="Save" class="btn btn-primary"
-			style="margin-left: 8.33333333333%" />
+	
 
-		<c:url value="/pdiReport/${unit.homeEnrollmentNumber}" var="pdiReport" />
-		<a href="${pdiReport}" class="pull-right btn btn-default">Back</a>
+		<c:url value="/pdiReport" var="pdiReport" />
+		<a href="${pdiReport}" class="pull-right btn btn-default">Next</a>
 
 	</div>
 </body>
