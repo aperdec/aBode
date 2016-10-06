@@ -31,8 +31,7 @@ public class ControllerServices {
     }
 
     public Model saveDeficiency(Model model, int id, String location, String description, String constructionPersonnel, String category, Date deadline, long homeEnrollmentNumber) {
-        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false);
-
+        Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
         List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
         System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
         unit.get(0).addDeficiency(deficiency);
@@ -132,6 +131,7 @@ public class ControllerServices {
     }
 
     public Model addDeficiency(Model model, long homeEnrollmentNumber) {
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         Unit unit = unitList.get(0);
         Deficiency deficiency = new Deficiency();
@@ -145,6 +145,7 @@ public class ControllerServices {
         model.addAttribute("categories", categories);
         model.addAttribute("unit", unit);
         model.addAttribute("deficiency", deficiency);
+        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
 
         return model;
     }
@@ -222,6 +223,33 @@ public class ControllerServices {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
 
         model.addAttribute("unit", unitList.get(0));
+
+        return model;
+    }
+
+    public Model displayConstructionPersonnel(Model model) {
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
+
+        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
+
+        return model;
+    }
+
+    public Model displayDeficienciesByConstructionPersonnel(Model model, int id) {
+        List<Deficiency> deficiencyList = new ArrayList<>();
+        List<Unit> unitList = dao.getAllUnits();
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getConstructionPersonnel(id);
+        ConstructionPersonnel constructionPersonnel = constructionPersonnelList.get(0);
+
+        for (Unit unit : unitList) {
+            for (Deficiency deficiency : unit.getDeficiencies()) {
+                if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
+                    deficiencyList.add(deficiency);
+                }
+            }
+        }
+
+        model.addAttribute("deficiencyList", deficiencyList);
 
         return model;
     }

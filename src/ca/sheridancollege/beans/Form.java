@@ -31,7 +31,14 @@ public class Form implements Serializable {
         this.repName = repName;
     }
     
-    public String byteString(byte[] repSig){
+    public Form(long homeEnrollmentNumber, String formType, String repName, byte[] repSig) {
+		this.homeEnrollmentNumber = homeEnrollmentNumber;
+		this.formType = formType;
+		this.repName = repName;
+		this.repSig = repSig;
+	}
+
+	public String byteString(byte[] repSig){
     	 String sigImgData = repSig.toString();
     	return sigImgData;
     }

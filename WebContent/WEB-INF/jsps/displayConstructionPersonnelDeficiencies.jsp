@@ -32,17 +32,21 @@
 	
 	<div style="margin: 2%">
 		<div class="list-group">
-			<c:forEach var="project" items="${projectList}">
-				<c:url value="/displayUnits/${project}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${project} </a>
+			<c:forEach var="deficiency" items="${deficiencyList}">
+				<div class="list-group-item"> ${deficiency.id} + ${deficiency.description}
+                	<c:url value="/workOrderDeleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="deleteUrl" />
+                    <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
+                    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="completeUrl" />
+                    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${deficiency.status}</a>
+                </div>
 			</c:forEach>
 		</div>
 	</div>
 
 	<div style="padding: 0% 2%">
 
-    	<c:url value="/workOrderHome" var="backUrl" />
-    	<a href="${backUrl}" class="btn btn-primary">Back</a>
+       	<c:url value="/displayConstructionPersonnel" var="backUrl" />
+       	<a href="${backUrl}" class="btn btn-primary">Back</a>
     </div>
 
 </body>
