@@ -43,5 +43,11 @@
 		</div>
 	</div>
 
+	<div style="padding: 0% 2%">
+
+       	<c:url value="/displayConstructionPersonnel" var="backUrl" />
+       	<a href="${backUrl}" class="btn btn-primary">Back</a>
+    </div>
+
 </body>
 </html>
