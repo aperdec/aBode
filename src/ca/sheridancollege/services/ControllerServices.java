@@ -26,7 +26,9 @@ public class ControllerServices {
 
     public Model displayUnitDeficiencies(Model model, Long homeEnrollmentNumber) {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-        model.addAttribute("unit", unitList.get(0));
+        Unit unit = unitList.get(0);
+        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
+        model.addAttribute("unit", unit);
 
         return model;
     }
