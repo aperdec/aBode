@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -32,14 +33,17 @@ public class ControllerServices {
 
     public Model saveDeficiency(Model model, int id, String location, String description, String constructionPersonnel, String category, Date deadline, long homeEnrollmentNumber) {
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
-        List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
-        System.out.println("Unit Size:" + unit.size() + homeEnrollmentNumber);
-        unit.get(0).addDeficiency(deficiency);
-
-        dao.saveOrUpdateUnit(unit.get(0));
-
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-        model.addAttribute("unit", unitList.get(0));
+        System.out.println("Unit Size:" + unitList.size() + homeEnrollmentNumber);
+        unitList.get(0).addDeficiency(deficiency);
+
+        dao.saveOrUpdateUnit(unitList.get(0));
+
+        unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
+
+        model.addAttribute("unit", unit);
 
         return model;
     }
@@ -169,6 +173,7 @@ public class ControllerServices {
         List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         Unit unit = unitList.get(0);
+        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
         Deficiency deficiency = new Deficiency();
         if (unit.getDeficiencies().size() > 0) {
             deficiency.setId(unit.getDeficiencies().get(unit.getDeficiencies().size() - 1).getId() + 1);
@@ -189,8 +194,10 @@ public class ControllerServices {
         dao.deleteDeficiency(id, homeEnrollmentNumber);
 
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
-        model.addAttribute("unit", unitList.get(0));
+        model.addAttribute("unit", unit);
 
         return model;
     }
@@ -199,8 +206,10 @@ public class ControllerServices {
         dao.saveOrUpdate(deficiency);
 
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
-        model.addAttribute("unit", unitList.get(0));
+        model.addAttribute("unit", unit);
 
         return model;
     }
@@ -254,6 +263,7 @@ public class ControllerServices {
 
     public Model completeDeficiency(Model model, int id, long homeEnrollmentNumber) {
         Unit unit = dao.completeDeficiency(id, homeEnrollmentNumber);
+        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
         model.addAttribute("unit", unit);
 
@@ -285,5 +295,12 @@ public class ControllerServices {
         model.addAttribute("deficiencyList", deficiencyList);
 
         return model;
+    }
+
+    public List<Deficiency> sortDeficiencyList (List<Deficiency> deficiencyList) {
+
+        Collections.sort(deficiencyList);
+
+        return deficiencyList;
     }
 }

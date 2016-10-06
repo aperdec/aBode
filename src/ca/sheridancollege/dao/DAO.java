@@ -275,7 +275,7 @@ public class DAO {
         session.close();
     }
 
-    public void completeDeficiency(int id, long homeEnrollmentNumber) {
+    public Unit completeDeficiency(int id, long homeEnrollmentNumber) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -301,7 +301,6 @@ public class DAO {
         }
 
         unit.setDeficiencies(modDeficiencies);
-        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
         session.saveOrUpdate(unit);
         session.getTransaction().commit();
@@ -335,12 +334,5 @@ public class DAO {
         session.close();
 
         return constructionPersonnelList;
-    }
-
-    public List<Deficiency> sortDeficiencyList (List<Deficiency> deficiencyList) {
-
-        Collections.sort(deficiencyList);
-
-        return deficiencyList;
     }
 }
