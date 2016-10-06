@@ -15,6 +15,7 @@
     <security:http use-expressions="true">
 
         <security:intercept-url pattern="/home" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/imageDisplay/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderAddDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveUnit/**" access="isAuthenticated()"/>
@@ -23,6 +24,7 @@
         <security:intercept-url pattern="/editDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/deleteDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderDeleteDeficiency/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/workOrderCompleteDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitInfo" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitData" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addSignOff" access="isAuthenticated()"/>
