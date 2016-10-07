@@ -28,17 +28,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
-	<style>
-
-#smallJum{
-	background-color:#EDEEFF;
-	padding: 2%;
-	border-radius: 15px;
+<style>
+#con {
+	background-color: #EDEEFF;
 }
 
+table{
+	border: #D1D0CE solid 1px;
+}
 </style>
-
 <title>Tarion Report Selection</title>
 </head>
 <body>
@@ -52,7 +50,7 @@
 				<legend>Report Selection</legend>
 	</div>
 
-	<div id="smallJum" class="jumbotron">
+	<div class="jumbotron" id="con">
 
 		<div class="form-group">
 		
