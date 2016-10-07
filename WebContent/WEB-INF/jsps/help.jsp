@@ -31,34 +31,83 @@
 </head>
 <body>
 
-	<h1>Help</h1>
-	<ul class="nav nav-pills nav-stacked">
-		<h3><li class="active"><a href="#">Home enrolment number will not
-				generate data</a></li></h3>
-		
-			<li><a href="#">- Make sure to select the go button</a></li>
-			<li><a href="#">- Close Abode for 10 seconds then reopen
-					Abode</a></li>
-			<li><a href="#">- Make sure caps lock is off</a></li>
-			<li><a href="#">- Login with the correct credentials </a></li>
-		
-		<h3><li><a href="#">Next button is not functioning</a></li></h3>
-		
-			<li><a href="#">- Make sure all fields are populated</a></li>
-			<li><a href="#">- Populate needed fields </a></li>
-			<li><a href="#">- Make sure to save</a></li>
-		
-		<h3><li><a href="#">No Deficiencies displaying</a></li></h3>
-		
-			<li><a href="#">- Make sure you are updated</a></li>
-			<li><a href="#">- Make sure there is a internet connection</a></li>
-			<li><a href="#">- Re enter the home enrolment number </a></li>
-			<li><a href="#">- Add or delete needed deficiencies</a></li>
-			<li><a href="#">- Populate needed fields </a></li>
-			<li><a href="#">- Make sure to save</a></li>
-		
+	<h3>Help</h3>
+<br>
 
-	</ul>
+		<li type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal1">
+          Home enrolment number will not generate data
+        </li>
+		<div class="modal" id="modal1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Home enrolment number will not generate data</h4>
+              </div>
+              <div class="modal-body">
+                <li>Make sure to select the go button</a></li>
+                <li>Close Abode for 10 seconds then reopen Abode</a></li>
+                <li>Make sure caps lock is off</a></li>
+                <li>Login with the correct credentials </a></li>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+<br>
+<br>
+		<li type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal2">
+                  Next button is not functioning
+                </li>
+        		<div class="modal" id="modal2">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Next button is not functioning</h4>
+                      </div>
+                      <div class="modal-body">
+                        <li>Make sure all fields are populated</a></li>
+                        			<li>Populate needed fields </a></li>
+                        			<li>Make sure to save</a></li>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+<br>
+<br>
+	<li type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal3">
+                      No Deficiencies displaying
+                    </li>
+            		<div class="modal" id="modal3">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">No Deficiencies displaying</h4>
+                          </div>
+                          <div class="modal-body">
+                            <li>Make sure you are updated</a></li>
+                            			<li>Make sure there is a internet connection</a></li>
+                            			<li>Re enter the home enrolment number </a></li>
+                            			<li>Add or delete needed deficiencies</a></li>
+                            			<li>Populate needed fields </a></li>
+                            			<li>Make sure to save</a></li>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+	<br>
 	<address>
 		Select link to ask questions here: <a
 			href="mailto:exampleAbode@exampleAbode.com? subject=Feedback&body=Message"
