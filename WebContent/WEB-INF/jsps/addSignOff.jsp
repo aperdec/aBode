@@ -8,11 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script src="scripts/modernizr.custom.34982.js"></script>
-
-<script src="scripts/signing.js"></script>
-<script src="scripts/signatureCapture.js"></script>
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!-- Latest compiled and minified CSS -->
@@ -48,16 +43,20 @@
 	border-radius: 15px;
 }
 </style>
+<script src="scripts/modernizr.custom.34982.js"></script>
+
+<script src="scripts/signing.js"></script>
+<script src="scripts/signatureCapture.js"></script>
 <title>SignOff Form</title>
 </head>
 <body>
 
 	<div style="margin: 2%">
-	
+	<div id="smallJum">	
 		<c:url value="/addSignOff" var="url" />
 		<form name="form" method="post" action="${url}"
 			class="form-horizontal" onsubmit="return verify()">
-<div id="smallJum">	
+
 		<fieldset>
 	
 				<legend>SignOff Form</legend>
@@ -123,7 +122,7 @@
 				</div>
 </div>
 				<!-- end text -->
-				<br>
+				<br><br><br><br><br><br>
                 <div>
 	                <p>* Purchasers or owners who intend to designate someone to conduct the PDI in their place should ensure they 
 	                   provide written authority to the vendor/builder authorizing the designate to sign this form on their behalf</p>
