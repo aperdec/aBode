@@ -1,51 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE tiles-definitions PUBLIC 
-"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
-"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-<definition name="home" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/home.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
-<definition name="loginForm" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/loginForm.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
+    <definition name="home" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/home.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="loginForm" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/loginForm.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="selectReport" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/selectReport.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="pdiReport" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/pdiReport.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
 
-<definition name="displayUnitInfo" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/displayUnitInfo.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
-<definition name="displayUnitDeficiencies" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/displayUnitDeficiencies.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
-<definition name="addDeficiency" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/addDeficiency.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
-<definition name="addSignOff" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/addSignOff.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
-<definition name="createAccount" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/createAccount.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
-<definition name="displayUnits" template="/WEB-INF/jsps/default.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
-	<put-attribute name="content" value="/WEB-INF/jsps/displayUnits.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
-</definition>
-
-
+    <definition name="displayUnitInfo" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/displayUnitInfo.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="displayUnitDeficiencies" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/displayUnitDeficiencies.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="addDeficiency" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/addDeficiency.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="addSignOff" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/addSignOff.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="createAccount" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/createAccount.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="displayUnits" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/displayUnits.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="workOrderAddDeficiency" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/workOrderAddDeficiency.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="workOrderDisplayUnitDeficiencies" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/workOrderDisplayUnitDeficiencies.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="displayBuildingProjects" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/displayBuildingProjects.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="workOrderHome" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/workOrderHome.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="displayConstructionPersonnel" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/displayConstructionPersonnel.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="displayConstructionPersonnelDeficiencies" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/displayConstructionPersonnelDeficiencies.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
+    <definition name="help" template="/WEB-INF/jsps/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/help.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
+    </definition>
 </tiles-definitions>

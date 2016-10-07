@@ -1,112 +1,111 @@
 package ca.sheridancollege.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
-import javax.persistence.*;
-
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.NamedQuery;
-
 @Embeddable
-public class Deficiency implements Serializable {
+public class Deficiency implements Serializable, Comparable<Deficiency> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7277687991400754226L;
-//	@GeneratedValue
-	private int id;
-	private String location;
-	@Column(name = "description", nullable = false, length = 1000)
-	private String description;
-	private String constructionPersonnel;
-	private String category;
-	private String[] categories;
-	private Date deadline;
-	private Boolean status;
+    private static final long serialVersionUID = 7277687991400754226L;
+    private int id;
+    private String location;
+    @Column(name = "description", nullable = false, length = 1000)
+    private String description;
+    private String constructionPersonnel;
+    private String category;
+    private Date deadline;
+    private Boolean status;
+    private long homeEnrollmentNumber;
 
-	public Deficiency() {
-		this(0, null, null, null);
-	}
+    public Deficiency() {
+        this(0, null, null, null, null, false, 0);
+    }
 
-	public Deficiency(int id, String location, String description, String constructionPersonnel) {
-		this(id, location, description, constructionPersonnel, null, null, false);
-	}
+    public Deficiency(int id, String location, String description, String constructionPersonnel, String category, boolean status, long homeEnrollmentNumber) {
+        this(id, location, description, constructionPersonnel, category, null, status, homeEnrollmentNumber);
+    }
 
-	public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status) {
-		this.id = id;
-		this.location = location;
-		this.description = description;
-		this.constructionPersonnel = constructionPersonnel;
-		this.category = category;
-		this.deadline = deadline;
-		this.status = status;
-		setCategories();
-	}
+    public Deficiency(int id, String location, String description, String constructionPersonnel, String category, Date deadline, Boolean status, long homeEnrollmentNumber) {
+        this.id = id;
+        this.location = location;
+        this.description = description;
+        this.constructionPersonnel = constructionPersonnel;
+        this.category = category;
+        this.deadline = deadline;
+        this.status = status;
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
+    }
 
-	public String getLocation() {
-		return location;
-	}
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public String getCategory() {
+        return category;
+    }
 
-	public Date getDeadline() {
-		return deadline;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public void setDeadline(Date deadline) {
-		this.deadline = deadline;
-	}
+    public Date getDeadline() {
+        return deadline;
+    }
 
-	public Boolean getStatus() {
-		return status;
-	}
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
 
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
+    public Boolean getStatus() {
+        return status;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 
-	public String[] getCategories() {
-		return categories;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getConstructionPersonnel() {
-		return constructionPersonnel;
-	}
+    public String getConstructionPersonnel() {
+        return constructionPersonnel;
+    }
 
-	public void setConstructionPersonnel(String constructionPersonnel) {
-		this.constructionPersonnel = constructionPersonnel;
-	}
+    public void setConstructionPersonnel(String constructionPersonnel) {
+        this.constructionPersonnel = constructionPersonnel;
+    }
 
-	public void setCategories() {
-		categories = new String[] {"Add Categories"};
-	}
+    public long getHomeEnrollmentNumber() {
+        return homeEnrollmentNumber;
+    }
 
+    public void setHomeEnrollmentNumber(long homeEnrollmentNumber) {
+        this.homeEnrollmentNumber = homeEnrollmentNumber;
+    }
+
+    @Override
+    public int compareTo(Deficiency o) {
+        return id<o.getId()?-1:id>o.getId()?1:0;
+    }
 }

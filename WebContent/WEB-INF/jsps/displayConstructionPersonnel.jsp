@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,60 +25,45 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
+
 <style>
-#con {
+.list-group-item{
+	margin:0.5%;
+}
+#2 {
 	background-color: #EDEEFF;
 }
-
-table{
-	border: #D1D0CE solid 1px;
+#1 {
+	background-color: #EDEEFF;
+}
+#2:hover{
+	background-color: #9394AA;
+	color:black;
+}
+#1:hover{
+	background-color: #9394AA;
+	color:black;
 }
 </style>
-
-<title></title>
+	
+<title>aBode</title>
 </head>
 <body>
-<div class="jumbotron" id="con">
-<center><h2>Unit ${unit.unitNum} Deficiency List</h2></center>
+	
 	<div style="margin: 2%">
 		<div class="list-group">
-		<table class="table table-striped table-hover">
-		  <thead>
-		    <tr>
-		      <th>#</th>
-		      <th>Location</th>
-		      <th>Deficiency Type</th>
-		      <th>Description</th>
-		      <th></th>
-		    </tr>
-		  </thead>
-		  <tbody>
-			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
-				<tr>
-				<td>${unitDeficiency.id}</td>
-				<td>${unitDeficiency.location}</td>
-				<td>${unitDeficiency.category}</td> 
-				<td>${unitDeficiency.description}</td>
-				<td>
-				    <c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
-				    <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
-				</td>
-				</tr>
+			<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
+				<c:url value="/displayDeficiencies/${constructionPersonnel.id}" var="viewUrl" />
+				<a href="${viewUrl}" class="list-group-item" style="background-color: #EDEEFF;"> ${constructionPersonnel.name} </a>
 			</c:forEach>
-			</tbody>
-			</table>
 		</div>
 	</div>
-</div>
-	<div style="padding: 0% 2%">
-		
-		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
 
-		<c:url value="/addSignOff/${unit.homeEnrollmentNumber}" var="addSignOff" />
-		<a href="${addSignOff}" class="pull-right btn btn-success">Next</a>
-	</div>
+	<div style="padding: 0% 2%">
+
+       	<c:url value="/workOrderHome" var="backUrl" />
+       	<a href="${backUrl}" class="btn btn-primary">Back</a>
+    </div>
 
 </body>
 </html>

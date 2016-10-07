@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,22 +28,53 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
-<title>aBode</title>
+<style>
+#con {
+	background-color: #EDEEFF;
+}
+
+table{
+	border: #D1D0CE solid 1px;
+}
+</style>
+<title>Tarion Report Selection</title>
 </head>
 <body>
-	
+	<div></div>
 	<div style="margin: 2%">
-		<div class="list-group">
-			<c:forEach var="unit" items="${unitList}">
-				<c:url value="../workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${unit.lotNumber} + ${unit.address} </a>
-			</c:forEach>
-		</div>
+		<c:url value="/selectReport" var="url" />
+		<form name="form" class="form-horizontal" method="post"
+			action="${url}">
 
-		<c:url value="/displayBuildingProjects" var="backUrl" />
-		<a href="${backUrl}" class="btn btn-primary">Back</a>
+			<fieldset>
+				<legend>Report Selection</legend>
 	</div>
 
+	<div class="jumbotron" id="con">
+
+		<div class="form-group">
+		
+		
+			<label for="constructionPersonnel" class="col-lg-1 control-label">Assign
+				To</label>
+			<div class="col-lg-10">
+				<select class="form-control" id="constructionPersonnel"
+					name="constructionPersonnel">
+					<option>PDI Report</option>
+					<option>Other...</option>
+					
+				</select>
+			</div>
+		</div>
+
+		<input type="hidden" name="homeEnrollmentNumber" value="" /> <input
+			type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+	
+
+		<c:url value="/pdiReport" var="pdiReport" />
+		<a href="${pdiReport}" class="pull-right btn btn-primary">Next</a>
+
+	</div>
 </body>
 </html>

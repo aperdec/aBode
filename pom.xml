@@ -101,5 +101,10 @@
   		<artifactId>tiles-extras</artifactId>
   		<version>3.0.5</version>
   	</dependency>
+	  <dependency>
+		  <groupId>javax.servlet</groupId>
+		  <artifactId>servlet-api</artifactId>
+		  <version>2.5</version>
+	  </dependency>
   </dependencies>
 </project>

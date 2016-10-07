@@ -25,20 +25,21 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
-<style>
-#con {
-	background-color: #EDEEFF;
-}
 
-table{
-	border: #D1D0CE solid 1px;
-}
-</style>
+	<style>
+    #con {
+    	background-color: #EDEEFF;
+    }
+
+    table{
+    	border: #D1D0CE solid 1px;
+    }
+    </style>
 
 <title></title>
 </head>
 <body>
+
 <div class="jumbotron" id="con">
 <center><h2>Unit ${unit.unitNum} Deficiency List</h2></center>
 	<div style="margin: 2%">
@@ -51,6 +52,7 @@ table{
 		      <th>Deficiency Type</th>
 		      <th>Description</th>
 		      <th></th>
+		      <th></th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -58,11 +60,15 @@ table{
 				<tr>
 				<td>${unitDeficiency.id}</td>
 				<td>${unitDeficiency.location}</td>
-				<td>${unitDeficiency.category}</td> 
+				<td>${unitDeficiency.category}</td>
 				<td>${unitDeficiency.description}</td>
 				<td>
-				    <c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
-				    <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
+				    <c:url value="/workOrderCompleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="completeUrl" />
+                    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${unitDeficiency.status}</a>
+				</td>
+				<td>
+				    <c:url value="/workOrderDeleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
+                    <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
 				</td>
 				</tr>
 			</c:forEach>
@@ -71,13 +77,14 @@ table{
 		</div>
 	</div>
 </div>
-	<div style="padding: 0% 2%">
-		
-		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
 
-		<c:url value="/addSignOff/${unit.homeEnrollmentNumber}" var="addSignOff" />
-		<a href="${addSignOff}" class="pull-right btn btn-success">Next</a>
+	<div style="padding: 0% 2%">
+
+		<c:url value="/workOrderAddDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
+		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a>
+
+		<c:url value="/displayUnits/${unit.projectName}" var="backUrl" />
+		<a href="${backUrl}" class="btn btn-primary">Back</a>
 	</div>
 
 </body>
