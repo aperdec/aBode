@@ -31,7 +31,8 @@
 <title>Tarion PDI Form: ${unit.homeEnrollmentNumber}</title>
 </head>
 <body>
-	<div>
+<div style="margin: 2%">
+	<div class="jumbotron">
 	
 	<c:url value="/pdiReportData" var="url2" />
 	
@@ -41,7 +42,7 @@
 
 				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
-					<input name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
+				<input name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control col-lg-8 " required="required"/>
 			</div>
 
 			<div class="form-group">
@@ -52,7 +53,8 @@
 </form>
 	
 	</div>
-	<div style="margin: 2%">
+	
+	
 		<c:url value="/pdiReport" var="url" />
 		<form name="form" class="form-horizontal" method="post"
 			action="${url}">
@@ -69,36 +71,20 @@
 								<th>Description:</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-
-						</tbody>
+						
 					</table>
-
-
+					<c:forEach var="deficiency" items="${unit.deficiencies}">
+				<div class="list-group-item"> ${deficiency.id} + ${deficiency.location} + ${deficiency.description} 
+				    				    
 				</div>
+			</c:forEach>
+
 				<div></div>
 	</div>
 	<div class="jumbotron other-colour">
 
 		<div class="form-group">
-			<label for="id" class="col-lg-1 control-label">Deficiency
-				Number</label>
-			<div class="col-lg-10">
-				<input path="id" name="id" class="form-control" id="id" value=""
-					readonly />
-			</div>
+			
 			<label for="dateOfPosession" class="col-lg-1 control-label">Date
 				of Posession</label>
 
@@ -244,7 +230,7 @@
 				Name</label> <label for="deadline" class="col-lg-1 control-label">Purchaser's
 				Signature</label>
 			<div class="col-lg-6">
-				<input path="id" name="id" class="form-control" id="id" value=""
+				<input path="id" name="id" class="form-control" id="id" value="${form.date}"
 					readonly /> <label for="deadline" class="col-lg-1 control-label">Date
 					(YYYY/MM/DD)</label>
 			</div>
@@ -268,9 +254,9 @@
 			style="margin-left: 8.33333333333%" />
 
 
-		<c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}"
-			var="displayUnitDeficiencies" />
-		<a href="${pdiReport}" class="pull-right btn btn-default">Back</a>
+		<c:url value="/selectReport"
+			var="selectReport" />
+		<a href="${selectReport}" class="pull-right btn btn-default">Back</a>
 
 	</div>
 </body>
