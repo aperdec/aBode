@@ -25,18 +25,47 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+
+<style>
+.list-group-item{
+	margin:0.5%;
+}
+
+#cont {
+	background-color: #EDEEFF;
+}
+#proj {
+	background-color: #EDEEFF;
+}
+#cont:hover{
+	background-color: #9394AA;
+	color:black;
+}
+.btnOver {
+	background-color: #EDEEFF;
+}
+.btnOver:hover{
+	background-color: #9394AA;
+	color:black;
+}
+#proj:hover{
+	background-color: #9394AA;
+	color:black;
+}
+</style>
 	
 <title>aBode</title>
 </head>
 <body>
 	
 	<div style="margin: 2%">
+	<legend>Work Order Selections</legend>
 		<div class="list-group">
 		    Sort By:
 			<c:url value="/displayBuildingProjects" var="projectUrl" />
-			<a href="${projectUrl}" class="list-group-item"> Projects </a>
+			<a href="${projectUrl}" class="list-group-item" id="proj"> Projects </a>
 			<c:url value="/displayConstructionPersonnel" var="builderUrl" />
-			<a href="${builderUrl}" class="list-group-item"> Contractors </a>
+			<a href="${builderUrl}" class="list-group-item" id="cont"> Contractors </a>
 		</div>
 	</div>
 

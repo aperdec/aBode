@@ -121,7 +121,7 @@
 </div>
 </div>
 				<!-- end text -->
-				<br><br><br><br><br><br>
+				
                 <div>
 	                <p>* Purchasers or owners who intend to designate someone to conduct the PDI in their place should ensure they 
 	                   provide written authority to the vendor/builder authorizing the designate to sign this form on their behalf</p>

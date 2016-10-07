@@ -25,6 +25,26 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+
+<style>
+.list-group-item{
+	margin:0.5%;
+}
+#2 {
+	background-color: #EDEEFF;
+}
+#1 {
+	background-color: #EDEEFF;
+}
+#2:hover{
+	background-color: #9394AA;
+	color:black;
+}
+#1:hover{
+	background-color: #9394AA;
+	color:black;
+}
+</style>
 	
 <title>aBode</title>
 </head>
@@ -34,7 +54,7 @@
 		<div class="list-group">
 			<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
 				<c:url value="/displayDeficiencies/${constructionPersonnel.id}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${constructionPersonnel.name} </a>
+				<a href="${viewUrl}" class="list-group-item" style="background-color: #EDEEFF;"> ${constructionPersonnel.name} </a>
 			</c:forEach>
 		</div>
 	</div>
