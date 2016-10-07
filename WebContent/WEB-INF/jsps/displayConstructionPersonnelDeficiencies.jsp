@@ -25,23 +25,56 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+
+	<style>
+    #con {
+    	background-color: #EDEEFF;
+    }
+
+    table{
+    	border: #D1D0CE solid 1px;
+    }
+    </style>
 	
 <title>aBode</title>
 </head>
 <body>
-	
+<div class="jumbotron" id="con">
+<center><h2>Unit ${unit.unitNum} Deficiency List</h2></center>
 	<div style="margin: 2%">
 		<div class="list-group">
+		<table class="table table-striped table-hover">
+		  <thead>
+		    <tr>
+		      <th>#</th>
+		      <th>Location</th>
+		      <th>Deficiency Type</th>
+		      <th>Description</th>
+		      <th></th>
+		    </tr>
+		  </thead>
+		  <tbody>
 			<c:forEach var="deficiency" items="${deficiencyList}">
-				<div class="list-group-item"> ${deficiency.id} + ${deficiency.description}
-                	<c:url value="/workOrderDeleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="deleteUrl" />
+				<tr>
+				<td>${deficiency.id}</td>
+				<td>${deficiency.location}</td>
+				<td>${deficiency.category}</td>
+				<td>${deficiency.description}</td>
+				<td>
+				    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="completeUrl" />
+				    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${deficiency.status}</a>
+				</td>
+				<td>
+				    <c:url value="/workOrderDeleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="deleteUrl" />
                     <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
-                    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="completeUrl" />
-                    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${deficiency.status}</a>
-                </div>
+				</td>
+				</tr>
 			</c:forEach>
+			</tbody>
+			</table>
 		</div>
 	</div>
+</div>
 
 	<div style="padding: 0% 2%">
 
