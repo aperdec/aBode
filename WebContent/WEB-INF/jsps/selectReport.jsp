@@ -73,7 +73,7 @@ table{
 	
 
 		<c:url value="/pdiReport" var="pdiReport" />
-		<a href="${pdiReport}" class="pull-right btn btn-default">Next</a>
+		<a href="${pdiReport}" class="pull-right btn btn-primary">Next</a>
 
 	</div>
 </body>
