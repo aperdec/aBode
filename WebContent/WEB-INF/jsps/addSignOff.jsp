@@ -8,6 +8,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+<script src="../scripts/modernizr.custom.34982.js"></script>
+
+<script src="../scripts/signing.js"></script>
+<script src="../scripts/signatureCapture.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!-- Latest compiled and minified CSS -->
@@ -43,22 +47,16 @@
 	border-radius: 15px;
 }
 </style>
-<script src="scripts/modernizr.custom.34982.js"></script>
-
-<script src="scripts/signing.js"></script>
-<script src="scripts/signatureCapture.js"></script>
 <title>SignOff Form</title>
 </head>
 <body>
 
 	<div style="margin: 2%">
-	<div id="smallJum">	
+	<div id="smallJum">
+	<fieldset>
 		<c:url value="/addSignOff" var="url" />
-		<form name="form" method="post" action="${url}"
-			class="form-horizontal" onsubmit="return verify()">
+		<form name="form" method="post" action="${url}"	class="form-horizontal" onsubmit="return verify()">
 
-		<fieldset>
-	
 				<legend>SignOff Form</legend>
 
 				<div class="form-group">
@@ -91,8 +89,7 @@
 				<label for="desName" class="col-lg-3 control-label">Designator's Name</label>
 
 					<div class="col-lg-4">
-						<input path="desName" name="desName"
-							class="form-control" id="desName" value="${form.desName}"
+						<input path="desName" name="desName" class="form-control" id="desName" value="${form.desName}"
 							placeholder="" type="text" />
 
 					</div>
@@ -104,7 +101,6 @@
 					<input type="submit" value="Save" class="pull-right btn btn-primary" />
 
 				</div>
-				</fieldset>
                 </form>
 				<div class="form-group">
 
@@ -119,7 +115,10 @@
 					<div id="acc1"></div>
 					<br><br>
 					<div><button onclick="clearSig()" class="btn btn-default btn-sm">Redo</button></div>				
-				</div>
+
+</div>
+				</fieldset>
+</div>
 </div>
 				<!-- end text -->
 				<br><br><br><br><br><br>
