@@ -25,18 +25,28 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+<style>
+	.list-group-item{
+		margin:0.7%;
+	}
+</style>
 	
 <title>aBode</title>
 </head>
 <body>
-	
+	<div id="legendCon">
+	<legend>Work Orders by Project</legend>
 	<div style="margin: 2%">
 		<div class="list-group">
 			<c:forEach var="project" items="${projectList}">
 				<c:url value="/displayUnits/${project}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${project} </a>
+				<a href="${viewUrl}" class="list-group-item" id ="btnHovering"> ${project} </a>
 			</c:forEach>
 		</div>
+	</div>
 	</div>
 
 	<div style="padding: 0% 2%">

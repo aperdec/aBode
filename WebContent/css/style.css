@@ -16,3 +16,15 @@ Extra Large Button CSS
     text-decoration:none;
     pointer-events:none;
 }
+
+#btnHovering{
+	background-color: #EDEEFF;
+}
+#btnHovering:hover{
+	background-color: #9394AA;
+	color:black;
+}
+
+#legendCon{
+	margin: 2%;
+}

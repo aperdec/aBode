@@ -46,6 +46,9 @@
 	padding: 2%;
 	border-radius: 15px;
 }
+#bottomBtn{
+margin: 2%
+}
 </style>
 <title>SignOff Form</title>
 </head>
@@ -121,7 +124,7 @@
 </div>
 </div>
 				<!-- end text -->
-				
+				<div id="bottomBtn">
                 <div>
 	                <p>* Purchasers or owners who intend to designate someone to conduct the PDI in their place should ensure they 
 	                   provide written authority to the vendor/builder authorizing the designate to sign this form on their behalf</p>
@@ -165,6 +168,7 @@
 			        <c:url value="/displayUnitDeficiencies/${form.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 					<a href="${displayUnitDeficiencies}" class="pull-left btn btn-default" id="backBtn">Back</a>
 
+				</div>
 				</div>
 				
 				
