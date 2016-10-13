@@ -19,6 +19,10 @@ public class Category {
     }
 
     public void setCategoryList() {
+        List<String> selectOne = new ArrayList<>();
+        selectOne.add("Select A Category");
+        categoryList.add(new SubCategory(selectOne, "Select A Category"));
+
         List<String> foundation = new ArrayList<>();
         foundation.add("1.1 Efflorescence is present on concrete or masonry foundation surface");
         foundation.add("1.2 Interior concrete surefaces are powdery");
