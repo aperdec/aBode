@@ -30,13 +30,32 @@
 <title>Add Deficiency: ${unit.homeEnrollmentNumber}</title>
 </head>
 <body>
+<script>
+    function Validate() {
+        return ValidateCategories();
+    }
+
+    function ValidateCategories() {
+        var e = document.getElementById("category");
+        //if you need text to be compared then use
+        var strUser1 = e.options[e.selectedIndex].text;
+        if(strUser1=="Select A Category") {
+            $('#selectCategory').show();
+            return false;
+        }
+    }
+</script>
 
 	<div style="margin: 2%">
 		<c:url value="/saveDeficiency" var="url" />
-		<form name="form" class="form-horizontal" method="post" action="${url}">
+		<form name="form" class="form-horizontal" method="post" onsubmit="return Validate()" action="${url}">
 
 			<fieldset>
 				<legend>Enter or Edit Information</legend>
+
+				<div class="alert alert-danger collapse" id="selectCategory" >
+                    Please select a category.
+                </div>
 
 				<div class="form-group">
 					<label for="id" class="col-lg-1 control-label">Deficiency Number</label>
