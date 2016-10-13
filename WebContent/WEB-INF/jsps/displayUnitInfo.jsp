@@ -11,14 +11,24 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	
 <script type="text/javascript">
-document.getElementById("nextBtn").hide();
-document.getElementById("saveBtn").hide();
+var used;
+function hide(){
+used = document.getElementById("repName").value;
+document.getElementById("nextBtn").style.visibility = 'hidden';
+document.getElementById("saveBtn").style.visibility = 'hidden';
+document.getElementById("nextBtn").style.visibility = 'visible';
+
+if (used === ""){
+	//alert(used);
+	document.getElementById("nextBtn").style.visibility = 'hidden';
+}
+}
 
 function showSave(){
-	document.getElementById("saveBtn").show();
+	document.getElementById("saveBtn").style.visibility = 'visible';
 }
 function showNext(){
-	document.getElementById("nextBtn").show();
+	document.getElementById("nextBtn").style.visibility = 'visible';
 }
 
 </script>
@@ -69,7 +79,7 @@ function showNext(){
 </style>
 <title>Unit Information</title>
 </head>
-<body>
+<body onload="hide()">
 
 	<div style="margin: 2%">
 
@@ -224,7 +234,7 @@ function showNext(){
 
 					<div class="col-lg-4">
 						<input path="repName" name="repName" class="form-control"
-							id="repName" placeholder="" type="text" required="required" value="${form.repName}"/>
+							id="repName" placeholder="" type="text" value="${form.repName}"/>
 					</div>
 
 				</div>

@@ -26,31 +26,11 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
 <style>
 .list-group-item{
 	margin:0.5%;
-}
-
-#cont {
-	background-color: #EDEEFF;
-}
-#proj {
-	background-color: #EDEEFF;
-}
-#cont:hover{
-	background-color: #9394AA;
-	color:black;
-}
-.btnOver {
-	background-color: #EDEEFF;
-}
-.btnOver:hover{
-	background-color: #9394AA;
-	color:black;
-}
-#proj:hover{
-	background-color: #9394AA;
-	color:black;
 }
 </style>
 	
@@ -58,14 +38,14 @@
 </head>
 <body>
 	
-	<div style="margin: 2%">
+	<div id="legendCon">
 	<legend>Work Order Selections</legend>
 		<div class="list-group">
 		    Sort By:
 			<c:url value="/displayBuildingProjects" var="projectUrl" />
-			<a href="${projectUrl}" class="list-group-item" id="proj"> Projects </a>
+			<a href="${projectUrl}" class="list-group-item" id="btnHovering"> Projects </a>
 			<c:url value="/displayConstructionPersonnel" var="builderUrl" />
-			<a href="${builderUrl}" class="list-group-item" id="cont"> Contractors </a>
+			<a href="${builderUrl}" class="list-group-item" id="btnHovering"> Contractors </a>
 		</div>
 	</div>
 

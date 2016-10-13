@@ -29,6 +29,8 @@
 <style>
 #con {
 	background-color: #EDEEFF;
+	margin: 2%;
+	border-radius: 15px;
 }
 
 table{

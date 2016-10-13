@@ -26,20 +26,29 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 	
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+<style>
+.list-group-item{
+	margin:1.5%;
+}
+</style>
 <title>aBode</title>
 </head>
 <body>
-	
+	<div id="legendCon">
+	<legend>Units with Deficiencies for ${project} </legend>
 	<div style="margin: 2%">
 		<div class="list-group">
 			<c:forEach var="unit" items="${unitList}">
 				<c:url value="../workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item"> ${unit.lotNumber} + ${unit.address} </a>
+				<a href="${viewUrl}" class="list-group-item" id="btnHovering"> Unit: ${unit.unitNum} at ${unit.address} </a>
 			</c:forEach>
 		</div>
 
 		<c:url value="/displayBuildingProjects" var="backUrl" />
-		<a href="${backUrl}" class="btn btn-primary">Back</a>
+		<a href="${backUrl}" class="btn btn-default">Back</a>
+	</div>
 	</div>
 
 </body>
