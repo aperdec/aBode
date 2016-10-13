@@ -26,7 +26,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
+
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 <style>
@@ -50,14 +50,14 @@ table td{
 	<br>
 	<legend>Frequently Asked Questions</legend>
 		<li class="list-group-item" id="btnHovering" data-toggle="modal" data-target="#modal1">
-          Home enrolment number will not generate data
+          Home enrollment number will not generate data
         </li>
 		<div class="modal" id="modal1">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Home enrolment number will not generate data</h4>
+                <h4 class="modal-title">Home enrollment number will not generate data</h4>
               </div>
               <div class="modal-body">
                 <li>Make sure to select the go button</a></li>
@@ -109,7 +109,7 @@ table td{
                           <div class="modal-body">
                             <li>Make sure you are updated</a></li>
                             			<li>Make sure there is a internet connection</a></li>
-                            			<li>Re enter the home enrolment number </a></li>
+                            			<li>Re enter the home enrollment number </a></li>
                             			<li>Add or delete needed deficiencies</a></li>
                             			<li>Populate needed fields </a></li>
                             			<li>Make sure to save</a></li>
@@ -130,7 +130,7 @@ table td{
 			<td>Abode Software</td>
 			<td>Phone: 647-232-2699 <br> Email: TechHelp@Abode.com</td>
 		</tr>
-		
+
 		<tr>
 			<td> Times Group Inc</td>
 			<td>Phone: 905-940-6286 <br> Email: Rupal@TimesGroup.com</td>
@@ -140,7 +140,7 @@ table td{
 	</div>
 	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
 		<legend>Submit a Question or Feedback</legend>
-		
+
 		<div class="col-lg-7 control-label">
 			<input type="text" class="form-control" placeholder="Subject">
 		</div><br>

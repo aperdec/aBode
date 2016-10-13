@@ -149,9 +149,9 @@ public class HomeController {
     public String displayUnitInfo(Model model) {
         dao.addTestData();
         model.addAttribute("unit", new Unit());
-        model.addAttribute("builder", new Builder());
-        model.addAttribute("form", new Form());
-        // dao.getUnit(homeEnrollmentNumber);
+//        model.addAttribute("builder", new Builder());
+//        model.addAttribute("form", new Form());
+//        dao.getUnit(homeEnrollmentNumber);
         return "displayUnitInfo";
     }
 

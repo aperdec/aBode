@@ -32,7 +32,30 @@
 <body>
 <script>
     function Validate() {
-        return ValidateCategories();
+        if (ValidateCategories() && ValidateLocation()) {
+            return true;
+        } else if (ValidateCategories()) {
+            $('#selectCategory').hide();
+            return false;
+        } else if (ValidateLocation()) {
+            $('#selectLocation').hide();
+            return false;
+        } else {
+            return false;
+        }
+    }
+
+    function ValidateLocation() {
+        var e = document.getElementById("location");
+        //if you need text to be compared then use
+        var strUser1 = e.options[e.selectedIndex].text;
+        if(strUser1=="Select A Location") {
+            $('#alert').show();
+            $('#selectLocation').show();
+            return false;
+        } else {
+            return true;
+        }
     }
 
     function ValidateCategories() {
@@ -40,8 +63,11 @@
         //if you need text to be compared then use
         var strUser1 = e.options[e.selectedIndex].text;
         if(strUser1=="Select A Category") {
+            $('#alert').show();
             $('#selectCategory').show();
             return false;
+        } else {
+            return true;
         }
     }
 </script>
@@ -53,8 +79,9 @@
 			<fieldset>
 				<legend>Enter or Edit Information</legend>
 
-				<div class="alert alert-danger collapse" id="selectCategory" >
-                    Please select a category.
+				<div class="alert alert-danger collapse" id="alert" >
+				    <div id="selectCategory" class="collapse">Please select a category.</div>
+				    <div id="selectLocation" class="collapse">Please select a location.</div>
                 </div>
 
 				<div class="form-group">
@@ -75,6 +102,7 @@
 					<label for="location" class="col-lg-1 control-label">Location</label>
 					<div class="col-lg-10">
 						<select name="location" class="form-control" id="location">
+						    <option>Select A Location</option>
 							<option>Kitchen</option>
 							<option>Bedroom</option>
 							<option>Living Room</option>
@@ -120,11 +148,8 @@
 
 				<input type="submit" value="Save Deficiency" class="btn btn-primary" style="margin-left: 8.33333333333%" />
 
-
 			    <c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
-
-
 
 			</fieldset>
 		</form>

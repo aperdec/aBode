@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,15 +111,36 @@ public class ControllerServices {
         Builder b = returnsBuilder.get(0);
         model.addAttribute("builder", returnsBuilder.get(0));
 
-        Form form = new Form(homeEnrollmentNumber, "PDI", repName);
+        Form form;
+
+        List<Form> formList = dao.getForm(homeEnrollmentNumber);
+        if (formList.size() > 0) {
+            form = formList.get(0);
+            form.setRepName(repName);
+        } else {
+            form = new Form(homeEnrollmentNumber, "PDI", repName);
+        }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
         HomeOwner ho = returnPurch.get(0);
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
+
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int)sig.length()];
+
+        try{
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        form.setRepSig(sigImg);
         
-        dao.createForm(form);
+        dao.saveOrUpdateForm(form);
         model.addAttribute("form", form);
 
         return model;
@@ -129,7 +152,19 @@ public class ControllerServices {
         Form addSignOff = returns.get(0);
 
         addSignOff.setDesName(desName);
-        dao.addSig(addSignOff);
+
+        File sig = new File("C:\\abode\\purSig.png");
+        byte[] sigImg = new byte[(int)sig.length()];
+
+        try{
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        addSignOff.setFinalSig(sigImg);
         model.addAttribute("form", addSignOff);
 
         dao.saveOrUpdateForm(addSignOff);
