@@ -35,14 +35,14 @@
 <br>
 
 		<li type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal1">
-          Home enrolment number will not generate data
+          Home enrollment number will not generate data
         </li>
 		<div class="modal" id="modal1">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Home enrolment number will not generate data</h4>
+                <h4 class="modal-title">Home enrollment number will not generate data</h4>
               </div>
               <div class="modal-body">
                 <li>Make sure to select the go button</a></li>
@@ -95,7 +95,7 @@
                           <div class="modal-body">
                             <li>Make sure you are updated</a></li>
                             			<li>Make sure there is a internet connection</a></li>
-                            			<li>Re enter the home enrolment number </a></li>
+                            			<li>Re enter the home enrollment number </a></li>
                             			<li>Add or delete needed deficiencies</a></li>
                             			<li>Populate needed fields </a></li>
                             			<li>Make sure to save</a></li>
