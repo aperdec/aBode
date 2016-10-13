@@ -79,7 +79,7 @@
 					<div class="col-lg-10">
 						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel">
 							<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
-                                <option>${constructionPersonnel.name}</option>
+                                 <option>${constructionPersonnel.trade} - ${constructionPersonnel.name}</option>
                             </c:forEach>
 						</select>
 					</div>
