@@ -209,7 +209,7 @@ public class DAO {
         form.setRepSig(sigImg);
 
 
-        session.save(form);
+        session.saveOrUpdate(form);
         session.getTransaction().commit();
         session.close();
     }

@@ -27,14 +27,29 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<style>
+#contactTable{
+	width:50%;
+}
+table td{
+	padding: 2%;
+}
+.boxBg{
+	background-color:#EDEEFF
+}
+</style>
+
 <title>aBode</title>
 </head>
 <body>
 
-	<h3>Help</h3>
-<br>
-
-		<li type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal1">
+	<div id="legendCon">
+	<h2>Help</h2>
+	<br>
+	<legend>Frequently Asked Questions</legend>
+		<li class="list-group-item" id="btnHovering" data-toggle="modal" data-target="#modal1">
           Home enrollment number will not generate data
         </li>
 		<div class="modal" id="modal1">
@@ -51,21 +66,20 @@
                 <li>Login with the correct credentials </a></li>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" id="btnHovering" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
 <br>
-<br>
-		<li type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal2">
+		<li class="list-group-item" data-toggle="modal" data-target="#modal2">
                   Next button is not functioning
                 </li>
         		<div class="modal" id="modal2">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button type="button" class="close" id="btnHovering" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Next button is not functioning</h4>
                       </div>
                       <div class="modal-body">
@@ -80,9 +94,9 @@
                   </div>
                 </div>
 
+
 <br>
-<br>
-	<li type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal3">
+	<li class="list-group-item" data-toggle="modal" data-target="#modal3">
                       No Deficiencies displaying
                     </li>
             		<div class="modal" id="modal3">
@@ -106,18 +120,42 @@
                         </div>
                       </div>
                     </div>
+                    </div>
 
-	<br>
-	<address>
-		Select link to ask questions here: <a
-			href="mailto:exampleAbode@exampleAbode.com? subject=Feedback&body=Message"
-			target="#">Send Mail</a>
-	</address>
-	<p>Abode Contact # 647-232-2699</p>
-	<p>Times Group Inc # (905) 940-6286</p>
+	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
+	<legend>Contact Information</legend>
+	<b>
+	<table id="contactTable">
+		<tr>
+			<td>Abode Software</td>
+			<td>Phone: 647-232-2699 <br> Email: TechHelp@Abode.com</td>
+		</tr>
 
-	
-	
+		<tr>
+			<td> Times Group Inc</td>
+			<td>Phone: 905-940-6286 <br> Email: Rupal@TimesGroup.com</td>
+		</tr>
+	</table>
+	</b>
+	</div>
+	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
+		<legend>Submit a Question or Feedback</legend>
+
+		<div class="col-lg-7 control-label">
+			<input type="text" class="form-control" placeholder="Subject">
+		</div><br>
+		<div rows="6" class="col-lg-7 control-label">
+			<textarea class="form-control">
+			</textarea>
+		</div>
+		<div class="col-lg-7 control-label">
+		<address>
+			Select link to ask questions here: <a
+				href="mailto:exampleAbode@exampleAbode.com? subject=Feedback&body=Message"
+				target="#">Send Mail</a>
+		</address>
+		</div>
+	</div>
 
 
 
