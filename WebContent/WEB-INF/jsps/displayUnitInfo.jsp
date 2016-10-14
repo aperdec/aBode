@@ -11,6 +11,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	
 <script type="text/javascript">
+var e;
+
 var used;
 function hide(){
 used = document.getElementById("repName").value;
@@ -27,8 +29,32 @@ if (used === ""){
 function showSave(){
 	document.getElementById("saveBtn").style.visibility = 'visible';
 }
-function showNext(){
-	document.getElementById("nextBtn").style.visibility = 'visible';
+
+function ValidateHEN() {
+	e = document.getElementById("homeEnrollmentNumber").value;
+    //if you need text to be compared then use
+    if(e <= 0 || e ==null || e=="") {
+        $('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else if (isNaN(e)){
+    	$('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function Validate() {
+    if (ValidateHEN()) {
+        return true;
+    } else if (ValidateHEN()) {
+        $('#selectHEN').hide();
+        return false;
+    } else {
+        return false;
+    }
 }
 
 </script>
@@ -57,6 +83,7 @@ function showNext(){
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 
+<link rel="stylesheet" type="text/css" href="/spring/css/style.css">
 
 <style>
 .flex-v-center {
@@ -64,18 +91,11 @@ function showNext(){
 	align-items: center;
 }
 
-#canvasContainer {
-    border: 1px solid grey;
-    border-radius: 5px;
-    background-color:white;
-}
-
 #smallJum{
 	background-color:#EDEEFF;
 	padding: 2%;
 	border-radius: 15px;
 }
-
 </style>
 <title>Unit Information</title>
 </head>
@@ -86,17 +106,22 @@ function showNext(){
 		<c:url value="/displayUnitData" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
 
-<form:form commandName="unit" method="post" action="${url}" class="form-horizontal">
+<form:form commandName="unit" method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
 
 			<div class="form-group">
 
 				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
-					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
+					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" 
+					id="homeEnrollmentNumber" required="required"/>
 			</div>
 			<div class="form-group">				
 				<input type="submit" value="Go!" class="pull-right btn btn-primary" />
 			</div>
+			
+			<div class="alert alert-danger collapse" id="alert" >
+                	<div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                </div>
 </form:form>
 <!--</form>-->
 			<div id="error"></div>

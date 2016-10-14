@@ -29,3 +29,9 @@ Extra Large Button CSS
 	margin: 2%;
 	border-radius: 15px;
 }
+
+#canvasContainer {
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color:white;
+}
