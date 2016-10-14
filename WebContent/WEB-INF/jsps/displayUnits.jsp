@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,7 @@
 		<div class="list-group">
 			<c:forEach var="unit" items="${unitList}">
 				<c:url value="../workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item" id="btnHovering"> Unit: ${unit.unitNum} at ${unit.address} </a>
+				<a href="${viewUrl}" class="list-group-item" id="btnHovering"> Unit: ${unit.unitNum} at ${unit.address} <span class="badge"> ${fn:length(unit.deficiencies)} </span> </a>
 			</c:forEach>
 		</div>
 
