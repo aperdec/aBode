@@ -28,6 +28,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 <style>
 #con {
 	background-color: #EDEEFF;
@@ -37,27 +38,22 @@ table{
 	border: #D1D0CE solid 1px;
 }
 </style>
+
 <title>Tarion Report Selection</title>
 </head>
 <body>
-	<div></div>
+	<legend>Report Selection</legend>
 	<div style="margin: 2%">
 		<c:url value="/selectReport" var="url" />
-		<form name="form" class="form-horizontal" method="post"
-			action="${url}">
-
-			<fieldset>
-				<legend>Report Selection</legend>
-	</div>
-
-	<div class="jumbotron" id="con">
+		<form name="form" class="form-horizontal" method="post" action="${url}">
+		<fieldset>
+		<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 
 		<div class="form-group">
 		
-		
-			<label for="constructionPersonnel" class="col-lg-1 control-label">Assign
+			<label for="constructionPersonnel" class="col-lg-2 pull-left control-label" >Assign
 				To</label>
-			<div class="col-lg-10">
+			<div class="col-lg-8">
 				<select class="form-control" id="constructionPersonnel"
 					name="constructionPersonnel">
 					<option>PDI Report</option>
@@ -65,16 +61,23 @@ table{
 					
 				</select>
 			</div>
+				<input type="hidden" name="homeEnrollmentNumber" value="" /> 
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	
+			<c:url value="/pdiReport" var="pdiReport" />
+			<a href="${pdiReport}" class="col-lg-1 pull-left btn btn-success">Next</a>
 		</div>
 
-		<input type="hidden" name="homeEnrollmentNumber" value="" /> <input
-			type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
-	
-
-		<c:url value="/pdiReport" var="pdiReport" />
-		<a href="${pdiReport}" class="pull-right btn btn-primary">Next</a>
+		
 
 	</div>
+			</fieldset>
+			</form>
+			
+	</div>
+
+	
+	
+
 </body>
 </html>

@@ -28,7 +28,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 <style>
 #con {
 	background-color: #EDEEFF;
@@ -55,7 +55,7 @@ label {
 <div id="divCon">
 
 <div style="margin: 2%">
-	<div class="jumbotron" id="con">
+	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 	<c:url value="/pdiReportData" var="url2" />
 	<form method="post" action="${url2}" class="form-horizontal">
 			
@@ -66,7 +66,7 @@ label {
 
 			<div class="form-group" style="margin: 2%">
 				 <input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="submit" value="Go!" class="pull-right btn btn-default" />
+				<input type="submit" value="Go!" class="pull-right btn btn-primary" />
 
 			</div>
 </form>
@@ -98,12 +98,10 @@ label {
 			</c:forEach>
 			</tbody>
 					</table>
-						
-
-				
+		
 	</div>
 	
-	<div class="jumbotron" id="con" >
+	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 
 		<div class="form-group" style="margin: 2%">
 		
@@ -200,7 +198,7 @@ label {
 	
 
 			
-	<div class="jumbotron" id="con">
+	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 	
 		<div style="margin: 2%">
 			<div class="form-group"  >
@@ -235,8 +233,7 @@ label {
 							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
 								<input path="id" name="id" class="form-control col-md-12" id="id" value="${form.date}"  />
 							</div>
-						
-					
+
 				</div>
 				<div class="col-lg-12 pull-right" style="margin: 2%">
 					<label for="deadline" class="col-lg-12 control-label pull-left">*Purchasers
@@ -258,7 +255,7 @@ label {
 			<input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</div>
 		
-	<div class="jumbotron" id="con" >
+	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 		<div class="col-lg-12">	
 
 			<!-- <input type="submit" value="Finish" class="btn btn-primary"
@@ -268,7 +265,7 @@ label {
 			<a href="${selectReport}" class="pull-right btn btn-default" >Back</a>
 			
 			<c:url value="/" var="home" />
-			<a href="${home}" class="pull-left btn btn-default">Done</a>
+			<a href="${home}" class="pull-left btn btn-success">Finish</a>
 		</div>	
 	</div>
 	
