@@ -43,7 +43,7 @@
 		<div class="list-group">
 			<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
 				<c:url value="/displayDeficiencies/${constructionPersonnel.id}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item" id ="btnHovering"> ${constructionPersonnel.name} </a>
+				<a href="${viewUrl}" class="list-group-item" id ="btnHovering"> ${constructionPersonnel.constructionPersonnelName} <span class="badge"> ${constructionPersonnel.deficiencyCount} </span> </a>
 			</c:forEach>
 		</div>
 	</div>

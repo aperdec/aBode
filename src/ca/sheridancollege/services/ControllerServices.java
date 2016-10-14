@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,6 +37,8 @@ public class ControllerServices {
     }
 
     public Model saveDeficiency(Model model, int id, String location, String description, String constructionPersonnel, String category, Date deadline, long homeEnrollmentNumber) {
+        constructionPersonnel = constructionPersonnel.substring(constructionPersonnel.indexOf("-")).replace("-", "").trim();
+        System.out.println("construction personnel substring: " + constructionPersonnel);
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         System.out.println("Unit Size:" + unitList.size() + homeEnrollmentNumber);
@@ -128,25 +131,25 @@ public class ControllerServices {
         form.setBuilderRefNum(b.getBuilderRefNum());
 
         File sig = new File("C:\\abode\\refSig.png");
-        byte[] sigImg = new byte[(int)sig.length()];
+        byte[] sigImg = new byte[(int) sig.length()];
 
-        try{
+        try {
             FileInputStream input = new FileInputStream(sig);
             input.read(sigImg);
             input.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         form.setRepSig(sigImg);
-        
+
         dao.saveOrUpdateForm(form);
         model.addAttribute("form", form);
 
         return model;
     }
 
-    public Model saveForm(Model model, long homeEnrollmentNumber, String desName){
+    public Model saveForm(Model model, long homeEnrollmentNumber, String desName) {
 
         List<Form> returns = dao.getForm(homeEnrollmentNumber);
         Form addSignOff = returns.get(0);
@@ -154,13 +157,13 @@ public class ControllerServices {
         addSignOff.setDesName(desName);
 
         File sig = new File("C:\\abode\\purSig.png");
-        byte[] sigImg = new byte[(int)sig.length()];
+        byte[] sigImg = new byte[(int) sig.length()];
 
-        try{
+        try {
             FileInputStream input = new FileInputStream(sig);
             input.read(sigImg);
             input.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -172,7 +175,7 @@ public class ControllerServices {
         return model;
     }
 
-    public Model loadSignOff(Model model, long homeEnrollmentNumber){
+    public Model loadSignOff(Model model, long homeEnrollmentNumber) {
 
         List<Form> returns = dao.getForm(homeEnrollmentNumber);
         Form addSignOff = returns.get(0);
@@ -288,7 +291,7 @@ public class ControllerServices {
 
         return model;
     }
-    
+
     //gets first sig
     public HttpServletResponse getImage(HttpServletResponse response, long homeEnrollmentNumber) throws IOException {
         response.setContentType("image/png");
@@ -300,7 +303,7 @@ public class ControllerServices {
 
         return response;
     }
-    
+
     //get final sig
     public HttpServletResponse getImage2(HttpServletResponse response, long homeEnrollmentNumber) throws IOException {
         response.setContentType("image/png");
@@ -322,25 +325,38 @@ public class ControllerServices {
         return model;
     }
 
-	public Model displayPdiReport(Model model, long homeEnrollmentNumber) {
+    public Model displayPdiReport(Model model, long homeEnrollmentNumber) {
 
-	       List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
-	       List<Form> form = dao.getForm(homeEnrollmentNumber);
-	       List<Builder> builder = dao.getBuilderRefNum("batman");
+        List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+        List<Form> form = dao.getForm(homeEnrollmentNumber);
+        List<Builder> builder = dao.getBuilderRefNum("batman");
 
-	       	model.addAttribute("form", form.get(0));
-	        model.addAttribute("unit", unit.get(0));
-	        model.addAttribute("builder", builder.get(0));
+        model.addAttribute("form", form.get(0));
+        model.addAttribute("unit", unit.get(0));
+        model.addAttribute("builder", builder.get(0));
 
-
-
-		return model;
-	}
+        return model;
+    }
 
     public Model displayConstructionPersonnel(Model model) {
         List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
+        List<Unit> unitList = dao.getAllUnits();
 
-        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
+        List<TotalDeficiencies> totalDeficiencies = new ArrayList<>();
+
+        for (ConstructionPersonnel constructionPersonnel : constructionPersonnelList){
+            int count = 0;
+            for (Unit unit : unitList) {
+                for (Deficiency deficiency : unit.getDeficiencies()) {
+                    if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
+                        count++;
+                    }
+                }
+            }
+            totalDeficiencies.add(new TotalDeficiencies(constructionPersonnel.getId(), constructionPersonnel.getName(), count));
+        }
+
+        model.addAttribute("constructionPersonnelList", totalDeficiencies);
 
         return model;
     }
@@ -364,7 +380,7 @@ public class ControllerServices {
         return model;
     }
 
-    public List<Deficiency> sortDeficiencyList (List<Deficiency> deficiencyList) {
+    public List<Deficiency> sortDeficiencyList(List<Deficiency> deficiencyList) {
 
         Collections.sort(deficiencyList);
 
