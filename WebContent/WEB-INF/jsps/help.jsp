@@ -30,6 +30,9 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 <style>
+#feedbackDiv{
+width:50%;
+}
 #contactTable{
 	width:50%;
 }
@@ -39,47 +42,60 @@ table td{
 .boxBg{
 	background-color:#EDEEFF
 }
+#a1{
+	display:none;
+}
 </style>
+
+<script type="text/javascript">
+function hide(){
+//document.getElementById('a1').style.display = 'none';
+}
+var closed = true;
+
+function clickQ1 (){
+	
+	if (!(closed)){
+		alert("test");
+		document.getElementById('a1').style.display = "initial";
+		closed = true;
+	}
+	else{
+		alert("test3333");
+		$('a1').style.display = 'none';
+	}
+	
+}
+</script>
 
 <title>aBode</title>
 </head>
-<body>
+<body onload="hide()">
 
 	<div id="legendCon">
 	<h2>Help</h2>
 	<br>
 	<legend>Frequently Asked Questions</legend>
-		<li class="list-group-item" id="btnHovering" data-toggle="modal" data-target="#modal1">
-          Home enrollment number will not generate data
+		<li class="list-group-item" id="btnHovering" onclick="clickQ1 ()">
+          <span id="q1" >Home enrollment number will not generate data</span>
         </li>
-		<div class="modal" id="modal1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Home enrollment number will not generate data</h4>
-              </div>
-              <div class="modal-body">
+                
+              <div id="a1" class="modal-body">
                 <li>Make sure to select the go button</a></li>
                 <li>Close Abode for 10 seconds then reopen Abode</a></li>
                 <li>Make sure caps lock is off</a></li>
                 <li>Login with the correct credentials </a></li>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="btnHovering" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
+              
 <br>
-		<li class="list-group-item" data-toggle="modal" data-target="#modal2">
+		<li class="list-group-item" id="btnHovering" data-toggle="modal" data-target="#modal2">
                   Next button is not functioning
                 </li>
         		<div class="modal" id="modal2">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <button type="button" class="close" id="btnHovering" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Next button is not functioning</h4>
                       </div>
                       <div class="modal-body">
@@ -96,7 +112,7 @@ table td{
 
 
 <br>
-	<li class="list-group-item" data-toggle="modal" data-target="#modal3">
+	<li class="list-group-item" id="btnHovering" data-toggle="modal" data-target="#modal3">
                       No Deficiencies displaying
                     </li>
             		<div class="modal" id="modal3">
@@ -140,13 +156,14 @@ table td{
 	</div>
 	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
 		<legend>Submit a Question or Feedback</legend>
-
-		<div class="col-lg-7 control-label">
-			<input type="text" class="form-control" placeholder="Subject">
-		</div><br>
-		<div rows="6" class="col-lg-7 control-label">
-			<textarea class="form-control">
-			</textarea>
+		<div id="feedbackDiv" class="form-group">
+			<div class="col-lg-6 control-label">
+				<input type="text" class="form-control" placeholder="Subject">
+			</div><br>
+			<div class="col-lg-6 control-label">
+				<textarea rows="9" maxlength="350" class="form-control pull-left" placeholder="Short entry (350 character limit)">
+				</textarea>
+			</div>
 		</div>
 		<div class="col-lg-7 control-label">
 		<address>
