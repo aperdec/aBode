@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
@@ -204,21 +205,21 @@ public class HomeController {
 
     @RequestMapping("/pdiReport")
     public String pdiReport(Model model) {
-    	
-    	//model = controllerServices.displayPdiReport(model);
-    	
+
+        //model = controllerServices.displayPdiReport(model);
+
         return "pdiReport";
     }
-    
+
     @RequestMapping("/pdiReportData")
-    public String pdiReportData(Model model,@RequestParam long homeEnrollmentNumber) {
-    	
-    	model = controllerServices.displayPdiReport(model,homeEnrollmentNumber);
-    	
+    public String pdiReportData(Model model, @RequestParam long homeEnrollmentNumber) {
+
+        model = controllerServices.displayPdiReport(model, homeEnrollmentNumber);
+
         return "pdiReport";
     }
-    
-    
+
+
     @RequestMapping("/selectReport")
     public String selectReport(Model model) {
         return "selectReport";
@@ -269,9 +270,9 @@ public class HomeController {
 
         response = controllerServices.getImage(response, homeEnrollmentNumber);
     }
-    
+
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}/2")
-    public void getImage2(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
+    public void getImage2(HttpServletResponse response, @PathVariable long homeEnrollmentNumber) throws IOException {
 
         response = controllerServices.getImage(response, homeEnrollmentNumber);
     }
