@@ -180,21 +180,21 @@ label {
 			
 			<div class="col-lg-12">
 				<label for="repName" class="pull-left control-label">Representative Name</label>
-				</div>
-					<div class="col-lg-6">
-						<input path="repName" name="repName" class="form-control" id="repName" 
-						placeholder="" type="text" required="required" value="${form.repName}"  />
-					</div>
-				<div class="col-lg-6" id="sig">
-					<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" />
 			</div>
-						
-				<label for="id" class="pull-left control-label" style="margin: 1%">This section
-				should be completed and signed by all persons who are shown as
-				purchasers on the APS for the home, or as owners of land in a
-				construction contract(and / or by their designate*).</label>
-			
-		</div>
+			<div class="col-lg-5">
+				<input path="repName" name="repName" class="form-control" id="repName" 
+					placeholder="" type="text" required="required" value="${form.repName}"  />
+			</div>
+			<div class="col-lg-6" id="sig" style="margin: 2%">
+				<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" />
+			</div>
+				<div>		
+					<label for="id" class="pull-right control-label" style="margin: 2%">This section
+					should be completed and signed by all persons who are shown as
+					purchasers on the APS for the home, or as owners of land in a
+					construction contract ( and / or by their designate* ).</label>
+				</div>
+			</div>
 
 	</div>
 	
@@ -202,85 +202,70 @@ label {
 			
 	<div class="jumbotron" id="con">
 	
-			
-	
 		<div style="margin: 2%">
-		<div class="form-group" style="margin: 2%">
-		<label for="id" class="" control-label" style="margin: 1%">I have
-				inspected my new home and I agree that the descriptions of the items
-				listed on this form are accurate</label>
-		
-			<div class="col-sm-6">
-				<input path="id" name="id" class="form-control" id="id" value="${form.purchName}"  />
-			</div>
+			<div class="form-group"  >
+				<div>
+					<label for="id" class="pull-right control-label" style="margin: 2%">I have
+						inspected my new home and I agree that the descriptions of the items
+						listed on this form are accurate</label>
+				</div>
+				<div class="col-lg-12">
+					<div class="col-lg-5">
+						<input path="id" name="id" class="form-control" id="id" value="${form.purchName}"  />
+					</div>
 			
-			<div class="col-lg-6" id="sig">
-				<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" />
+					<div class="col-lg-6" id="sig" id="sig" style="margin: 2%">
+						<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" />
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12">
+						<div>
+							<label for="deadline" class="col-lg-2 pull-left control-label" >Purchaser's Name</label>
+						</div>
+					<div>
+						<label for="deadline" class="col-lg-5 pull-right control-label" >Purchaser's Signature</label>
+					</div>
+				</div>
+				<div class="col-lg-12 pull-right" style="margin: 2%">
+					
+						
+							<div class="col-lg-10 col-md-8 col-sm-8 col-xs-8">
+								<label for="date" class="control-label pull-right">Date (YYYY/MM/DD)</label>
+							</div>
+							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+								<input path="id" name="id" class="form-control col-md-12" id="id" value="${form.date}"  />
+							</div>
+						
+					
+				</div>
+				<div class="col-lg-12 pull-right" style="margin: 2%">
+					<label for="deadline" class="col-lg-12 control-label pull-left">*Purchasers
+					or owners who intend to designate someone to conduct the PDI in
+					their place should ensure they provide written authority to the
+					vendor/builder authorizing the designate to sign this form on their
+					behalf
+					</label>
+				</div>
 			</div>
-			
-			<div>
-				<label for="deadline" class="pull-left control-label">Purchaser's Name</label>
-				
-			</div>
-			<div>
-				<label for="deadline" class="pull-right control-label">Purchaser's Signature</label>
-			</div>
-			
-			<!-- <div >
-				<input path="id" name="id" class="form-control col-lg-12" id="id" value="" />
-				<input path="deadline" name="deadline" class="form-control"	id="deadline" value=""  />
-			</div>
-			
-			 <div>
-				<label for="deadline" class="pull-left control-label">Purchaser's Name</label> 
-				<label for="deadline" class="pull-right control-label">Purchaser's Signature</label>
-			</div>
-				
-
-			<div >
-				<input path="id" name="id" class="form-control" id="id" value=""  />			
-				<input path="deadline" name="deadline" class="form-control"	id="deadline" value=""  />
-			</div>
-			
-			<div>
-				<label for="deadline" class="pull-left control-label pull-left">Purchaser's Name</label>
-				<label for="deadline" class="pull-right control-label">Purchaser's Signature</label>
-			</div> -->
-				
-			<div >
-				<input path="id" name="id" class="form-control col-lg-12 " id="id" value="${form.date}"  /> 
-				<label for="deadline" class="pull-left control-label ">Date (YYYY/MM/DD)</label>
-			</div>
-			
-			
 		</div>
-	
-	</div>
-	</div>
-		<div style="margin: 2%">
-			<label for="deadline" class="col-lg-12 control-label pull-left">*Purchasers
-			or owners who indend to designate someone to conduct the PDI in
-			their place should ensure they provide written authority to the
-			vendor/builder authorizng the designate to sign this form on their
-			behalf
-		</label>
-	
+
 	</div>
 			</fieldset>
 	</form>
-
-		
 	
-	<div class="jumbotron" id="con" >
-		<div style="margin: 2%">
+		<div>
 			<input type="hidden" name="homeEnrollmentNumber" value="" /> 
 			<input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</div>
+		
+	<div class="jumbotron" id="con" >
+		<div class="col-lg-12">	
 
 			<!-- <input type="submit" value="Finish" class="btn btn-primary"
 				style="margin-left: 8.33333333333%" /> -->
-
+			
 			<c:url value="/selectReport" var="selectReport" />
-			<a href="${selectReport}" class="pull-right btn btn-default">Back</a>
+			<a href="${selectReport}" class="pull-right btn btn-default" >Back</a>
 			
 			<c:url value="/" var="home" />
 			<a href="${home}" class="pull-left btn btn-default">Done</a>
