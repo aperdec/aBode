@@ -294,7 +294,18 @@ public class ControllerServices {
     }
 
     public Model displayUnitsByProject(Model model, String project) {
-        List<Unit> unitList = dao.getUnitsByProject(project);
+        List<Unit> rawUnitList = dao.getUnitsByProject(project);
+        List<UnitDeficiencies> unitList = new ArrayList<>();
+
+        for (Unit unit : rawUnitList) {
+            int count = 0;
+            for (Deficiency deficiency : unit.getDeficiencies()) {
+                if (!deficiency.getStatus()) {
+                    count++;
+                }
+            }
+            unitList.add(new UnitDeficiencies(unit.getHomeEnrollmentNumber(), unit.getUnitNum(), unit.getAddress(), count));
+        }
 
         model.addAttribute("unitList", unitList);
 
@@ -357,8 +368,10 @@ public class ControllerServices {
             int count = 0;
             for (Unit unit : unitList) {
                 for (Deficiency deficiency : unit.getDeficiencies()) {
-                    if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
-                        count++;
+                    if (!deficiency.getStatus()) {
+                        if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
+                            count++;
+                        }
                     }
                 }
             }

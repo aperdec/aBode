@@ -43,7 +43,7 @@
 		<div class="list-group">
 			<c:forEach var="unit" items="${unitList}">
 				<c:url value="../workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
-				<a href="${viewUrl}" class="list-group-item" id="btnHovering"> Unit: ${unit.unitNum} at ${unit.address} <span class="badge"> ${fn:length(unit.deficiencies)} </span> </a>
+				<a href="${viewUrl}" class="list-group-item" id="btnHovering"> Unit: ${unit.unitNum} at ${unit.address} <span class="badge"> ${unit.deficienciesOpen} </span> </a>
 			</c:forEach>
 		</div>
 
