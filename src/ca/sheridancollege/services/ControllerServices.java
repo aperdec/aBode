@@ -59,20 +59,21 @@ public class ControllerServices {
         String builderUserName = this.getUserName();
 
         List<Unit> returns = dao.getUnit(homeEnrollmentNumber);
-        Unit match = returns.get(0);
-        //System.out.println("testing " + match.getAddress());
-        model.addAttribute("unit", match);
-        num = match.getHomeEnrollmentNumber();
 
-        List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
-        Builder matchBuilder = returnsBuilder.get(0);
-        model.addAttribute("builder", matchBuilder);
+        if (returns.size() > 0) {
+            Unit match = returns.get(0);
+            model.addAttribute("unit", match);
+            num = match.getHomeEnrollmentNumber();
 
-        List<Form> form = dao.getForm(homeEnrollmentNumber);
-        if (form.size() > 0) {
-            model.addAttribute("form", form.get(0));
+            List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
+            Builder matchBuilder = returnsBuilder.get(0);
+            model.addAttribute("builder", matchBuilder);
 
-            //this downloads it to your computer -- good for testing
+            List<Form> form = dao.getForm(homeEnrollmentNumber);
+            if (form.size() > 0) {
+                model.addAttribute("form", form.get(0));
+
+                //this downloads it to your computer -- good for testing
             /*
             try{
             	FileOutputStream input = new FileOutputStream("C:\\abode\\refSigTWO.png");
@@ -83,13 +84,21 @@ public class ControllerServices {
             } catch(Exception e){
             	e.printStackTrace();
             }*/
+            } else {
+                model.addAttribute("form", new Form());
+            }
+
+            //String img = form.get(0).getRepSig().toString();
+
+            return model;
         } else {
-            model.addAttribute("form", new Form());
+
+            model.addAttribute("unit", new Unit());
+            model.addAttribute("errorHomeEnrollmentNumber", true);
+
+            return model;
         }
 
-        //String img = form.get(0).getRepSig().toString();
-
-        return model;
     }
 
     public String getUserName() {
