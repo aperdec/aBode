@@ -118,10 +118,24 @@ function Validate() {
 			<div class="form-group">				
 				<input type="submit" value="Go!" class="pull-right btn btn-primary" />
 			</div>
+
+			<c:choose>
+              <c:when test="${errorHomeEnrollmentNumber}">
+                <div class="alert alert-danger" id="alert" >
+                    <div id="selectHEN">Home Enrollment Number does not exist.</div>
+                    <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                </div>
+              </c:when>
+              <c:otherwise>
+                <div class="alert alert-danger collapse" id="alert" >
+                    <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                </div>
+              </c:otherwise>
+            </c:choose>
 			
 			<div class="alert alert-danger collapse" id="alert" >
-                	<div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
-                </div>
+                <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+            </div>
 </form:form>
 <!--</form>-->
 			<div id="error"></div>
