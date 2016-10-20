@@ -28,6 +28,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 <style>
 #con {
@@ -45,6 +46,9 @@ label {
 }
 #sig{
 	background-color: white;
+}
+body{
+	font-size: 22px;
 }
 </style>
 	
@@ -66,7 +70,7 @@ label {
 
 			<div class="form-group" style="margin: 2%">
 				 <input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="submit" value="Go!" class="pull-right btn btn-primary" />
+				<input type="submit" value="Go!" id="btnXlg" class="pull-right btn btn-primary" />
 
 			</div>
 </form>
@@ -255,18 +259,19 @@ label {
 			<input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</div>
 		
-	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
-		<div class="col-lg-12">	
+	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF; ">
+		<div style="padding:1%;" class="col-lg-12">	
 
 			<!-- <input type="submit" value="Finish" class="btn btn-primary"
 				style="margin-left: 8.33333333333%" /> -->
 			
 			<c:url value="/selectReport" var="selectReport" />
-			<a href="${selectReport}" class="pull-right btn btn-default" >Back</a>
+			<a href="${selectReport}" class="pull-right btn btn-default" id="btnXlg">Back</a>
 			
 			<c:url value="/" var="home" />
-			<a href="${home}" class="pull-left btn btn-success">Finish</a>
+			<a href="${home}" class="pull-left btn btn-success" id="btnXlg">Finish</a>
 		</div>	
+		<br>
 	</div>
 	
 </div>
