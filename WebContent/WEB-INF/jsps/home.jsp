@@ -35,8 +35,8 @@
 Extra Large Button CSS
 */
 .btn-xl {
-	padding: 28px 38px;
-	font-size: 22px;
+	padding: 34px 40px;
+	font-size: 25px;
 	border-radius: 8px;
 	text-align: center;
 	margin: 20px;
