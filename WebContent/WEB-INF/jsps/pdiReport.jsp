@@ -109,46 +109,46 @@ label {
 				<label for="dateOfPosession" class="pull-left control-label">Date of Posession</label>			
 				<input path="dateOfPosession" name="posessionDate" class="form-control col-lg-10"
 				 id="dateOfPosession" value="${unit.posessionDate}" required="required"
-				  type="text" />
+				  type="text" readonly/>
 			</div>
 
 			<div class="col-lg-12">
 				<label for="venBuildRefNo" class="pull-left control-label">Vendor/Builder and Reference Number</label>
 				<input path="venBuildRefNo" name="builderRefNum" class="form-control" 
 				id="venBuildRefNo" placeholder="" required="required" type="text" 
-				value="${builder.builderRefNum}" />
+				value="${builder.builderRefNum}" readonly/>
 			</div>
 
 			<div class="col-lg-12">
 				<label for="lotNum" class="pull-left control-label">Lot # </label>
 				<input path="unit.lotNumber" name="lotNumber" class="form-control"
-				id="lotNumber" value="${unit.lotNumber}" required="required" type="text" />
+				id="lotNumber" value="${unit.lotNumber}" required="required" type="text" readonly/>
 			</div>
 
 			<div class="col-lg-12">
 				<label for="plan" class="pull-left control-label">Plan</label>
 				<input path="plan" name="plan" class="form-control" id="plan"
-				placeholder="" required="required" type="text" value="${unit.plan}" />
+				placeholder="" required="required" type="text" value="${unit.plan}" readonly/>
 			</div>
 
 			<div class="col-lg-12">
 				<label for="municipality" class="pull-left control-label">Municipality</label>
 				<input path="municipality" name="municipality" class="form-control"
-				id="municipality" value="${unit.municipality}" required="required" type="text" />
+				id="municipality" value="${unit.municipality}" required="required" type="text" readonly/>
 			</div>
 			
 			<div class="col-lg-12">
 				<label for="condoProjName" class="pull-left control-label">Condominium Project Name</label>
 				<input path="condoProjName" name="projectName" class="form-control"
 				id="condoProjName" value="${unit.projectName}" required="required"
-				type="text" />
+				type="text" readonly/>
 			</div>
 
 			<div class="col-lg-12">
 				<label for="level" class="pull-left control-label">Level</label>
 				<input path="level" name="level" class="form-control" id="level"
 				placeholder="" required="required" type="text"
-				value="${unit.level}" />
+				value="${unit.level}" readonly/>
 			</div>
 			
 
@@ -156,7 +156,7 @@ label {
 				<label for="level" class="pull-left control-label">Unit</label>
 				<input path="level" name="level" class="form-control" id="level"
 				placeholder="" required="required" type="text"
-				value="${unit.unitNum}" />
+				value="${unit.unitNum}" readonly/>
 			</div>
 
 
@@ -164,7 +164,7 @@ label {
 				<label for="homeCivicAddress" class="pull-left control-label">Home Civic Address</label>
 				<input path="homeCivicAddress" name="address" class="form-control"
 				id="homeCivicAddress" placeholder="" required="required"
-				type="text" value="${unit.address}" />
+				type="text" value="${unit.address}" readonly/>
 			</div>
 
 
@@ -172,7 +172,7 @@ label {
 				<label for="venBuildName" class="pull-left control-label">Vendor	/ Builder Name</label>
 				<input path="venBuildName" name="builderName" class="form-control"
 				id="venBuildName" placeholder="" required="required" type="text"
-				value="${builder.builderName}" />
+				value="${builder.builderName}" readonly/>
 			</div>
 
 			
@@ -181,7 +181,7 @@ label {
 			</div>
 			<div class="col-lg-5">
 				<input path="repName" name="repName" class="form-control" id="repName" 
-					placeholder="" type="text" required="required" value="${form.repName}"  />
+					placeholder="" type="text" required="required" value="${form.repName}"  readonly/>
 			</div>
 			<div class="col-lg-6" id="sig" style="margin: 2%">
 				<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" />
@@ -209,7 +209,7 @@ label {
 				</div>
 				<div class="col-lg-12">
 					<div class="col-lg-5">
-						<input path="id" name="id" class="form-control" id="id" value="${form.purchName}"  />
+						<input path="id" name="id" class="form-control" id="id" value="${form.purchName}"  readonly/>
 					</div>
 			
 					<div class="col-lg-6" id="sig" id="sig" style="margin: 2%">
@@ -231,7 +231,7 @@ label {
 								<label for="date" class="control-label pull-right">Date (YYYY/MM/DD)</label>
 							</div>
 							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-								<input path="id" name="id" class="form-control col-md-12" id="id" value="${form.date}"  />
+								<input path="id" name="id" class="form-control col-md-12" id="id" value="${form.date}"  readonly/>
 							</div>
 
 				</div>
