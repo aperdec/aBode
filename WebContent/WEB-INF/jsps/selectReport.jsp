@@ -59,7 +59,7 @@ table{
 <title>Tarion Report Selection</title>
 </head>
 <body>
-	<legend><h2>Report Selection</h2></legend>
+
 	
 	<div style="margin: 2%;">
 		<c:url value="/selectReport" var="url" />

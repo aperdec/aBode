@@ -197,10 +197,6 @@ public class HomeController {
     @RequestMapping("/displayUnitInfo")
     public String displayUnitInfo(Model model) {
         dao.addTestData();
-        model.addAttribute("unit", new Unit());
-//        model.addAttribute("builder", new Builder());
-//        model.addAttribute("form", new Form());
-//        dao.getUnit(homeEnrollmentNumber);
         return "displayUnitInfo";
     }
 
@@ -232,17 +228,9 @@ public class HomeController {
         return "displayUnitInfo";
     }
     
-    
-    //Begin Build Inspection
-    
-    
     @RequestMapping("/buildInspection")
     public String buildInspection(Model model) {
-   //     dao.addTestData();
     	  model.addAttribute("unit", new Unit());
-//        model.addAttribute("builder", new Builder());
-//        model.addAttribute("form", new Form());
-//        dao.getUnit(homeEnrollmentNumber);
         return "buildInspection";
     }
     
@@ -273,8 +261,6 @@ public class HomeController {
 
         return "buildInspection";
     }
-    
-    // End Build inspection
 
     @RequestMapping("/addSignOff/{homeEnrollmentNumber}")
     public String addSignOff(Model model, @PathVariable long homeEnrollmentNumber) {
@@ -310,7 +296,6 @@ public class HomeController {
 
         return "pdiReport";
     }
-
 
     @RequestMapping("/selectReport")
     public String selectReport(Model model) {

@@ -96,13 +96,36 @@ function Validate() {
 	padding: 2%;
 	border-radius: 15px;
 }
+#acc2 {
+    padding: 21px 26px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    color:white;
+    }
+#nextBtn {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
+#topEntry{
+	margin: 1%;
+}
+#saveBtn{
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
 </style>
+
 <title>Unit Information</title>
 </head>
 <body onload="hide()">
 
 	<div style="margin: 2%">
-
+<legend><h2>Build Inspection (Step 1 of 2)</h2></legend>
 		<c:url value="/displayUnitData2" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
 
@@ -116,7 +139,7 @@ function Validate() {
 					id="homeEnrollmentNumber" required="required"/>
 			</div>
 			<div class="form-group">				
-				<input type="submit" value="Go!" class="pull-right btn btn-primary" />
+				<input type="submit" id="btnXlg" value="Load Unit" class="pull-right btn btn-primary" />
 			</div>
 			
 			<div class="alert alert-danger collapse" id="alert" >
@@ -263,7 +286,7 @@ function Validate() {
 				<div class="form-group">
 
 					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
-					<input type="submit" value="Save" class="pull-right btn btn-primary" id="saveBtn"/>
+					<input type="submit" value="Save Changes" class="pull-right btn btn-primary" id="saveBtn"/>
 				</div>
 
 

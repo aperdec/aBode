@@ -133,22 +133,23 @@ function Validate() {
 	<div style="margin: 2%">
 	<legend><h2>Pre-Delivery Inspection (Step 1 of 3)</h2></legend>
 		<c:url value="/displayUnitData" var="url" />
-		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
 
-<form:form commandName="unit" method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
+<form method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
 	<div id="topEntry">
 			<div class="form-group">
 
 				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
-					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" 
-					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" title="Enter Home Enrollment Number"/>
+					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
+					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
 			</div>
 			<div class="form-group">				
 				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
 				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
 			</div>
 	</div>
+
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 			<c:choose>
               <c:when test="${errorHomeEnrollmentNumber}">
@@ -164,11 +165,7 @@ function Validate() {
               </c:otherwise>
             </c:choose>
 
-			<div class="alert alert-danger collapse" id="alert" >
-                <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
-            </div>
-</form:form>
-<!--</form>-->
+</form>
 			<div id="error"></div>
 <div id="smallJum">
 		<fieldset>
