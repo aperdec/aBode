@@ -64,13 +64,15 @@ Extra Large Button CSS
 			<c:url value="/selectReport" var="selectReport" />
 			<c:url value="/workOrderHome" var="workOrderHome" />
 			<c:url value="/help" var="help" />
+			<c:url value="/buildInspection" var="buildInspection" />
+			
 
 		</div>
 
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
 			<a href="${displayUnitInformation}"	class="col-sm-4 btn-xl btn-inverse">Fill out PDI</a>
-			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse">Build	Inspection</a>
+			<a href="${buildInspection}" class="col-sm-4 btn-xl btn-inverse">Build	Inspection</a>
 
 		</div>
 
