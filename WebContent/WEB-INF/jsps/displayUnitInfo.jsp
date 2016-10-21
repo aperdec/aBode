@@ -30,6 +30,13 @@ function showSave(){
 	document.getElementById("saveBtn").style.visibility = 'visible';
 }
 
+function acceptSig(){
+	var link = document.getElementById("signature").toDataURL();
+	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
+	showSave();
+	//alert("hi");
+}
+
 function ValidateHEN() {
 	e = document.getElementById("homeEnrollmentNumber").value;
     //if you need text to be compared then use
@@ -96,28 +103,52 @@ function Validate() {
 	padding: 2%;
 	border-radius: 15px;
 }
+#acc2 {
+    padding: 21px 26px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    color:white;
+    }
+#nextBtn {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
+#topEntry{
+	margin: 1%;
+}
+#saveBtn{
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
 </style>
 <title>Unit Information</title>
 </head>
 <body onload="hide()">
 
 	<div style="margin: 2%">
-
+	<legend><h2>Pre-Delivery Inspection (Step 1 of 3)</h2></legend>
 		<c:url value="/displayUnitData" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
 
 <form:form commandName="unit" method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
-
+	<div id="topEntry">
 			<div class="form-group">
 
 				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
 					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" 
-					id="homeEnrollmentNumber" required="required"/>
+					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" title="Enter Home Enrollment Number"/>
 			</div>
 			<div class="form-group">				
-				<input type="submit" value="Go!" class="pull-right btn btn-primary" />
+				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data" 
+				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
 			</div>
+	</div>
 			
 			<div class="alert alert-danger collapse" id="alert" >
                 	<div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
@@ -259,7 +290,8 @@ function Validate() {
 
 					<div class="col-lg-4">
 						<input path="repName" name="repName" class="form-control"
-							id="repName" placeholder="" type="text" value="${form.repName}"/>
+							id="repName" placeholder="" type="text" value="${form.repName}" 
+							data-toggle="tooltip" data-placement="right" title="Please Enter a Name"/>
 					</div>
 
 				</div>
@@ -283,21 +315,21 @@ function Validate() {
 						Signature</label>
 
 					<div class="col-lg-4">
-						<div id="canvasContainer" width="300px" >
+						<div id="canvasContainer" width="300px" 
+						data-toggle="tooltip" data-placement="top" title="Signing Area">
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
 					
-					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm">Accept</button></div>
+					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()" class="btn btn-default btn-sm">Redo</button></div>
+					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default">Redo</button></div>
 				</div>
 
 
-		</fieldset><br><br>
+		</fieldset>
 </div>		
-<br>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-success" id="nextBtn">Next</a>

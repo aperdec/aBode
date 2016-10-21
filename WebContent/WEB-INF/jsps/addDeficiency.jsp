@@ -27,6 +27,22 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+	
+<link rel="stylesheet" type="text/css" href="/spring/css/style.css">
+
+<style>
+#con {
+	background-color: #EDEEFF;
+	border-radius: 15px;
+}
+#btnXlg2 {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
+</style>
+	
 <title>Add Deficiency: ${unit.homeEnrollmentNumber}</title>
 </head>
 <body>
@@ -75,10 +91,10 @@
 	<div style="margin: 2%">
 		<c:url value="/saveDeficiency" var="url" />
 		<form name="form" class="form-horizontal" method="post" onsubmit="return Validate()" action="${url}">
-
+		<div class="jumbotron" id="con">
 			<fieldset>
-				<legend>Enter or Edit Information</legend>
-
+				<legend>Enter or Edit Deficiency Information</legend>
+				<br>
 				<div class="alert alert-danger collapse" id="alert" >
                 	<div id="selectCategory" class="collapse">Please select a category.</div>
                     <div id="selectLocation" class="collapse">Please select a location.</div>
@@ -148,13 +164,14 @@
 				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
-				<input type="submit" value="Save Deficiency" class="btn btn-primary" style="margin-left: 8.33333333333%" />
+				<input type="submit" value="Save Deficiency" class="btn btn-primary" id="btnXlg2" style="margin-left: 8.33333333333%" />
 					
 					
 			    <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
+			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg" style="margin-right: 8.33333333333%">Back</a>
 
 			</fieldset>
+			</div>
 		</form>
 
 	</div>
