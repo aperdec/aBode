@@ -34,6 +34,7 @@
 	<c:url value="/" var="home" />
 	<c:url value="/displayUnitInfo" var="pdi" />
 	<c:url value="/workOrderHome" var="workOrder" />
+	<c:url value="/buildInspection" var="buildInspection" />
 	<c:url value="/displayBuildingProjects" var="projects" />
 	<c:url value="/displayConstructionPersonnel" var="constructionPersonnel" />
 	<c:url value="/selectReport" var="reports" />
@@ -66,7 +67,7 @@
                 </li>
 
                 <li><a href="${reports}">View Reports</a></li>
-
+				<li><a href="${buildInspection}">Build Inspection</a></li>
               </ul>
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">

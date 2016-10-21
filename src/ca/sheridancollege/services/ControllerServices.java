@@ -156,6 +156,54 @@ public class ControllerServices {
 
         return model;
     }
+    
+    public Model saveUnit2(Model model, long homeEnrollmentNumber, Date posessionDate, int lotNumber, String address, String projectName, String municipality, int level, int unitNum, String plan, String repName) {
+        Unit unit = new Unit(homeEnrollmentNumber, lotNumber, address, projectName, posessionDate, municipality, level, unitNum, plan);
+
+        dao.saveOrUpdateUnit(unit);
+        String builderUserName = this.getUserName();
+
+        List<Unit> returns = dao.getUnit(homeEnrollmentNumber);
+        model.addAttribute("unit", returns.get(0));
+
+        List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
+        Builder b = returnsBuilder.get(0);
+        model.addAttribute("builder", returnsBuilder.get(0));
+
+        Form form;
+
+        List<Form> formList = dao.getForm(homeEnrollmentNumber);
+        if (formList.size() > 0) {
+            form = formList.get(0);
+            form.setRepName(repName);
+        } else {
+            form = new Form(homeEnrollmentNumber, "BI", repName);
+        }
+
+        List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
+        HomeOwner ho = returnPurch.get(0);
+
+        form.setPurchName(ho.getName());
+        form.setBuilderRefNum(b.getBuilderRefNum());
+
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int) sig.length()];
+
+        try {
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        form.setRepSig(sigImg);
+
+        dao.saveOrUpdateForm(form);
+        model.addAttribute("form", form);
+
+        return model;
+    }
 
     public Model saveForm(Model model, long homeEnrollmentNumber, String desName) {
 

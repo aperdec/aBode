@@ -94,10 +94,19 @@ table{
 	<div style="padding: 0% 2%">
 		
 		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
+		<br />
+		<br />
 		<a href="${addUrl}" class="btn btn-primary" id="btnXlg">Add Deficiency</a> 
 
 		<c:url value="/addSignOff/${unit.homeEnrollmentNumber}" var="addSignOff" />
+		
 		<a href="${addSignOff}" class="pull-right btn btn-success" id="nextDbtn">Next</a>
+		<br />
+		<br />
+				 <br />
+				 <br />
+
+		<legend> </legend>
 	</div>
 
 </body>

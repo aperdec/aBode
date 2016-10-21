@@ -343,6 +343,8 @@ function Validate() {
 </div>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+			        <br />
+				 <br />
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-success" id="nextBtn">Next</a>
 
 				</div>
@@ -351,6 +353,13 @@ function Validate() {
 				<!--image display test. 
 				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" /> Working! -->
 				 </div> 
+				 <br />
+				 <br />
+				 <br />
+				 <br />
+				 <br />
+				
+				 <legend> </legend>
 	</div>
 
 	<!-- </fieldset>
