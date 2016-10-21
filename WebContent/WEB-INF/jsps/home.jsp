@@ -50,15 +50,16 @@ Extra Large Button CSS
 	color: black;
 }
 
+
 </style>
 <title>aBode</title>
 </head>
 <body>
 	<div class="container">
 	
-		<div class="row row-centered">
+		<div class="row row-centered text-center">
 
-			<h1 class="text-center">Welcome to aBode Software</h1>
+			<legend><h1>Welcome to aBode Software</h1></legend>
 
 			<c:url value="/displayUnitInfo" var="displayUnitInformation" />
 			<c:url value="/selectReport" var="selectReport" />
@@ -79,20 +80,22 @@ Extra Large Button CSS
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
 			<a href="${workOrderHome}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Work Orders</a>
-			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl">Generate Report</a>
+			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Reports</a>
 
 		</div>
 
-		<div class="row">
+		<div class="row row-centered">
 			<div class="col-sm-2 text-center"></div>
-			<a href="${help}" class="col-sm-4 btn-xl btn-inverse btn-xl">Help</a>
-			<a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Confirm Repairs</a>
+		<!-- 	<a href="${help}" class="col-sm-4 btn-xl btn-inverse btn-xl">Help</a> -->
+		<!-- <a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Confirm Repairs</a> -->
 
 		</div>
-
+			<br />
+				
+<legend> </legend>
 	</div>
 
-	<br />
+
 
 </body>
 </html>

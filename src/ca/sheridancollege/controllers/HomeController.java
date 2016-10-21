@@ -257,7 +257,7 @@ public class HomeController {
             @RequestParam String repName
     ) {
 
-        model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
+        model = controllerServices.saveUnit2(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
 
         return "buildInspection";
     }

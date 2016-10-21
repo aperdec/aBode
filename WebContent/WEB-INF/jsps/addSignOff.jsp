@@ -170,19 +170,25 @@
 				
 				<div class="form-group">
 			        <c:url value="/" var="home" />
+			        
 					<a href="${home}" class="pull-right btn btn-success" id="btnXlg">Finish</a>
 
 				</div>
 
 				<div class="form-group">
+				
 			        <c:url value="/displayUnitDeficiencies/${form.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 					<a href="${displayUnitDeficiencies}" class="pull-left btn btn-default" id="btnXlg">Back</a>
 
 				</div>
 				</div>
-				
-				
-			
+				<br />
+				<br />
+				<legend> </legend>
+				<br />
+				<br />
+				<br />
+				<br />
 				<!-- end -->
 
 	
