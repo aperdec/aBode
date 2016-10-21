@@ -30,7 +30,7 @@
 
 <style>
 .list-group-item{
-	margin:0.5%;
+	margin:1%;
 }
 </style>
 	
@@ -39,13 +39,18 @@
 <body>
 	
 	<div id="legendCon">
-	<legend>Work Order Selections</legend>
+	<legend><h2>Work Order Selection</h2></legend>
 		<div class="list-group">
-		    Sort By:
+		    <h4>Sort By:</h4>
 			<c:url value="/displayBuildingProjects" var="projectUrl" />
 			<a href="${projectUrl}" class="list-group-item" id="btnHovering"> Projects </a>
 			<c:url value="/displayConstructionPersonnel" var="builderUrl" />
 			<a href="${builderUrl}" class="list-group-item" id="btnHovering"> Contractors </a>
+		</div>
+		<div class="form-group">
+			        <c:url value="/" var="home" />
+					<a href="${home}" class="pull-left btn btn-default" id="btnXlg" style="margin-left:1%;">Finish</a>
+
 		</div>
 	</div>
 

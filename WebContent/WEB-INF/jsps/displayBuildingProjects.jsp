@@ -38,7 +38,7 @@
 </head>
 <body>
 	<div id="legendCon">
-	<legend>Work Orders by Project</legend>
+	<legend><h2>Work Orders by Project</h2></legend>
 	<div style="margin: 2%">
 		<div class="list-group">
 			<c:forEach var="project" items="${projectList}">
@@ -52,7 +52,7 @@
 	<div style="padding: 0% 2%">
 
     	<c:url value="/workOrderHome" var="backUrl" />
-    	<a href="${backUrl}" class="btn btn-default">Back</a>
+    	<a href="${backUrl}" id="btnXlg" class="btn btn-default">Back</a>
     </div>
 
 </body>

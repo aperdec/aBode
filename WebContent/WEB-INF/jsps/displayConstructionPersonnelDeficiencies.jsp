@@ -25,10 +25,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+	
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 
 	<style>
     #con {
     	background-color: #EDEEFF;
+    	margin: 2%;
+	border-radius: 15px;
+	padding-right:1%;
     }
 
     table{
@@ -40,16 +45,18 @@
 </head>
 <body>
 <div class="jumbotron" id="con">
-<center><h2>Unit ${unit.unitNum} Deficiency List</h2></center>
+<center><h2>Deficiency List</h2></center>
 	<div style="margin: 2%">
+	<legend>Work Assigned to ${deficiency.constructionPersonnel}</legend>
 		<div class="list-group">
 		<table class="table table-striped table-hover">
 		  <thead>
 		    <tr>
-		      <th>#</th>
+		    <th>Project</th>
+		      <th>Unit</th>
 		      <th>Location</th>
 		      <th>Deficiency Type</th>
-		      <th>Description</th>
+		      <th>Notes</th>
 		      <th></th>
 		      <th></th>
 		    </tr>
@@ -57,6 +64,7 @@
 		  <tbody>
 			<c:forEach var="deficiency" items="${deficiencyList}">
 				<tr>
+				<td>${deficiency.id}</td>
 				<td>${deficiency.id}</td>
 				<td>${deficiency.location}</td>
 				<td>${deficiency.category}</td>
@@ -76,7 +84,7 @@
 	<div style="padding: 0% 2%">
 
        	<c:url value="/displayConstructionPersonnel" var="backUrl" />
-       	<a href="${backUrl}" class="btn btn-primary">Back</a>
+       	<a href="${backUrl}" id="btnXlg" class="btn btn-default">Back</a>
     </div>
 
 </body>

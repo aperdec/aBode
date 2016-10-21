@@ -59,10 +59,9 @@ table{
 <title>Tarion Report Selection</title>
 </head>
 <body>
+
 	
-	
-	<div style="margin: 2%">
-	<legend><h2>Report Selection</h2></legend>
+	<div style="margin: 2%;">
 		<c:url value="/selectReport" var="url" />
 		<form name="form" class="form-horizontal" method="post" action="${url}">
 		<fieldset>

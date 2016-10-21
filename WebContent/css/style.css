@@ -19,6 +19,8 @@ Extra Large Button CSS
 
 #btnHovering{
 	background-color: #EDEEFF;
+	padding: 1.2%;
+	border-radius: 5px;
 }
 #btnHovering:hover{
 	background-color: #9394AA;
