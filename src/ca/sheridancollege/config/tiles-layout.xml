@@ -11,7 +11,7 @@
         <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
     </definition>
     <definition name="loginForm" template="/WEB-INF/jsps/default.jsp">
-        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp"/>
+        <put-attribute name="header" value="/WEB-INF/jsps/headerEmpty.jsp"/>
         <put-attribute name="content" value="/WEB-INF/jsps/loginForm.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp"/>
     </definition>
