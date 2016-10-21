@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
@@ -336,11 +335,33 @@ public class ControllerServices {
         return response;
     }
 
-    public Model completeDeficiency(Model model, int id, long homeEnrollmentNumber) {
+    public Model completeDeficiencyUnit(Model model, int id, long homeEnrollmentNumber) {
         Unit unit = dao.completeDeficiency(id, homeEnrollmentNumber);
         unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
         model.addAttribute("unit", unit);
+
+        return model;
+    }
+
+    public Model completeDeficiency(Model model, int id, long homeEnrollmentNumber, String name) {
+        Unit unit = dao.completeDeficiency(id, homeEnrollmentNumber);
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
+        Deficiency passDeficiency = null;
+
+        for (Deficiency deficiency : unit.getDeficiencies()) {
+            if (deficiency.getId() == id) {
+                passDeficiency = deficiency;
+            }
+        }
+
+        System.out.println("The deficiency matching is: " + passDeficiency.getId());
+
+        for (ConstructionPersonnel constructionPersonnel : constructionPersonnelList) {
+            if (passDeficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
+                model = displayDeficienciesByConstructionPersonnel(model, constructionPersonnel.getId());
+            }
+        }
 
         return model;
     }
@@ -364,7 +385,7 @@ public class ControllerServices {
 
         List<TotalDeficiencies> totalDeficiencies = new ArrayList<>();
 
-        for (ConstructionPersonnel constructionPersonnel : constructionPersonnelList){
+        for (ConstructionPersonnel constructionPersonnel : constructionPersonnelList) {
             int count = 0;
             for (Unit unit : unitList) {
                 for (Deficiency deficiency : unit.getDeficiencies()) {

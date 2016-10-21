@@ -62,12 +62,8 @@
 				<td>${deficiency.category}</td>
 				<td>${deficiency.description}</td>
 				<td>
-				    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="completeUrl" />
+				    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
 				    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${deficiency.status}</a>
-				</td>
-				<td>
-				    <c:url value="/workOrderDeleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}" var="deleteUrl" />
-                    <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
 				</td>
 				</tr>
 			</c:forEach>

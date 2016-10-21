@@ -1,8 +1,6 @@
 package ca.sheridancollege.controllers;
 
-import ca.sheridancollege.beans.Builder;
 import ca.sheridancollege.beans.Deficiency;
-import ca.sheridancollege.beans.Form;
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.dao.DAO;
 import ca.sheridancollege.services.ControllerServices;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
@@ -80,12 +77,20 @@ public class HomeController {
         return "workOrderDisplayUnitDeficiencies";
     }
 
-    @RequestMapping("/workOrderCompleteDeficiency/{id}/{homeEnrollmentNumber}")
-    public String workOrderCompleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+    @RequestMapping("/workOrderCompleteDeficiencyUnit/{id}/{homeEnrollmentNumber}")
+    public String workOrderCompleteDeficiencyUnit(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
-        model = controllerServices.completeDeficiency(model, id, homeEnrollmentNumber);
+        model = controllerServices.completeDeficiencyUnit(model, id, homeEnrollmentNumber);
 
         return "workOrderDisplayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderCompleteDeficiency/{id}/{homeEnrollmentNumber}/{constructionPersonnel}")
+    public String workOrderCompleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber, @PathVariable String constructionPersonnel) {
+
+        model = controllerServices.completeDeficiency(model, id, homeEnrollmentNumber, constructionPersonnel);
+
+        return "displayConstructionPersonnelDeficiencies";
     }
 
     @RequestMapping("/displayUnits")
