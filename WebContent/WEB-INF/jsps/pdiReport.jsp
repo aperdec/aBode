@@ -59,6 +59,7 @@ body{
 <div id="divCon">
 
 <div style="margin: 2%">
+<legend><h2>Pre-Delivery Inspection Report</h2></legend>
 	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 	<c:url value="/pdiReportData" var="url2" />
 	<form method="post" action="${url2}" class="form-horizontal">
