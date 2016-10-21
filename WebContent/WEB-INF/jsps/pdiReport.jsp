@@ -56,24 +56,71 @@ body{
 </head>
 <body>
 
+<script>
+var e;
+
+function ValidateHEN() {
+	e = document.getElementById("homeEnrollmentNumber").value;
+    //if you need text to be compared then use
+    if(e <= 0 || e ==null || e=="") {
+        $('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else if (isNaN(e)){
+    	$('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function Validate() {
+    if (ValidateHEN()) {
+        return true;
+    } else if (ValidateHEN()) {
+        $('#selectHEN').hide();
+        return false;
+    } else {
+        return false;
+    }
+}
+</script>
+
 <div id="divCon">
 
 <div style="margin: 2%">
 	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 	<c:url value="/pdiReportData" var="url2" />
-	<form method="post" action="${url2}" class="form-horizontal">
+	<form method="post" action="${url2}" class="form-horizontal" onsubmit="return Validate()">
 			
 			<div class="form-group" style="margin: 2%">
 				<label class="pull-left control-label">Enter Home Enrollment Number</label>
-				<input name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" required="required"/>
+				<input id="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" value="${unit.homeEnrollmentNumber}" required="required"/>
 			</div>
 
 			<div class="form-group" style="margin: 2%">
-				 <input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<input type="submit" value="Go!" id="btnXlg" class="pull-right btn btn-primary" />
 
 			</div>
-</form>
+
+			<c:choose>
+                <c:when test="${errorHomeEnrollmentNumber}">
+                    <div class="alert alert-danger" id="alert" >
+                        <div id="selectHEN">Home Enrollment Number does not exist.</div>
+                        <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="alert alert-danger collapse" id="alert" >
+                        <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+    </form>
+
+
 	</div>
 	
 		<c:url value="/pdiReport" var="url" />
