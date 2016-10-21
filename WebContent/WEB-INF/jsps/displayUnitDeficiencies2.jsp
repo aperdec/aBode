@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,18 +25,20 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-
-	<style>
-    #con {
-    	background-color: #EDEEFF;
-    }
-
-    table{
-    	border: #D1D0CE solid 1px;
-    }
-    </style>
 	
-<title>aBode</title>
+<style>
+#con {
+	background-color: #EDEEFF;
+	margin: 2%;
+	border-radius: 15px;
+}
+
+table{
+	border: #D1D0CE solid 1px;
+}
+</style>
+
+<title></title>
 </head>
 <body>
 <div class="jumbotron" id="con">
@@ -51,19 +53,18 @@
 		      <th>Deficiency Type</th>
 		      <th>Description</th>
 		      <th></th>
-		      <th></th>
 		    </tr>
 		  </thead>
 		  <tbody>
-			<c:forEach var="deficiency" items="${deficiencyList}">
+			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
 				<tr>
-				<td>${deficiency.id}</td>
-				<td>${deficiency.location}</td>
-				<td>${deficiency.category}</td>
-				<td>${deficiency.description}</td>
+				<td>${unitDeficiency.id}</td>
+				<td>${unitDeficiency.location}</td>
+				<td>${unitDeficiency.category}</td> 
+				<td>${unitDeficiency.description}</td>
 				<td>
-				    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
-				    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${deficiency.status}</a>
+				    <c:url value="/deleteDeficiency2/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl2" />
+				    <a href="${deleteUrl2}" class="btn btn-danger pull-right">Delete</a>
 				</td>
 				</tr>
 			</c:forEach>
@@ -72,12 +73,14 @@
 		</div>
 	</div>
 </div>
-
 	<div style="padding: 0% 2%">
+		
+		<c:url value="/addDeficiency2/${unit.homeEnrollmentNumber}" var="addUrl" />
+		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
 
-       	<c:url value="/displayConstructionPersonnel" var="backUrl" />
-       	<a href="${backUrl}" class="btn btn-primary">Back</a>
-    </div>
+		<c:url value="/" var="finish" />
+		<a href="${finish}" class="pull-right btn btn-success">Finish</a>
+	</div>
 
 </body>
 </html>
