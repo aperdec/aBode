@@ -52,6 +52,14 @@ public class HomeController {
 
         return "addDeficiency";
     }
+    
+    @RequestMapping("/addDeficiency2/{homeEnrollmentNumber}")
+    public String addDeficiency2(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.addDeficiency(model, homeEnrollmentNumber);
+
+        return "addDeficiency2";
+    }
 
     @RequestMapping("/workOrderAddDeficiency/{homeEnrollmentNumber}")
     public String workOrderAddDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
@@ -68,6 +76,15 @@ public class HomeController {
 
         return "displayUnitDeficiencies";
     }
+    
+    @RequestMapping("/deleteDeficiency2/{id}/{homeEnrollmentNumber}")
+    public String deleteDeficiency2(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.deleteDeficiency(model, id, homeEnrollmentNumber);
+
+        return "displayUnitDeficiencies2";
+    }
+    
 
     @RequestMapping("/workOrderDeleteDeficiency/{id}/{homeEnrollmentNumber}")
     public String workOrderDeleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
@@ -108,6 +125,14 @@ public class HomeController {
 
         return "displayUnitDeficiencies";
     }
+    //new
+    @RequestMapping("/displayUnitDeficiencies2/{homeEnrollmentNumber}")
+    public String viewUnitDeficiencies2(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.displayUnitDeficiencies(model, homeEnrollmentNumber);
+
+        return "displayUnitDeficiencies2";
+    }
 
     @RequestMapping("/workOrderDisplayUnitDeficiencies/{homeEnrollmentNumber}")
     public String workOrderViewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
@@ -134,6 +159,24 @@ public class HomeController {
         return "displayUnitDeficiencies";
     }
 
+    @RequestMapping("/saveDeficiency2")
+    public String saveDeficiency2(
+            Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+            @RequestParam String category,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
+            @RequestParam long homeEnrollmentNumber
+    ) {
+
+        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category, deadline, homeEnrollmentNumber);
+
+        return "displayUnitDeficiencies2";
+    }
+    
+    
     @RequestMapping("/workOrderSaveDeficiency")
     public String workOrderSaveDeficiency(
             Model model,
@@ -188,6 +231,50 @@ public class HomeController {
 
         return "displayUnitInfo";
     }
+    
+    
+    //Begin Build Inspection
+    
+    
+    @RequestMapping("/buildInspection")
+    public String buildInspection(Model model) {
+   //     dao.addTestData();
+    	  model.addAttribute("unit", new Unit());
+//        model.addAttribute("builder", new Builder());
+//        model.addAttribute("form", new Form());
+//        dao.getUnit(homeEnrollmentNumber);
+        return "buildInspection";
+    }
+    
+    @RequestMapping(value = "/displayUnitData2", method = RequestMethod.POST)
+    public String displayUnitData2(Model model, @RequestParam long homeEnrollmentNumber) {
+
+        model = controllerServices.displayUnitData(model, homeEnrollmentNumber, num);
+
+        return "buildInspection";
+    }
+
+    @RequestMapping(value = "/saveUnit2", method = RequestMethod.POST)
+    public String saveUnit2(
+           Model model,
+           @RequestParam long homeEnrollmentNumber,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
+            @RequestParam int lotNumber,
+            @RequestParam String address,
+            @RequestParam String projectName,
+            @RequestParam String municipality,
+            @RequestParam int level,
+            @RequestParam int unitNum,
+            @RequestParam String plan,
+            @RequestParam String repName
+    ) {
+
+        model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
+
+        return "buildInspection";
+    }
+    
+    // End Build inspection
 
     @RequestMapping("/addSignOff/{homeEnrollmentNumber}")
     public String addSignOff(Model model, @PathVariable long homeEnrollmentNumber) {
