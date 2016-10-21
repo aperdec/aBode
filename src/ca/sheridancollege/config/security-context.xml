@@ -33,6 +33,7 @@
         <security:intercept-url pattern="/deleteDeficiency2/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderDeleteDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderCompleteDeficiency/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/workOrderCompleteDeficiencyUnit/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitInfo" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitData" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitData2" access="isAuthenticated()"/>

@@ -63,7 +63,7 @@
 				<td>${unitDeficiency.category}</td>
 				<td>${unitDeficiency.description}</td>
 				<td>
-				    <c:url value="/workOrderCompleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="completeUrl" />
+				    <c:url value="/workOrderCompleteDeficiencyUnit/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="completeUrl" />
                     <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${unitDeficiency.status}</a>
 				</td>
 				<td>
