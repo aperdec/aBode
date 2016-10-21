@@ -27,6 +27,21 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+	
+	<style>
+#con {
+	background-color: #EDEEFF;
+	border-radius: 15px;
+}
+#btnXlg2 {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
+</style>
+	
+	
 <title>Add Deficiency: ${unit.homeEnrollmentNumber}</title>
 </head>
 <body>
@@ -148,11 +163,11 @@
 				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
-				<input type="submit" value="Save Deficiency" class="btn btn-primary" style="margin-left: 8.33333333333%" />
+				<input type="submit" value="Save Deficiency" class="btn btn-primary" id="btnXlg2" style="margin-left: 8.33333333333%" />
 					
 					
 			    <c:url value="/displayUnitDeficiencies2/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies2" />
-			    <a href="${displayUnitDeficiencies2}" class="pull-right btn btn-default">Back</a>
+			    <a href="${displayUnitDeficiencies2}" id="btnXlg2" class="pull-right btn btn-default">Back</a>
 
 			</fieldset>
 		</form>

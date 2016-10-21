@@ -73,7 +73,7 @@ function clickQ1 (){
 <body onload="hide()">
 
 	<div id="legendCon">
-	<h2>Help</h2>
+	<legend><h2>Help</h2></legend>
 	<br>
 	<legend>Frequently Asked Questions</legend>
 		<li class="list-group-item" id="btnHovering" onclick="clickQ1 ()">
@@ -139,7 +139,9 @@ function clickQ1 (){
                     </div>
 
 	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
+	<div style="margin: 2%">
 	<legend>Contact Information</legend>
+	
 	<b>
 	<table id="contactTable">
 		<tr>
@@ -154,7 +156,9 @@ function clickQ1 (){
 	</table>
 	</b>
 	</div>
+	</div>
 	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
+	<div style="margin: 2%">
 		<legend>Submit a Question or Feedback</legend>
 		<div id="feedbackDiv" class="form-group">
 			<div class="col-lg-6 control-label">
@@ -165,12 +169,13 @@ function clickQ1 (){
 				</textarea>
 			</div>
 		</div>
-		<div class="col-lg-7 control-label">
+		<div class="col-lg-7 control-label" >
 		<address>
 			Select link to ask questions here: <a
 				href="mailto:exampleAbode@exampleAbode.com? subject=Feedback&body=Message"
 				target="#">Send Mail</a>
 		</address>
+		</div>
 		</div>
 	</div>
 

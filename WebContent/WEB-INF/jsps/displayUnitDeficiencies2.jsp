@@ -36,11 +36,29 @@
 table{
 	border: #D1D0CE solid 1px;
 }
+#titleCon{
+	margin: 2%;
+}
+#nextDbtn{
+    padding: 24px 70px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
+#btnXlg {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
 </style>
 
 <title></title>
 </head>
 <body>
+<div style="margin: 2%">
+<legend><h2>Build Inspection (Step 2 of 2)</h2></legend>
+</div>
 <div class="jumbotron" id="con">
 <center><h2>Unit ${unit.unitNum} Deficiency List</h2></center>
 	<div style="margin: 2%">
@@ -76,10 +94,10 @@ table{
 	<div style="padding: 0% 2%">
 		
 		<c:url value="/addDeficiency2/${unit.homeEnrollmentNumber}" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
+		<a href="${addUrl}" id="btnXlg"class="btn btn-primary">Add Deficiency</a> 
 
 		<c:url value="/" var="finish" />
-		<a href="${finish}" class="pull-right btn btn-success">Finish</a>
+		<a href="${finish}" id="btnXlg" class="pull-right btn btn-success">Finish</a>
 	</div>
 
 </body>
