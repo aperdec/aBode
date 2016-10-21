@@ -57,7 +57,8 @@
 		  </thead>
 		  <tbody>
 			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
-				<tr>
+				<c:url value="/editDeficiency/${unit.homeEnrollmentNumber}/${unitDeficiency.id}" var="editUrl" />
+				<tr onclick="document.location = '${editUrl}';">
 				<td>${unitDeficiency.id}</td>
 				<td>${unitDeficiency.location}</td>
 				<td>${unitDeficiency.category}</td>
