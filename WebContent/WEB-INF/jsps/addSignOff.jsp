@@ -31,6 +31,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
+	
+<link rel="stylesheet" type="text/css" href="../css/style.css">	
+	
 <style>
 .flex-v-center {
 	display: flex;
@@ -47,13 +50,20 @@
 	border-radius: 15px;
 }
 #bottomBtn{
-margin: 2%
+	margin: 2%
 }
+#acc2 {
+    padding: 21px 26px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    color:white;
+    }
 </style>
 <title>SignOff Form</title>
 </head>
 <body>
-
+<div id="titleCon"><legend><h2>Pre-Delivery Inspection (Step 3 of 3)</h2></legend></div>
 	<div style="margin: 2%">
 	<div id="smallJum">
 	<fieldset>
@@ -101,7 +111,7 @@ margin: 2%
 				<input type="hidden" name="homeEnrollmentNumber" value="${form.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<div class="form-group">
-					<input type="submit" value="Save" class="pull-right btn btn-primary" />
+					<input type="submit" value="Save" id="btnXlg" class="pull-right btn btn-primary" />
 
 				</div>
                 </form>
@@ -117,7 +127,7 @@ margin: 2%
 					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()" class="btn btn-default btn-sm">Redo</button></div>				
+					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm">Redo</button></div>				
 
 </div>
 				</fieldset>
@@ -160,13 +170,13 @@ margin: 2%
 				
 				<div class="form-group">
 			        <c:url value="/" var="home" />
-					<a href="${home}" class="pull-right btn btn-success" id="nextBtn">Finish</a>
+					<a href="${home}" class="pull-right btn btn-success" id="btnXlg">Finish</a>
 
 				</div>
 
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${form.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-					<a href="${displayUnitDeficiencies}" class="pull-left btn btn-default" id="backBtn">Back</a>
+					<a href="${displayUnitDeficiencies}" class="pull-left btn btn-default" id="btnXlg">Back</a>
 
 				</div>
 				</div>

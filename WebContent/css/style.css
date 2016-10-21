@@ -32,7 +32,7 @@ Extra Large Button CSS
 }
 
 #canvasContainer {
-    border: 1px solid grey;
+    border: 1px solid #D1D0CE;
     border-radius: 5px;
     background-color:white;
 }

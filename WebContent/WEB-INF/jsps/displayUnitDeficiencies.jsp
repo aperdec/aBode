@@ -26,6 +26,8 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 	
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+	
 <style>
 #con {
 	background-color: #EDEEFF;
@@ -36,16 +38,32 @@
 table{
 	border: #D1D0CE solid 1px;
 }
+#titleCon{
+	margin: 2%;
+}
+#nextDbtn{
+    padding: 24px 70px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
+#btnXlg {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
 </style>
 
 <title></title>
 </head>
 <body>
+<div id="titleCon"><legend><h2>Pre-Delivery Inspection (Step 2 of 3)</h2></legend></div>
 <div class="jumbotron" id="con">
 <center><h2>Unit ${unit.unitNum} Deficiency List</h2></center>
 	<div style="margin: 2%">
 		<div class="list-group">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped">
 		  <thead>
 		    <tr>
 		      <th>#</th>
@@ -64,7 +82,7 @@ table{
 				<td>${unitDeficiency.description}</td>
 				<td>
 				    <c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
-				    <a href="${deleteUrl}" class="btn btn-danger pull-right">Delete</a>
+				    <a href="${deleteUrl}" class="btn btn-danger pull-right" style="margin:1%;">Delete</a>
 				</td>
 				</tr>
 			</c:forEach>
@@ -76,10 +94,10 @@ table{
 	<div style="padding: 0% 2%">
 		
 		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
-		<a href="${addUrl}" class="btn btn-primary">Add Deficiency</a> 
+		<a href="${addUrl}" class="btn btn-primary" id="btnXlg">Add Deficiency</a> 
 
 		<c:url value="/addSignOff/${unit.homeEnrollmentNumber}" var="addSignOff" />
-		<a href="${addSignOff}" class="pull-right btn btn-success">Next</a>
+		<a href="${addSignOff}" class="pull-right btn btn-success" id="nextDbtn">Next</a>
 	</div>
 
 </body>
