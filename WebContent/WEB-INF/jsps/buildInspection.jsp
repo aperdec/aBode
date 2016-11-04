@@ -128,15 +128,14 @@ function Validate() {
 	
 <legend><h2>Build Inspection (Step 1 of 2)</h2></legend>
 		<c:url value="/displayUnitData2" var="url" />
-		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
 
-<form:form commandName="unit" method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
+<form method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
 
 			<div class="form-group">
 
 				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
-					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" 
+					<input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
 					id="homeEnrollmentNumber" required="required"/>
 			</div>
 			<div class="form-group">				
@@ -146,8 +145,7 @@ function Validate() {
 			<div class="alert alert-danger collapse" id="alert" >
                 	<div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
                 </div>
-</form:form>
-<!--</form>-->
+</form>
 			<div id="error"></div>
 <div id="smallJum">
 		<fieldset>

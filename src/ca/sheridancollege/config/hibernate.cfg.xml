@@ -23,7 +23,6 @@
         <mapping class="ca.sheridancollege.beans.ConstructionPersonnel"/>
         <mapping class="ca.sheridancollege.beans.Deficiency"/>
         <mapping class="ca.sheridancollege.beans.Form"/>
-     <!--    <mapping class="ca.sheridancollege.beans.FormBI"/> -->
         <mapping class="ca.sheridancollege.beans.HomeOwner"/>
         <mapping class="ca.sheridancollege.beans.Unit"/>
         <mapping class="ca.sheridancollege.beans.User"/>
