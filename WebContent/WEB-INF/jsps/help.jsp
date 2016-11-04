@@ -48,23 +48,54 @@ table td{
 </style>
 
 <script type="text/javascript">
+
+var closed1;
+
 function hide(){
-//document.getElementById('a1').style.display = 'none';
+	document.getElementById('a1').style.display = 'none';
+	document.getElementById('a2').style.display = 'none';
+	document.getElementById('a3').style.display = 'none';
+	closed1 = true;
+	closed2 = true;
+	closed3 = true;
+	//alert(closed1);
 }
-var closed = true;
 
 function clickQ1 (){
-	
-	if (!(closed)){
-		alert("test");
+	if (closed1 == true){
+		//alert(closed1);
 		document.getElementById('a1').style.display = "initial";
-		closed = true;
+		closed1 = false;
+		//alert(closed1);
 	}
 	else{
-		alert("test3333");
-		$('a1').style.display = 'none';
+		document.getElementById('a1').style.display = 'none';
+		closed1 = true;
+	}	
+}
+function clickQ2 (){
+	if (closed2 == true){
+		//alert(closed1);
+		document.getElementById('a2').style.display = "initial";
+		closed2 = false;
+		//alert(closed1);
 	}
-	
+	else{
+		document.getElementById('a2').style.display = 'none';
+		closed2 = true;
+	}	
+}
+function clickQ3 (){
+	if (closed3 == true){
+		//alert(closed1);
+		document.getElementById('a3').style.display = "initial";
+		closed3 = false;
+		//alert(closed1);
+	}
+	else{
+		document.getElementById('a3').style.display = 'none';
+		closed3 = true;
+	}	
 }
 </script>
 
@@ -77,66 +108,39 @@ function clickQ1 (){
 	<br>
 	<legend>Frequently Asked Questions</legend>
 		<li class="list-group-item" id="btnHovering" onclick="clickQ1 ()">
-          <span id="q1" >Home enrollment number will not generate data</span>
-        </li>
-                
+          <span id="q1" >What to do when the Home Enrollment Number will not load the unit</span>
+        </li>      
               <div id="a1" class="modal-body">
-                <li>Make sure to select the go button</a></li>
-                <li>Close Abode for 10 seconds then reopen Abode</a></li>
-                <li>Make sure caps lock is off</a></li>
-                <li>Login with the correct credentials </a></li>
+              	<li>Ensure you re logined with the correct credentials</li>
+                <li>Make sure to select the "Load Unit" button</li>
+                <li>Close Abode for 10 seconds then reopen Abode</li>
+                <li>Call Times Group office to ensure the correct units have been assigned. Phone: 905-940-6286</li>
+                
               </div>
               
 <br>
-		<li class="list-group-item" id="btnHovering" data-toggle="modal" data-target="#modal2">
-                  Next button is not functioning
+		<li class="list-group-item" id="btnHovering" onclick="clickQ2 ()">
+                  <span id="q2" >The Next button is not functioning</span>
                 </li>
-        		<div class="modal" id="modal2">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Next button is not functioning</h4>
+        		     <div id="a2" class="modal-body">
+                        <li>Make sure all required fields are filled-in</li>
+                        <li>Ensure to save the page</li>
+                        <li>If this problem persists please contact JACK Software</li>
                       </div>
-                      <div class="modal-body">
-                        <li>Make sure all fields are populated</a></li>
-                        			<li>Populate needed fields </a></li>
-                        			<li>Make sure to save</a></li>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
+                      
 <br>
-	<li class="list-group-item" id="btnHovering" data-toggle="modal" data-target="#modal3">
-                      No Deficiencies displaying
+	<li class="list-group-item" id="btnHovering" onclick="clickQ3 ()">
+                     <span id="q3" > No Deficiencies are displaying</span>
                     </li>
-            		<div class="modal" id="modal3">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">No Deficiencies displaying</h4>
-                          </div>
-                          <div class="modal-body">
-                            <li>Make sure you are updated</a></li>
-                            			<li>Make sure there is a internet connection</a></li>
+                          <div id="a3" class="modal-body">
+                            <li>Make sure you have downloaded all patches</li>
+                            			<li>Make sure there is an internet connection</li>
                             			<li>Re enter the home enrollment number </a></li>
                             			<li>Add or delete needed deficiencies</a></li>
-                            			<li>Populate needed fields </a></li>
+                            			
                             			<li>Make sure to save</a></li>
                           </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
+
 
 	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
 	<div style="margin: 2%">
@@ -157,27 +161,28 @@ function clickQ1 (){
 	</b>
 	</div>
 	</div>
-	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF">
+	<div id="legendCon" class="jumbotron" style="background-color:#EDEEFF; height:460px">
 	<div style="margin: 2%">
 		<legend>Submit a Question or Feedback</legend>
 		<div id="feedbackDiv" class="form-group">
-			<div class="col-lg-6 control-label">
+			<div class="col-lg-7 control-label">
 				<input type="text" class="form-control" placeholder="Subject">
-			</div><br>
-			<div class="col-lg-6 control-label">
+			</div><br><br>
+			<div class="col-xs-7 control-label">
 				<textarea rows="9" maxlength="350" class="form-control pull-left" placeholder="Short entry (350 character limit)">
 				</textarea>
 			</div>
-		</div>
+		<br><br>
 		<div class="col-lg-7 control-label" >
 		<address>
-			Select link to ask questions here: <a
+		<a
 				href="mailto:exampleAbode@exampleAbode.com? subject=Feedback&body=Message"
-				target="#">Send Mail</a>
+				id="btnXlg" class="btn btn-default">Send Mail</a>
 		</address>
 		</div>
 		</div>
-	</div>
+		</div>
+	</div><br>
 
 
 
