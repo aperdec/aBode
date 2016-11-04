@@ -50,7 +50,12 @@
 		<div class="form-group">
 			        <c:url value="/" var="home" />
 					<a href="${home}" class="pull-left btn btn-default" id="btnXlg" style="margin-left:1%;">Finish</a>
-
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<legend> </legend>
 		</div>
 	</div>
 
