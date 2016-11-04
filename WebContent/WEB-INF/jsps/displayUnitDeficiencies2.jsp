@@ -98,6 +98,10 @@ table{
 
 		<c:url value="/" var="finish" />
 		<a href="${finish}" id="btnXlg" class="pull-right btn btn-success">Finish</a>
+				<br />
+				<br />
+				<br />
+		<legend> </legend>
 	</div>
 
 </body>

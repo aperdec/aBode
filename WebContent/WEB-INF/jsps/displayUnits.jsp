@@ -39,7 +39,7 @@
 <body>
 	<div id="legendCon">
 	<legend><h2>Units with Deficiencies for ${project}</h2></legend>
-	<div style="margin: 2%">
+	<div style="margin: 1%">
 		<div class="list-group">
 			<c:forEach var="unit" items="${unitList}">
 				<c:url value="../workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="viewUrl" />
@@ -50,7 +50,13 @@
 
 		<c:url value="/displayBuildingProjects" var="backUrl" />
 		<a href="${backUrl}" id="btnXlg" class="btn btn-default">Back</a>
+
+
 	</div>
+
+
+		
+		<legend> </legend>
 	</div>
 
 </body>

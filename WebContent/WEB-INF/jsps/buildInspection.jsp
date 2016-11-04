@@ -125,6 +125,7 @@ function Validate() {
 <body onload="hide()">
 
 	<div style="margin: 2%">
+	
 <legend><h2>Build Inspection (Step 1 of 2)</h2></legend>
 		<c:url value="/displayUnitData2" var="url" />
 		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
@@ -294,12 +295,20 @@ function Validate() {
 
 		</fieldset><br><br>
 </div>		
+
 <br>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies2/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies2" />
 					<a href="${displayUnitDeficiencies2}" class="pull-right btn btn-success" id="nextBtn">Next</a>
+					
+				<br />
+				<br />
+				
 				</div>
-				 
+				
+				<br />
+				<br />
+				 <legend> </legend>
 	</div>
 
 	<!-- </fieldset>
