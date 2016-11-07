@@ -29,8 +29,189 @@
 	crossorigin="anonymous"></script>
 	
 <link rel="stylesheet" type="text/css" href="/spring/css/style.css">
+<link rel="stylesheet" type="text/css" href="/spring/css/photo.css">
+<script src="/spring/scripts/photo.js"></script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background-color: #fff;
+    font:normal 16px/1.5 sans-serif;
+    color: #333;
+}
+
+h3{
+    font: normal 32px/1.5 'Open Sans', sans-serif;
+    color: #2c3e50;
+    margin: 50px 0;
+    text-align: center;
+}
+
+
+.container2{
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #efefef;
+}
+
+.app2{
+    width: 100%;
+    position: relative;
+}
+
+.app2 #start-camera{
+    display: none;
+    border-radius: 3px;
+    max-width: 400px;
+    color: #fff;
+    background-color: #448AFF;
+    text-decoration: none;
+    padding: 15px;
+    opacity: 0.8;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.app2 video#camera-stream{
+    display: none;
+    width: 100%;
+}
+
+.app2 img#snap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    display: none;
+}
+
+.app2 #error-message{
+    width: 100%;
+    background-color: #ccc;
+    color: #9b9b9b;
+    font-size: 28px;
+    padding: 200px 100px;
+    text-align: center;
+    display: none;
+}
+
+.app2 .controls{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 30px;
+    display: none;
+}
+
+.app2 .controls a{
+    border-radius: 50%;
+    color: #fff;
+    background-color: #111;
+    text-decoration: none;
+    padding: 15px;
+    line-height: 0;
+    opacity: 0.7;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app2 .controls a:hover{
+    opacity: 1;
+}
+
+.app2 .controls a.disabled{
+    background-color: #555;
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.app2 .controls a.disabled:hover{
+    opacity: 0.5;
+}
+
+.app2 .controls a i{
+    font-size: 18px;
+}
+
+.app2 .controls #take-photo i{
+    font-size: 32px;
+}
+
+.app2 canvas{
+    display: none;
+}
+
+
+
+.app2 video#camera-stream.visible,
+.app2 img#snap.visible,
+.app2 #error-message.visible
+{
+    display: block;
+}
+
+.app2 .controls.visible{
+    display: flex;
+}
+
+
+
+@media(max-width: 1000px){
+    .container2{
+        margin: 40px;
+    }
+
+    .app2 #start-camera.visible{
+        display: block;
+    }
+
+    .app2 .controls a i{
+        font-size: 16px;
+    }
+
+    .app2 .controls #take-photo i{
+        font-size: 24px;
+    }
+}
+
+
+@media(max-width: 600px){
+    .container2{
+        margin: 10px;
+    }
+
+    .app2 #error-message{
+        padding: 80px 50px;
+        font-size: 18px;
+    }
+
+    .app2 .controls a i{
+        font-size: 12px;
+    }
+
+    .app2 .controls #take-photo i{
+        font-size: 18px;
+    }
+}
+
 #con {
 	background-color: #EDEEFF;
 	border-radius: 15px;
@@ -171,9 +352,30 @@
 			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg" style="margin-right: 8.33333333333%">Back</a>
 
 			</fieldset>
+			<div class="container2">
+			
+			  <div class="app2">
+			
+			    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+			    <video id="camera-stream"></video>
+			    <img id="snap">
+			
+			    <p id="error-message"></p>
+			
+			    <div class="controls">
+			      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
+			      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+			      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>  
+			    </div>
+			
+			    <!-- Hidden canvas element. Used for taking snapshot of video. -->
+			    <canvas></canvas>
+			  </div>
+			</div>
+			
 			</div>
 		</form>
-
+			
 	</div>
 </body>
 </html>
