@@ -28,9 +28,14 @@ public class ControllerServices {
 
     public Model displayUnitDeficiencies(Model model, Long homeEnrollmentNumber) {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-        Unit unit = unitList.get(0);
-        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
-        model.addAttribute("unit", unit);
+        if (unitList.size() > 0) {
+            Unit unit = unitList.get(0);
+            unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
+            model.addAttribute("unit", unit);
+        } else {
+            model = displayBuildingProjects(model);
+            model.addAttribute("errorUnit", true);
+        }
 
         return model;
     }
@@ -92,7 +97,7 @@ public class ControllerServices {
             return model;
         } else {
 
-            model.addAttribute("unit", new Unit());
+//            model.addAttribute("unit", new Unit());
             model.addAttribute("errorHomeEnrollmentNumber", true);
 
             return model;
