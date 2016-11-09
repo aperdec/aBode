@@ -26,7 +26,7 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 	
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css"> 
 
 	<style>
     #con {
@@ -70,8 +70,18 @@
 				<td>${deficiency.category}</td>
 				<td>${deficiency.description}</td>
 				<td>
-				    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
-				    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${deficiency.status}</a>
+					<c:choose>
+	              <c:when test="${deficiency.status}">
+		              <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
+					    <a href="${completeUrl}" class="btn btn-success pull-right">Complete</a>
+	                
+	              </c:when>
+	              <c:otherwise>
+	                <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
+					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
+	              </c:otherwise>
+	            	</c:choose>
+				    
 				</td>
 				</tr>
 			</c:forEach>
