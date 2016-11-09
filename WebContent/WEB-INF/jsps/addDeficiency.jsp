@@ -352,6 +352,7 @@ h3{
 			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg" style="margin-right: 8.33333333333%">Back</a>
 
 			</fieldset>
+			<!--
 			<div class="container2">
 			
 			  <div class="app2">
@@ -368,10 +369,10 @@ h3{
 			      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>  
 			    </div>
 			
-			    <!-- Hidden canvas element. Used for taking snapshot of video. -->
+			    
 			    <canvas></canvas>
 			  </div>
-			</div>
+			</div>  This code works but is not for prototype release will be in the final prog. version-->
 			
 			</div>
 		</form>
