@@ -53,6 +53,14 @@ public class HomeController {
         return "addDeficiency";
     }
 
+    @RequestMapping("/editDeficiency/{homeEnrollmentNumber}/{id}")
+    public String editDeficiency(Model model, @PathVariable long homeEnrollmentNumber, @PathVariable int id) {
+
+        model = controllerServices.editDeficiency(model, homeEnrollmentNumber, id);
+
+        return "editDeficiency";
+    }
+
     @RequestMapping("/addDeficiency2/{homeEnrollmentNumber}")
     public String addDeficiency2(Model model, @PathVariable long homeEnrollmentNumber) {
 

@@ -45,13 +45,29 @@ public class ControllerServices {
         System.out.println("construction personnel substring: " + constructionPersonnel);
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
         System.out.println("Unit Size:" + unitList.size() + homeEnrollmentNumber);
-        unitList.get(0).addDeficiency(deficiency);
+        if (unit.getDeficiencies().size() > 0) {
+            boolean match = false;
+            List<Deficiency> deficiencyList = unit.getDeficiencies();
+            for (Deficiency d : deficiencyList) {
+                if (d.getId() == deficiency.getId()) {
+                    unit.getDeficiencies().remove(d);
+                    unit.getDeficiencies().add(deficiency);
+                    match = true;
+                    break;
+                }
+            }
+            if (!match) {
+                unit.addDeficiency(deficiency);
+            }
+        } else {
+            unit.addDeficiency(deficiency);
+        }
 
-        dao.saveOrUpdateUnit(unitList.get(0));
+        dao.saveOrUpdateUnit(unit);
 
         unitList = dao.getUnit(homeEnrollmentNumber);
-        Unit unit = unitList.get(0);
         unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
         model.addAttribute("unit", unit);
@@ -406,6 +422,7 @@ public class ControllerServices {
         for (Deficiency deficiency : unit.getDeficiencies()) {
             if (deficiency.getId() == id) {
                 passDeficiency = deficiency;
+                break;
             }
         }
 
@@ -414,6 +431,7 @@ public class ControllerServices {
         for (ConstructionPersonnel constructionPersonnel : constructionPersonnelList) {
             if (passDeficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
                 model = displayDeficienciesByConstructionPersonnel(model, constructionPersonnel.getId());
+                break;
             }
         }
 
@@ -489,5 +507,26 @@ public class ControllerServices {
         Collections.sort(deficiencyList);
 
         return deficiencyList;
+    }
+
+    public Model editDeficiency(Model model, long homeEnrollmentNumber, int id) {
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        Deficiency deficiency = null;
+        for (Deficiency d : unit.getDeficiencies()) {
+            if (id == d.getId()) {
+                deficiency = d;
+                break;
+            }
+        }
+        Category categories = new Category();
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("unit", unit);
+        model.addAttribute("deficiency", deficiency);
+        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
+
+        return model;
     }
 }

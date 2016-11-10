@@ -21,6 +21,7 @@
         <security:intercept-url pattern="/selectReport" access="isAuthenticated()"/>
         <security:intercept-url pattern="/imageDisplay/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/editDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency2/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderAddDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveUnit/**" access="isAuthenticated()"/>

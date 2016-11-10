@@ -46,7 +46,8 @@
 		  </thead>
 		  <tbody>
 			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
-				<tr>
+				<c:url value="/editDeficiency/${unit.homeEnrollmentNumber}/${unitDeficiency.id}" var="editUrl" />
+				<tr onclick="document.location = '${editUrl}';">
 				<td>${unitDeficiency.id}</td>
 				<td>${unitDeficiency.location}</td>
 				<td>${unitDeficiency.category}</td>
@@ -54,13 +55,13 @@
 				<td>${unitDeficiency.constructionPersonnel}</td>
 				<td>
 				    <c:choose>
-	              <c:when test="${deficiency.status}">
-		              <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
+	              <c:when test="${unitDeficiency.status}">
+		              <c:url value="/workOrderCompleteDeficiencyUnit/${unitDeficiency.id}/${unitDeficiency.homeEnrollmentNumber}" var="completeUrl" />
 					    <a href="${completeUrl}" class="btn btn-success pull-right">Complete</a>
 	                
 	              </c:when>
 	              <c:otherwise>
-	                <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
+	                <c:url value="/workOrderCompleteDeficiencyUnit/${unitDeficiency.id}/${unitDeficiency.homeEnrollmentNumber}" var="completeUrl" />
 					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
 	              </c:otherwise>
 	            	</c:choose>

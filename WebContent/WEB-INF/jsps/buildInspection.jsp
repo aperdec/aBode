@@ -6,55 +6,6 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<script type="text/javascript">
-var e;
-
-var used;
-function hide(){
-used = document.getElementById("repName").value;
-document.getElementById("nextBtn").style.visibility = 'hidden';
-document.getElementById("saveBtn").style.visibility = 'visible';
-document.getElementById("nextBtn").style.visibility = 'visible';
-
-if (used === ""){
-	//alert(used);
-	document.getElementById("nextBtn").style.visibility = 'hidden';
-}
-}
-
-function showSave(){
-	document.getElementById("saveBtn").style.visibility = 'visible';
-}
-
-function ValidateHEN() {
-	e = document.getElementById("homeEnrollmentNumber").value;
-    //if you need text to be compared then use
-    if(e <= 0 || e ==null || e=="") {
-        $('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else if (isNaN(e)){
-    	$('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function Validate() {
-    if (ValidateHEN()) {
-        return true;
-    } else if (ValidateHEN()) {
-        $('#selectHEN').hide();
-        return false;
-    } else {
-        return false;
-    }
-}
-
-</script>
-
 <style>
 .flex-v-center {
 	display: flex;
@@ -105,12 +56,13 @@ function Validate() {
 				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
 					<input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
-					id="homeEnrollmentNumber" required="required"/>
+					id="homeEnrollmentNumber" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}" required="required"/>
 			</div>
 			<div class="form-group">				
 				<input type="submit" id="btnXlg" value="Load Unit" class="pull-right btn btn-primary" />
 			</div>
-			
+
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="alert alert-danger collapse" id="alert" >
                 	<div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
                 </div>
