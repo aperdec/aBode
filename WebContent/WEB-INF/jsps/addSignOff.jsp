@@ -31,7 +31,97 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-	
+
+<script type="text/javascript">
+var e;
+var used;
+
+function hide(){
+//used = document.getElementById("repName").value;
+//disable save on load
+$( "#btnXlg2" ).prop( "disabled", true );
+
+
+document.getElementById("btnXlg").style.visibility = 'visible';
+document.getElementById("btnXlg2").style.visibility = 'visible';
+
+if (used === ""){
+	//alert(used);
+	document.getElementById("btnXlg").style.visibility = 'visible';
+}
+}
+
+function showSave(){
+	$( "#btnXlg2" ).prop( "disabled", false );
+	//$( "#nextBtn" ).prop( "disabled", false );
+//	$('a').disable(false);
+
+	//document.getElementById("saveBtn").style.visibility = 'visible';
+}
+
+function enableNextBtn(){
+	$('a').disable(false);
+}
+
+function disableNextBtn(){
+	$('a').disable(false);
+}
+
+function acceptSig(){
+	var link = document.getElementById("signature").toDataURL();
+	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
+	showSave();
+	//alert("hi");
+}
+
+function ValidateHEN() {
+	e = document.getElementById("homeEnrollmentNumber").value;
+    //if you need text to be compared then use
+    if(e <= 0 || e ==null || e=="") {
+        $('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else if (isNaN(e)){
+    	$('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function Validate() {
+    if (ValidateHEN()) {
+        return true;
+    } else if (ValidateHEN()) {
+        $('#selectHEN').hide();
+        return false;
+    } else {
+        return false;
+    }
+}
+//Function to enable disable Next button HREF
+$(function() {
+    jQuery.fn.extend({
+        disable: function(state) {
+            return this.each(function() {
+                var $this = $(this);
+                if($this.is('input'))
+                    this.disabled = state;
+                else
+                    $this.toggleClass('disabled', state);
+            });
+        }
+    });
+    
+   // $('a').disable(true);
+   
+    $('body').on('click', 'a.disabled', function(event) {
+        event.preventDefault();
+    });
+}); 
+
+</script>
 <link rel="stylesheet" type="text/css" href="../css/style.css">	
 	
 <style>
@@ -62,7 +152,7 @@
 </style>
 <title>SignOff Form</title>
 </head>
-<body>
+<body onload="hide()">
 <div id="titleCon"><legend><h2>Pre-Delivery Inspection (Step 3 of 3)</h2></legend></div>
 	<div style="margin: 2%">
 	<div id="smallJum">
@@ -111,10 +201,10 @@
 				<input type="hidden" name="homeEnrollmentNumber" value="${form.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<div class="form-group">
-					<input type="submit" value="Save" id="btnXlg" class="pull-right btn btn-primary" />
+				<!-- <input type="submit" value="Save" id="btnXlg2" class="pull-right btn btn-primary" /> -->
 
 				</div>
-                </form>
+              <!--   </form> -->
 				<div class="form-group">
 
 					<label for="finalSig" class="col-lg-3 control-label">Designator / Purchaser's Signature</label>
@@ -124,13 +214,13 @@
     					</div>
 					</div>
 					
-					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm">Accept</button></div>
+					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm" type="button">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm">Redo</button></div>				
+					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm" type="button">Redo</button></div>				
 
 </div>
-				</fieldset>
+				<!-- </fieldset> -->
 </div>
 </div>
 				<!-- end text -->
@@ -170,9 +260,10 @@
 				
 				<div class="form-group">
 			        <c:url value="/" var="home" />
-			        
-					<a href="${home}" class="pull-right btn btn-success" id="btnXlg">Finish</a>
-
+			        <input type="submit" value="Save and Proceed" id="btnXlg2" class="pull-right btn btn-success" />
+				<!-- <a href="${home}" class="pull-right btn btn-success" id="btnXlg2">Finish</a> -->
+				</fieldset>
+</form>
 				</div>
 
 				<div class="form-group">

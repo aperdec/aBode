@@ -285,20 +285,20 @@ function Validate() {
 				<div class="form-group">
 
 					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
-					<input type="submit" value="Save Changes" class="pull-right btn btn-primary" id="saveBtn"/>
+					
 				</div>
 
 
-			</form>
+		<!-- 	</form> 
 
-		</fieldset><br><br>
+		</fieldset> -->  <br><br>
 </div>		
 
 <br>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies2/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies2" />
-					<a href="${displayUnitDeficiencies2}" class="pull-right btn btn-success" id="nextBtn">Next</a>
-					
+				<!-- 	<a href="${displayUnitDeficiencies2}" class="pull-right btn btn-success" id="nextBtn">Next</a> -->
+					<input type="submit" value="Save and Proceed" class="pull-right btn btn-success" id="saveBtn"/>
 				<br />
 				<br />
 				
@@ -309,9 +309,9 @@ function Validate() {
 				 <legend> </legend>
 	</div>
 
-	<!-- </fieldset>
+	</fieldset>
 	
-	</form> -->
+	</form> 
 	
 	<!-- footer area -->
 
