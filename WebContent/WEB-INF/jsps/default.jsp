@@ -26,6 +26,7 @@
 <script src="../scripts/signing.js"></script>
 <script src="../scripts/signatureCapture.js"></script>
 
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -40,6 +41,8 @@
 
 <link rel="stylesheet" type="text/css" href="/spring/css/style.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../../../css/style.css">
+<link rel="stylesheet" type="text/css" href="/spring/css/photo.css">
 
 <title>aBode</title>
 </head>
