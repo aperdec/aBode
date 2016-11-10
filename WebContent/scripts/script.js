@@ -52,22 +52,21 @@ function ValidateHEN() {
 //        alert("not valid");
 //        return false;
 //    } else
-       if (isNaN(e)){
-    	$('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else {
-        return true;
-    }
+//       if (isNaN(e)){
+//    	$('#alert').show();
+//        $('#selectHEN').show();
+//        return false;
+//    } else {
+//        return true;
+//    }
+return true;
 }
 
 function Validate() {
     if (ValidateHEN()) {
         return true;
-    } else if (ValidateHEN()) {
-        $('#selectHEN').hide();
-        return false;
     } else {
+        $('#selectHEN').hide();
         return false;
     }
 }

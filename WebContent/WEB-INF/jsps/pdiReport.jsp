@@ -30,37 +30,6 @@ body{
 	
 <title>Tarion PDI Form: ${unit.homeEnrollmentNumber}</title>
 
-<script>
-var e;
-
-function ValidateHEN() {
-	e = document.getElementById("homeEnrollmentNumber").value;
-    //if you need text to be compared then use
-    if(e <= 0 || e ==null || e=="") {
-        $('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else if (isNaN(e)){
-    	$('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function Validate() {
-    if (ValidateHEN()) {
-        return true;
-    } else if (ValidateHEN()) {
-        $('#selectHEN').hide();
-        return false;
-    } else {
-        return false;
-    }
-}
-</script>
-
 <div id="divCon">
 
 <div style="margin: 2%">
