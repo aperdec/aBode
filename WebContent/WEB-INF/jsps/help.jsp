@@ -75,6 +75,7 @@ table td {
 			closed3 = true;
 		}
 	}
+	
 </script>
 
 <body onload="hide()">
@@ -163,12 +164,13 @@ table td {
 					<br>
 					<br>
 					<div class="col-lg-7 control-label">
-						<address>
+						<address> <form id="reset" >
 							<a
 								href="mailto:exampleAbode@exampleAbode.com? subject=Feedback&body=Message"
 								id="btnXlg" class="btn btn-primary">Send Mail</a> 
-								<button id="btnXlg" class="btn btn-default" type="reset" value="Reset">Reset</button>
-											
+								
+								 <button type="submit" value="Reset" id="btnXlg" class="btn btn-default" onclick="clickQ4 ()">Reset</button>
+								 </form>
 						</address>
 
 					</div>
