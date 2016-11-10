@@ -86,6 +86,12 @@
                 return true;
             }
         }
+
+        function changeCP() {
+            var cp = document.getElementById("constructionPersonnelM");
+            $('#constructionPersonnel').val($('#constructionPersonnelM').val());
+            return true;
+        }
 </script>
 
 	<div style="margin: 2%">
@@ -124,7 +130,7 @@
 				<div class="form-group">
 					<label for="description" class="col-lg-1 control-label">Description</label>
 					<div class="col-lg-10">
-						<textarea name="description" path="description" class="form-control" rows="3"
+						<input name="description" path="description" class="form-control" rows="3"
 							id="description" value="${deficiency.description}" required="required"> </textarea>
 					</div>
 				</div>
@@ -132,13 +138,37 @@
 				<div class="form-group">
 					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>
 					<div class="col-lg-10">
-						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel" value="${deficiency.constructionPersonnel}">
-							<c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
-                                 <option>${constructionPersonnel.trade} - ${constructionPersonnel.name}</option>
-                            </c:forEach>
-						</select>
+						<input class="form-control" id="constructionPersonnel" name="constructionPersonnel" value="${deficiency.constructionPersonnel}" readonly/>
 					</div>
 				</div>
+
+				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Change Assignee
+                  </button>
+
+				<div class="modal fade" id="myModal">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Select Construction Personnel</h4>
+                      </div>
+                      <div class="modal-body">
+                        <select class="form-control" id="constructionPersonnelM" name="constructionPersonnelM">
+                            <c:forEach var="constructionPersonnel" items="${constructionPersonnelList}">
+                                 <option>${constructionPersonnel.trade} - ${constructionPersonnel.name}</option>
+                            </c:forEach>
+                        </select>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="return changeCP()" data-dismiss="modal">Save changes</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 
                 <div class="form-group">
 					<label for="category" class="col-lg-1 control-label">Category</label>

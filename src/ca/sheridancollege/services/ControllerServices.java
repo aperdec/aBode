@@ -45,13 +45,29 @@ public class ControllerServices {
         System.out.println("construction personnel substring: " + constructionPersonnel);
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
         System.out.println("Unit Size:" + unitList.size() + homeEnrollmentNumber);
-        unitList.get(0).addDeficiency(deficiency);
+        if (unit.getDeficiencies().size() > 0) {
+            boolean match = false;
+            List<Deficiency> deficiencyList = unit.getDeficiencies();
+            for (Deficiency d : deficiencyList) {
+                if (d.getId() == deficiency.getId()) {
+                    unit.getDeficiencies().remove(d);
+                    unit.getDeficiencies().add(deficiency);
+                    match = true;
+                    break;
+                }
+            }
+            if (!match) {
+                unit.addDeficiency(deficiency);
+            }
+        } else {
+            unit.addDeficiency(deficiency);
+        }
 
-        dao.saveOrUpdateUnit(unitList.get(0));
+        dao.saveOrUpdateUnit(unit);
 
         unitList = dao.getUnit(homeEnrollmentNumber);
-        Unit unit = unitList.get(0);
         unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
         model.addAttribute("unit", unit);
