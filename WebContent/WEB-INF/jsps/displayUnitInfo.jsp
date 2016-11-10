@@ -6,7 +6,6 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
 <style>
 .flex-v-center {
 	display: flex;
@@ -83,7 +82,7 @@
 			<div id="error"></div>
 <div id="smallJum">
 		<fieldset>
-			<c:url value="/saveUnit" var="url2" />
+			<c:url value="/saveUnit3" var="url2" />
 			<form name="form" method="post" action="${url2}"
 				class="form-horizontal" onsubmit="return verify()">
 
@@ -229,11 +228,10 @@
 				<div class="form-group">
 
 					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
-					<input type="submit" value="Save" class="pull-right btn btn-primary" id="saveBtn"/>
 				</div>
 
 
-			</form>
+		<!-- </form> -->
 				<div class="form-group">
 
 					<label for="repSignature" class="col-lg-3 control-label">Representative's
@@ -245,21 +243,22 @@
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-
-					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()">Accept</button></div>
+					
+					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()" type="button">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default">Redo</button></div>
+					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default" type="button">Redo</button></div>
 				</div>
 
-
-		</fieldset>
+		<!-- </fieldset>  -->
 </div>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
 			        <br />
 				 <br />
-					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-success" id="nextBtn">Next</a>
+				 <input type="submit" value="Save and Proceed" class="pull-right btn btn-success" id="saveBtn" onclick="enableNextBtn()"/>
+				 </fieldset>
+				 </form>
 
 				</div>
 
