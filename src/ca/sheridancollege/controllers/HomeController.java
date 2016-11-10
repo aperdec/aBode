@@ -247,6 +247,27 @@ public class HomeController {
 
         return "displayUnitInfo";
     }
+    
+    @RequestMapping(value = "/saveUnit3", method = RequestMethod.POST)
+    public String saveUnit3(
+            Model model,
+            @RequestParam long homeEnrollmentNumber,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
+            @RequestParam int lotNumber,
+            @RequestParam String address,
+            @RequestParam String projectName,
+            @RequestParam String municipality,
+            @RequestParam int level,
+            @RequestParam int unitNum,
+            @RequestParam String plan,
+            @RequestParam String repName
+    ) {
+
+        model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
+
+        return "displayUnitDeficiencies";
+    }
+    
 
     @RequestMapping("/buildInspection")
     public String buildInspection(Model model) {
@@ -292,7 +313,7 @@ public class HomeController {
 
         model = controllerServices.saveForm(model, homeEnrollmentNumber, desName);
 
-        return "addSignOff";
+        return "home";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

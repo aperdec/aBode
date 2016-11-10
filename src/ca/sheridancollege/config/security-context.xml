@@ -26,6 +26,7 @@
         <security:intercept-url pattern="/workOrderAddDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveUnit/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveUnit2/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/saveUnit3/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveDeficiency" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveDeficiency2" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderSaveDeficiency" access="isAuthenticated()"/>

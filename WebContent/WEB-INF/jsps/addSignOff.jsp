@@ -34,6 +34,7 @@
 </style>
 <title>SignOff Form</title>
 
+<body onload="hide()">
 <div id="titleCon"><legend><h2>Pre-Delivery Inspection (Step 3 of 3)</h2></legend></div>
 	<div style="margin: 2%">
 	<div id="smallJum">
@@ -82,10 +83,10 @@
 				<input type="hidden" name="homeEnrollmentNumber" value="${form.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<div class="form-group">
-					<input type="submit" value="Save" id="btnXlg" class="pull-right btn btn-primary" />
+				<!-- <input type="submit" value="Save" id="btnXlg2" class="pull-right btn btn-primary" /> -->
 
 				</div>
-                </form>
+              <!--   </form> -->
 				<div class="form-group">
 
 					<label for="finalSig" class="col-lg-3 control-label">Designator / Purchaser's Signature</label>
@@ -95,13 +96,13 @@
     					</div>
 					</div>
 					
-					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm">Accept</button></div>
+					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm" type="button">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm">Redo</button></div>				
+					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm" type="button">Redo</button></div>
 
 </div>
-				</fieldset>
+				<!-- </fieldset> -->
 </div>
 </div>
 				<!-- end text -->
@@ -141,9 +142,10 @@
 				
 				<div class="form-group">
 			        <c:url value="/" var="home" />
-			        
-					<a href="${home}" class="pull-right btn btn-success" id="btnXlg">Finish</a>
-
+			        <input type="submit" value="Save and Proceed" id="btnXlg2" class="pull-right btn btn-success" />
+				<!-- <a href="${home}" class="pull-right btn btn-success" id="btnXlg2">Finish</a> -->
+				</fieldset>
+</form>
 				</div>
 
 				<div class="form-group">
@@ -165,3 +167,4 @@
 	</div>
 
 	<!-- footer area -->
+	</body>
