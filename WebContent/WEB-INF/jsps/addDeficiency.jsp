@@ -31,6 +31,12 @@
 <link rel="stylesheet" type="text/css" href="/spring/css/style.css">
 <link rel="stylesheet" type="text/css" href="/spring/css/photo.css">
 <script src="/spring/scripts/photo.js"></script>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
@@ -225,8 +231,7 @@ h3{
 </style>
 	
 <title>Add Deficiency: ${unit.homeEnrollmentNumber}</title>
-</head>
-<body>
+
 <script>
     function Validate() {
             if (ValidateCategories() && ValidateLocation()) {
@@ -354,29 +359,27 @@ h3{
 			</fieldset>
 			<!--
 			<div class="container2">
-			
+
 			  <div class="app2">
-			
+
 			    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
 			    <video id="camera-stream"></video>
 			    <img id="snap">
-			
+
 			    <p id="error-message"></p>
-			
+
 			    <div class="controls">
 			      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
 			      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-			      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>  
+			      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>
 			    </div>
-			
-			    
+
+
 			    <canvas></canvas>
 			  </div>
 			</div>  This code works but is not for prototype release will be in the final prog. version-->
-			
+
 			</div>
 		</form>
-			
+
 	</div>
-</body>
-</html>

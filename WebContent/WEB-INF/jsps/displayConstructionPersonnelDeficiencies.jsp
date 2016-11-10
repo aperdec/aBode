@@ -26,9 +26,16 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 	
-<link rel="stylesheet" type="text/css" href="../../../css/style.css"> 
+<link rel="stylesheet" type="text/css" href="../../../css/style.css">
+	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+        pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-	<style>
+    <style>
     #con {
     	background-color: #EDEEFF;
     	margin: 2%;
@@ -40,10 +47,7 @@
     	border: #D1D0CE solid 1px;
     }
     </style>
-	
-<title>aBode</title>
-</head>
-<body>
+
 <div class="jumbotron" id="con">
 <center><h2>Deficiency List</h2></center>
 	<div style="margin: 2%">
@@ -74,14 +78,14 @@
 	              <c:when test="${deficiency.status}">
 		              <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
 					    <a href="${completeUrl}" class="btn btn-success pull-right">Complete</a>
-	                
+
 	              </c:when>
 	              <c:otherwise>
 	                <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
 					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
 	              </c:otherwise>
 	            	</c:choose>
-				    
+
 				</td>
 				</tr>
 			</c:forEach>
@@ -96,6 +100,3 @@
        	<c:url value="/displayConstructionPersonnel" var="backUrl" />
        	<a href="${backUrl}" id="btnXlg" class="btn btn-default">Back</a>
     </div>
-
-</body>
-</html>
