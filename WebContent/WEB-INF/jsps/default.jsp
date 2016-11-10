@@ -40,8 +40,8 @@
 	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
 	crossorigin="anonymous">
 
-<!-- <link rel="stylesheet" type="text/css" href="/spring/css/photo.css"> -->
-<!-- <link rel="stylesheet" type="text/css" href="/spring/css/style.css"> -->
+<link rel="stylesheet" type="text/css" href="/spring/css/photo.css">
+<link rel="stylesheet" type="text/css" href="/spring/css/style.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <link rel="stylesheet" type="text/css" href="../../../css/style.css">
 
