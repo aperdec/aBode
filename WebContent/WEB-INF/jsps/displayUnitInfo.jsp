@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
@@ -95,9 +96,9 @@ $(function() {
             });
         }
     });
-    
+
     $('a').disable(true);
-    
+
     $('body').on('click', 'a.disabled', function(event) {
         event.preventDefault();
     });
@@ -130,6 +131,8 @@ $(function() {
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="/spring/css/style.css">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <style>
 .flex-v-center {
@@ -165,8 +168,7 @@ $(function() {
     border-radius: 8px;
     }
 </style>
-<title>Unit Information</title>
-</head>
+
 <body onload="hide()">
 
 	<div style="margin: 2%">
@@ -182,7 +184,7 @@ $(function() {
 					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
 					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
 			</div>
-			<div class="form-group">				
+			<div class="form-group">
 				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
 				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
 			</div>
@@ -385,27 +387,26 @@ $(function() {
 				 <input type="submit" value="Save and Proceed" class="pull-right btn btn-success" id="saveBtn" onclick="enableNextBtn()"/>
 				 </fieldset>
 				 </form>
-				
+
 				</div>
-				 
+
 				<div>
-				<!--image display test. 
+				<!--image display test.
 				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" /> Working! -->
-				 </div> 
+				 </div>
 				 <br />
 				 <br />
 				 <br />
 				 <br />
 				 <br />
-				
+
 				 <legend> </legend>
 	</div>
 
 	<!-- </fieldset>
-	
+
 	</form> -->
-	
+
 	<!-- footer area -->
 
 </body>
-</html>

@@ -53,6 +53,14 @@ public class HomeController {
         return "addDeficiency";
     }
 
+    @RequestMapping("/editDeficiency/{homeEnrollmentNumber}/{id}")
+    public String editDeficiency(Model model, @PathVariable long homeEnrollmentNumber, @PathVariable int id) {
+
+        model = controllerServices.editDeficiency(model, homeEnrollmentNumber, id);
+
+        return "editDeficiency";
+    }
+
     @RequestMapping("/addDeficiency2/{homeEnrollmentNumber}")
     public String addDeficiency2(Model model, @PathVariable long homeEnrollmentNumber) {
 
@@ -143,6 +151,18 @@ public class HomeController {
         return "workOrderDisplayUnitDeficiencies";
     }
 
+    @RequestMapping("/workOrderDisplayUnitDeficiencies")
+    public String workOrderViewUnitDeficienciesNavBar(Model model, @RequestParam long homeEnrollmentNumber) {
+
+        model = controllerServices.displayUnitDeficiencies(model, homeEnrollmentNumber);
+
+        if (model.containsAttribute("errorUnit")) {
+            return "displayBuildingProjects";
+        } else {
+            return "workOrderDisplayUnitDeficiencies";
+        }
+    }
+
     @RequestMapping("/saveDeficiency")
     public String saveDeficiency(
             Model model,
@@ -176,7 +196,6 @@ public class HomeController {
 
         return "displayUnitDeficiencies2";
     }
-
 
     @RequestMapping("/workOrderSaveDeficiency")
     public String workOrderSaveDeficiency(

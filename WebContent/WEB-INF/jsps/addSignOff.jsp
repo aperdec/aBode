@@ -1,129 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<script src="../scripts/modernizr.custom.34982.js"></script>
-
-<script src="../scripts/signing.js"></script>
-<script src="../scripts/signatureCapture.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-	crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-var e;
-var used;
-
-function hide(){
-//used = document.getElementById("repName").value;
-//disable save on load
-$( "#btnXlg2" ).prop( "disabled", true );
-
-
-document.getElementById("btnXlg").style.visibility = 'visible';
-document.getElementById("btnXlg2").style.visibility = 'visible';
-
-if (used === ""){
-	//alert(used);
-	document.getElementById("btnXlg").style.visibility = 'visible';
-}
-}
-
-function showSave(){
-	$( "#btnXlg2" ).prop( "disabled", false );
-	//$( "#nextBtn" ).prop( "disabled", false );
-//	$('a').disable(false);
-
-	//document.getElementById("saveBtn").style.visibility = 'visible';
-}
-
-function enableNextBtn(){
-	$('a').disable(false);
-}
-
-function disableNextBtn(){
-	$('a').disable(false);
-}
-
-function acceptSig(){
-	var link = document.getElementById("signature").toDataURL();
-	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
-	showSave();
-	//alert("hi");
-}
-
-function ValidateHEN() {
-	e = document.getElementById("homeEnrollmentNumber").value;
-    //if you need text to be compared then use
-    if(e <= 0 || e ==null || e=="") {
-        $('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else if (isNaN(e)){
-    	$('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function Validate() {
-    if (ValidateHEN()) {
-        return true;
-    } else if (ValidateHEN()) {
-        $('#selectHEN').hide();
-        return false;
-    } else {
-        return false;
-    }
-}
-//Function to enable disable Next button HREF
-$(function() {
-    jQuery.fn.extend({
-        disable: function(state) {
-            return this.each(function() {
-                var $this = $(this);
-                if($this.is('input'))
-                    this.disabled = state;
-                else
-                    $this.toggleClass('disabled', state);
-            });
-        }
-    });
-    
-   // $('a').disable(true);
-   
-    $('body').on('click', 'a.disabled', function(event) {
-        event.preventDefault();
-    });
-}); 
-
-</script>
-<link rel="stylesheet" type="text/css" href="../css/style.css">	
-	
 <style>
 .flex-v-center {
 	display: flex;
@@ -151,7 +33,7 @@ $(function() {
     }
 </style>
 <title>SignOff Form</title>
-</head>
+
 <body onload="hide()">
 <div id="titleCon"><legend><h2>Pre-Delivery Inspection (Step 3 of 3)</h2></legend></div>
 	<div style="margin: 2%">
@@ -217,7 +99,7 @@ $(function() {
 					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm" type="button">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
-					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm" type="button">Redo</button></div>				
+					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm" type="button">Redo</button></div>
 
 </div>
 				<!-- </fieldset> -->
@@ -282,13 +164,7 @@ $(function() {
 				<br />
 				<!-- end -->
 
-	
-                
-
 	</div>
 
-
 	<!-- footer area -->
-
-</body>
-</html>
+	</body>
