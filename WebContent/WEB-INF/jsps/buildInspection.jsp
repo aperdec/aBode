@@ -63,9 +63,19 @@
 			</div>
 
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			<div class="alert alert-danger collapse" id="alert" >
-                	<div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
-                </div>
+			<c:choose>
+                          <c:when test="${errorHomeEnrollmentNumber}">
+                            <div class="alert alert-danger" id="alert" >
+                                <div id="selectHEN">Home Enrollment Number does not exist.</div>
+                                <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                            </div>
+                          </c:when>
+                          <c:otherwise>
+                            <div class="alert alert-danger collapse" id="alert" >
+                                <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                            </div>
+                          </c:otherwise>
+                        </c:choose>
 </form>
 			<div id="error"></div>
 <div id="smallJum">

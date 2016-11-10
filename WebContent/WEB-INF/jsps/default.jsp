@@ -27,6 +27,8 @@
 <script src="../scripts/signing.js"></script>
 <script src="../scripts/signatureCapture.js"></script>
 
+<script src="scripts/script.js"></script>
+<script src="../scripts/script.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
