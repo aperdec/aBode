@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <script type="text/javascript">
 var e;
 
@@ -59,32 +55,6 @@ function Validate() {
 
 </script>
 
-<script src="scripts/modernizr.custom.34982.js"></script>
-<!-- <script src="scripts/sig.js"></script>-->
-
-<script src="scripts/signing.js"></script>
-<script src="scripts/signatureCapture.js"></script>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-	crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
-
-<link rel="stylesheet" type="text/css" href="/spring/css/style.css">
-
 <style>
 .flex-v-center {
 	display: flex;
@@ -121,21 +91,20 @@ function Validate() {
 </style>
 
 <title>Unit Information</title>
-</head>
 <body onload="hide()">
 
 	<div style="margin: 2%">
+	
 <legend><h2>Build Inspection (Step 1 of 2)</h2></legend>
 		<c:url value="/displayUnitData2" var="url" />
-		<!--<form name="form" class="form-horizontal" onsubmit="return verify()">-->
 
-<form:form commandName="unit" method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
+<form method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
 
 			<div class="form-group">
 
 				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
-					<form:input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control" 
+					<input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
 					id="homeEnrollmentNumber" required="required"/>
 			</div>
 			<div class="form-group">				
@@ -145,8 +114,7 @@ function Validate() {
 			<div class="alert alert-danger collapse" id="alert" >
                 	<div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
                 </div>
-</form:form>
-<!--</form>-->
+</form>
 			<div id="error"></div>
 <div id="smallJum">
 		<fieldset>
@@ -294,12 +262,20 @@ function Validate() {
 
 		</fieldset><br><br>
 </div>		
+
 <br>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies2/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies2" />
 					<a href="${displayUnitDeficiencies2}" class="pull-right btn btn-success" id="nextBtn">Next</a>
+					
+				<br />
+				<br />
+				
 				</div>
-				 
+				
+				<br />
+				<br />
+				 <legend> </legend>
 	</div>
 
 	<!-- </fieldset>
@@ -309,4 +285,3 @@ function Validate() {
 	<!-- footer area -->
 
 </body>
-</html>

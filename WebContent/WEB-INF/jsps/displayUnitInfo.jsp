@@ -1,96 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	
-<script type="text/javascript">
-var e;
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-var used;
-function hide(){
-used = document.getElementById("repName").value;
-document.getElementById("nextBtn").style.visibility = 'hidden';
-document.getElementById("saveBtn").style.visibility = 'hidden';
-document.getElementById("nextBtn").style.visibility = 'visible';
-
-if (used === ""){
-	//alert(used);
-	document.getElementById("nextBtn").style.visibility = 'hidden';
-}
-}
-
-function showSave(){
-	document.getElementById("saveBtn").style.visibility = 'visible';
-}
-
-function acceptSig(){
-	var link = document.getElementById("signature").toDataURL();
-	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
-	showSave();
-	//alert("hi");
-}
-
-function ValidateHEN() {
-	e = document.getElementById("homeEnrollmentNumber").value;
-    //if you need text to be compared then use
-    if(e <= 0 || e ==null || e=="") {
-        $('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else if (isNaN(e)){
-    	$('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function Validate() {
-    if (ValidateHEN()) {
-        return true;
-    } else if (ValidateHEN()) {
-        $('#selectHEN').hide();
-        return false;
-    } else {
-        return false;
-    }
-}
-
-</script>
-
-<script src="scripts/modernizr.custom.34982.js"></script>
-<!-- <script src="scripts/sig.js"></script>-->
-
-<script src="scripts/signing.js"></script>
-<script src="scripts/signatureCapture.js"></script>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-	crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
-
-<link rel="stylesheet" type="text/css" href="/spring/css/style.css">
 
 <style>
 .flex-v-center {
@@ -126,8 +41,7 @@ function Validate() {
     border-radius: 8px;
     }
 </style>
-<title>Unit Information</title>
-</head>
+
 <body onload="hide()">
 
 	<div style="margin: 2%">
@@ -143,7 +57,7 @@ function Validate() {
 					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
 					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
 			</div>
-			<div class="form-group">				
+			<div class="form-group">
 				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
 				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
 			</div>
@@ -331,7 +245,7 @@ function Validate() {
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					
+
 					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
@@ -343,21 +257,29 @@ function Validate() {
 </div>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+			        <br />
+				 <br />
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-success" id="nextBtn">Next</a>
 
 				</div>
-				 
+
 				<div>
-				<!--image display test. 
+				<!--image display test.
 				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" /> Working! -->
-				 </div> 
+				 </div>
+				 <br />
+				 <br />
+				 <br />
+				 <br />
+				 <br />
+
+				 <legend> </legend>
 	</div>
 
 	<!-- </fieldset>
-	
+
 	</form> -->
-	
+
 	<!-- footer area -->
 
 </body>
-</html>
