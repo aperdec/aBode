@@ -41,7 +41,6 @@
     }
 </style>
 
-<title>Unit Information</title>
 <body onload="hide()">
 
 	<div style="margin: 2%">
@@ -51,19 +50,23 @@
 
 <form method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
 
-			<div class="form-group">
+			<div id="topEntry">
+            			<div class="form-group">
 
-				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
+            				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
-					<input path="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
-					id="homeEnrollmentNumber" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}" required="required"/>
-			</div>
-			<div class="form-group">				
-				<input type="submit" id="btnXlg" value="Load Unit" class="pull-right btn btn-primary" />
-			</div>
+            					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
+            					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
+            			</div>
+            			<div class="form-group">
+            				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
+            				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
+            			</div>
+            	</div>
 
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			<c:choose>
+            				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            			<c:choose>
                           <c:when test="${errorHomeEnrollmentNumber}">
                             <div class="alert alert-danger" id="alert" >
                                 <div id="selectHEN">Home Enrollment Number does not exist.</div>
