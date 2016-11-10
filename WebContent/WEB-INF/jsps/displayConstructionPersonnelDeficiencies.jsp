@@ -1,3 +1,6 @@
+
+	
+
 	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
@@ -45,8 +48,18 @@
 				<td>${deficiency.category}</td>
 				<td>${deficiency.description}</td>
 				<td>
-				    <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
-				    <a href="${completeUrl}" class="btn btn-primary pull-right">Is Completed: ${deficiency.status}</a>
+					<c:choose>
+	              <c:when test="${deficiency.status}">
+		              <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
+					    <a href="${completeUrl}" class="btn btn-success pull-right">Complete</a>
+
+	              </c:when>
+	              <c:otherwise>
+	                <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
+					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
+	              </c:otherwise>
+	            	</c:choose>
+
 				</td>
 				</tr>
 			</c:forEach>
