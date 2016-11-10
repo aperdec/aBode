@@ -114,7 +114,7 @@ function Validate() {
 					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
 					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
 			</div>
-			<div class="form-group">				
+			<div class="form-group">
 				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
 				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
 			</div>
@@ -302,7 +302,7 @@ function Validate() {
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					
+
 					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
@@ -319,24 +319,24 @@ function Validate() {
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-success" id="nextBtn">Next</a>
 
 				</div>
-				 
+
 				<div>
-				<!--image display test. 
+				<!--image display test.
 				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" /> Working! -->
-				 </div> 
+				 </div>
 				 <br />
 				 <br />
 				 <br />
 				 <br />
 				 <br />
-				
+
 				 <legend> </legend>
 	</div>
 
 	<!-- </fieldset>
-	
+
 	</form> -->
-	
+
 	<!-- footer area -->
 
 </body>
