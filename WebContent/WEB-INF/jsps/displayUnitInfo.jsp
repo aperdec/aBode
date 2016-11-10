@@ -6,63 +6,6 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<script type="text/javascript">
-var e;
-
-var used;
-function hide(){
-used = document.getElementById("repName").value;
-document.getElementById("nextBtn").style.visibility = 'hidden';
-document.getElementById("saveBtn").style.visibility = 'hidden';
-document.getElementById("nextBtn").style.visibility = 'visible';
-
-if (used === ""){
-	//alert(used);
-	document.getElementById("nextBtn").style.visibility = 'hidden';
-}
-}
-
-function showSave(){
-	document.getElementById("saveBtn").style.visibility = 'visible';
-}
-
-function acceptSig(){
-	var link = document.getElementById("signature").toDataURL();
-	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
-	showSave();
-	//alert("hi");
-}
-
-function ValidateHEN() {
-	e = document.getElementById("homeEnrollmentNumber").value;
-    //if you need text to be compared then use
-    if(e <= 0 || e ==null || e=="") {
-        $('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else if (isNaN(e)){
-    	$('#alert').show();
-        $('#selectHEN').show();
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function Validate() {
-    if (ValidateHEN()) {
-        return true;
-    } else if (ValidateHEN()) {
-        $('#selectHEN').hide();
-        return false;
-    } else {
-        return false;
-    }
-}
-
-</script>
-
-
 
 <style>
 .flex-v-center {
@@ -114,7 +57,7 @@ function Validate() {
 					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
 					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
 			</div>
-			<div class="form-group">				
+			<div class="form-group">
 				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
 				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
 			</div>
@@ -302,7 +245,7 @@ function Validate() {
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					
+
 					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
@@ -319,24 +262,24 @@ function Validate() {
 					<a href="${displayUnitDeficiencies}" class="pull-right btn btn-success" id="nextBtn">Next</a>
 
 				</div>
-				 
+
 				<div>
-				<!--image display test. 
+				<!--image display test.
 				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" /> Working! -->
-				 </div> 
+				 </div>
 				 <br />
 				 <br />
 				 <br />
 				 <br />
 				 <br />
-				
+
 				 <legend> </legend>
 	</div>
 
 	<!-- </fieldset>
-	
+
 	</form> -->
-	
+
 	<!-- footer area -->
 
 </body>

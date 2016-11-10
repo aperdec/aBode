@@ -93,6 +93,7 @@ public class ControllerServices {
             }
 
             //String img = form.get(0).getRepSig().toString();
+            model.addAttribute("errorHomeEnrollmentNumber", false);
 
             return model;
         } else {

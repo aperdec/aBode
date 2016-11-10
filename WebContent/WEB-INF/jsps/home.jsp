@@ -30,7 +30,7 @@ Extra Large Button CSS
 
 </style>
 
-	<div class="container">
+	<div class="">
 	
 		<div class="row row-centered text-center">
 
