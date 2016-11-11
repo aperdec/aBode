@@ -40,6 +40,7 @@
 		      <th>Deficiency Type</th>
 		      <th>Notes</th>
 		      <th>Assignee</th>
+		      <th style="text-align: center;">Status</th>
 		      <th></th>
 		      <th></th>
 		    </tr>
@@ -47,7 +48,7 @@
 		  <tbody>
 			<c:forEach var="unitDeficiency" items="${unit.deficiencies}">
 				<c:url value="/editDeficiency/${unit.homeEnrollmentNumber}/${unitDeficiency.id}" var="editUrl" />
-				<tr onclick="document.location = '${editUrl}';">
+				<tr>
 				<td>${unitDeficiency.id}</td>
 				<td>${unitDeficiency.location}</td>
 				<td>${unitDeficiency.category}</td>
@@ -65,6 +66,9 @@
 					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
 	              </c:otherwise>
 	            	</c:choose>
+				</td>
+				<td>
+				<a href="${editUrl}" class="btn btn-primary pull-right">Edit</a>
 				</td>
 				<td>
 				    <c:url value="/workOrderDeleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
