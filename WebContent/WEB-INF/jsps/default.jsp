@@ -11,6 +11,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+
+<script src="scripts/script.js"></script>
+<script src="../scripts/script.js"></script>
+
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
@@ -27,8 +31,6 @@
 <script src="../scripts/signing.js"></script>
 <script src="../scripts/signatureCapture.js"></script>
 
-<script src="scripts/script.js"></script>
-<script src="../scripts/script.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"

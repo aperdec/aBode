@@ -45,20 +45,20 @@ function acceptSig(){
 
 function ValidateHEN() {
 	e = document.getElementById("homeEnrollmentNumber").value;
+
     //if you need text to be compared then use
-//    if(e <= 0 || e == null || e== "") {
-//        $('#alert').show();
-//        $('#selectHEN').show();
-//        alert("not valid");
-//        return false;
-//    } else
-//       if (isNaN(e)){
-//    	$('#alert').show();
-//        $('#selectHEN').show();
-//        return false;
-//    } else {
-//        return true;
-//    }
+    if(e <= 0 || e == null || e== "") {
+        $('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else
+       if (isNaN(e)){
+    	$('#alert').show();
+        $('#selectHEN').show();
+        return false;
+    } else {
+        return true;
+    }
 return true;
 }
 
