@@ -33,7 +33,7 @@
 #topEntry{
 	margin: 1%;
 }
-#saveBtn{
+#saveBtn2{
     padding: 24px 34px;
     font-size: 16px;
     line-height: normal;
@@ -231,8 +231,8 @@
 <br>
 				<div class="form-group">
 			        <c:url value="/displayUnitDeficiencies2/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies2" />
-				<!-- 	<a href="${displayUnitDeficiencies2}" class="pull-right btn btn-success" id="nextBtn">Next</a> -->
-					<input type="submit" value="Save and Proceed" class="pull-right btn btn-success" id="saveBtn"/>
+				<!-- 	<a href="${displayUnitDeficiencies2}" class="pull-right btn btn-success" id="nextBtn2">Next</a> -->
+					<input type="submit" value="Save and Proceed" class="pull-right btn btn-success" id="saveBtn2"/>
 				<br />
 				<br />
 				

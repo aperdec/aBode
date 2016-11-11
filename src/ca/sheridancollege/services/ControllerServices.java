@@ -446,7 +446,11 @@ public class ControllerServices {
             List<Form> form = dao.getForm(homeEnrollmentNumber);
             List<Builder> builder = dao.getBuilderRefNum("batman");
 
-            model.addAttribute("form", form.get(0));
+            if (form.size() > 0) {
+                model.addAttribute("form", form.get(0));
+            } else {
+                model.addAttribute("errorForm", true);
+            }
             model.addAttribute("unit", unit.get(0));
             model.addAttribute("builder", builder.get(0));
 
