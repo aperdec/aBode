@@ -66,7 +66,6 @@ function Validate() {
     if (ValidateHEN()) {
         return true;
     } else {
-        $('#selectHEN').hide();
         return false;
     }
 }
