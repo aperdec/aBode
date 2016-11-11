@@ -23,9 +23,7 @@ label {
 #sig{
 	background-color: white;
 }
-body{
-	font-size: 22px;
-}
+
 </style>
 	
 <title>Tarion PDI Form: ${unit.homeEnrollmentNumber}</title>

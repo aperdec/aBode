@@ -7,7 +7,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <title>Add Deficiency: ${unit.homeEnrollmentNumber}</title>
-
+<style>
+#con {
+	background-color: #EDEEFF;
+	border-radius: 15px;
+}
+</style>
 <script>
     function Validate() {
         if (ValidateCategories() && ValidateLocation()) {
@@ -51,6 +56,7 @@
 </script>
 
 	<div style="margin: 2%">
+	<div class="jumbotron" id="con" >
 		<c:url value="/workOrderSaveDeficiency" var="url" />
 		<form name="form" class="form-horizontal" method="post" onsubmit="return Validate()" action="${url}">
 
@@ -124,12 +130,12 @@
 				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-				<input type="submit" value="Save Deficiency" class="btn btn-primary" style="margin-left: 8.33333333333%" />
+				<input type="submit" value="Save Deficiency" id="btnXlg" class="btn btn-primary" style="margin-left: 8.33333333333%" />
 
 			    <c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
+			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg" style="margin-right: 8.33333333333%">Back</a>
 
 			</fieldset>
 		</form>
-
+	</div>
 	</div>

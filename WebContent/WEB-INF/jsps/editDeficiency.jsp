@@ -137,14 +137,15 @@
 				
 				<div class="form-group">
 					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>
-					<div class="col-lg-10">
+					<div class="col-lg-8">
 						<input class="form-control" id="constructionPersonnel" name="constructionPersonnel" value="${deficiency.constructionPersonnel}" readonly/>
 					</div>
-				</div>
-
-				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+					<div class="col-lg-2">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                     Change Assignee
                   </button>
+					</div>
+				</div>
 
 				<div class="modal fade" id="myModal">
                   <div class="modal-dialog" role="document">
@@ -184,7 +185,7 @@
 					
 					
 			    <c:url value="/workOrderDisplayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-                <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default">Back</a>
+                <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg2" style="margin-right: 8.3%">Back</a>
 
 			</fieldset>
 			</div>
