@@ -143,7 +143,7 @@
 				<div class="form-group">
 			        <c:url value="/" var="home" />
 			        <input type="submit" value="Save and Proceed" id="btnXlg2" class="pull-right btn btn-success" />
-				<!-- <a href="${home}" class="pull-right btn btn-success" id="btnXlg2">Finish</a> -->
+				<!-- <a href="${home}" class="pull-right btn btn-success" id="saveBtn">Finish</a> -->
 				</fieldset>
 </form>
 				</div>

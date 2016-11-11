@@ -299,7 +299,7 @@ public class HomeController {
 
         model = controllerServices.saveUnit2(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
 
-        return "buildInspection";
+        return "addDeficiency2";
     }
 
     @RequestMapping("/addSignOff/{homeEnrollmentNumber}")
