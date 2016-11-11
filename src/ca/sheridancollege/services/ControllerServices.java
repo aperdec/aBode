@@ -234,7 +234,7 @@ public class ControllerServices {
 
         addSignOff.setDesName(desName);
 
-        File sig = new File("C:\\abode\\purSig.png");
+        File sig = new File("C:\\abode\\refSig.png");
         byte[] sigImg = new byte[(int) sig.length()];
 
         try {

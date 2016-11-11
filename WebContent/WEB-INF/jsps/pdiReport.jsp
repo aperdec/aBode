@@ -177,7 +177,7 @@ label {
 					placeholder="" type="text" required="required" value="${form.repName}"  readonly/>
 			</div>
 			<div class="col-lg-6" id="sig" style="margin: 2%">
-				<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" />
+				<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" />
 			</div>
 				<div>		
 					<label for="id" class="pull-right control-label" style="margin: 2%">This section
@@ -206,7 +206,7 @@ label {
 					</div>
 			
 					<div class="col-lg-6" id="sig" id="sig" style="margin: 2%">
-						<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}" />
+						<img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" />
 					</div>
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12">
