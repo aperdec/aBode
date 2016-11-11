@@ -44,45 +44,46 @@
 <body onload="hide()">
 
 	<div style="margin: 2%">
-	<legend><h2>Pre-Delivery Inspection (Step 1 of 3)</h2></legend>
-		<c:url value="/displayUnitData" var="url" />
+	
+<legend><h2>Build Inspection (Step 1 of 2)</h2></legend>
+		<c:url value="/displayUnitData2" var="url" />
 
 <form method="post" action="${url}" class="form-horizontal" onsubmit="return Validate()">
-	<div id="topEntry">
-			<div class="form-group">
 
-				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
+			<div id="topEntry">
+            			<div class="form-group">
 
-					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
-					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
-			</div>
-			<div class="form-group">
-				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
-				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
-			</div>
-	</div>
+            				<label class="col-lg-8 control-label">Enter Home Enrollment Number</label>
 
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            					<input path="homeEnrollmentNumber" name="homeEnrollmentNumber" placeholder="Enter Home Enrollment Number" class="form-control"
+            					id="homeEnrollmentNumber" required="required" data-toggle="tooltip" data-placement="top" value="${unit.homeEnrollmentNumber}" title="Enter Home Enrollment Number"/>
+            			</div>
+            			<div class="form-group">
+            				<input data-toggle="tooltip" data-placement="top" title="Display Unit Data"
+            				type="submit" value="Load Unit" id="btnXlg" class="pull-right btn btn-primary" />
+            			</div>
+            	</div>
 
-			<c:choose>
-              <c:when test="${errorHomeEnrollmentNumber}">
-                <div class="alert alert-danger" id="alert" >
-                    <div id="selectHEN">Home Enrollment Number does not exist.</div>
-                    <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
-                </div>
-              </c:when>
-              <c:otherwise>
-                <div class="alert alert-danger collapse" id="alert" >
-                    <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
-                </div>
-              </c:otherwise>
-            </c:choose>
+            				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
+            			<c:choose>
+                          <c:when test="${errorHomeEnrollmentNumber}">
+                            <div class="alert alert-danger" id="alert" >
+                                <div id="selectHEN">Home Enrollment Number does not exist.</div>
+                                <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                            </div>
+                          </c:when>
+                          <c:otherwise>
+                            <div class="alert alert-danger collapse" id="alert" >
+                                <div id="selectHEN" class="collapse">Please enter a valid Home Enrollment Number.</div>
+                            </div>
+                          </c:otherwise>
+                        </c:choose>
 </form>
 			<div id="error"></div>
 <div id="smallJum">
 		<fieldset>
-			<c:url value="/saveUnit3" var="url2" />
+			<c:url value="/saveUnit2" var="url2" />
 			<form name="form" method="post" action="${url2}"
 				class="form-horizontal" onsubmit="return verify()">
 
@@ -106,7 +107,6 @@
 						<input path="venBuildRefNo" name="builderRefNum"
 							class="form-control" id="venBuildRefNo" placeholder=""
 							required="required" type="text" value="${builder.builderRefNum}"/>
-
 					</div>
 
 				</div>
@@ -119,9 +119,7 @@
 					<div class="col-lg-1">
 						<input path="unit.lotNumber" name="lotNumber" class="form-control"
 							id="lotNumber" value="${unit.lotNumber}" required="required" type="text" />
-
 					</div>
-
 
 					<label for="plan" class="col-lg-1 control-label">Plan</label>
 
@@ -136,7 +134,6 @@
 						<input path="municipality" name="municipality"
 							class="form-control" id="municipality" value="${unit.municipality}"
 							required="required" type="text" />
-
 					</div>
 
 				</div>
@@ -160,7 +157,6 @@
 						<input path="level" name="level" class="form-control"
 							id="level" placeholder="" required="required" type="text" value="${unit.level}" />
 					</div>
-
 
 				</div>
 
@@ -186,12 +182,9 @@
 
 				</div>
 
-
 				<!-- end of row 5 start of row 6 -->
 
-
 				<div class="form-group">
-
 
 					<label for="venBuildName" class="col-lg-3 control-label">Vendor
 						/ Builder Name</label>
@@ -208,14 +201,12 @@
 
 				<div class="form-group">
 
-
 					<label for="repName" class="col-lg-3 control-label">Representative
 						Name</label>
 
 					<div class="col-lg-4">
 						<input path="repName" name="repName" class="form-control"
-							id="repName" placeholder="" type="text" value="${form.repName}"
-							data-toggle="tooltip" data-placement="right" title="Please Enter a Name"/>
+							id="repName" placeholder="" type="text" value="${form.repName}"/>
 					</div>
 
 				</div>
@@ -228,57 +219,34 @@
 				<div class="form-group">
 
 					<!-- <a href="${url2}" class="pull-right btn btn-default">Save</a> -->
-				</div>
-
-
-		<!-- </form> -->
-				<div class="form-group">
-
-					<label for="repSignature" class="col-lg-3 control-label">Representative's
-						Signature</label>
-
-					<div class="col-lg-4">
-						<div id="canvasContainer" width="300px"
-						data-toggle="tooltip" data-placement="top" title="Signing Area">
-    						<canvas id="signature" height="200px" />
-    					</div>
-					</div>
 					
-					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()" type="button">Accept</button></div>
-					<div id="acc1"></div>
-					<br><br>
-					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default" type="button">Redo</button></div>
 				</div>
 
-		<!-- </fieldset>  -->
-</div>
+
+		<!-- 	</form> 
+
+		</fieldset> -->  <br><br>
+</div>		
+
+<br>
 				<div class="form-group">
-			        <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-			        <br />
-				 <br />
-				 <input type="submit" value="Save and Proceed" class="pull-right btn btn-success" id="saveBtn" onclick="enableNextBtn()"/>
-				 </fieldset>
-				 </form>
-
+			        <c:url value="/displayUnitDeficiencies2/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies2" />
+				<!-- 	<a href="${displayUnitDeficiencies2}" class="pull-right btn btn-success" id="nextBtn">Next</a> -->
+					<input type="submit" value="Save and Proceed" class="pull-right btn btn-success" id="saveBtn"/>
+				<br />
+				<br />
+				
 				</div>
-
-				<div>
-				<!--image display test.
-				 <img id="theimage" src="imageDisplay/${form.homeEnrollmentNumber}/2" /> Working! -->
-				 </div>
-				 <br />
-				 <br />
-				 <br />
-				 <br />
-				 <br />
-
+				
+				<br />
+				<br />
 				 <legend> </legend>
 	</div>
 
-	<!-- </fieldset>
-
-	</form> -->
-
+	</fieldset>
+	
+	</form> 
+	
 	<!-- footer area -->
 
 </body>

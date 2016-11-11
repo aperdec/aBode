@@ -16,24 +16,35 @@
 
         <security:intercept-url pattern="/home" access="isAuthenticated()"/>
         <security:intercept-url pattern="/pdiReport" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/buildInspection" access="isAuthenticated()"/>
         <security:intercept-url pattern="/pdiReportData" access="isAuthenticated()"/>
         <security:intercept-url pattern="/selectReport" access="isAuthenticated()"/>
         <security:intercept-url pattern="/imageDisplay/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/editDeficiency/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/addDeficiency2/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderAddDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveUnit/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/saveUnit2/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/saveUnit3/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/saveDeficiency" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/saveDeficiency2" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderSaveDeficiency" access="isAuthenticated()"/>
         <security:intercept-url pattern="/editDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/deleteDeficiency/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/deleteDeficiency2/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderDeleteDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderCompleteDeficiency/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/workOrderCompleteDeficiencyUnit/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitInfo" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitData" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/displayUnitData2" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addSignOff/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/viewDeficiency" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayDeficiencies" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/displayDeficiencies2" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnitDeficiencies/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/displayUnitDeficiencies2/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderDisplayUnitDeficiencies/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnits" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayUnits/**" access="isAuthenticated()"/>
@@ -41,7 +52,7 @@
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayBuildingProjects" access="isAuthenticated()"/>
         <security:intercept-url pattern="/workOrderHome" access="isAuthenticated()"/>
-         <security:intercept-url pattern="/help" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/help" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayConstructionPersonnel" access="isAuthenticated()"/>
         <security:intercept-url pattern="/displayDeficiencies/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/css/**" access="permitAll"/>

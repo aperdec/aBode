@@ -22,15 +22,12 @@ function clearSig() {
 }
 
 function accept(){
-
 	var link = document.getElementById("signature").toDataURL();
-	document.getElementById("acc2").innerHTML='<a id="dl" download="refSig.png" href="'+link+'">SAVE</a>';
-	showNext();
+	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
+	showSave();
+	//alert("hi");
 }
 
-function showNext(){
-	document.getElementById("nextBtn").show();
-}
 
 /*
 

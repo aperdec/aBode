@@ -1,8 +1,6 @@
 package ca.sheridancollege.controllers;
 
-import ca.sheridancollege.beans.Builder;
 import ca.sheridancollege.beans.Deficiency;
-import ca.sheridancollege.beans.Form;
 import ca.sheridancollege.beans.Unit;
 import ca.sheridancollege.dao.DAO;
 import ca.sheridancollege.services.ControllerServices;
@@ -55,6 +53,22 @@ public class HomeController {
         return "addDeficiency";
     }
 
+    @RequestMapping("/editDeficiency/{homeEnrollmentNumber}/{id}")
+    public String editDeficiency(Model model, @PathVariable long homeEnrollmentNumber, @PathVariable int id) {
+
+        model = controllerServices.editDeficiency(model, homeEnrollmentNumber, id);
+
+        return "editDeficiency";
+    }
+
+    @RequestMapping("/addDeficiency2/{homeEnrollmentNumber}")
+    public String addDeficiency2(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.addDeficiency(model, homeEnrollmentNumber);
+
+        return "addDeficiency2";
+    }
+
     @RequestMapping("/workOrderAddDeficiency/{homeEnrollmentNumber}")
     public String workOrderAddDeficiency(Model model, @PathVariable long homeEnrollmentNumber) {
 
@@ -71,6 +85,15 @@ public class HomeController {
         return "displayUnitDeficiencies";
     }
 
+    @RequestMapping("/deleteDeficiency2/{id}/{homeEnrollmentNumber}")
+    public String deleteDeficiency2(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.deleteDeficiency(model, id, homeEnrollmentNumber);
+
+        return "displayUnitDeficiencies2";
+    }
+
+
     @RequestMapping("/workOrderDeleteDeficiency/{id}/{homeEnrollmentNumber}")
     public String workOrderDeleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
@@ -79,12 +102,20 @@ public class HomeController {
         return "workOrderDisplayUnitDeficiencies";
     }
 
-    @RequestMapping("/workOrderCompleteDeficiency/{id}/{homeEnrollmentNumber}")
-    public String workOrderCompleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
+    @RequestMapping("/workOrderCompleteDeficiencyUnit/{id}/{homeEnrollmentNumber}")
+    public String workOrderCompleteDeficiencyUnit(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber) {
 
-        model = controllerServices.completeDeficiency(model, id, homeEnrollmentNumber);
+        model = controllerServices.completeDeficiencyUnit(model, id, homeEnrollmentNumber);
 
         return "workOrderDisplayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderCompleteDeficiency/{id}/{homeEnrollmentNumber}/{constructionPersonnel}")
+    public String workOrderCompleteDeficiency(Model model, @PathVariable int id, @PathVariable long homeEnrollmentNumber, @PathVariable String constructionPersonnel) {
+
+        model = controllerServices.completeDeficiency(model, id, homeEnrollmentNumber, constructionPersonnel);
+
+        return "displayConstructionPersonnelDeficiencies";
     }
 
     @RequestMapping("/displayUnits")
@@ -103,12 +134,33 @@ public class HomeController {
         return "displayUnitDeficiencies";
     }
 
+    //new
+    @RequestMapping("/displayUnitDeficiencies2/{homeEnrollmentNumber}")
+    public String viewUnitDeficiencies2(Model model, @PathVariable long homeEnrollmentNumber) {
+
+        model = controllerServices.displayUnitDeficiencies(model, homeEnrollmentNumber);
+
+        return "displayUnitDeficiencies2";
+    }
+
     @RequestMapping("/workOrderDisplayUnitDeficiencies/{homeEnrollmentNumber}")
     public String workOrderViewUnitDeficiencies(Model model, @PathVariable long homeEnrollmentNumber) {
 
         model = controllerServices.displayUnitDeficiencies(model, homeEnrollmentNumber);
 
         return "workOrderDisplayUnitDeficiencies";
+    }
+
+    @RequestMapping("/workOrderDisplayUnitDeficiencies")
+    public String workOrderViewUnitDeficienciesNavBar(Model model, @RequestParam long homeEnrollmentNumber) {
+
+        model = controllerServices.displayUnitDeficiencies(model, homeEnrollmentNumber);
+
+        if (model.containsAttribute("errorUnit")) {
+            return "displayBuildingProjects";
+        } else {
+            return "workOrderDisplayUnitDeficiencies";
+        }
     }
 
     @RequestMapping("/saveDeficiency")
@@ -126,6 +178,23 @@ public class HomeController {
         model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category, deadline, homeEnrollmentNumber);
 
         return "displayUnitDeficiencies";
+    }
+
+    @RequestMapping("/saveDeficiency2")
+    public String saveDeficiency2(
+            Model model,
+            @RequestParam int id,
+            @RequestParam String location,
+            @RequestParam String description,
+            @RequestParam String constructionPersonnel,
+            @RequestParam String category,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date deadline,
+            @RequestParam long homeEnrollmentNumber
+    ) {
+
+        model = controllerServices.saveDeficiency(model, id, location, description, constructionPersonnel, category, deadline, homeEnrollmentNumber);
+
+        return "displayUnitDeficiencies2";
     }
 
     @RequestMapping("/workOrderSaveDeficiency")
@@ -148,10 +217,6 @@ public class HomeController {
     @RequestMapping("/displayUnitInfo")
     public String displayUnitInfo(Model model) {
         dao.addTestData();
-        model.addAttribute("unit", new Unit());
-        model.addAttribute("builder", new Builder());
-        model.addAttribute("form", new Form());
-        // dao.getUnit(homeEnrollmentNumber);
         return "displayUnitInfo";
     }
 
@@ -182,6 +247,60 @@ public class HomeController {
 
         return "displayUnitInfo";
     }
+    
+    @RequestMapping(value = "/saveUnit3", method = RequestMethod.POST)
+    public String saveUnit3(
+            Model model,
+            @RequestParam long homeEnrollmentNumber,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
+            @RequestParam int lotNumber,
+            @RequestParam String address,
+            @RequestParam String projectName,
+            @RequestParam String municipality,
+            @RequestParam int level,
+            @RequestParam int unitNum,
+            @RequestParam String plan,
+            @RequestParam String repName
+    ) {
+
+        model = controllerServices.saveUnit(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
+
+        return "displayUnitDeficiencies";
+    }
+    
+
+    @RequestMapping("/buildInspection")
+    public String buildInspection(Model model) {
+        return "buildInspection";
+    }
+
+    @RequestMapping(value = "/displayUnitData2", method = RequestMethod.POST)
+    public String displayUnitData2(Model model, @RequestParam long homeEnrollmentNumber) {
+
+        model = controllerServices.displayUnitData(model, homeEnrollmentNumber, num);
+
+        return "buildInspection";
+    }
+
+    @RequestMapping(value = "/saveUnit2", method = RequestMethod.POST)
+    public String saveUnit2(
+            Model model,
+            @RequestParam long homeEnrollmentNumber,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date posessionDate,
+            @RequestParam int lotNumber,
+            @RequestParam String address,
+            @RequestParam String projectName,
+            @RequestParam String municipality,
+            @RequestParam int level,
+            @RequestParam int unitNum,
+            @RequestParam String plan,
+            @RequestParam String repName
+    ) {
+
+        model = controllerServices.saveUnit2(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
+
+        return "buildInspection";
+    }
 
     @RequestMapping("/addSignOff/{homeEnrollmentNumber}")
     public String addSignOff(Model model, @PathVariable long homeEnrollmentNumber) {
@@ -194,7 +313,7 @@ public class HomeController {
 
         model = controllerServices.saveForm(model, homeEnrollmentNumber, desName);
 
-        return "addSignOff";
+        return "home";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -204,21 +323,20 @@ public class HomeController {
 
     @RequestMapping("/pdiReport")
     public String pdiReport(Model model) {
-    	
-    	//model = controllerServices.displayPdiReport(model);
-    	
+
+        //model = controllerServices.displayPdiReport(model);
+
         return "pdiReport";
     }
-    
+
     @RequestMapping("/pdiReportData")
-    public String pdiReportData(Model model,@RequestParam long homeEnrollmentNumber) {
-    	
-    	model = controllerServices.displayPdiReport(model,homeEnrollmentNumber);
-    	
+    public String pdiReportData(Model model, @RequestParam long homeEnrollmentNumber) {
+
+        model = controllerServices.displayPdiReport(model, homeEnrollmentNumber);
+
         return "pdiReport";
     }
-    
-    
+
     @RequestMapping("/selectReport")
     public String selectReport(Model model) {
         return "selectReport";
@@ -269,9 +387,9 @@ public class HomeController {
 
         response = controllerServices.getImage(response, homeEnrollmentNumber);
     }
-    
+
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}/2")
-    public void getImage2(HttpServletResponse response,@PathVariable long homeEnrollmentNumber) throws IOException {
+    public void getImage2(HttpServletResponse response, @PathVariable long homeEnrollmentNumber) throws IOException {
 
         response = controllerServices.getImage(response, homeEnrollmentNumber);
     }

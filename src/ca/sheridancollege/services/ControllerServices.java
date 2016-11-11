@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,23 +28,46 @@ public class ControllerServices {
 
     public Model displayUnitDeficiencies(Model model, Long homeEnrollmentNumber) {
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
-        Unit unit = unitList.get(0);
-        unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
-        model.addAttribute("unit", unit);
+        if (unitList.size() > 0) {
+            Unit unit = unitList.get(0);
+            unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
+            model.addAttribute("unit", unit);
+        } else {
+            model = displayBuildingProjects(model);
+            model.addAttribute("errorUnit", true);
+        }
 
         return model;
     }
 
     public Model saveDeficiency(Model model, int id, String location, String description, String constructionPersonnel, String category, Date deadline, long homeEnrollmentNumber) {
+        constructionPersonnel = constructionPersonnel.substring(constructionPersonnel.indexOf("-")).replace("-", "").trim();
+        System.out.println("construction personnel substring: " + constructionPersonnel);
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
         System.out.println("Unit Size:" + unitList.size() + homeEnrollmentNumber);
-        unitList.get(0).addDeficiency(deficiency);
+        if (unit.getDeficiencies().size() > 0) {
+            boolean match = false;
+            List<Deficiency> deficiencyList = unit.getDeficiencies();
+            for (Deficiency d : deficiencyList) {
+                if (d.getId() == deficiency.getId()) {
+                    unit.getDeficiencies().remove(d);
+                    unit.getDeficiencies().add(deficiency);
+                    match = true;
+                    break;
+                }
+            }
+            if (!match) {
+                unit.addDeficiency(deficiency);
+            }
+        } else {
+            unit.addDeficiency(deficiency);
+        }
 
-        dao.saveOrUpdateUnit(unitList.get(0));
+        dao.saveOrUpdateUnit(unit);
 
         unitList = dao.getUnit(homeEnrollmentNumber);
-        Unit unit = unitList.get(0);
         unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
         model.addAttribute("unit", unit);
@@ -54,20 +79,21 @@ public class ControllerServices {
         String builderUserName = this.getUserName();
 
         List<Unit> returns = dao.getUnit(homeEnrollmentNumber);
-        Unit match = returns.get(0);
-        //System.out.println("testing " + match.getAddress());
-        model.addAttribute("unit", match);
-        num = match.getHomeEnrollmentNumber();
 
-        List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
-        Builder matchBuilder = returnsBuilder.get(0);
-        model.addAttribute("builder", matchBuilder);
+        if (returns.size() > 0) {
+            Unit match = returns.get(0);
+            model.addAttribute("unit", match);
+            num = match.getHomeEnrollmentNumber();
 
-        List<Form> form = dao.getForm(homeEnrollmentNumber);
-        if (form.size() > 0) {
-            model.addAttribute("form", form.get(0));
+            List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
+            Builder matchBuilder = returnsBuilder.get(0);
+            model.addAttribute("builder", matchBuilder);
 
-            //this downloads it to your computer -- good for testing
+            List<Form> form = dao.getForm(homeEnrollmentNumber);
+            if (form.size() > 0) {
+                model.addAttribute("form", form.get(0));
+
+                //this downloads it to your computer -- good for testing
             /*
             try{
             	FileOutputStream input = new FileOutputStream("C:\\abode\\refSigTWO.png");
@@ -78,13 +104,22 @@ public class ControllerServices {
             } catch(Exception e){
             	e.printStackTrace();
             }*/
+            } else {
+                model.addAttribute("form", new Form());
+            }
+
+            //String img = form.get(0).getRepSig().toString();
+            model.addAttribute("errorHomeEnrollmentNumber", false);
+
+            return model;
         } else {
-            model.addAttribute("form", new Form());
+
+//            model.addAttribute("unit", new Unit());
+            model.addAttribute("errorHomeEnrollmentNumber", true);
+
+            return model;
         }
 
-        //String img = form.get(0).getRepSig().toString();
-
-        return model;
     }
 
     public String getUserName() {
@@ -109,27 +144,108 @@ public class ControllerServices {
         Builder b = returnsBuilder.get(0);
         model.addAttribute("builder", returnsBuilder.get(0));
 
-        Form form = new Form(homeEnrollmentNumber, "PDI", repName);
+        Form form;
+
+        List<Form> formList = dao.getForm(homeEnrollmentNumber);
+        if (formList.size() > 0) {
+            form = formList.get(0);
+            form.setRepName(repName);
+        } else {
+            form = new Form(homeEnrollmentNumber, "PDI", repName);
+        }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
         HomeOwner ho = returnPurch.get(0);
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
-        
-        dao.createForm(form);
+
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int) sig.length()];
+
+        try {
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        form.setRepSig(sigImg);
+
+        dao.saveOrUpdateForm(form);
+        model.addAttribute("form", form);
+
+        return model;
+    }
+    
+    public Model saveUnit2(Model model, long homeEnrollmentNumber, Date posessionDate, int lotNumber, String address, String projectName, String municipality, int level, int unitNum, String plan, String repName) {
+        Unit unit = new Unit(homeEnrollmentNumber, lotNumber, address, projectName, posessionDate, municipality, level, unitNum, plan);
+
+        dao.saveOrUpdateUnit(unit);
+        String builderUserName = this.getUserName();
+
+        List<Unit> returns = dao.getUnit(homeEnrollmentNumber);
+        model.addAttribute("unit", returns.get(0));
+
+        List<Builder> returnsBuilder = dao.getBuilder(builderUserName);
+        Builder b = returnsBuilder.get(0);
+        model.addAttribute("builder", returnsBuilder.get(0));
+
+        Form form;
+
+        List<Form> formList = dao.getForm(homeEnrollmentNumber);
+        if (formList.size() > 0) {
+            form = formList.get(0);
+            form.setRepName(repName);
+        } else {
+            form = new Form(homeEnrollmentNumber, "BI", repName);
+        }
+
+        List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
+        HomeOwner ho = returnPurch.get(0);
+
+        form.setPurchName(ho.getName());
+        form.setBuilderRefNum(b.getBuilderRefNum());
+
+        File sig = new File("C:\\abode\\refSig.png");
+        byte[] sigImg = new byte[(int) sig.length()];
+
+        try {
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        form.setRepSig(sigImg);
+
+        dao.saveOrUpdateForm(form);
         model.addAttribute("form", form);
 
         return model;
     }
 
-    public Model saveForm(Model model, long homeEnrollmentNumber, String desName){
+    public Model saveForm(Model model, long homeEnrollmentNumber, String desName) {
 
         List<Form> returns = dao.getForm(homeEnrollmentNumber);
         Form addSignOff = returns.get(0);
 
         addSignOff.setDesName(desName);
-        dao.addSig(addSignOff);
+
+        File sig = new File("C:\\abode\\purSig.png");
+        byte[] sigImg = new byte[(int) sig.length()];
+
+        try {
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        addSignOff.setFinalSig(sigImg);
         model.addAttribute("form", addSignOff);
 
         dao.saveOrUpdateForm(addSignOff);
@@ -137,7 +253,7 @@ public class ControllerServices {
         return model;
     }
 
-    public Model loadSignOff(Model model, long homeEnrollmentNumber){
+    public Model loadSignOff(Model model, long homeEnrollmentNumber) {
 
         List<Form> returns = dao.getForm(homeEnrollmentNumber);
         Form addSignOff = returns.get(0);
@@ -247,13 +363,24 @@ public class ControllerServices {
     }
 
     public Model displayUnitsByProject(Model model, String project) {
-        List<Unit> unitList = dao.getUnitsByProject(project);
+        List<Unit> rawUnitList = dao.getUnitsByProject(project);
+        List<UnitDeficiencies> unitList = new ArrayList<>();
+
+        for (Unit unit : rawUnitList) {
+            int count = 0;
+            for (Deficiency deficiency : unit.getDeficiencies()) {
+                if (!deficiency.getStatus()) {
+                    count++;
+                }
+            }
+            unitList.add(new UnitDeficiencies(unit.getHomeEnrollmentNumber(), unit.getUnitNum(), unit.getAddress(), count));
+        }
 
         model.addAttribute("unitList", unitList);
 
         return model;
     }
-    
+
     //gets first sig
     public HttpServletResponse getImage(HttpServletResponse response, long homeEnrollmentNumber) throws IOException {
         response.setContentType("image/png");
@@ -265,7 +392,7 @@ public class ControllerServices {
 
         return response;
     }
-    
+
     //get final sig
     public HttpServletResponse getImage2(HttpServletResponse response, long homeEnrollmentNumber) throws IOException {
         response.setContentType("image/png");
@@ -278,7 +405,7 @@ public class ControllerServices {
         return response;
     }
 
-    public Model completeDeficiency(Model model, int id, long homeEnrollmentNumber) {
+    public Model completeDeficiencyUnit(Model model, int id, long homeEnrollmentNumber) {
         Unit unit = dao.completeDeficiency(id, homeEnrollmentNumber);
         unit.setDeficiencies(sortDeficiencyList(unit.getDeficiencies()));
 
@@ -287,25 +414,71 @@ public class ControllerServices {
         return model;
     }
 
-	public Model displayPdiReport(Model model, long homeEnrollmentNumber) {
+    public Model completeDeficiency(Model model, int id, long homeEnrollmentNumber, String name) {
+        Unit unit = dao.completeDeficiency(id, homeEnrollmentNumber);
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
+        Deficiency passDeficiency = null;
 
-	       List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
-	       List<Form> form = dao.getForm(homeEnrollmentNumber);
-	       List<Builder> builder = dao.getBuilderRefNum("batman");
+        for (Deficiency deficiency : unit.getDeficiencies()) {
+            if (deficiency.getId() == id) {
+                passDeficiency = deficiency;
+                break;
+            }
+        }
 
-	       	model.addAttribute("form", form.get(0));
-	        model.addAttribute("unit", unit.get(0));
-	        model.addAttribute("builder", builder.get(0));
+        System.out.println("The deficiency matching is: " + passDeficiency.getId());
 
+        for (ConstructionPersonnel constructionPersonnel : constructionPersonnelList) {
+            if (passDeficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
+                model = displayDeficienciesByConstructionPersonnel(model, constructionPersonnel.getId());
+                break;
+            }
+        }
 
+        return model;
+    }
 
-		return model;
-	}
+    public Model displayPdiReport(Model model, long homeEnrollmentNumber) {
+
+        List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+
+        if (unit.size() > 0) {
+            List<Form> form = dao.getForm(homeEnrollmentNumber);
+            List<Builder> builder = dao.getBuilderRefNum("batman");
+
+            model.addAttribute("form", form.get(0));
+            model.addAttribute("unit", unit.get(0));
+            model.addAttribute("builder", builder.get(0));
+
+            return model;
+        } else {
+
+            model.addAttribute("errorHomeEnrollmentNumber", true);
+            return model;
+        }
+    }
 
     public Model displayConstructionPersonnel(Model model) {
         List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
+        List<Unit> unitList = dao.getAllUnits();
 
-        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
+        List<TotalDeficiencies> totalDeficiencies = new ArrayList<>();
+
+        for (ConstructionPersonnel constructionPersonnel : constructionPersonnelList) {
+            int count = 0;
+            for (Unit unit : unitList) {
+                for (Deficiency deficiency : unit.getDeficiencies()) {
+                    if (!deficiency.getStatus()) {
+                        if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
+                            count++;
+                        }
+                    }
+                }
+            }
+            totalDeficiencies.add(new TotalDeficiencies(constructionPersonnel.getId(), constructionPersonnel.getName(), count));
+        }
+
+        model.addAttribute("constructionPersonnelList", totalDeficiencies);
 
         return model;
     }
@@ -329,10 +502,31 @@ public class ControllerServices {
         return model;
     }
 
-    public List<Deficiency> sortDeficiencyList (List<Deficiency> deficiencyList) {
+    public List<Deficiency> sortDeficiencyList(List<Deficiency> deficiencyList) {
 
         Collections.sort(deficiencyList);
 
         return deficiencyList;
+    }
+
+    public Model editDeficiency(Model model, long homeEnrollmentNumber, int id) {
+        List<ConstructionPersonnel> constructionPersonnelList = dao.getAllConstructionPersonnel();
+        List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
+        Unit unit = unitList.get(0);
+        Deficiency deficiency = null;
+        for (Deficiency d : unit.getDeficiencies()) {
+            if (id == d.getId()) {
+                deficiency = d;
+                break;
+            }
+        }
+        Category categories = new Category();
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("unit", unit);
+        model.addAttribute("deficiency", deficiency);
+        model.addAttribute("constructionPersonnelList", constructionPersonnelList);
+
+        return model;
     }
 }

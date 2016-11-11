@@ -16,3 +16,39 @@ Extra Large Button CSS
     text-decoration:none;
     pointer-events:none;
 }
+
+#btnHovering{
+	background-color: #EDEEFF;
+	padding: 1.2%;
+	border-radius: 5px;
+}
+#btnHovering:hover{
+	background-color: #9394AA;
+	color:black;
+}
+
+#legendCon{
+	margin: 2%;
+	border-radius: 15px;
+	padding-right:1%;
+}
+
+#canvasContainer {
+    border: 1px solid #D1D0CE;
+    border-radius: 5px;
+    background-color:white;
+}
+
+#btnXlg {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }
+    
+#btnXlg2 {
+    padding: 24px 34px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 8px;
+    }

@@ -33,12 +33,14 @@ table{
     }
 </style>
 
-<div id="titleCon"><legend><h2>Pre-Delivery Inspection (Step 2 of 3)</h2></legend></div>
+<div style="margin: 2%">
+<legend><h2>Build Inspection (Step 2 of 2)</h2></legend>
+</div>
 <div class="jumbotron" id="con">
 <center><h2>Unit ${unit.unitNum} Deficiency List</h2></center>
 	<div style="margin: 2%">
 		<div class="list-group">
-		<table class="table table-striped">
+		<table class="table table-striped table-hover">
 		  <thead>
 		    <tr>
 		      <th>#</th>
@@ -56,8 +58,8 @@ table{
 				<td>${unitDeficiency.category}</td> 
 				<td>${unitDeficiency.description}</td>
 				<td>
-				    <c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
-				    <a href="${deleteUrl}" class="btn btn-danger pull-right" style="margin:1%;">Delete</a>
+				    <c:url value="/deleteDeficiency2/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl2" />
+				    <a href="${deleteUrl2}" class="btn btn-danger pull-right">Delete</a>
 				</td>
 				</tr>
 			</c:forEach>
@@ -68,18 +70,13 @@ table{
 </div>
 	<div style="padding: 0% 2%">
 		
-		<c:url value="/addDeficiency/${unit.homeEnrollmentNumber}" var="addUrl" />
-		<br />
-		<br />
-		<a href="${addUrl}" class="btn btn-primary" id="btnXlg">Add Deficiency</a> 
+		<c:url value="/addDeficiency2/${unit.homeEnrollmentNumber}" var="addUrl" />
+		<a href="${addUrl}" id="btnXlg"class="btn btn-primary">Add Deficiency</a> 
 
-		<c:url value="/addSignOff/${unit.homeEnrollmentNumber}" var="addSignOff" />
-		
-		<a href="${addSignOff}" class="pull-right btn btn-success" id="nextDbtn">Next</a>
-		<br />
-		<br />
-				 <br />
-				 <br />
-
+		<c:url value="/" var="finish" />
+		<a href="${finish}" id="btnXlg" class="pull-right btn btn-success">Finish</a>
+				<br />
+				<br />
+				<br />
 		<legend> </legend>
 	</div>
