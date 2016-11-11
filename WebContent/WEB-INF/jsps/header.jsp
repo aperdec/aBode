@@ -46,7 +46,7 @@
               </ul>
               <form class="navbar-form navbar-left" role="search" action="workOrderDisplayUnitDeficiencies">
                 <div class="form-group">
-                  <input id="homeEnrollmentNumber" name="homeEnrollmentNumber" type="text" class="form-control" placeholder="Home Enrollment Number" required="required">
+                  <input id="homeEnrollmentNumberNav" name="homeEnrollmentNumber" type="text" class="form-control" placeholder="Home Enrollment Number" required="required">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
               </form>
