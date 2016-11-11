@@ -10,7 +10,7 @@
 	<c:if test="${param.error != null}">
 		<div id="error">No such account exists.  Please check your username and password!</div>
 	</c:if>
-	<div style="margin:2%">
+	<div style="margin:8%">
 		<c:url value ="/login" var="url" />
 		<form name="form" method="post" class="form-horizontal" action="${url}">
 			<fieldset>
@@ -38,5 +38,11 @@
 				<a href="${createUrl}" class="btn btn-inverse ">Create an Account</a>
 			</fieldset>
 		</form>
-	
+		<div>
+		</br></br></br>
+		<center>
+		Powered by</br>
+		<img src="https://s22.postimg.org/k1hque3wh/Jack_Software_Logo.png" alt="img/JSLogo.png" width="200px">
+		</center>
+		</div>
 	</div>
