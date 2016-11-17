@@ -155,7 +155,14 @@ public class ControllerServices {
         }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = returnPurch.get(0);
+
+        HomeOwner ho;
+
+        if (returnPurch.size() > 0) {
+            ho = returnPurch.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
@@ -203,7 +210,13 @@ public class ControllerServices {
         }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = returnPurch.get(0);
+        HomeOwner ho;
+
+        if (returnPurch.size() > 0) {
+            ho = returnPurch.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
@@ -259,7 +272,13 @@ public class ControllerServices {
         Form addSignOff = returns.get(0);
 
         List<HomeOwner> home = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = home.get(0);
+        HomeOwner ho;
+
+        if (home.size() > 0) {
+            ho = home.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         addSignOff.setPurchName(ho.getName());
         model.addAttribute("form", addSignOff);
