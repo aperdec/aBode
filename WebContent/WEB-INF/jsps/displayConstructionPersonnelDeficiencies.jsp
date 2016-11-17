@@ -38,7 +38,6 @@
 		      <th>Notes</th>
 		      <th>Deadline</th>
 		      <th></th>
-		      <th></th>
 		    </tr>
 		  </thead>
 		  <tbody>
