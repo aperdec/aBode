@@ -78,7 +78,7 @@ table{
                         Are you sure you want to delete deficiency ${unitDeficiency.id}?
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 				        <c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
                         <a href="${deleteUrl}" class="btn btn-danger" style="margin:1%;">Delete</a>
                       </div>
