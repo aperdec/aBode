@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<script src="../scripts/photo.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -201,6 +201,7 @@ h3{
 <title>Add Deficiency: ${unit.homeEnrollmentNumber}</title>
 
 <script>
+var save = false;
     function Validate() {
             if (ValidateCategories() && ValidateLocation()) {
                 return true;
@@ -239,6 +240,18 @@ h3{
             } else {
                 return true;
             }
+        }
+        
+        function saveDone(){
+        	save =true;
+        	var id = document.getElementById("id");
+        	var hen = document.getElementByName("homeEnrollmentNumber");
+			document.getElementById("defPhoto").value = "def"+id+"hen"+hen;
+        	//alert("test");
+        }
+        
+        function reallyClose() {
+            confirm("You have not saved a photo. Are you sure you want to leave?");
         }
 </script>
 
@@ -294,6 +307,18 @@ h3{
 				</div>
 				
 				<div class="form-group">
+                	<label for="defPhoto" class="col-lg-1 control-label">Deficiency Photo</label>
+                	<div class="col-lg-8">
+                		<input path="defPhoto" name="defPhoto" class="form-control" id="defPhoto" readonly/> 
+                	</div>
+                	<div class="col-lg-2">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Add Photo
+                  </button>
+					</div>
+                </div>
+				
+				<div class="form-group">
 					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>
 					<div class="col-lg-10">
 						<select class="form-control" id="constructionPersonnel" name="constructionPersonnel">
@@ -325,29 +350,48 @@ h3{
 			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg" style="margin-right: 8.33333333333%">Back</a>
 
 			</fieldset>
-			<!--
-			<div class="container2">
+			
+			  
 
-			  <div class="app2">
+			</div>
+		</form>
+	</div>
+	
+	<div class="modal fade" id="myModal">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Deficiency Photo</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container2">
 
-			    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
-			    <video id="camera-stream"></video>
-			    <img id="snap">
-
-			    <p id="error-message"></p>
-
-			    <div class="controls">
-			      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
-			      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-			      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>
-			    </div>
+						  <div class="app2">
+			
+						    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+						    <video id="camera-stream"></video>
+						    <img id="snap">
+			
+						    <p id="error-message"></p>
+			
+						    <div class="controls">
+						      <a href="#" id="delete-photo" title="Redo Photo" class="disabled"><i class="material-icons">replay</i></a>
+						      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+						      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled">
+						      	<i class="material-icons">done</i></a>
+						    </div>
 
 
 			    <canvas></canvas>
 			  </div>
-			</div>  This code works but is not for prototype release will be in the final prog. version-->
-
 			</div>
-		</form>
-
-	</div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="saveDone()">Close</button>
+                  
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->

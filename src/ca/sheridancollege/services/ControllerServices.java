@@ -44,6 +44,20 @@ public class ControllerServices {
         constructionPersonnel = constructionPersonnel.substring(constructionPersonnel.indexOf("-")).replace("-", "").trim();
         System.out.println("construction personnel substring: " + constructionPersonnel);
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
+        
+        File sig = new File("C:\\abode\\def"+id+"hen"+homeEnrollmentNumber+".png");
+        byte[] sigImg = new byte[(int) sig.length()];
+
+        try {
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        deficiency.setDefPhoto(sigImg);
+        
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         Unit unit = unitList.get(0);
         System.out.println("Unit Size:" + unitList.size() + homeEnrollmentNumber);

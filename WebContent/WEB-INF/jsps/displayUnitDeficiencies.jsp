@@ -46,6 +46,7 @@ table{
 		      <th>Deficiency Type</th>
 		      <th>Description</th>
 		      <th></th>
+		      <th></th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -55,6 +56,9 @@ table{
 				<td>${unitDeficiency.location}</td>
 				<td>${unitDeficiency.category}</td> 
 				<td>${unitDeficiency.description}</td>
+				<td>
+				    <a href="${deleteUrl}" class="btn btn-danger pull-right" style="margin:1%;">View Photo</a>
+				</td>
 				<td>
 				    <c:url value="/deleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
 				    <a href="${deleteUrl}" class="btn btn-danger pull-right" style="margin:1%;">Delete</a>
