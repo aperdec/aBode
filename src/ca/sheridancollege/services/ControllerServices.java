@@ -178,7 +178,7 @@ public class ControllerServices {
 
         return model;
     }
-    
+
     public Model saveUnit2(Model model, long homeEnrollmentNumber, Date posessionDate, int lotNumber, String address, String projectName, String municipality, int level, int unitNum, String plan, String repName) {
         Unit unit = new Unit(homeEnrollmentNumber, lotNumber, address, projectName, posessionDate, municipality, level, unitNum, plan);
 
@@ -488,7 +488,7 @@ public class ControllerServices {
     }
 
     public Model displayDeficienciesByConstructionPersonnel(Model model, int id) {
-        List<Deficiency> deficiencyList = new ArrayList<>();
+        List<ConstructionPersonnelDeficiencies> deficiencyList = new ArrayList<>();
         List<Unit> unitList = dao.getAllUnits();
         List<ConstructionPersonnel> constructionPersonnelList = dao.getConstructionPersonnel(id);
         ConstructionPersonnel constructionPersonnel = constructionPersonnelList.get(0);
@@ -496,11 +496,12 @@ public class ControllerServices {
         for (Unit unit : unitList) {
             for (Deficiency deficiency : unit.getDeficiencies()) {
                 if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
-                    deficiencyList.add(deficiency);
+                    deficiencyList.add(new ConstructionPersonnelDeficiencies(deficiency, unit));
                 }
             }
         }
 
+        model.addAttribute("constructionPersonnel", constructionPersonnel.getName());
         model.addAttribute("deficiencyList", deficiencyList);
 
         return model;
