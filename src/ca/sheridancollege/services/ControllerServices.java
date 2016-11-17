@@ -169,7 +169,14 @@ public class ControllerServices {
         }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = returnPurch.get(0);
+
+        HomeOwner ho;
+
+        if (returnPurch.size() > 0) {
+            ho = returnPurch.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
@@ -192,7 +199,7 @@ public class ControllerServices {
 
         return model;
     }
-    
+
     public Model saveUnit2(Model model, long homeEnrollmentNumber, Date posessionDate, int lotNumber, String address, String projectName, String municipality, int level, int unitNum, String plan, String repName) {
         Unit unit = new Unit(homeEnrollmentNumber, lotNumber, address, projectName, posessionDate, municipality, level, unitNum, plan);
 
@@ -217,7 +224,13 @@ public class ControllerServices {
         }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = returnPurch.get(0);
+        HomeOwner ho;
+
+        if (returnPurch.size() > 0) {
+            ho = returnPurch.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
@@ -273,7 +286,13 @@ public class ControllerServices {
         Form addSignOff = returns.get(0);
 
         List<HomeOwner> home = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = home.get(0);
+        HomeOwner ho;
+
+        if (home.size() > 0) {
+            ho = home.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         addSignOff.setPurchName(ho.getName());
         model.addAttribute("form", addSignOff);
@@ -502,7 +521,7 @@ public class ControllerServices {
     }
 
     public Model displayDeficienciesByConstructionPersonnel(Model model, int id) {
-        List<Deficiency> deficiencyList = new ArrayList<>();
+        List<ConstructionPersonnelDeficiencies> deficiencyList = new ArrayList<>();
         List<Unit> unitList = dao.getAllUnits();
         List<ConstructionPersonnel> constructionPersonnelList = dao.getConstructionPersonnel(id);
         ConstructionPersonnel constructionPersonnel = constructionPersonnelList.get(0);
@@ -510,11 +529,12 @@ public class ControllerServices {
         for (Unit unit : unitList) {
             for (Deficiency deficiency : unit.getDeficiencies()) {
                 if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
-                    deficiencyList.add(deficiency);
+                    deficiencyList.add(new ConstructionPersonnelDeficiencies(deficiency, unit));
                 }
             }
         }
 
+        model.addAttribute("constructionPersonnel", constructionPersonnel.getName());
         model.addAttribute("deficiencyList", deficiencyList);
 
         return model;
