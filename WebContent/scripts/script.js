@@ -37,10 +37,12 @@ function disableNextBtn(){
 }
 
 function acceptSig(){
+	var hen = document.getElementById("homeEnrollmentNumber").value;
+	//alert(hen);
 	var link = document.getElementById("signature").toDataURL();
-	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
+	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="'+hen+'refSig.png" href="'+link+'">Attach</a>';
 	showSave();
-	//alert("hi");
+	
 }
 
 function ValidateHEN() {

@@ -137,7 +137,7 @@ $(function() {
 					</div>
 				</div>
 				<!-- row 4 -->
-				<input type="hidden" name="homeEnrollmentNumber" value="${form.homeEnrollmentNumber}"/>
+				<input type="hidden" id="homeEnrollmentNumber" name="homeEnrollmentNumber" value="${form.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<div class="form-group">
 				<!-- <input type="submit" value="Save" id="btnXlg2" class="pull-right btn btn-primary" /> -->
@@ -153,7 +153,7 @@ $(function() {
     					</div>
 					</div>
 					
-					<div><button id="acc2" onclick="accept()" class="btn btn-primary btn-sm" type="button">Accept</button></div>
+					<div><button id="acc2" onclick="accept2()" class="btn btn-primary btn-sm" type="button">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
 					<div><button onclick="clearSig()" id="btnXlg" class="btn btn-default btn-sm" type="button">Redo</button></div>
