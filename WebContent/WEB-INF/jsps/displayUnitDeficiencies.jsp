@@ -57,8 +57,30 @@ table{
 				<td>${unitDeficiency.category}</td> 
 				<td>${unitDeficiency.description}</td>
 				<td>
-				    <a href="${deleteUrl}" class="btn btn-danger pull-right" style="margin:1%;">View Photo</a>
-				</td>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#photoModal${unitDeficiency.id}">
+                        View Photo
+                    </button>
+                </td>
+
+                <div class="modal fade" id="photoModal${unitDeficiency.id}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Deficiency Photo</h4>
+                      </div>
+                      <div class="modal-body">
+                        <img id="defImage" src="defImage/${unit.homeEnrollmentNumber}/${unitDeficiency.id}" />
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
 				<td>
 				    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal${unitDeficiency.id}">
                         Delete

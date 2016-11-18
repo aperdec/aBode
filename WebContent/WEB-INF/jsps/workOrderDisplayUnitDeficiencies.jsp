@@ -43,6 +43,7 @@
 		      <th style="text-align: center;">Status</th>
 		      <th></th>
 		      <th></th>
+		      <th></th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -54,6 +55,32 @@
 				<td>${unitDeficiency.category}</td>
 				<td>${unitDeficiency.description}</td>
 				<td>${unitDeficiency.constructionPersonnel}</td>
+
+				<td>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#photoModal${unitDeficiency.id}">
+                        View Photo
+                    </button>
+                </td>
+
+                <div class="modal fade" id="photoModal${unitDeficiency.id}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Deficiency Photo</h4>
+                      </div>
+                      <div class="modal-body">
+                        <img id="defImage" src="../defImage/${unit.homeEnrollmentNumber}/${unitDeficiency.id}" />
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
 				<td>
 				    <c:choose>
 	              <c:when test="${unitDeficiency.status}">
