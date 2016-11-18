@@ -567,4 +567,20 @@ public class ControllerServices {
 
         return model;
     }
+
+    public HttpServletResponse getDefImage(HttpServletResponse response, long homeEnrollmentNumber, int id) throws IOException {
+        response.setContentType("image/png");
+        List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+        List<Deficiency> deficiencyList = unit.get(0).getDeficiencies();
+        byte[] imageBytes = null;
+        for (Deficiency d : deficiencyList) {
+            if (id == d.getId()) {
+                imageBytes = d.getDefPhoto();
+            }
+        }
+        response.getOutputStream().write(imageBytes);
+        response.getOutputStream().flush();
+
+        return response;
+    }
 }
