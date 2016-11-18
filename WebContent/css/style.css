@@ -52,3 +52,7 @@ Extra Large Button CSS
     line-height: normal;
     border-radius: 8px;
     }
+
+img {
+    max-width:100%
+}
