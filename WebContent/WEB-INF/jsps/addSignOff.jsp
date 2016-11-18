@@ -32,6 +32,63 @@
     color:white;
     }
 </style>
+
+<script type="text/javascript">
+var e;
+var used;
+
+function hide(){
+	//used = document.getElementById("repName").value;
+	//disable save on load
+	$( "#btnXlg2" ).prop( "disabled", true );
+	document.getElementById("btnXlg").style.visibility = 'visible';
+	document.getElementById("btnXlg2").style.visibility = 'visible';
+
+if (used === ""){
+	//alert(used);
+	document.getElementById("btnXlg").style.visibility = 'visible';
+	}
+}
+
+function showSave(){
+	$( "#btnXlg2" ).prop( "disabled", false );
+	//$( "#nextBtn" ).prop( "disabled", false );
+	//	$('a').disable(false);
+	//document.getElementById("saveBtn").style.visibility = 'visible';
+}
+
+function enableNextBtn(){
+	$('a').disable(false);
+}
+
+function disableNextBtn(){
+	$('a').disable(false);
+}
+
+//Function to enable disable Next button HREF
+$(function() {
+    jQuery.fn.extend({
+        disable: function(state) {
+            return this.each(function() {
+                var $this = $(this);
+                if($this.is('input'))
+                    this.disabled = state;
+                else
+                    $this.toggleClass('disabled', state);
+            });
+        }
+    });
+    
+   // $('a').disable(true);
+   
+    $('body').on('click', 'a.disabled', function(event) {
+        event.preventDefault();
+    });
+}); 
+
+</script>
+
+
 <title>SignOff Form</title>
 
 <body onload="hide()">
@@ -140,20 +197,19 @@
 				
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
-				<div class="form-group">
+				<div class="form-group" >
 			        <c:url value="/" var="home" />
-			        <input type="submit" value="Save and Proceed" id="btnXlg2" class="pull-right btn btn-success" />
+			        <input type="submit" value="Save and Proceed" id="btnXlg2" class="pull-right btn btn-success" style="margin: 2%"/>
 				<!-- <a href="${home}" class="pull-right btn btn-success" id="saveBtn">Finish</a> -->
+				
+				
 				</fieldset>
 </form>
-				</div>
-
-				<div class="form-group">
-				
 			        <c:url value="/displayUnitDeficiencies/${form.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-					<a href="${displayUnitDeficiencies}" class="pull-left btn btn-default" id="btnXlg">Back</a>
-
+					<a href="${displayUnitDeficiencies}" class="pull-left btn btn-default" id="btnXlg" style="margin: 2%">Back</a>
 				</div>
+
+				
 				</div>
 				<br />
 				<br />
