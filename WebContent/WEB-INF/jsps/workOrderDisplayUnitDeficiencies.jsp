@@ -40,8 +40,8 @@
 		      <th>Deficiency Type</th>
 		      <th>Notes</th>
 		      <th>Assignee</th>
-		      <th style="text-align: center;">Status</th>
 		      <th></th>
+		      <th style="text-align: center;">Status</th>
 		      <th></th>
 		      <th></th>
 		    </tr>
