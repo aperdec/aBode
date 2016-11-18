@@ -256,11 +256,12 @@ var save = false;
 </script>
 
 	<div style="margin: 2%">
+	<legend><h2>Enter or Edit Deficiency Information</h2></legend>
 		<c:url value="/saveDeficiency" var="url" />
 		<form name="form" class="form-horizontal" method="post" onsubmit="return Validate()" action="${url}">
 		<div class="jumbotron" id="con">
 			<fieldset>
-				<legend>Enter or Edit Deficiency Information</legend>
+				
 				<br>
 				<div class="alert alert-danger collapse" id="alert" >
                 	<div id="selectCategory" class="collapse">Please select a category.</div>
@@ -343,18 +344,23 @@ var save = false;
 				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
-				<input type="submit" value="Save Deficiency" class="btn btn-primary" id="btnXlg2" style="margin-left: 8.33333333333%" />
-					
-					
-			    <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
-			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg" style="margin-right: 8.33333333333%">Back</a>
-
+				
 			</fieldset>
 			
 			  
 
 			</div>
+			<input type="submit" value="Save Deficiency" class="btn btn-primary" id="btnXlg2" style="margin-left: 8.33333333333%" />
+					
+					
+			    <c:url value="/displayUnitDeficiencies/${unit.homeEnrollmentNumber}" var="displayUnitDeficiencies" />
+			    <a href="${displayUnitDeficiencies}" class="pull-right btn btn-default" id="btnXlg" style="margin-right: 8.33333333333%">Back</a>
+			
 		</form>
+		<br />
+		<br />
+		
+		<legend> </legend>
 	</div>
 	
 	<div class="modal fade" id="myModal">
@@ -388,6 +394,7 @@ var save = false;
 			    <canvas></canvas>
 			  </div>
 			</div>
+			
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="saveDone()">Close</button>

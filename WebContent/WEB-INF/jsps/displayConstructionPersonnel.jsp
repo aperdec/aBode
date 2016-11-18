@@ -29,4 +29,5 @@
 
        	<c:url value="/workOrderHome" var="backUrl" />
        	<a href="${backUrl}" id="btnXlg" class="btn btn-default">Back</a>
+       	
     </div>
