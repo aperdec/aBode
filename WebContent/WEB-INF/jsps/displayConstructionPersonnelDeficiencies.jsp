@@ -38,7 +38,7 @@
 		      <th>Notes</th>
 		      <th>Deadline</th>
 		      <th></th>
-		      <th></th>
+		      <th style="text-align: center;">Status</th>
 		    </tr>
 		  </thead>
 		  <tbody>
