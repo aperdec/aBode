@@ -180,8 +180,9 @@ public class ControllerServices {
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
-
-        File sig = new File("C:\\abode\\refSig.png");
+        
+        //pic code - rep sig, 1st sig
+        File sig = new File("C:\\abode\\"+homeEnrollmentNumber+"refSig.png");
         byte[] sigImg = new byte[(int) sig.length()];
 
         try {
@@ -235,7 +236,7 @@ public class ControllerServices {
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
 
-        File sig = new File("C:\\abode\\refSig.png");
+        File sig = new File("C:\\abode\\"+homeEnrollmentNumber+"refSig.png");
         byte[] sigImg = new byte[(int) sig.length()];
 
         try {
@@ -260,8 +261,9 @@ public class ControllerServices {
         Form addSignOff = returns.get(0);
 
         addSignOff.setDesName(desName);
-
-        File sig = new File("C:\\abode\\refSig.png");
+        
+        //pic for 2nd sig
+        File sig = new File("C:\\abode\\"+homeEnrollmentNumber+"refSig2.png");
         byte[] sigImg = new byte[(int) sig.length()];
 
         try {
@@ -437,6 +439,8 @@ public class ControllerServices {
 
         return response;
     }
+    
+    
 
     public Model completeDeficiencyUnit(Model model, int id, long homeEnrollmentNumber) {
         Unit unit = dao.completeDeficiency(id, homeEnrollmentNumber);
