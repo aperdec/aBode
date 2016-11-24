@@ -11,9 +11,6 @@ $( "#saveBtn" ).prop( "disabled", true );
 $( "#nextBtn" ).prop( "disabled", false );
 $( "#nextBtn" ).prop( "disabled", true );
 
-//document.getElementById("nextBtn").style.visibility = 'visible';
-//document.getElementById("saveBtn").style.visibility = 'visible';
-
 if (used === ""){
 	//alert(used);
 	document.getElementById("nextBtn").style.visibility = 'visible';

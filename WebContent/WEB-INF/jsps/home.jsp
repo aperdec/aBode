@@ -41,7 +41,6 @@ Extra Large Button CSS
 			<c:url value="/workOrderHome" var="workOrderHome" />
 			<c:url value="/help" var="help" />
 			<c:url value="/buildInspection" var="buildInspection" />
-			
 
 		</div>
 
@@ -61,11 +60,9 @@ Extra Large Button CSS
 
 		<div class="row row-centered">
 			<div class="col-sm-2 text-center"></div>
-		<!-- 	<a href="${help}" class="col-sm-4 btn-xl btn-inverse btn-xl">Help</a> -->
-		<!-- <a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Confirm Repairs</a> -->
 
 		</div>
-			<br />
+        <br />
 				
 <legend> </legend>
 	</div>

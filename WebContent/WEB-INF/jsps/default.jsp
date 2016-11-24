@@ -11,7 +11,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
 <script src="scripts/script.js"></script>
 <script src="../scripts/script.js"></script>
 
