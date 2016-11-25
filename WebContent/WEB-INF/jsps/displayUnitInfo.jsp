@@ -243,7 +243,7 @@
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					
+
 					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()" type="button">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>
