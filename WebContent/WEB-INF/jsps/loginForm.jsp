@@ -35,7 +35,7 @@
 				<input type="submit" value="Login!" onclick="login()" class="btn btn-inverse "
 					style="margin-left: 8.33333333333%" />
 				<c:url value="/createAccount" var="createUrl"/>
-				<a href="${createUrl}" class="btn btn-inverse ">Create an Account</a>
+<!-- 			<a href="${createUrl}" class="btn btn-inverse ">Create an Account</a> -->
 			</fieldset>
 		</form>
 		<div>

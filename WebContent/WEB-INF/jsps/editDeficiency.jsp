@@ -314,7 +314,7 @@ h3{
 					</div>
 				</div>
 				
-				<div class="form-group">
+				<!-- <div class="form-group">
                 	<label for="defPhoto" class="col-lg-1 control-label">Deficiency Photo</label>
                 	<div class="col-lg-8">
                 		<input path="defPhoto" name="defPhoto" class="form-control" id="defPhoto" readonly/> 
@@ -324,7 +324,7 @@ h3{
                     Add/Change Photo
                   </button>
 					</div>
-                </div>
+                </div> -->
 				
 				<div class="form-group">
 					<label for="constructionPersonnel" class="col-lg-1 control-label">Assign To</label>

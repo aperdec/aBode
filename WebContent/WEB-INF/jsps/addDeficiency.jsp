@@ -363,37 +363,38 @@ var save = false;
 		<legend> </legend>
 	</div>
 	
-	<div class="modal fade" id="myModal">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title">Deficiency Photo</h4>
-                      </div>
-                      <div class="modal-body">
-                        <div class="container2">
+<div class="modal fade" id="myModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Deficiency Photo</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container2">
 
-						  <div class="app2">
-			
-						    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
-						    <video id="camera-stream"></video>
-						    <img id="snap">
-			
-						    <p id="error-message"></p>
-			
-						    <div class="controls">
-						      <a href="#" id="delete-photo" title="Redo Photo" class="disabled"><i class="material-icons">replay</i></a>
-						      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-						      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled">
-						      	<i class="material-icons">done</i></a>
-						    </div>
+              <div class="app2">
 
+                <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+                <video id="camera-stream"></video>
+                <img id="snap">
 
-			    <canvas></canvas>
-			  </div>
-			</div>
+                <p id="error-message"></p>
+
+                <div class="controls">
+                  <a href="#" id="delete-photo" title="Redo Photo" class="disabled">
+                    <i class="material-icons">replay</i></a>
+                  <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+                  <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png"
+                    title="Save Photo" class="disabled">
+                    <i class="material-icons">done</i></a>
+                </div>
+
+    <canvas></canvas>
+  </div>
+</div>
 			
                       </div>
                       <div class="modal-footer">
