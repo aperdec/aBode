@@ -15,6 +15,11 @@
 	<c:url value="/selectReport" var="reports" />
 	<c:url value="/help" var="help" />
 
+<style>
+.navbar-icons{
+    font-size: 16px;
+}
+</style>
 
 		<nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -25,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="${home}">aBode</a>
+              <a class="navbar-brand" href="${home}"><i class="material-icons navbar-icons">home</i> aBode</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -51,7 +56,7 @@
                 <button type="submit" class="btn btn-default">Submit</button>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="${help}">Help</a></li>
+                <li><a href="${help}"><i class="material-icons navbar-icons">settings</i> Help</a></li>
               </ul>
             </div>
           </div>
