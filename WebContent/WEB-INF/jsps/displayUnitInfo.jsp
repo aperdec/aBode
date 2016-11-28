@@ -18,12 +18,14 @@
 	border-radius: 15px;
 }
 #acc2 {
-    padding: 21px 26px;
     font-size: 16px;
     line-height: normal;
     border-radius: 8px;
     color:white;
+    width: 170px;
+    height: 70px;
     }
+
 #nextBtn {
     padding: 24px 34px;
     font-size: 16px;

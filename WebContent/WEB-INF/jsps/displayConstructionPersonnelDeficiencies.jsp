@@ -76,16 +76,16 @@
                   </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 
-				<td>
+				<td style="text-align: center;">
 					<c:choose>
 	              <c:when test="${deficiency.status}">
 		              <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
-					    <a href="${completeUrl}" class="btn btn-success pull-right">Complete</a>
+					    <a href="${completeUrl}" id="toggleBtnID" class="btn btn-success">Complete</a>
 
 	              </c:when>
 	              <c:otherwise>
 	                <c:url value="/workOrderCompleteDeficiency/${deficiency.id}/${deficiency.homeEnrollmentNumber}/${deficiency.constructionPersonnel}" var="completeUrl" />
-					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
+					    <a href="${completeUrl}" id="toggleBtnID" class="btn btn-warning">Incomplete</a>
 	              </c:otherwise>
 	            	</c:choose>
 

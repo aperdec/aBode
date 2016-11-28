@@ -6,10 +6,16 @@
 Extra Large Button CSS
 */
 .btn-xl {
-    padding: 18px 28px;
+    padding-top: 18px 28px;
     font-size: 22px;
     border-radius: 8px;
+    
 }
+
+#toggleBtnID{
+    width:120px;
+    
+    }
 
 .no-link {
     color:inherit;
@@ -44,6 +50,8 @@ Extra Large Button CSS
     font-size: 16px;
     line-height: normal;
     border-radius: 8px;
+    width: 170px;
+    height: 70px;
     }
     
 #btnXlg2 {

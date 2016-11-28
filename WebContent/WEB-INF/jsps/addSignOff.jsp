@@ -25,11 +25,12 @@
 	margin: 2%
 }
 #acc2 {
-    padding: 21px 26px;
     font-size: 16px;
     line-height: normal;
     border-radius: 8px;
     color:white;
+    width: 170px;
+    height: 70px;
     }
 </style>
 
