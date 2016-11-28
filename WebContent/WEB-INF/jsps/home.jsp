@@ -13,7 +13,7 @@ Extra Large Button CSS
 */
 .btn-xl {
 	padding: 34px 40px;
-	font-size: 25px;
+	font-size: 35px;
 	border-radius: 8px;
 	text-align: center;
 	margin: 20px;
@@ -25,6 +25,14 @@ Extra Large Button CSS
 	background-color: #9394AA;
 	text-decoration: none;
 	color: black;
+}
+
+.home-icons {
+    font-size: 40px;
+}
+
+.col-sm-2 {
+    width: 14%;
 }
 
 
@@ -44,17 +52,17 @@ Extra Large Button CSS
 
 		</div>
 
-		<div class="row">
+		<div class="row row-centered">
 			<div class="col-sm-2 text-center"></div>
-			<a href="${displayUnitInformation}"	class="col-sm-4 btn-xl btn-inverse">Fill out PDI</a>
-			<a href="${buildInspection}" class="col-sm-4 btn-xl btn-inverse">Build	Inspection</a>
-
+			<a href="${displayUnitInformation}"	class="col-sm-4 btn-xl btn-inverse"><i class="material-icons home-icons" >create</i> PDI</a>
+			<a href="${buildInspection}" class="col-sm-4 btn-xl btn-inverse"><i class="material-icons home-icons" >domain</i> Inspection</a>
+            <div class="col-sm-2 text-center"></div>
 		</div>
 
 		<div class="row">
 			<div class="col-sm-2 text-center"></div>
-			<a href="${workOrderHome}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Work Orders</a>
-			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Reports</a>
+			<a href="${workOrderHome}" class="col-sm-4 btn-xl btn-inverse btn-xl"><i class="material-icons home-icons" >playlist_add_check</i> Work Orders</a>
+			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl"><i class="material-icons home-icons" >description</i> Reports</a>
 
 		</div>
 
