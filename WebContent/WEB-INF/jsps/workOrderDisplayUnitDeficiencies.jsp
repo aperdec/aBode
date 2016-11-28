@@ -24,6 +24,11 @@
     line-height: normal;
     border-radius: 8px;
     }
+    
+    #toggleBtnID{
+    width:120;
+    
+    }
     </style>
 
 <div class="jumbotron" id="con">
@@ -81,16 +86,16 @@
                   </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 
-				<td>
+				<td style="text-align: center;">
 				    <c:choose>
 	              <c:when test="${unitDeficiency.status}">
 		              <c:url value="/workOrderCompleteDeficiencyUnit/${unitDeficiency.id}/${unitDeficiency.homeEnrollmentNumber}" var="completeUrl" />
-					    <a href="${completeUrl}" class="btn btn-success pull-right">Complete</a>
+					    <a href="${completeUrl}" class="btn btn-success" id="toggleBtnID">Complete</a>
 	                
 	              </c:when>
 	              <c:otherwise>
 	                <c:url value="/workOrderCompleteDeficiencyUnit/${unitDeficiency.id}/${unitDeficiency.homeEnrollmentNumber}" var="completeUrl" />
-					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
+					    <a href="${completeUrl}" class="btn btn-warning" id="toggleBtnID">Incomplete</a>
 	              </c:otherwise>
 	            	</c:choose>
 				</td>
