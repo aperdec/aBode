@@ -5,11 +5,13 @@ function hide(){
 used = document.getElementById("repName").value;
 //disable save on load
 $( "#saveBtn" ).prop( "disabled", true );
-
+document.getElementById("mainReportDiv").style.visibility = 'hidden';
 //test not hidden
 
 $( "#nextBtn" ).prop( "disabled", false );
 $( "#nextBtn" ).prop( "disabled", true );
+
+
 
 if (used === ""){
 	//alert(used);
@@ -23,6 +25,10 @@ function showSave(){
 //	$('a').disable(false);
 
 	document.getElementById("saveBtn").style.visibility = 'visible';
+}
+
+function showPdiReport(){
+	document.getElementById("saveBtn").style.visibility = "visible";
 }
 
 function enableNextBtn(){
