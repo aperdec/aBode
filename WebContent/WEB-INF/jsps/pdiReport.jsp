@@ -25,6 +25,11 @@ label {
 	background-color: white;
 }
 
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 85px;
+}
+
 </style>
 	<body>
 			<c:choose>
