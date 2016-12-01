@@ -124,7 +124,7 @@ public class ControllerServices {
 
             //String img = form.get(0).getRepSig().toString();
             model.addAttribute("errorHomeEnrollmentNumber", false);
-
+            model.addAttribute("displayPage", true);
             return model;
         } else {
 
@@ -490,7 +490,7 @@ public class ControllerServices {
             }
             model.addAttribute("unit", unit.get(0));
             model.addAttribute("builder", builder.get(0));
-
+            model.addAttribute("displayPage", true);
             return model;
         } else {
 

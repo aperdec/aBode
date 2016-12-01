@@ -6,6 +6,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
 <style>
 #con {
 	background-color: #EDEEFF;
@@ -25,7 +26,28 @@ label {
 }
 
 </style>
-	
+	<body>
+			<c:choose>
+              <c:when test="${displayPage}">
+                <script>
+              
+                window.onload = function (){
+                    document.getElementById("mainReportDiv").style.display = 'visible';
+      				}
+                </script>
+                
+              </c:when>
+              <c:otherwise>
+                 <script>
+                 window.onload = function (){
+                     document.getElementById("mainReportDiv").style.display = 'none';
+                     
+       				}
+				 </script>
+               
+              </c:otherwise>
+            </c:choose>
+
 <title>Tarion PDI Form: ${unit.homeEnrollmentNumber}</title>
 
 <div id="divCon">
@@ -43,7 +65,7 @@ label {
 
 			<div class="form-group" style="margin: 2%">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="submit" value="Go!" id="btnXlg" class="pull-right btn btn-primary" />
+				<input type="submit" value="Load Report" id="btnXlg" class="pull-right btn btn-primary" onclick="showPdiReport" />
 
 			</div>
 
@@ -64,11 +86,12 @@ label {
 
 
 	</div>
+	<div id="mainReportDiv">
 	
 		<c:url value="/pdiReport" var="url" />
 		<form name="form" class="form-horizontal" method="post"	action="${url}">
 			<fieldset>
-				<legend>TARION Pre-Delivery Inspection Form</legend>
+				<legend>List of Deficiencies</legend>
 				<div>
 					<table class="table table-striped table-hover">
 						<thead>
@@ -93,6 +116,8 @@ label {
 					</table>
 		
 	</div>
+	
+	<legend>Review of PDI</legend>
 	
 	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF">
 
@@ -247,7 +272,7 @@ label {
 			<input type="hidden" name="homeEnrollmentNumber" value="" /> 
 			<input	type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</div>
-		
+		</div>
 	<div class="jumbotron" id="legendCon" style="background-color:#EDEEFF; ">
 		<div style="padding:1%;" class="col-lg-12">	
 
@@ -265,3 +290,4 @@ label {
 	
 </div>
 </div>
+</body>
