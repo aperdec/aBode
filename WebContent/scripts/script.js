@@ -99,3 +99,13 @@ function verify() {
 		return false;
 	}
 }
+
+function saveDone(){
+	//save =true;
+	
+	var id = document.getElementById("id").value;
+	var hen = document.getElementById("homeEnrollmentNumber").value;
+	//alert("test");
+	document.getElementById("defPhoto").value = "Deficiency"+id+".png";
+	//alert("test");
+}

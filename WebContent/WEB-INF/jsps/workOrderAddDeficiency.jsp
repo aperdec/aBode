@@ -317,7 +317,7 @@ h3{
 					</div>
 				</div>
 
-				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
+				<input type="hidden" id="homeEnrollmentNumber" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 				<input type="submit" value="Save Deficiency" id="btnXlg" class="btn btn-primary" style="margin-left: 8.33333333333%" />
@@ -352,7 +352,8 @@ h3{
 						    <div class="controls">
 						      <a href="#" id="delete-photo" title="Redo Photo" class="disabled"><i class="material-icons">replay</i></a>
 						      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-						      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" class="disabled">
+						      <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png" title="Save Photo" 
+						      onclick="saveDone()" class="disabled">
 						      	<i class="material-icons">done</i></a>
 						    </div>
 

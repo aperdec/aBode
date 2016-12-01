@@ -242,14 +242,6 @@ var save = false;
             }
         }
         
-        function saveDone(){
-        	save =true;
-        	var id = document.getElementById("id");
-        	var hen = document.getElementByName("homeEnrollmentNumber");
-			document.getElementById("defPhoto").value = "def"+id+"hen"+hen;
-        	//alert("test");
-        }
-        
         function reallyClose() {
             confirm("You have not saved a photo. Are you sure you want to leave?");
         }
@@ -341,7 +333,7 @@ var save = false;
 					</div>
 				</div>
 
-				<input type="hidden" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
+				<input type="hidden" id="homeEnrollmentNumber" name="homeEnrollmentNumber" value="${unit.homeEnrollmentNumber}"/>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
 				
@@ -388,7 +380,7 @@ var save = false;
                     <i class="material-icons">replay</i></a>
                   <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
                   <a href="#" id="download-photo" download="def${deficiency.id}hen${unit.homeEnrollmentNumber}.png"
-                    title="Save Photo" class="disabled">
+                    title="Save Photo" class="disabled" onclick="saveDone()">
                     <i class="material-icons">done</i></a>
                 </div>
 
@@ -398,7 +390,7 @@ var save = false;
 			
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="saveDone()">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   
                       </div>
                     </div><!-- /.modal-content -->
