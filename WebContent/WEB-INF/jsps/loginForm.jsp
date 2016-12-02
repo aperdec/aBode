@@ -10,11 +10,12 @@
 	<c:if test="${param.error != null}">
 		<div id="error">No such account exists.  Please check your username and password!</div>
 	</c:if>
+
 	<div style="margin:8%">
 		<c:url value ="/login" var="url" />
 		<form name="form" method="post" class="form-horizontal" action="${url}">
 			<fieldset>
-				<legend>Login</legend>
+				<legend><img src="https://s14.postimg.org/56v67gjap/abode.png" width="60px" style="margin-bottom:1%"><br>Login</legend>
 				
 				<div class="form-group">
 					<label for="inputUsername" class="col-lg-1 control-label">Username</label>
@@ -35,12 +36,13 @@
 				<input type="submit" value="Login!" onclick="login()" class="btn btn-inverse "
 					style="margin-left: 8.33333333333%" />
 				<c:url value="/createAccount" var="createUrl"/>
-				<a href="${createUrl}" class="btn btn-inverse ">Create an Account</a>
+<!-- 			<a href="${createUrl}" class="btn btn-inverse ">Create an Account</a> -->
 			</fieldset>
 		</form>
 		<div>
 		</br></br></br>
 		<center>
+		
 		Powered by</br>
 		<img src="https://s22.postimg.org/k1hque3wh/Jack_Software_Logo.png" alt="img/JSLogo.png" width="200px">
 		</center>

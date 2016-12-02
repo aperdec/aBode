@@ -44,6 +44,20 @@ public class ControllerServices {
         constructionPersonnel = constructionPersonnel.substring(constructionPersonnel.indexOf("-")).replace("-", "").trim();
         System.out.println("construction personnel substring: " + constructionPersonnel);
         Deficiency deficiency = new Deficiency(id, location, description, constructionPersonnel, category, deadline, false, homeEnrollmentNumber);
+        
+        File sig = new File("C:\\abode\\def"+id+"hen"+homeEnrollmentNumber+".png");
+        byte[] sigImg = new byte[(int) sig.length()];
+
+        try {
+            FileInputStream input = new FileInputStream(sig);
+            input.read(sigImg);
+            input.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        deficiency.setDefPhoto(sigImg);
+        
         List<Unit> unitList = dao.getUnit(homeEnrollmentNumber);
         Unit unit = unitList.get(0);
         System.out.println("Unit Size:" + unitList.size() + homeEnrollmentNumber);
@@ -110,7 +124,7 @@ public class ControllerServices {
 
             //String img = form.get(0).getRepSig().toString();
             model.addAttribute("errorHomeEnrollmentNumber", false);
-
+            model.addAttribute("displayPage", true);
             return model;
         } else {
 
@@ -155,12 +169,20 @@ public class ControllerServices {
         }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = returnPurch.get(0);
+
+        HomeOwner ho;
+
+        if (returnPurch.size() > 0) {
+            ho = returnPurch.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
-
-        File sig = new File("C:\\abode\\refSig.png");
+        
+        //pic code - rep sig, 1st sig
+        File sig = new File("C:\\abode\\"+homeEnrollmentNumber+"refSig.png");
         byte[] sigImg = new byte[(int) sig.length()];
 
         try {
@@ -178,7 +200,7 @@ public class ControllerServices {
 
         return model;
     }
-    
+
     public Model saveUnit2(Model model, long homeEnrollmentNumber, Date posessionDate, int lotNumber, String address, String projectName, String municipality, int level, int unitNum, String plan, String repName) {
         Unit unit = new Unit(homeEnrollmentNumber, lotNumber, address, projectName, posessionDate, municipality, level, unitNum, plan);
 
@@ -203,12 +225,18 @@ public class ControllerServices {
         }
 
         List<HomeOwner> returnPurch = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = returnPurch.get(0);
+        HomeOwner ho;
+
+        if (returnPurch.size() > 0) {
+            ho = returnPurch.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         form.setPurchName(ho.getName());
         form.setBuilderRefNum(b.getBuilderRefNum());
 
-        File sig = new File("C:\\abode\\refSig.png");
+        File sig = new File("C:\\abode\\"+homeEnrollmentNumber+"refSig.png");
         byte[] sigImg = new byte[(int) sig.length()];
 
         try {
@@ -233,8 +261,9 @@ public class ControllerServices {
         Form addSignOff = returns.get(0);
 
         addSignOff.setDesName(desName);
-
-        File sig = new File("C:\\abode\\purSig.png");
+        
+        //pic for 2nd sig
+        File sig = new File("C:\\abode\\"+homeEnrollmentNumber+"refSig2.png");
         byte[] sigImg = new byte[(int) sig.length()];
 
         try {
@@ -259,7 +288,13 @@ public class ControllerServices {
         Form addSignOff = returns.get(0);
 
         List<HomeOwner> home = dao.getHomeOwner(homeEnrollmentNumber);
-        HomeOwner ho = home.get(0);
+        HomeOwner ho;
+
+        if (home.size() > 0) {
+            ho = home.get(0);
+        } else {
+            ho = new HomeOwner("Jason Mamoa", "9053326718", homeEnrollmentNumber);
+        }
 
         addSignOff.setPurchName(ho.getName());
         model.addAttribute("form", addSignOff);
@@ -404,6 +439,8 @@ public class ControllerServices {
 
         return response;
     }
+    
+    
 
     public Model completeDeficiencyUnit(Model model, int id, long homeEnrollmentNumber) {
         Unit unit = dao.completeDeficiency(id, homeEnrollmentNumber);
@@ -446,10 +483,14 @@ public class ControllerServices {
             List<Form> form = dao.getForm(homeEnrollmentNumber);
             List<Builder> builder = dao.getBuilderRefNum("batman");
 
-            model.addAttribute("form", form.get(0));
+            if (form.size() > 0) {
+                model.addAttribute("form", form.get(0));
+            } else {
+                model.addAttribute("errorForm", true);
+            }
             model.addAttribute("unit", unit.get(0));
             model.addAttribute("builder", builder.get(0));
-
+            model.addAttribute("displayPage", true);
             return model;
         } else {
 
@@ -484,7 +525,7 @@ public class ControllerServices {
     }
 
     public Model displayDeficienciesByConstructionPersonnel(Model model, int id) {
-        List<Deficiency> deficiencyList = new ArrayList<>();
+        List<ConstructionPersonnelDeficiencies> deficiencyList = new ArrayList<>();
         List<Unit> unitList = dao.getAllUnits();
         List<ConstructionPersonnel> constructionPersonnelList = dao.getConstructionPersonnel(id);
         ConstructionPersonnel constructionPersonnel = constructionPersonnelList.get(0);
@@ -492,11 +533,12 @@ public class ControllerServices {
         for (Unit unit : unitList) {
             for (Deficiency deficiency : unit.getDeficiencies()) {
                 if (deficiency.getConstructionPersonnel().equals(constructionPersonnel.getName())) {
-                    deficiencyList.add(deficiency);
+                    deficiencyList.add(new ConstructionPersonnelDeficiencies(deficiency, unit));
                 }
             }
         }
 
+        model.addAttribute("constructionPersonnel", constructionPersonnel.getName());
         model.addAttribute("deficiencyList", deficiencyList);
 
         return model;
@@ -528,5 +570,21 @@ public class ControllerServices {
         model.addAttribute("constructionPersonnelList", constructionPersonnelList);
 
         return model;
+    }
+
+    public HttpServletResponse getDefImage(HttpServletResponse response, long homeEnrollmentNumber, int id) throws IOException {
+        response.setContentType("image/png");
+        List<Unit> unit = dao.getUnit(homeEnrollmentNumber);
+        List<Deficiency> deficiencyList = unit.get(0).getDeficiencies();
+        byte[] imageBytes = null;
+        for (Deficiency d : deficiencyList) {
+            if (id == d.getId()) {
+                imageBytes = d.getDefPhoto();
+            }
+        }
+        response.getOutputStream().write(imageBytes);
+        response.getOutputStream().flush();
+
+        return response;
     }
 }

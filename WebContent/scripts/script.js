@@ -5,14 +5,13 @@ function hide(){
 used = document.getElementById("repName").value;
 //disable save on load
 $( "#saveBtn" ).prop( "disabled", true );
-
+document.getElementById("mainReportDiv").style.visibility = 'hidden';
 //test not hidden
 
 $( "#nextBtn" ).prop( "disabled", false );
 $( "#nextBtn" ).prop( "disabled", true );
 
-//document.getElementById("nextBtn").style.visibility = 'visible';
-//document.getElementById("saveBtn").style.visibility = 'visible';
+
 
 if (used === ""){
 	//alert(used);
@@ -28,6 +27,10 @@ function showSave(){
 	document.getElementById("saveBtn").style.visibility = 'visible';
 }
 
+function showPdiReport(){
+	document.getElementById("saveBtn").style.visibility = "visible";
+}
+
 function enableNextBtn(){
 	$('a').disable(false);
 }
@@ -37,10 +40,12 @@ function disableNextBtn(){
 }
 
 function acceptSig(){
+	var hen = document.getElementById("homeEnrollmentNumber").value;
+	//alert(hen);
 	var link = document.getElementById("signature").toDataURL();
-	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="refSig.png" href="'+link+'">Attach</a>';
+	document.getElementById("acc2").innerHTML='<a id="acc2" data-toggle="tooltip" data-placement="top" title="Attatch Signature to Form" download="'+hen+'refSig.png" href="'+link+'">Attach</a>';
 	showSave();
-	//alert("hi");
+	
 }
 
 function ValidateHEN() {
@@ -99,4 +104,14 @@ function verify() {
 		document.getElementById("error").innerHTML = "Please check your passwords";
 		return false;
 	}
+}
+
+function saveDone(){
+	//save =true;
+	
+	var id = document.getElementById("id").value;
+	var hen = document.getElementById("homeEnrollmentNumber").value;
+	//alert("test");
+	document.getElementById("defPhoto").value = "Deficiency"+id+".png";
+	//alert("test");
 }

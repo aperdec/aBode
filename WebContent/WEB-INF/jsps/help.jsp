@@ -9,7 +9,7 @@
 
 <style>
 #feedbackDiv {
-	width: 50%;
+	width: 90%;
 }
 
 #contactTable {
@@ -151,19 +151,19 @@ table td {
 			<div style="margin: 2%">
 				<legend>Submit a Question or Feedback</legend>
 				<div id="feedbackDiv" class="form-group">
-					<div class="col-lg-7 control-label">
+					<div class="col-lg-10 control-label">
 						<input type="text" class="form-control" placeholder="Subject">
 					</div>
 					<br>
 					<br>
-					<div class="col-xs-7 control-label">
+					<div class="col-lg-10 control-label">
 						<textarea rows="9" maxlength="350" class="form-control pull-left"
 							placeholder="Short entry (350 character limit)">
 				</textarea>
 					</div>
 					<br>
 					<br>
-					<div class="col-lg-7 control-label">
+					<div class="col-lg-7 control-label" style="margin:1%">
 						<address> <form id="reset" >
 							<a
 								href="mailto:exampleAbode@exampleAbode.com? subject=Feedback&body=Message"

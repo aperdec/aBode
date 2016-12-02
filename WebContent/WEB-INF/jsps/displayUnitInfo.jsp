@@ -18,12 +18,14 @@
 	border-radius: 15px;
 }
 #acc2 {
-    padding: 21px 26px;
     font-size: 16px;
     line-height: normal;
     border-radius: 8px;
     color:white;
+    width: 170px;
+    height: 70px;
     }
+
 #nextBtn {
     padding: 24px 34px;
     font-size: 16px;
@@ -243,7 +245,7 @@
     						<canvas id="signature" height="200px" />
     					</div>
 					</div>
-					
+
 					<div><button id="acc2" class="btn btn-primary" onclick="acceptSig()" type="button">Accept</button></div>
 					<div id="acc1"></div>
 					<br><br>

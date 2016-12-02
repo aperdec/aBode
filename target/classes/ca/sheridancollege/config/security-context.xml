@@ -20,6 +20,7 @@
         <security:intercept-url pattern="/pdiReportData" access="isAuthenticated()"/>
         <security:intercept-url pattern="/selectReport" access="isAuthenticated()"/>
         <security:intercept-url pattern="/imageDisplay/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/defImage/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/editDeficiency/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/addDeficiency2/**" access="isAuthenticated()"/>
@@ -57,7 +58,7 @@
         <security:intercept-url pattern="/displayDeficiencies/**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/css/**" access="permitAll"/>
         <security:intercept-url pattern="/scripts/**" access="permitAll"/>
-        <security:intercept-url pattern="/images/**" access="permitAll"/>
+        <security:intercept-url pattern="/img/**" access="permitAll"/>
         <security:intercept-url pattern="/" access="permitAll"/>
         <security:intercept-url pattern="/login" access="permitAll"/>
         <security:intercept-url pattern="/register" access="permitAll"/>

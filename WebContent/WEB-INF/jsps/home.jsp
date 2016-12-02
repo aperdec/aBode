@@ -13,7 +13,7 @@ Extra Large Button CSS
 */
 .btn-xl {
 	padding: 34px 40px;
-	font-size: 25px;
+	font-size: 35px;
 	border-radius: 8px;
 	text-align: center;
 	margin: 20px;
@@ -27,10 +27,18 @@ Extra Large Button CSS
 	color: black;
 }
 
+.home-icons {
+    font-size: 40px;
+}
+
+.col-sm-2 {
+    width: 14%;
+}
+
 
 </style>
 
-	<div class="">
+	<div class="row row-centered text-center">
 	
 		<div class="row row-centered text-center">
 
@@ -41,31 +49,28 @@ Extra Large Button CSS
 			<c:url value="/workOrderHome" var="workOrderHome" />
 			<c:url value="/help" var="help" />
 			<c:url value="/buildInspection" var="buildInspection" />
-			
-
-		</div>
-
-		<div class="row">
-			<div class="col-sm-2 text-center"></div>
-			<a href="${displayUnitInformation}"	class="col-sm-4 btn-xl btn-inverse">Fill out PDI</a>
-			<a href="${buildInspection}" class="col-sm-4 btn-xl btn-inverse">Build	Inspection</a>
-
-		</div>
-
-		<div class="row">
-			<div class="col-sm-2 text-center"></div>
-			<a href="${workOrderHome}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Work Orders</a>
-			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl">View Reports</a>
 
 		</div>
 
 		<div class="row row-centered">
 			<div class="col-sm-2 text-center"></div>
-		<!-- 	<a href="${help}" class="col-sm-4 btn-xl btn-inverse btn-xl">Help</a> -->
-		<!-- <a href="${Placeholder}" class="col-sm-4 btn-xl btn-inverse btn-xl">Confirm Repairs</a> -->
+			<a href="${displayUnitInformation}"	class="col-sm-4 btn-xl btn-inverse"><i class="material-icons home-icons" >create</i> PDI</a>
+			<a href="${buildInspection}" class="col-sm-4 btn-xl btn-inverse"><i class="material-icons home-icons" >domain</i> Inspection</a>
+            <div class="col-sm-2 text-center"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-2 text-center"></div>
+			<a href="${workOrderHome}" class="col-sm-4 btn-xl btn-inverse btn-xl"><i class="material-icons home-icons" >playlist_add_check</i> Work Orders</a>
+			<a href="${selectReport}" class="col-sm-4 btn-xl btn-inverse btn-xl"><i class="material-icons home-icons" >description</i> Reports</a>
 
 		</div>
-			<br />
+
+		<div class="row row-centered">
+			<div class="col-sm-2 text-center"></div>
+
+		</div>
+        <br />
 				
 <legend> </legend>
 	</div>

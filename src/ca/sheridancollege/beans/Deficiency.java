@@ -19,6 +19,8 @@ public class Deficiency implements Serializable, Comparable<Deficiency> {
     private Date deadline;
     private Boolean status;
     private long homeEnrollmentNumber;
+    @Column(columnDefinition="mediumblob")
+    private byte[] defPhoto;
 
     public Deficiency() {
         this(0, null, null, null, null, false, 0);
@@ -108,4 +110,14 @@ public class Deficiency implements Serializable, Comparable<Deficiency> {
     public int compareTo(Deficiency o) {
         return id<o.getId()?-1:id>o.getId()?1:0;
     }
+
+	public byte[] getDefPhoto() {
+		return defPhoto;
+	}
+
+	public void setDefPhoto(byte[] defPhoto) {
+		this.defPhoto = defPhoto;
+	}
+    
+    
 }

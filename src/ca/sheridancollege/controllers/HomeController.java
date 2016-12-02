@@ -299,7 +299,7 @@ public class HomeController {
 
         model = controllerServices.saveUnit2(model, homeEnrollmentNumber, posessionDate, lotNumber, address, projectName, municipality, level, unitNum, plan, repName);
 
-        return "buildInspection";
+        return "displayUnitDeficiencies2";
     }
 
     @RequestMapping("/addSignOff/{homeEnrollmentNumber}")
@@ -391,7 +391,14 @@ public class HomeController {
     @RequestMapping(value = "/imageDisplay/{homeEnrollmentNumber}/2")
     public void getImage2(HttpServletResponse response, @PathVariable long homeEnrollmentNumber) throws IOException {
 
-        response = controllerServices.getImage(response, homeEnrollmentNumber);
+        response = controllerServices.getImage2(response, homeEnrollmentNumber);
+    }
+
+    // this displays an image from the database
+    @RequestMapping(value = "defImage/{homeEnrollmentNumber}/{id}")
+    public void getDefImage(HttpServletResponse response, @PathVariable long homeEnrollmentNumber, @PathVariable int id) throws IOException {
+
+        response = controllerServices.getDefImage(response, homeEnrollmentNumber, id);
     }
 
     @RequestMapping("/displayDeficiencies/{id}")

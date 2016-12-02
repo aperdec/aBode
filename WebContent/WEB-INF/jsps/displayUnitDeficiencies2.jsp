@@ -48,6 +48,7 @@ table{
 		      <th>Deficiency Type</th>
 		      <th>Description</th>
 		      <th></th>
+		      <th></th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -57,10 +58,58 @@ table{
 				<td>${unitDeficiency.location}</td>
 				<td>${unitDeficiency.category}</td> 
 				<td>${unitDeficiency.description}</td>
+
 				<td>
-				    <c:url value="/deleteDeficiency2/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl2" />
-				    <a href="${deleteUrl2}" class="btn btn-danger pull-right">Delete</a>
-				</td>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#photoModal${unitDeficiency.id}">
+                        View Photo
+                    </button>
+                </td>
+
+                <div class="modal fade" id="photoModal${unitDeficiency.id}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Deficiency Photo</h4>
+                      </div>
+                      <div class="modal-body">
+                        <img id="defImage" src="defImage/${unit.homeEnrollmentNumber}/${unitDeficiency.id}" />
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+				<td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal${unitDeficiency.id}">
+                        Delete
+                    </button>
+                </td>
+
+                <div class="modal fade" id="myModal${unitDeficiency.id}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Confirm Delete</h4>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to delete deficiency ${unitDeficiency.id}?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <c:url value="/deleteDeficiency2/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
+                        <a href="${deleteUrl}" class="btn btn-danger" style="margin:1%;">Delete</a>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 				</tr>
 			</c:forEach>
 			</tbody>

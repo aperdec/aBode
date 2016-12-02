@@ -24,6 +24,11 @@
     line-height: normal;
     border-radius: 8px;
     }
+    
+    #toggleBtnID{
+    width:120;
+    
+    }
     </style>
 
 <div class="jumbotron" id="con">
@@ -40,6 +45,7 @@
 		      <th>Deficiency Type</th>
 		      <th>Notes</th>
 		      <th>Assignee</th>
+		      <th></th>
 		      <th style="text-align: center;">Status</th>
 		      <th></th>
 		      <th></th>
@@ -54,16 +60,42 @@
 				<td>${unitDeficiency.category}</td>
 				<td>${unitDeficiency.description}</td>
 				<td>${unitDeficiency.constructionPersonnel}</td>
+
 				<td>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#photoModal${unitDeficiency.id}">
+                        View Photo
+                    </button>
+                </td>
+
+                <div class="modal fade" id="photoModal${unitDeficiency.id}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Deficiency Photo</h4>
+                      </div>
+                      <div class="modal-body">
+                        <img id="defImage" src="../defImage/${unit.homeEnrollmentNumber}/${unitDeficiency.id}" />
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+				<td style="text-align: center;">
 				    <c:choose>
 	              <c:when test="${unitDeficiency.status}">
 		              <c:url value="/workOrderCompleteDeficiencyUnit/${unitDeficiency.id}/${unitDeficiency.homeEnrollmentNumber}" var="completeUrl" />
-					    <a href="${completeUrl}" class="btn btn-success pull-right">Complete</a>
+					    <a href="${completeUrl}" class="btn btn-success" id="toggleBtnID">Complete</a>
 	                
 	              </c:when>
 	              <c:otherwise>
 	                <c:url value="/workOrderCompleteDeficiencyUnit/${unitDeficiency.id}/${unitDeficiency.homeEnrollmentNumber}" var="completeUrl" />
-					    <a href="${completeUrl}" class="btn btn-warning pull-right">Incompleted</a>
+					    <a href="${completeUrl}" class="btn btn-warning" id="toggleBtnID">Incomplete</a>
 	              </c:otherwise>
 	            	</c:choose>
 				</td>
@@ -71,9 +103,31 @@
 				<a href="${editUrl}" class="btn btn-primary pull-right">Edit</a>
 				</td>
 				<td>
-				    <c:url value="/workOrderDeleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
-                    <a href="${deleteUrl}" class="btn btn-danger pull-right" style="margin:1%;">Delete</a>
-				</td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal${unitDeficiency.id}">
+                        Delete
+                    </button>
+                </td>
+
+                <div class="modal fade" id="myModal${unitDeficiency.id}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Confirm Delete</h4>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to delete deficiency ${unitDeficiency.id}?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <c:url value="/workOrderDeleteDeficiency/${unitDeficiency.id}/${unit.homeEnrollmentNumber}" var="deleteUrl" />
+                        <a href="${deleteUrl}" class="btn btn-danger" style="margin:1%;">Delete</a>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 				</tr>
 			</c:forEach>
 			</tbody>
