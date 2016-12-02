@@ -6,6 +6,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<div style="text-align:center;">Copyright 2016 Jack Software</div>
+<div style="text-align:center;"><img src="https://s14.postimg.org/56v67gjap/abode.png" width="50px" style="margin-bottom:0.5%"><br>
+Copyright 2016 Jack Software</div>
 <br />
 <br />
